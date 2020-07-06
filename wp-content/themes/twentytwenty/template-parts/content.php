@@ -13,10 +13,31 @@
 
 ?>
 
+<?php 
+	
+	$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	
+	echo "<script>console.log('current link " . $actual_link . "')</script>";
+	
+
+	if ($actual_link == $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] 
+		|| $actual_link == $GLOBALS["ADMIN_HOME_URL_WITH_SSL"] 
+		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITH_SSL"].'?page')
+		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"].'?page')
+		){
+		if ($GLOBALS["PREVENT_DUPLICATE"] == 0){
+			include get_theme_file_path( "/home/home.php" );
+			$GLOBALS["PREVENT_DUPLICATE"]++;
+		}
+	} else if ($actual_link == $GLOBALS["LOGIN_URL_WITHOUT_SSL"] || $actual_link == $GLOBALS["LOGIN_URL_WITH_SSL"]){
+		include get_theme_file_path( "/login/login.php" );
+	} else {
+?>
+
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php
-
+	
 	get_template_part( 'template-parts/entry-header' );
 
 	if ( ! is_search() ) {
@@ -92,3 +113,7 @@
 	?>
 
 </article><!-- .post -->
+
+<?php 
+	}
+?>

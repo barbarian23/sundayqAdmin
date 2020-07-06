@@ -137,6 +137,7 @@ body {
 @supports ( font-variation-settings: normal ) {
 
 	body {
+		 -webkit-overflow-scrolling: touch;
 		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
@@ -6468,4 +6469,237 @@ a.to-the-top > * {
 	.wp-block-pullquote.is-style-solid-color.alignright::before {
 		top: 0;
 	}
+}
+
+.home-parent {
+	width:100%;
+	height:100%;
+	position:relative;
+	display:flex;
+	flex-direction:column;
+	margin:0;
+	padding:0;
+	background: #fafafa;
+}
+
+.home-header {
+	width:100%;
+	height:0px;
+	position:relative;
+	display:flex;
+	flex-direction:row;
+	margin:0;
+	padding:0;
+}
+
+.home-middle {
+	width:100%;
+	min-height:1200px;
+	position:relative;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	margin:0;
+	padding:0;
+}
+
+.home-middle-left {
+	width:210px;
+	height:100%;
+	position:absolute;
+	left:0;
+	display:flex;
+	flex-direction:column;
+	margin:0;
+	padding:0;
+	background:#23282d;
+}
+
+#dashboardName{
+	margin: 45px auto 45px auto;
+	font-size:16px;
+}
+
+#dashboardIcon{
+	font-size:16px;
+}
+
+.home-middle-left-menu{
+	position: relative;
+	text-align: left;
+	width:95%;
+	height:30px;
+    line-height: 30px;
+	margin: 20px auto;
+	font-family: Be Vietnam;
+	font-size:14px;
+	color:#fafafa;
+}
+
+.home-middle-left-menu:hover {
+	background:#434d56;
+}
+
+.home-middle-left-menu a{
+	text-decoration: none;
+	color:#fafafa!important;
+}
+
+.home-middle-left-menu i{
+	font-size:14px;
+	color:#fafafa;
+	width:17px;
+	margin-left:6px;
+	margin-right:10px;
+}
+
+/*
+ small screen
+ */
+
+.home-middle-left-small {
+	width:100%;
+	height:50px;
+	position:fixed;
+	top:46px;
+	left:0;
+	display:none;
+    flex-wrap: wrap;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+	margin:0;
+	padding:0;
+	background:#23282d;	
+}
+
+#dashboardIconTopSmallContent{
+	display:flex;
+}
+
+#dashboardIconTopSmallDivContain{
+	position:absolute;
+	right:-15px;
+	top: 53%;
+	transform:translate(-50%,-50%);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:27px;
+	width:33px;
+	background:red;
+	pointer-events:auto;
+}
+
+#dashboardIconTopSmall{
+	font-size:20px;
+	width:19px;
+ 	margin-left:0px;
+	margin-right:0px;
+}
+
+#dashboardNameSmall{
+	margin: 10px auto 10px auto;
+	font-size:16px;
+}
+
+#dashboardIconSmall{
+	font-size:16px;
+}
+
+.home-middle-left-menu-small-content{
+	display:none;
+	animation: expand 0.15s linear;
+	width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: #23282d;
+}
+
+.home-middle-left-menu-small{
+	position: relative;
+	text-align: left;
+	width:95%;
+	height:30px;
+    line-height: 30px;
+	margin: 10px auto;
+	font-family: Be Vietnam;
+	font-size:14px;
+	color:#fafafa;
+	cursor:pointer;
+}
+
+.home-middle-left-menu-small:hover {
+	background:#434d56;
+}
+
+.home-middle-left-small form{
+		width:100%;
+	
+   }
+
+.home-middle-left-menu-small a{
+	text-decoration: none;
+	color:#fafafa!important;
+}
+
+.home-middle-left-menu-small i{
+	font-size:14px;
+	color:#fafafa;
+	width:17px;
+ 	margin-left:18px;
+	margin-right:10px;
+}
+
+
+.home-middle-between {
+	width:2%;
+	height:100%;
+	position:relative;
+	display:flex;
+	flex-direction:column;
+	margin:0;
+	padding:0;
+}
+
+.home-middle-right {
+	width:81%;
+	height:100%;
+	position:absolute;
+	right:0;
+	display:flex;
+	flex-direction:column;
+	margin:0;
+	padding:0;
+}
+
+.home-footer {
+	width:100%;
+	height:0px;
+	position:relative;
+	display:flex;
+	flex-direction:row;
+	margin:0;
+	padding:0;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .home-middle-left {
+	display:none;
+   }
+	
+	.home-middle-left-small{
+		display:flex;
+	}
+	
+	.home-middle-right {
+		width:100%;
+		margin-top:46px;
+	}
+}
+
+@keyframes expand {
+  0%   {margin-top: -30px;opacity:0.5;}
+  100% {margin-top: 0px;opacity:1;}
 }

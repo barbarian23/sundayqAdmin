@@ -7,7 +7,7 @@
  * @subpackage Twenty_Twenty
  * @since Twenty Twenty 1.0
  */
-
+/*
 $has_footer_menu = has_nav_menu( 'footer' );
 $has_social_menu = has_nav_menu( 'social' );
 
@@ -117,3 +117,4 @@ if ( $has_footer_menu || $has_social_menu || $has_sidebar_1 || $has_sidebar_2 ) 
 	</div><!-- .footer-nav-widgets-wrapper -->
 
 <?php } ?>
+*/?>

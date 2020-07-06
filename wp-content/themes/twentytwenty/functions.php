@@ -184,7 +184,9 @@ function twentytwenty_register_styles() {
 
 	$theme_version = wp_get_theme()->get( 'Version' );
 
-	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), $theme_version );
+	wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), time() );
+	
+	//wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), $theme_version );
 	wp_style_add_data( 'twentytwenty-style', 'rtl', 'replace' );
 
 	// Add output of Customizer settings as inline style.
@@ -393,8 +395,12 @@ function twentytwenty_block_editor_styles() {
 
 	$css_dependencies = array();
 
+	
+	
 	// Enqueue the editor styles.
+	//wp_enqueue_style( 'twentytwenty-style', get_stylesheet_uri(), array(), time() );
 	wp_enqueue_style( 'twentytwenty-block-editor-styles', get_theme_file_uri( '/assets/css/editor-style-block.css' ), $css_dependencies, wp_get_theme()->get( 'Version' ), 'all' );
+	
 	wp_style_add_data( 'twentytwenty-block-editor-styles', 'rtl', 'replace' );
 
 	// Add inline style from the Customizer.
