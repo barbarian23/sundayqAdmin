@@ -22,8 +22,8 @@
 
 	if ($actual_link == $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] 
 		|| $actual_link == $GLOBALS["ADMIN_HOME_URL_WITH_SSL"] 
-		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITH_SSL"].'?page')
-		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"].'?page')
+		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITH_SSL"].'?mode')
+		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"].'?mode')
 		){
 		if ($GLOBALS["PREVENT_DUPLICATE"] == 0){
 			include get_theme_file_path( "/home/home.php" );

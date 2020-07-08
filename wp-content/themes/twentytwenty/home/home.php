@@ -15,28 +15,30 @@
 		<div class="home-middle-left">
 			<form action="get">
 				<div class="home-middle-left-menu" id="dashboardName">
-					<i class="fa fa-dashboard" id="dashboardIcon"></i><a  href=<?php echo $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"]; ?>><?php echo $GLOBALS["nameDashboard"]; ?></a>
+					<i class="fa fa-dashboard" id="dashboardIcon"></i><span class="home-middle-left-menu-text"><a  href=<?php echo $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"]; ?>><?php echo $GLOBALS["ADMIN_TITLE"]; ?></a></span>
 				</div>
-				
+				<!-- Học online -->
 				<div class="home-middle-left-menu">
-					<i class="fa fa-mortar-board"></i><a href="?page=lecture"><?php echo $GLOBALS["manageLecture"]; ?></a>
-				</div>
+					<i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
+					<div>
 
-				<div class="home-middle-left-menu">
-					<i class="fa fa-calendar"></i><a href="?page=schedule"><?php echo $GLOBALS["manageSchedule"]; ?></a>
+					</div>
 				</div>
-
+					
+				<!-- Học offline -->
 				<div class="home-middle-left-menu">
-					<i class="fa fa-newspaper-o"></i><a href="?page=bill"><?php echo $GLOBALS["manageBill"]; ?></a>
+					<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
+					
+					<div>
+						<div class="home-middle-left-menu">
+							<i class="fa fa-calendar"></i><span class="home-middle-left-menu-text"><a href="?mode=offline&page=lecture"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></a></span>
+						</div>
+
+						<div class="home-middle-left-menu">
+							<i class="fa fa-newspaper-o"></i><span class="home-middle-left-menu-text"><a href="?mode=offline&page=teacher"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></a></span>
+						</div>
+					</div>
 				</div>
-
-				<div class="home-middle-left-menu">
-					<i class="fa fa-vcard"></i><a href="?page=account"><?php echo $GLOBALS["manageAccount"]; ?></a>
-				</div>
-
-				<div class="home-middle-left-menu">
-					<i class="fa fa-users"></i><a href="?page=teacher"><?php echo $GLOBALS["manageTeacher"]; ?></a>
-				</div>	
 			</form>
 		</div>
 
@@ -50,28 +52,27 @@
 				</div>
 				<div class="home-middle-left-menu-small-content" id="menuContent">
 					<div class="home-middle-left-menu-small" id="dashboardNameSmall">
-						<i class="fa fa-dashboard" id="dashboardIconSmall"></i><span><?php echo $GLOBALS["nameDashboard"]; ?></span>
+						<i class="fa fa-dashboard" id="dashboardIconSmall"></i><span><?php echo $GLOBALS["ADMIN_TITLE"]; ?></span>
 					</div>
 
+					<!-- Học online -->
 					<div class="home-middle-left-menu-small">
-						<i class="fa fa-mortar-board"></i><a href="?page=lecture"><?php echo $GLOBALS["manageLecture"]; ?></a>
+						<i class="fa fa-mortar-board"></i><span><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
 					</div>
 
+					<!-- Học offline -->
 					<div class="home-middle-left-menu-small">
-						<i class="fa fa-calendar"></i><a href="?page=schedule"><?php echo $GLOBALS["manageSchedule"]; ?></a>
-					</div>
+						<i class="fa fa-calendar"></i><span><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
+						<div>
+							<div class="home-middle-left-menu-small">
+								<i class="fa fa-newspaper-o"></i><a href="?mode=offline&page=lecture"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></a>
+							</div>
 
-					<div class="home-middle-left-menu-small">
-						<i class="fa fa-newspaper-o"></i><a href="?page=bill"><?php echo $GLOBALS["manageBill"]; ?></a>
+							<div class="home-middle-left-menu-small">
+								<i class="fa fa-vcard"></i><a href="?mode=offline&page=teacher"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></a>
+							</div>
+						</div>
 					</div>
-
-					<div class="home-middle-left-menu-small">
-						<i class="fa fa-vcard"></i><a href="?page=account"><?php echo $GLOBALS["manageAccount"]; ?></a>
-					</div>
-
-					<div class="home-middle-left-menu-small">
-						<i class="fa fa-users"></i><a href="?page=teacher"><?php echo $GLOBALS["manageTeacher"]; ?></a>
-					</div>	
 				</div>
 			</form>
 		</div>
@@ -79,29 +80,30 @@
 		
 		<!-- home middle right -->
 		<div class="home-middle-right">
-			<?php
- 				if(isset($_GET["page"]) ){
- 					switch($_GET["page"]){
- 						case "lecture":
-							 include get_theme_file_path( "home/lecture/lecture.php" );
- 							break;
- 						case "schedule":
-							include get_theme_file_path( "home/schedule/schedule.php" );
- 							break;
- 						case "bill":
-							include get_theme_file_path( "home/contest/contest.php" );
- 							break;
- 						case "account":
-							include get_theme_file_path( "home/account/account.php" );
- 							break;
- 						case "teacher":
-							include get_theme_file_path( "home/account/teacher.php" );
- 							break;
- 						default:
- 							break;
- 					}
- 				}
-			?>
+			<div class="home-middle-right-contain">
+				<?php
+					if(isset($_GET["mode"])){
+						if($_GET["mode"] == "online"){
+							if(isset($_GET["page"])){
+
+							}
+						} else if($_GET["mode"] == "offline"){
+							if(isset($_GET["page"])){
+								switch($_GET["page"]){
+									case "lecture":
+										 include get_theme_file_path( "home/offline/lecture/lecture.php" );
+										break;
+									case "teacher":
+										include get_theme_file_path( "home/offline/teacher/teacher.php" );
+										break;
+									default:
+										break;
+								}
+							}
+						}
+					}
+				?>
+			</div>
 		</div>
 	
 	</div>
