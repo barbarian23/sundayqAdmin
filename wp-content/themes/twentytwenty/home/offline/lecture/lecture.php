@@ -52,6 +52,77 @@
                 </div>
             </div>
         </div>
+		
+		<!-- selector teacher -->
+		
+		<div class="manage-section-detail-left-list" id="listMainTeacher">
+			<span class="manage-section-detail-left-list-close" id="listMainTeacherClose"><?php echo $GLOBALS["CLOSE"]; ?></span>
+			<div class="manage-section-detail-left-item">
+                <div class="manage-section-detail-left-item-avatar">
+					
+                </div>
+                <div class="manage-section-detail-left-item-info">
+					<span>213</span>
+					<span>689</span>
+					<hr  class="lecture-teacher-hr">
+					<span><b>zxc</b>zxc</span>
+					<span><b>cvb</b>cvb</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+                </div>
+            </div>
+			<div class="manage-section-detail-left-item">
+                <div class="manage-section-detail-left-item-avatar">
+					
+                </div>
+                <div class="manage-section-detail-left-item-info">
+					<span>213</span>
+					<span>689</span>
+					<hr  class="lecture-teacher-hr">
+					<span><b>zxc</b>zxc</span>
+					<span><b>cvb</b>cvb</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+                </div>
+            </div>
+			<div class="manage-section-detail-left-item">
+                <div class="manage-section-detail-left-item-avatar">
+					
+                </div>
+                <div class="manage-section-detail-left-item-info">
+					<span>213</span>
+					<span>689</span>
+					<hr  class="lecture-teacher-hr">
+					<span><b>zxc</b>zxc</span>
+					<span><b>cvb</b>cvb</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+                </div>
+            </div>
+			<div class="manage-section-detail-left-item">
+                <div class="manage-section-detail-left-item-avatar">
+					
+                </div>
+                <div class="manage-section-detail-left-item-info">
+					<span>213</span>
+					<span>689</span>
+					<hr  class="lecture-teacher-hr">
+					<span><b>zxc</b>zxc</span>
+					<span><b>cvb</b>cvb</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+					<span><b>bncv</b>bnm</span>
+                </div>
+            </div>
+		</div>
+		
         <div class="manage-section-detail-midlle">
 			<div class="manage-section-detail-midlle-span">
 				<span><?php echo $GLOBALS["LECTURE_DETAIL"]; ?></span>
@@ -75,8 +146,8 @@
     <!-- lộ trình khóa học -->
     <div class="manage-section-road-map" id="exceltable">
         <div class="manage-section-road-map-upload">
-            <div class="manage-section-road-map-upload-contain" id="uploadcontain">
-                <div class="manage-section-road-map-upload-progress">
+            <div class="sunq-process-contain" id="uploadcontain">
+                <div class="sunq-process-contain-running">
 
                 </div>
             </div>
@@ -321,7 +392,16 @@
 			}
 		document.getElementById("spanNameOfLectureReference").textContent = e.target.value;
 	});
+	
 	document.getElementById("spanNameOfLectureReference").addEventListener("touchend",function(e){
 		document.getElementById("idNameOfLecture").focus();
+	});
+	
+	document.getElementById("mainTeacherSelector").addEventListener("click",function(e){
+		getChoosingSelectTeacherMain() ? setChoosingSelectTeacherMain(false) : setChoosingSelectTeacherMain(true);
+	});
+	
+	document.getElementById("listMainTeacherClose").addEventListener("click",function(e){
+		getChoosingSelectTeacherMain() && setChoosingSelectTeacherMain(false);
 	});
 </script>

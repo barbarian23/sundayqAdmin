@@ -169,7 +169,7 @@
 window.addEventListener("touchend",function(e){
 	let arrayContainIdValid = ["dashboardNameSmall","dashboardNameSmallA","dashboardNameSmallI","dashboardNameSmallSPAN","smallHomeMenuOfflineDivContainListLecture","smallHomeMenuOfflineAContainListLecture","smallHomeMenuOfflineIContainListLecture","smallHomeMenuOfflineDivContainListTeacher","smallHomeMenuOfflineAContainListTeacher","smallHomeMenuOfflineIContainListTeacher","dashboardIconTopSmallDivContain"];
 	let arrayContainValid = ["dashboardIconTopSmall","dashboardIconTopSmallDivContain"];
-	console.log(e.target.id,arrayContainIdValid.includes(e.target.id));
+	//console.log(e.target.id,arrayContainIdValid.includes(e.target.id));
 	if(!arrayContainIdValid.includes(e.target.id)){
 		if (arrayContainValid.includes(e.target.id)){
 			getOpenMenu() ? setOpenMenu(false) : setOpenMenu(true);

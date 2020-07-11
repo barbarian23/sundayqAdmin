@@ -55,7 +55,8 @@
 				<td></td>
 				<td></td>
 				<td></td>
-			</tr><tr>
+			</tr>
+			<tr>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -80,7 +81,7 @@
 				<td></td>
 			</tr>
 		</table>
-		<div class="manage-list-lecture-table-detail-no-list">
+		<div class="manage-list-lecture-table-detail-no-list" id="listLectureEmpty">
 			<img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
 			<span><?php echo $GLOBALS["LECTURE_NO_LIST"]; ?></span>
 		</div>

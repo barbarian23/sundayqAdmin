@@ -5,9 +5,7 @@
 		<span>
 			<?php echo $GLOBALS["TEACHER_AVATAR"]; ?>
 		</span>
-		<div class="manage-teacher-contain-left-img">
-		
-		</div>
+		<img class="manage-teacher-contain-left-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
 	</div>
 	<div class="manage-teacher-contain-right">
 		<div class="manage-teacher-contain-right-upper">

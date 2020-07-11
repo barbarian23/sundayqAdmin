@@ -27,8 +27,8 @@
 				<td></td>
 			</tr>
 		</table>
-		<div class="manage-list-teacher-table-no-list">
-			<img src='<?php echo $GLOBALS["TEACHER_NO_LIST"]; ?>'>
+		<div class="manage-list-teacher-table-no-list" id="listTeacherEmpty">
+			<img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
 			<span><?php echo $GLOBALS["TEACHER_NO_LIST"]; ?></span>
 		</div>
 	</div>

@@ -92,6 +92,7 @@
 	//misc
 	$GLOBALS["AGREE"] = "Đồng ý";
 	$GLOBALS["CANCEL"] = "Hủy bỏ";
+	$GLOBALS["CLOSE"] = "Đóng";
 	
 	//url
 	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/";
@@ -146,6 +147,13 @@
 		online:"online"
 	}
 	
+	var sunQRequestType = {
+		get:'get',
+		post:"post",
+		put:"put",
+		delete:"delete"
+	};
+	
 	var listScreen = {
 		offline:{
 			lecture:"lecture",
@@ -156,4 +164,20 @@
 			
 		}
 	}
+	
+	var mainURL= "http://server.sundayq.com/";
+	var accountPartURL = "account/";
+	var tokenPartURL = "token/check";
+	
+	//==>
+	var tokenCheckUrl  = accountPartURL+tokenPartURL;
+	
+	var adminLoginPartURL = "admin/login";
+	//==>
+	var adminLoginUrl  = accountPartURL + adminLoginPartURL;
+	
+	var uploadImagePartUrl = "resource/image";	
+	var getTeacherUrl  = "teachers";
+	var getLecturerUrl  = "courses";
+	
 </script>

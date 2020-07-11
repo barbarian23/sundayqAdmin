@@ -5,9 +5,11 @@
 var sunqStatus = {
 	mode:"offline", //offline hoặc online
 	isOpenMenu:false,
+	isChoosingSelectTeacherMain:false
 }
 var _mode = "offline",
-	_isOpenMenu = false;
+	_isOpenMenu = false,
+	_isChoosingSelectTeacherMain = false;
 	
 //mode setting
 Object.defineProperty(sunqStatus,"mode",{
@@ -31,6 +33,25 @@ Object.defineProperty(sunqStatus,"isOpenMenu",{
 	}
 });
 
+//open choose select main teacher
+Object.defineProperty(sunqStatus,"isChoosingSelectTeacherMain",{
+	get(){
+		return _isChoosingSelectTeacherMain;
+	},
+	set(val){
+		_isChoosingSelectTeacherMain = val;
+		val ? document.getElementById("listMainTeacher").style.display = "flex" : document.getElementById("listMainTeacher").style.display = "none" ;
+	}
+});
+
+function setChoosingSelectTeacherMain(val){
+	sunqStatus.isChoosingSelectTeacherMain = val;
+}
+
+function getChoosingSelectTeacherMain(){
+	return sunqStatus.isChoosingSelectTeacherMain;
+}	
+	
 function setOpenMenu(val){
 	sunqStatus.isOpenMenu = val;
 }

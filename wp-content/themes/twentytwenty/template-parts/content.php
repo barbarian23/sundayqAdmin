@@ -31,6 +31,7 @@
 		}
 	} else if ($actual_link == $GLOBALS["LOGIN_URL_WITHOUT_SSL"] || $actual_link == $GLOBALS["LOGIN_URL_WITH_SSL"]){
 		include get_theme_file_path( "/login/login.php" );
+		//header('Location: '.$GLOBALS["LOGIN_URL_WITHOUT_SSL"]);
 	} else {
 ?>
 
