@@ -189,5 +189,10 @@
 		*/?>
 		<?php
 		// Output the menu modal.
-		include('home/constant/constants.php');
-		//get_template_part( 'template-parts/modal-menu' );
+			include('home/constant/constants.php');
+			include get_theme_file_path("home/sunqjs/status.php" ); 
+			include get_theme_file_path("home/sunqjs/mainjs.php" ); 
+			include get_theme_file_path("home/sunqjs/alert.php" ); 
+			include get_theme_file_path("home/sunqjs/request.php" ); 
+			include get_theme_file_path("home/helper/helper.php" );
+			//get_template_part( 'template-parts/modal-menu' );

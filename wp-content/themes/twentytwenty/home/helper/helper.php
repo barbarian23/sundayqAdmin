@@ -1,13 +1,13 @@
 <?php 
-class SunQHelper{
-		static function 
-requestGet($url,$inputData,$name,callable $callback){
+
+		
+		class SunQDevHelper{
+		static function requestGet($url,$inputData,$name,callable $callback){
 			$url .= '?';
 			//mỗi data trong method get cần thêm dấu & đăng trước cú pháp là &key=value
 			$keys = array_keys($inputData);
 			for($i=0; $i < count($keys); ++$i) {
-				$url .= $keys[$i] . '=' . 
-$inputData[$keys[$i]];
+				$url .= $keys[$i] . '=' . $inputData[$keys[$i]];
 				if ($i < count($keys) - 1){
 					$url .= '&';
 				}
@@ -24,15 +24,13 @@ $inputData[$keys[$i]];
 			
 			self::handleResponce($url, $response);
 			
-			$data = 
-json_decode(json_decode(json_encode($response['body'],true),true),true);
+			$data =json_decode(json_decode(json_encode($response['body'],true),true),true);
 			//return $data;
 			$callback($data,$name);
 			
 		}
 		
-		static function requestPost($url,$inputData,callable 
-$callback){
+		static function requestPost($url,$inputData,callable $callback){
 			$response = wp_remote_post($url, array(
 				'method' => 'POST',
 				'timeout' => 45,
@@ -40,8 +38,7 @@ $callback){
 				'httpversion' => '1.0',
 				'blocking' => true,
 				'headers' => array(
-					'Content-Type' => 
-'application/json; charset=utf-8'
+					'Content-Type' => 'application/json; charset=utf-8'
 				),
 				'body' => json_encode(
 					$inputData
@@ -49,8 +46,7 @@ $callback){
 				'cookies' => array()
 			));
 			self::handleResponce($url,$response);
-			$data = 
-json_decode(json_decode(json_encode($response['body'],true),true),true);
+			$data = json_decode(json_decode(json_encode($response['body'],true),true),true);
 			$callback($data);
  		}
 		
@@ -64,27 +60,23 @@ json_decode(json_decode(json_encode($response['body'],true),true),true);
 			//self::consoleLogPHP("=================");
 			//self::consoleLogPHP($url);
 			if ( is_wp_error( $response ) ) {
-			   $error_message = 
-$response->get_error_message();
-			   self::consoleLogPHP('error ' . 
-$error_message);
+			   $error_message = $response->get_error_message();
+			   self::consoleLogPHP('error ' . $error_message);
 			} else {
-			   $data = 
-json_decode(json_decode(json_encode($response['body'],true),true),true);
-			   //self::consoleLogPHP('Responce ' . 
-$data['data']);
+			   $data = json_decode(json_decode(json_encode($response['body'],true),true),true);
+			   //self::consoleLogPHP('Responce ' . $data['data']);
 			}
 			//self::consoleLogPHP("=================");
 		}
 		
 		static function consoleLogPHP($stringLog){
-			echo "<script>console.log('" . $stringLog . 
-"');</script>";
+			echo "<script>console.log('" . $stringLog . "');</script>";
+		}
+	
+		static function callFunction($name,$param){
+			//self::consoleLogPHP("call function");
+			echo "<script>". $name . "(" . $param . ");</script>";
 		}
 	}
-?> <script>
 	
-	function getBaseUrl(){
-		return BASE_URL;
-	}
-</script>
+?>

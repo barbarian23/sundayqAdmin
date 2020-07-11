@@ -112,8 +112,10 @@
 	}
 	?>
 
-</article><!-- .post -->
+</article>
 
 <?php 
 	}
+
+		
 ?>
