@@ -35,6 +35,7 @@
 
 	//list lecture
 	$GLOBALS["LECTURE_LIST_TITLE"] = "Danh sách khóa học";
+	$GLOBALS["LECTURE_NO_LIST"] = "Danh sách khóa học trống";
 	$GLOBALS["LECTURE_LIST_COL_1"] = "Số thứ tự";
 	$GLOBALS["LECTURE_LIST_COL_2"] = "Tiêu đề";
 	$GLOBALS["LECTURE_LIST_COL_3"] = "Loại khóa học";
@@ -56,6 +57,7 @@
 	
 	//list teacher
 	$GLOBALS["TEACHER_LIST_TITLE"] = "Danh sách giảng viên";
+	$GLOBALS["TEACHER_NO_LIST"] = "Danh sách giảng viên trống";
 	$GLOBALS["TEACHER_LIST_COL_1"] = "Số thứ tự";
 	$GLOBALS["TEACHER_LIST_COL_2"] = "Tên giảng viên";
 	$GLOBALS["TEACHER_LIST_COL_3"] = "Chuyên khoa";
@@ -101,9 +103,10 @@
 	$GLOBALS['CURRENT_URI'] = "/wp-content/themes/twentytwenty";
 
 	$GLOBALS['URI_HEADER_ICON'] = $GLOBALS['CURRENT_URI'] . "/assets/images/header_icon.png";
-	$GLOBALS['URI_ADD_NEW'] = $GLOBALS['CURRENT_URI'] . "/assets/images/add_new.png";
-	$GLOBALS['URI_BACK_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/back_icon_lecture.png";
-	$GLOBALS['URI_FORWARD_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/forward_icon_lecture.png";
+	$GLOBALS['URI_ADD_NEW'] = $GLOBALS['CURRENT_URI'] . "/assets/images/add-2244771_960_720.png";
+	$GLOBALS['URI_BACK_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/back_lecture.png";
+	$GLOBALS['URI_FORWARD_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/forward_lecture.png";
+	$GLOBALS['URI_EMPTY_BOX'] = $GLOBALS['CURRENT_URI'] . "/assets/images/empty-box.png";
 ?>
 <script>
 	var dictionary = {

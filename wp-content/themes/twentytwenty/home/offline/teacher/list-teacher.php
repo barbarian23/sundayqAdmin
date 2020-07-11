@@ -27,6 +27,10 @@
 				<td></td>
 			</tr>
 		</table>
+		<div class="manage-list-teacher-table-no-list">
+			<img src='<?php echo $GLOBALS["TEACHER_NO_LIST"]; ?>'>
+			<span><?php echo $GLOBALS["TEACHER_NO_LIST"]; ?></span>
+		</div>
 	</div>
 	
 	<div class="manage-list-teacher-add-new">

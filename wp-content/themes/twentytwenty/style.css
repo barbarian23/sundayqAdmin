@@ -6944,7 +6944,7 @@ a.to-the-top > * {
 }
 
 .manage-section-detail-right {
-    width: 30%;
+    width: 35%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -6980,6 +6980,14 @@ a.to-the-top > * {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.manage-section-detail-right-item-img {
+	cursor: crosshair;
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .manage-section-road-map {
@@ -7423,6 +7431,31 @@ input[type="file"] {
 	border:none;
 }
 
+.manage-list-lecture-table-detail-no-list{
+	width: 100%;
+	display:flex;
+	flex-direction:column
+	flex-wrap:wrap;
+	justify-content:center;
+	align-items:center;
+	position:relative;
+	margin:10px auto;
+}
+
+.manage-list-lecture-table-detail-no-list img{
+	width: 340px;
+	height: 320px;
+	background-position:100% 100%;
+	background-repeat:no-repeat;
+	margin: 30px auto;
+}
+
+.manage-list-lecture-table-detail-no-list span{
+	font-size: 32px;
+    font-weight: 600;
+    color: red;
+}
+
 .manage-list-lecture-add-new{
 	width:98%;
 	height:80px;
@@ -7502,6 +7535,31 @@ input[type="file"] {
 	align-items:center;
 	position:relative;
 	margin:5px auto 20px auto;
+}
+
+.manage-list-teacher-table-no-list{
+	width: 100%;
+	display:flex;
+	flex-direction:column;
+	flex-wrap:wrap;
+	justify-content:center;
+	align-items:center;
+	position:relative;
+	margin:10px auto;
+}
+
+.manage-list-teacher-table-no-list img{
+	width: 340px;
+	height: 320px;
+	background-position:100% 100%;
+	background-repeat:no-repeat;
+	margin: 30px auto;
+}
+
+.manage-list-teacher-table-no-list span{
+	font-size: 32px;
+    font-weight: 600;
+    color: red;
 }
 
 .manage-list-teacher-table-detail{

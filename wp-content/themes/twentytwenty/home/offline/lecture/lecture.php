@@ -34,7 +34,7 @@
 
     <!-- chi tiết khóa học , ảnh -->
     <div class="manage-section-detail">
-        <div class="manage-section-detail-left">
+        <div class="manage-section-detail-left" id="mainTeacherSelector">
             <div class="manage-section-detail-left-item">
                 <div class="manage-section-detail-left-item-avatar">
 					
@@ -65,7 +65,7 @@
 				<span><?php echo $GLOBALS["LECTURE_MAIN_IMAGE"]; ?></span>
 			</div>
             <div class="manage-section-detail-right-item">
-
+				<img class="manage-section-detail-right-item-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
             </div>
         </div>
     </div>
@@ -293,8 +293,7 @@
     // }
 
     function getFileExcel() {
-        //let objectforSheet1 = '{Buổi:"1",Nội dung:"2",Thời gian:"3",Giảng viên:"4",Trợ giảng:"5"}';
-		 let objectforSheet1 = '[{"' + getDictionaryText("LECTURE_ROADMAP_COL_1") + '":"1","' + getDictionaryText("LECTURE_ROADMAP_COL_2") + '":"2","' + getDictionaryText("LECTURE_ROADMAP_COL_3") + '":"3","' + getDictionaryText("LECTURE_ROADMAP_COL_4") + '":"4","' + getDictionaryText("LECTURE_ROADMAP_COL_5") + '":"5"}]';
+        let objectforSheet1 = '{' + getDictionaryText("LECTURE_ROADMAP_COL_1") + ':"1",' + getDictionaryText("LECTURE_ROADMAP_COL_2") + ':"2",' + getDictionaryText("LECTURE_ROADMAP_COL_3") + ':"3",' + getDictionaryText("LECTURE_ROADMAP_COL_4") + ':"4",' + getDictionaryText("LECTURE_ROADMAP_COL_5") + ':"5"}';
         let sheet_1_data = JSON.parse(objectforSheet1);
         let sheet_2_data = [{ Col_One: 10, Col_Two: 110 }, { Col_One: 20, Col_Two: 220 }];
         let opts = [{

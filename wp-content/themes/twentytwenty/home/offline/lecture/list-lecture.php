@@ -80,6 +80,10 @@
 				<td></td>
 			</tr>
 		</table>
+		<div class="manage-list-lecture-table-detail-no-list">
+			<img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
+			<span><?php echo $GLOBALS["LECTURE_NO_LIST"]; ?></span>
+		</div>
 	</div>
 	
 	<div class="manage-list-lecture-add-new">
