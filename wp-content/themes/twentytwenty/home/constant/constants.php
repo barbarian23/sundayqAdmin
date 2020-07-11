@@ -96,6 +96,14 @@
 	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://admin.sundayq.com/";
 	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/login";
 	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://admin.sundayq.com/login";
+
+	//image
+	$GLOBALS['CURRENT_URI'] = "/wp-content/themes/twentytwenty";
+
+	$GLOBALS['URI_HEADER_ICON'] = $GLOBALS['CURRENT_URI'] . "/assets/images/header_icon.png";
+	$GLOBALS['URI_ADD_NEW'] = $GLOBALS['CURRENT_URI'] . "/assets/images/add_new.png";
+	$GLOBALS['URI_BACK_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/back_icon_lecture.png";
+	$GLOBALS['URI_FORWARD_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/forward_icon_lecture.png";
 ?>
 <script>
 	var dictionary = {

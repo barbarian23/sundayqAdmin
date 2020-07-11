@@ -4,7 +4,7 @@
 <div class="home-parent">
 	<!-- home header -->
 	<div class="home-header">
-		
+		<img class="home-header-img" src='<?php echo $GLOBALS['URI_HEADER_ICON'] ; ?>'>
 	</div>
 	
 	<!-- home middle -->
