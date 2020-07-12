@@ -108,6 +108,7 @@
 	$GLOBALS['URI_BACK_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/back_lecture.png";
 	$GLOBALS['URI_FORWARD_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/forward_lecture.png";
 	$GLOBALS['URI_EMPTY_BOX'] = $GLOBALS['CURRENT_URI'] . "/assets/images/empty-box.png";
+	$GLOBALS['URI_ERROR_CONNECTION'] = $GLOBALS['CURRENT_URI'] . "/assets/images/error.png";
 ?>
 <script>
 	var dictionary = {
@@ -136,6 +137,9 @@
 		LECTURE_CUSTOMER_NEED_SUPPORT_2: "LECTURE_CUSTOMER_NEED_SUPPORT_2",
 		LECTURE_CUSTOMER_NEED_SUPPORT_3: "LECTURE_CUSTOMER_NEED_SUPPORT_3",
 		LECTURE_CUSTOMER_NEED_SUPPORT_4: "LECTURE_CUSTOMER_NEED_SUPPORT_4",
+		
+		SESSION_TOKEN:"STKEN",
+		ERR_INFO:"Có lỗi: ",
 	}
 	
 	function getDictionaryText(key){
@@ -165,6 +169,8 @@
 		}
 	}
 	
+	var secret = "sunqcryptomessthisisimportantsoimportantheheheeee";
+	
 	var mainURL= "http://server.sundayq.com/";
 	var accountPartURL = "account/";
 	var tokenPartURL = "token/check";
@@ -177,7 +183,25 @@
 	var adminLoginUrl  = accountPartURL + adminLoginPartURL;
 	
 	var uploadImagePartUrl = "resource/image";	
-	var getTeacherUrl  = "teachers";
-	var getLecturerUrl  = "courses";
+	var listTeacherUrl  = "teachers";
+	var teacherUrl  = "teacher";
+	var listLecturerUrl  = "courses";
+	var lecturerUrl  = "course";
+	
+	function getURLLogin(){
+		return mainURL+adminLoginUrl;
+	}
+	
+	function getURLCheckToken(){
+		return mainURL+tokenCheckUrl;
+	}
+	
+	function getURLAllLecture(){
+		return mainURL+listLecturerUrl;
+	}
+	
+	function getURLAllTeacher(){
+		return mainURL+listTeacherUrl;
+	}
 	
 </script>

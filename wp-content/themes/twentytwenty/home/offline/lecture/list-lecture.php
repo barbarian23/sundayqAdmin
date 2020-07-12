@@ -1,6 +1,20 @@
 <?php
 
 ?>
+<script>
+	requestToSever(
+	sunQRequestType.get,
+	getURLAllLecture(),
+	null,
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4MDIxZTE5MTM0ZWEwMTcwN2MxZTFjMDI3M2I5ZmJhMTU5NDMyMDY5NDAwMSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTU5NDUxMjI4MCwiZXhwIjoxNTk0NTU1NDgwfQ.QSFvnWddJs9zTkI0OUT2XZUlHRzqQrI9KHUhAFawS6o"	,
+	function(res){
+		console.log(res);
+	},
+	function(err){
+		console.log(dictionaryKey.ERR_INFO,err);
+	}
+	);
+</script>
 <div class="manage-list-lecture">
 	<div class="manage-list-lecture-title">
 		<span><?php echo $GLOBALS["LECTURE_LIST_TITLE"]; ?></span>

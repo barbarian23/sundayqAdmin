@@ -1,13 +1,34 @@
 <?php 
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+<!-- <script src="wp-content/themes/twentytwenty/assets/js/crypto.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script> -->
 <script>
 
-	function requestToSever(type,url,data,onSuccess,onError){
-		fetch(url, {
+	function requestToSever(type,url,data,token,onSuccess,onError){
+		console.log("url",url);
+		console.log("data",data);
+		if (data == null) {
+			fetch(url, {
                 method: type,
                 headers: {
-                    'Content-type': 'application/json'
+                    'Content-type': 'application/json',
+					 'Authorization': 'Bearer ' + token
+                }
+            })
+            .then(response => {
+                return response.json()
+            })
+            .then(res => {
+                onSuccess(res);
+            })
+            .catch(err => {
+                onError(err);
+            });
+		} else{
+			fetch(url, {
+                method: type,
+                headers: {
+                    'Content-type': 'application/json',
+					 'Authorization': 'Bearer ' + token,
                 },
                 body: JSON.stringify(data)
             })
@@ -20,6 +41,8 @@
             .catch(err => {
                 onError(err);
             });
+		}
+		
 	}
 
 	 function checkMobile() {
@@ -63,6 +86,23 @@
 		} catch(e) {
 		   console.log('Huston we have problem...:', e);
 		}
+	}
+	
+	function encrypt(input,secretMessage){
+		 return encrypted = CryptoJS.AES.encrypt(input, secretMessage);
+	}
+	
+	function decrypto(input,secretMessage){
+		let decrypted = CryptoJS.AES.decrypt(encrypted, secretMessage);
+		return decrypted.toString(CryptoJS.enc.Utf8);
+	}
+	
+	function saveToLocalStorage(key, input){
+		localStorage.setItem(key, input);
+	}
+	
+	function getLocalStorage(key){
+		return localStorage.getItem(key);
 	}
 	
 </script>
