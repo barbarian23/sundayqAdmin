@@ -2,6 +2,16 @@
 ?>
 
 <div class="manage-contain">
+	<div class="manage-contain-loading" id="lecture-page-loading">
+		<span id="lecture-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>
+		<div class="login-input-loading" id="lecture-page-loading-progress">
+			
+		</div>
+		<div class="manage-contain-loading-err" id="lecture-page-loading-progress-error">
+			<img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
+			<span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
+		</div>
+	</div>
     <!-- thông tin khóa học, độ tuổi, ảnh -->
     <div class="manage-section-infomation">
         <div class="manage-section-infomation-left">
@@ -11,10 +21,15 @@
             </div>
 
             <div class="manage-section-infomation-left-item">
-				<span><?php echo $GLOBALS["LECTURE_AGE_INPUT"]; ?></span>
-				<input id="idAgeOfLecture" name="lecture_age" type="text" placeholder='<?php echo $GLOBALS["LECTURE_AGE_INPUT_PLACEHOLDER"]; ?>'>
+				<span><?php echo $GLOBALS["LECTURE_AGE_INPUT_FROM"]; ?></span>
+				<input id="idAgeOfLectureFrom" name="lecture_age" type="text" placeholder='<?php echo $GLOBALS["LECTURE_AGE_INPUT_PLACEHOLDER"]; ?>'>
             </div>
 
+			  <div class="manage-section-infomation-left-item">
+				<span><?php echo $GLOBALS["LECTURE_AGE_INPUT_TO"]; ?></span>
+				<input id="idAgeOfLectureTo" name="lecture_age" type="text" placeholder='<?php echo $GLOBALS["LECTURE_AGE_INPUT_PLACEHOLDER"]; ?>'>
+            </div>
+			
             <div class="manage-section-infomation-left-item">
 				<span><?php echo $GLOBALS["LECTURE_TYPE_INPUT"]; ?></span>
 				<input id="idTypeOfLecture" name="lecture_type" type="text" placeholder='<?php echo $GLOBALS["LECTURE_TYPE_INPUT_PLACEHOLDER"]; ?>'>
@@ -228,6 +243,30 @@
 <script>
 	//load from data teacher
 	window.onload = function(){
+		
+		 mobiscroll.number('#idAgeOfLectureFrom', {
+			theme: 'ios',
+			themeVariant: 'light',
+			layout: 'fixed',
+			value:1,
+			step: 1,
+			min: 3,
+			max: 15,
+			display: 'bubble',
+		});
+		
+		 mobiscroll.number('#idAgeOfLectureTo', {
+			theme: 'ios',
+			themeVariant: 'light',
+			layout: 'fixed',
+			value:1,
+			step: 1,
+			min: 3,
+			max: 15,
+			display: 'bubble',
+		});
+		
+		var myCurrentLecture;
 		setFetchingTeacherLecture(true);
 		requestToSever(
 		sunQRequestType.get,
@@ -265,6 +304,39 @@
 		);
 		
 		clearListImageAndDetailImage();
+		//nếu là edit thì load dữ liệu lên
+		if(getCurrentACtion() == dictionaryKey.editStatus){
+			
+			//fetch từ server
+			setLoadingDataLEcture(true);
+			requestToSever(
+				sunQRequestType.get,
+				getURLecture()+"/"+getCurrentEdit(),
+				null,
+				getLocalStorage(dictionary.MSEC),
+				function(res){
+					setLoadingDataLEcture(false);
+					if(res.code === networkCode.success){
+						myCurrentLecture = res.data;
+						console.log("myCurrentLecture",myCurrentLecture);
+						document.getElementById("idNameOfLecture").value = myCurrentLecture.title;
+						document.getElementById("spanNameOfLectureReference").textContent = myCurrentLecture.title;
+						document.getElementById("idAgeOfLectureFrom").textContent = myCurrentLecture.minTargetAge;
+						document.getElementById("idAgeOfLectureTo").textContent = myCurrentLecture.maxTargetAge;
+						document.getElementById("idTypeOfLecture").textContent = myCurrentLecture.courseType;
+						document.getElementById("lectureDetailTextArea").textContent = myCurrentLecture.description;
+					} else if (res.code === networkCode.sessionTimeOut){
+							makeAlertRedirect();
+					}
+				},
+				function(err){
+					setLoadingDataLEcture(dictionaryKey.ERR);
+					console.log(dictionaryKey.ERR_INFO,err);
+				}
+			);
+			
+		}
+		
 	}
 	
     function readExcelFile(jsonInput) {
@@ -399,4 +471,9 @@
 		document.getElementById("listMainTeacherClose").addEventListener("click",function(e){
 			getChoosingSelectTeacherMain() && setChoosingSelectTeacherMain(false);
 		});
+	
+	//submit form
+	document.getElementById("lectureSubmit").addEventListener("click",function(){
+		
+	});
 </script>

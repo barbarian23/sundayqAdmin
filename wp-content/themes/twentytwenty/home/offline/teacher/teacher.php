@@ -1,28 +1,38 @@
 <?php
 ?>
 <div class="manage-teacher-contain">
+	<div class="manage-contain-teacher-loading" id="teacher-page-loading">
+		<span id="teacher-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>
+		<div class="login-input-loading" id="teacher-page-loading-progress">
+			
+		</div>
+		<div class="manage-contain-teacher-loading-err" id="teacher-page-loading-progress-error">
+			<img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
+			<span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
+		</div>
+	</div>
 	<div  class="manage-teacher-contain-data">
-	<div class="manage-teacher-contain-left">
-		<span>
-			<?php echo $GLOBALS["TEACHER_AVATAR"]; ?>
-		</span>
-		<img class="manage-teacher-contain-left-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
-	</div>
-	<div class="manage-teacher-contain-right">
-		<div class="manage-teacher-contain-right-upper">
-			<span><?php echo $GLOBALS["TEACHER_INPUT_NAME"]; ?></span>
-			<input id="inputTeacherName" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_NAME_PLACEHOLDER"]; ?>'>
-			<span><?php echo $GLOBALS["TEACHER_INPUT_MAJOR"]; ?></span>
-			<input id="inputTeacherMajor" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_MAJOR_PLACEHOLDER"]; ?>'>
-			<span><?php echo $GLOBALS["TEACHER_INPUT_EXP"]; ?></span>
-			<input id="inputTeacherEXP" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"]; ?>'>
+		<div class="manage-teacher-contain-left">
+			<span>
+				<?php echo $GLOBALS["TEACHER_AVATAR"]; ?>
+			</span>
+			<img class="manage-teacher-contain-left-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
 		</div>
-		<hr class="manage-teacher-hr-between">
-		<div class="manage-teacher-contain-right-below">
-			<span><?php echo $GLOBALS["TEACHER_INPUT_DETAIL"]; ?></span>
-			<textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?>'></textarea>
+		<div class="manage-teacher-contain-right">
+			<div class="manage-teacher-contain-right-upper">
+				<span><?php echo $GLOBALS["TEACHER_INPUT_NAME"]; ?></span>
+				<input id="inputTeacherName" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_NAME_PLACEHOLDER"]; ?>'>
+				<span><?php echo $GLOBALS["TEACHER_INPUT_MAJOR"]; ?></span>
+				<input id="inputTeacherMajor" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_MAJOR_PLACEHOLDER"]; ?>'>
+				<span><?php echo $GLOBALS["TEACHER_INPUT_EXP"]; ?></span>
+				<input id="inputTeacherEXP" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"]; ?>'>
+			</div>
+			<hr class="manage-teacher-hr-between">
+			<div class="manage-teacher-contain-right-below">
+				<span><?php echo $GLOBALS["TEACHER_INPUT_DETAIL"]; ?></span>
+				<textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?>'></textarea>
+			</div>
 		</div>
-	</div>
 	</div>
 	<div class="manage-teacher-bottom-action" id="lectureSubmit">
 		<button>
@@ -30,3 +40,10 @@
 		</button>
 	</div>
 </div>
+<script>
+	
+	window.onnload = function(){
+		
+	}
+	
+</script>

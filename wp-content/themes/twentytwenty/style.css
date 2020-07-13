@@ -6702,6 +6702,7 @@ a.to-the-top > * {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+	position:relative;
 }
 
 .home-footer {
@@ -6721,6 +6722,53 @@ a.to-the-top > * {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.manage-contain-loading{
+	width:100%;
+	height:100%;
+	background:#fafafa;
+	opacity:1;
+    display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-items:center;
+	position:absolute;
+	right:0;
+    z-index: 15;
+
+}
+
+.manage-contain-loading span{
+	font-size:23px;
+	font-weight:600;
+	margin-bottom:10px;
+}
+
+.manage-contain-loading-err{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-contain-loading-err span{
+	font-size:23px;
+	font-weight:600;
+	color:red;
+}
+
+#lecture-page-loading{
+	display:none;
+}
+
+#lecture-page-loading-progress-error{
+	display:none;
+}
+
+#lecture-page-loading-progress{
+	position:relative;
+	display:block;
 }
 
 .manage-contain table {
@@ -7943,6 +7991,54 @@ input[type="file"] {
 }
 
 /* teacher */
+
+.manage-contain-teacher-loading{
+	width:100%;
+	height:100%;
+	background:#fafafa;
+	opacity:1;
+    display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-items:center;
+	position:absolute;
+	right:0;
+    z-index: 15;
+
+}
+
+.manage-contain-teacher-loading span{
+	font-size:23px;
+	font-weight:600;
+	margin-bottom:10px;
+}
+
+.manage-contain-teacher-loading-err{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-contain-teacher-loading-err span{
+	font-size:23px;
+	font-weight:600;
+	color:red;
+}
+
+#teacher-page-loading{
+	display:none;
+}
+
+#teacher-page-loading-progress-error{
+	display:none;
+}
+
+#teacher-page-loading-progress{
+	position:relative;
+	display:block;
+}
+
 .manage-teacher-contain{
 	width:100%;
 	display:flex;

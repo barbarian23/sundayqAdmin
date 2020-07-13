@@ -20,6 +20,8 @@ var sunqStatus = {
 	currentEdit:"",
 	logining:false,
 	isloginfailed:false,
+	isUploadingDataLecture:false,
+	isUploadingDataTeacher:false
 	
 }
 var _mode = "offline",
@@ -38,7 +40,9 @@ var _mode = "offline",
 	_currentACtion = "",
 	_currentEdit = "",
 	_logining = false,
-	_isloginfailed = false;
+	_isloginfailed = false,
+	_isUploadingDataLecture = false,
+	_isUploadingDataTeacher = false;
 	
 //mode setting
 Object.defineProperty(sunqStatus,"mode",{
@@ -224,6 +228,46 @@ Object.defineProperty(sunqStatus,"isloginfailed",{
 	}
 });	
 
+//loading data _isUploadingDataLecture
+Object.defineProperty(sunqStatus,"isUploadingDataLecture",{
+	get(){
+		return _isUploadingDataLecture;
+	},
+	set(val){
+		_isUploadingDataLecture = val;
+		val == true ? loadingDataLectureProgress() : val == false ? loadingDataLectureDone() : loadingDataLectureError();
+		//val ? loadingDataLectureProgress() : loadingDataLectureDone() ;
+	}
+});	
+
+//loading data isUploadingDataTeacher
+Object.defineProperty(sunqStatus,"isUploadingDataTeacher",{
+	get(){
+		return _isUploadingDataTeacher;
+	},
+	set(val){
+		_isUploadingDataTeacher = val;
+		val == true ? loadingDataLectureProgress() : val == false ? loadingDataLectureDone() : loadingDataLectureError();
+		
+	}
+});	
+
+function setLoadingDataTeacher(val){
+	sunqStatus.isUploadingDataTeacher = val;
+}
+
+function getLoadingDataTeacher(){
+	return sunqStatus.isUploadingDataTeacher;
+}
+	
+function setLoadingDataLEcture(val){
+	sunqStatus.isUploadingDataLecture = val;
+}
+
+function getLoadingDataLEcture(){
+	return sunqStatus.isUploadingDataLecture;
+}
+	
 function setLogInFailed(val,iText){
 	sunqStatus.isloginfailed = val;
 	val ? logginFailed(iText) : loginSuccess();

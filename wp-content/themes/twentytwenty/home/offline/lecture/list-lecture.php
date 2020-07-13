@@ -27,11 +27,7 @@
 			setFetchingLecture(false);
 			console.log(dictionaryKey.ERR_INFO,err);
 			setIsGetLectureFromServerSuccess(false);
-// 			if(res != undefined){
-// 			if (res.code === networkCode.sessionTimeOut){
-// 					makeAlertRedirect();
-// 			}
-// 			}
+
 		}
 		);
 	}

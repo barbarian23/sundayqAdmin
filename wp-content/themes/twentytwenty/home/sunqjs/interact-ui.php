@@ -135,7 +135,7 @@ function getListLectureTeacherGreaterThanZero(){
 }
 	
 function createListLEcture(list){
-	listLecture = list;
+	listLecture = list;console.log("lisst lec",listLecture);
 	let parent = document.getElementById("tableListLecture");
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
@@ -159,7 +159,7 @@ function createListLEcture(list){
 }
 
 function createListTeacher(list){
-	listLecture = list;
+	listTeacher = list;
 	let parent = document.getElementById("tableListTeacher");
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
@@ -249,12 +249,45 @@ function logDone(){
 }
 	
 function logginFailed(val){
-	
 	document.getElementById("loginErrorSpan").style.display = "block" ;
 	document.getElementById("loginErrorSpan").innerHTML = val;
 }
 
 function loginSuccess(){
 	document.getElementById("loginErrorSpan").style.display = "none" ;
+}
+	
+function loadingDataLectureProgress(){
+	document.getElementById("lecture-page-loading").style.display = "flex" ;
+	document.getElementById("lecture-page-loading-progress-error").style.display = "none" ;
+	document.getElementById("lecture-page-loading-progress").style.display = "block" ;
+	document.getElementById("lecture-page-loading-progress-span").style.display = "block" ;
+}
+	
+function loadingDataLectureDone(){
+	document.getElementById("lecture-page-loading").style.display = "none" ;
+}
+	
+function loadingDataLectureError(){
+	document.getElementById("lecture-page-loading-progress-error").style.display = "flex" ;
+	document.getElementById("lecture-page-loading-progress").style.display = "none" ;
+	document.getElementById("lecture-page-loading-progress-span").style.display = "none" ;
+}
+	
+function loadingDataTeacherProgress(){
+	document.getElementById("teacher-page-loading").style.display = "flex" ;
+	document.getElementById("teacher-page-loading-progress-error").style.display = "none" ;
+	document.getElementById("teacher-page-loading-progress").style.display = "block" ;
+	document.getElementById("teacher-page-loading-progress-span").style.display = "block" ;
+}
+	
+function loadingDataTeacherDone(){
+	document.getElementById("teacher-page-loading").style.display = "none" ;
+}
+	
+function loadingDataTeacherError(){
+	document.getElementById("teacher-page-loading-progress-error").style.display = "flex" ;
+	document.getElementById("teacher-page-loading-progress").style.display = "none" ;
+	document.getElementById("teacher-page-loading-progress-span").style.display = "none" ;
 }
 </script>

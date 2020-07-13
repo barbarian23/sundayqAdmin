@@ -22,8 +22,9 @@
 	//lecture
 	$GLOBALS["LECTURE_NAME_INPUT"] = "Tên khóa học:";
 	$GLOBALS["LECTURE_NAME_INPUT_PLACEHOLDER"] = "Nhập tên khóa học";
-	$GLOBALS["LECTURE_AGE_INPUT"] = "Độ tuổi:";
+	$GLOBALS["LECTURE_AGE_INPUT_FROM"] = "Độ tuổi từ:";
 	$GLOBALS["LECTURE_AGE_INPUT_PLACEHOLDER"] = "Nhập độ tuổi";	
+	$GLOBALS["LECTURE_AGE_INPUT_TO"] = "Đến độ tuổi:";
 	$GLOBALS["LECTURE_TYPE_INPUT"] = "Loại hình:";
 	$GLOBALS["LECTURE_TYPE_INPUT_PLACEHOLDER"] = "Nhập loại hình";
 	$GLOBALS["LECTURE_IMAGE_TITLE"] = "Loại hình:";	
@@ -102,6 +103,7 @@
 	$GLOBALS["CLOSE"] = "Đóng";
 	$GLOBALS["ERROR_CONNECTION"] = "Có lỗi mạng";
 	$GLOBALS["ERROR_CONNECTION_TRY_AGAIN"] = "Có lỗi mạng!Vui lòng thử lại!";
+	$GLOBALS["LOADING_DATA"] = "Đang tải dữ liệu";
 	
 	//url
 	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/";
@@ -147,7 +149,7 @@
 		UNIT_SECONDS: " giây",
 		SESION_TIMEOUT_SERVER_TITLE : 'Đã hết phiên đăng nhập',
 		SESION_TIMEOUT_SERVER_CONTENT : 'Chuyển hướng về trang đăng nhập <b></b> giây.',
-		MSEC: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4MDIxZTE5MTM0ZWEwMTcwN2MxZTFjMDI3M2I5ZmJhMTU5NDMyMDY5NDAwMSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTU5NDU5NDI3NSwiZXhwIjoxNTk0NjM3NDc1fQ.lj9HDTAJKykx4NXP8_uesCqJQqYezMjdsLRKKdu9OSU"
+		MSEC: ""
 	}
 	
 	var dictionaryKey = {
@@ -167,9 +169,12 @@
 		
 		SESSION_TOKEN:"STKEN",
 		ERR_INFO:"Có lỗi: ",
+		ERR:"error",
 		timeoutReLogin: 1000,
 		
-		currentAction:"" //add - edit
+		currentAction:"", //add - edit,
+		addStatus:"add",
+		editStatus:"edit",
 	}
 	
 	function getDictionaryText(key){
@@ -260,8 +265,16 @@
 		return mainURL+listLecturerUrl;
 	}
 	
+	function getURLecture(){
+		return mainURL+lecturerUrl;
+	}
+	
 	function getURLAllTeacher(){
 		return mainURL+listTeacherUrl;
+	}
+	
+	function getURLTeacher(){
+		return mainURL+teacherUrl;
 	}
 	
 </script>

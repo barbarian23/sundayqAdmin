@@ -4,6 +4,9 @@
 
 <link rel="stylesheet" href="wp-content/themes/twentytwenty//assets/sweetalert2/dist/sweetalert2.min.css" />
 <script type="text/javascript" src="wp-content/themes/twentytwenty//assets/sweetalert2/dist/sweetalert2.min.js"></script>
+
+<link href="wp-content/themes/twentytwenty//assets/css/mobiscroll.javascript.min.css" rel="stylesheet">
+<script src="wp-content/themes/twentytwenty//assets/js/mobiscroll.javascript.min.js"></script>
 <script>
 		window.onload = function(){
 			let sunqModeOfflineDiv = document.getElementById("divShowOffline");
