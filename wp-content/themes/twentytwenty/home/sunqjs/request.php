@@ -23,7 +23,25 @@
             .catch(err => {
                 onError(err);
             });
-		} else{
+		} else if(token == null){
+			 fetch(url, {
+                method: type,
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                return response.json()
+            })
+            .then(res => {
+                onSuccess(res);
+            })
+            .catch(err => {
+                onError(err);
+            });
+			 
+		}else{
 			fetch(url, {
                 method: type,
                 headers: {
@@ -87,22 +105,4 @@
 		   console.log('Huston we have problem...:', e);
 		}
 	}
-	
-	function encrypt(input,secretMessage){
-		 return encrypted = CryptoJS.AES.encrypt(input, secretMessage);
-	}
-	
-	function decrypto(input,secretMessage){
-		let decrypted = CryptoJS.AES.decrypt(encrypted, secretMessage);
-		return decrypted.toString(CryptoJS.enc.Utf8);
-	}
-	
-	function saveToLocalStorage(key, input){
-		localStorage.setItem(key, input);
-	}
-	
-	function getLocalStorage(key){
-		return localStorage.getItem(key);
-	}
-	
 </script>

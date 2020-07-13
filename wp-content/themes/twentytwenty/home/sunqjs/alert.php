@@ -20,7 +20,10 @@
             input = "",
             allowOutsideClick = false,
             inputOptions = {},
-            inputValidator = () => {};
+            inputValidator = () => {},
+			timer = 0,
+  			timerProgressBar = false,
+			onBeforeOpen = "";
         var obj = {
             position(_pos) {
                 pos = _pos;
@@ -70,6 +73,14 @@
                 footer = _footer;
                 return this;
             },
+            timer(_timer) {
+                timer = _timer;
+                return this;
+            },
+            timerProgressBar(_timerProgressBar) {
+                timerProgressBar = _timerProgressBar;
+                return this;
+            },
             confirmButtonColor(_confirmButtonColor) {
                 confirmButtonColor = _confirmButtonColor;
                 return this;
@@ -95,6 +106,10 @@
                 callbackOnclose = inputCallback;
                 return this;
             },
+			onBeforeOpen(beforeOpenCallback){
+				onBeforeOpen = beforeOpenCallback;
+                return this;
+			},
             show() {
                 if (input == "") {
                     Swal.fire({
@@ -110,7 +125,27 @@
                         confirmButtonText: confirmButtonText,
                         onClose: callbackOnclose,
                     }).then(callback);
-                } else {
+                } else if(typeof onBeforeOpen == "function"){
+						Swal.fire({
+                        position: pos,
+                        title: title,
+                        input: input,
+                        inputOptions: inputOptions,
+                        inputValidator: inputValidator,
+                        text: text,
+                        type: type,
+						timer: timer,
+  						timerProgressBar: timerProgressBar,
+                        allowOutsideClick: allowOutsideClick,
+                        showCancelButton: showCancelButton,
+                        confirmButtonColor: confirmButtonColor,
+                        cancelButtonColor: cancelButtonColor,
+                        cancelButtonText: cancelButtonText,
+                        confirmButtonText: confirmButtonText,
+						onBeforeOpen: onBeforeOpen,
+                        onClose: callbackOnclose,
+                    }).then(callback);
+				}else {
                     Swal.fire({
                         position: pos,
                         title: title,
@@ -135,20 +170,20 @@
 	}
 	
 // 	SunQAlert()
-//                         .position('center')
-//                         .title(clickMarkerAlertTitle)
-//                         .type('success')
-//                         .confirmButtonColor("#3B4EDC")
-//                         .cancelButtonColor("#a8b1f5")
-//                         .confirmButtonText(clickMarkerAlertAgree)
-//                         .cancelButtonText(clickMarkerAlertCancelButtonText)
-//                         .callback((result) => {
-//                             if (result.value) {
-//                                 showStationChosen(item._id, item.id, item.address);
-//                                 clickOnMarkerToChooseStation();
-//                             } else if (result.dismiss === Swal.DismissReason.cancel) {
-//                                 window.open(item.url);
-//                             }
-//                         })
-//                         .show();
+// .position('center')
+// .title(clickMarkerAlertTitle)
+// .type('success')
+// .confirmButtonColor("#3B4EDC")
+// .cancelButtonColor("#a8b1f5")
+// .confirmButtonText(clickMarkerAlertAgree)
+// .cancelButtonText(clickMarkerAlertCancelButtonText)
+// .callback((result) => {
+// if (result.value) {
+//  showStationChosen(item._id, item.id, item.address);
+//    clickOnMarkerToChooseStation();
+//    } else if (result.dismiss === Swal.DismissReason.cancel) {
+//      window.open(item.url);
+//     }
+//    })
+//  .show();
 </script>

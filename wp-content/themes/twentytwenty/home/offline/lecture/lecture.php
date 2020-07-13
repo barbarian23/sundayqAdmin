@@ -40,87 +40,35 @@
 					
                 </div>
                 <div class="manage-section-detail-left-item-info">
-					<span>213</span>
-					<span>689</span>
+					<span class="manage-section-detail-left-item-info-name" id="currentSelectName"></span>
+					<span class="manage-section-detail-left-item-info-university" id="currentSelectUniversity"></span>
 					<hr  class="lecture-teacher-hr">
-					<span><b>zxc</b>zxc</span>
-					<span><b>cvb</b>cvb</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
+					<span><b><?php echo $GLOBALS["TEACHER_LESSION_SPECIALIST"]; ?></b><span id="currentSelectSpecial"></span></span>
+					<span><b><?php echo $GLOBALS["TEACHER_LESSION_EXP"]; ?></b><span id="currentSelectExp"></span></span>
+					<span><b><?php echo $GLOBALS["TEACHER_LESSION_DEGREE"]; ?></b><span id="currentSelectDegree"><?php echo $GLOBALS["LECTURE_TEACHER_TO_STUDENT"]; ?></span></span>
                 </div>
             </div>
         </div>
 		
 		<!-- selector teacher -->
-		
-		<div class="manage-section-detail-left-list" id="listMainTeacher">
+		<div class="manage-section-detail-left-list-parent" id="listMainTeacher">
 			<span class="manage-section-detail-left-list-close" id="listMainTeacherClose"><?php echo $GLOBALS["CLOSE"]; ?></span>
-			<div class="manage-section-detail-left-item">
-                <div class="manage-section-detail-left-item-avatar">
-					
-                </div>
-                <div class="manage-section-detail-left-item-info">
-					<span>213</span>
-					<span>689</span>
-					<hr  class="lecture-teacher-hr">
-					<span><b>zxc</b>zxc</span>
-					<span><b>cvb</b>cvb</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-                </div>
-            </div>
-			<div class="manage-section-detail-left-item">
-                <div class="manage-section-detail-left-item-avatar">
-					
-                </div>
-                <div class="manage-section-detail-left-item-info">
-					<span>213</span>
-					<span>689</span>
-					<hr  class="lecture-teacher-hr">
-					<span><b>zxc</b>zxc</span>
-					<span><b>cvb</b>cvb</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-                </div>
-            </div>
-			<div class="manage-section-detail-left-item">
-                <div class="manage-section-detail-left-item-avatar">
-					
-                </div>
-                <div class="manage-section-detail-left-item-info">
-					<span>213</span>
-					<span>689</span>
-					<hr  class="lecture-teacher-hr">
-					<span><b>zxc</b>zxc</span>
-					<span><b>cvb</b>cvb</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-                </div>
-            </div>
-			<div class="manage-section-detail-left-item">
-                <div class="manage-section-detail-left-item-avatar">
-					
-                </div>
-                <div class="manage-section-detail-left-item-info">
-					<span>213</span>
-					<span>689</span>
-					<hr  class="lecture-teacher-hr">
-					<span><b>zxc</b>zxc</span>
-					<span><b>cvb</b>cvb</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-					<span><b>bncv</b>bnm</span>
-                </div>
-            </div>
+			<div class="sunq-process-contain" id="fetchListTacherInLecture">
+				<div class="sunq-process-contain-running">
+
+				</div>
+			</div>
+		<div class="manage-section-detail-left-list" id="divTeacherInLecture">
+		
+		</div>	
+		<div class="manage-section-detail-left-list-empty" id="managaeLectureEmpty">
+			<img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
+			<span><?php echo $GLOBALS["TEACHER_NO_LIST"]; ?></span>
+		</div>
+		<div class="manage-section-detail-left-list-empty" id="managaeLectureError">
+			<img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
+			<span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
+		</div>
 		</div>
 		
         <div class="manage-section-detail-midlle">
@@ -264,6 +212,11 @@
         </div>
     </div>
 
+	<div class="manage-content-bottom-action">
+		<button id="lectureSubmit">
+			<?php echo $GLOBALS["LECTURE_SUBMIT"] ; ?>
+		</button>
+	</div>
 </div>
 
 <script src="wp-content/themes/twentytwenty/assets/js/jszip.js"></script>
@@ -273,11 +226,52 @@
 <script src="wp-content/themes/twentytwenty/assets/js/xlsx.core.min.js"></script>
 
 <script>
+	//load from data teacher
+	window.onload = function(){
+		setFetchingTeacherLecture(true);
+		requestToSever(
+		sunQRequestType.get,
+		getURLAllTeacher(),
+		null,
+		getData(dictionary.MSEC),
+		function(res){
+			console.log(res);
+			setFetchingTeacherLecture(false);
+			if(res.code === networkCode.success){
+				if (res.data == null || res.data.length == 0){
+					setLectureGetTeacherThanZero(false);
+				} else {
+					emptyTableListTeacherLecture();
+					createListTeacherLecture(res.data);
+				}
+			} else if (res.code === networkCode.sessionTimeOut){
+					makeAlertRedirect();
+			}
+		},
+		function(err){
+			
+			setFetchingTeacherLecture(false);
+			setIsGetLectureTeacherFromServerSuccess(false);
+			console.log(dictionaryKey.ERR_INFO,err);
+// 			if(res){
+// 			if (res.code === networkCode.sessionTimeOut){
+// 					makeAlertRedirect();
+// 			} else {
+// 				//console.log("123cxzczxc");
+				
+// 			}
+//			}
+		}
+		);
+		
+		clearListImageAndDetailImage();
+	}
+	
     function readExcelFile(jsonInput) {
 		let arrayTitleScheduleLecture = ["manage-section-road-map-time-real-table-number", "manage-section-road-map-time-real-table-contain", "manage-section-road-map-time-real-table-time", "manage-section-road-map-time-real-table-teacher", "manage-section-road-map-time-real-table-sidekick"];
         document.getElementById("tableLecture").style.display = "flex";
         let parentTableSchedulde = document.getElementById("tableLectureInside");
-
+		parentTableSchedulde.innerHTML = "";
         jsonInput.forEach(function(item, index) {
             let trInsideSchedule = document.createElement("tr");
             if (index == 0) {
@@ -352,9 +346,6 @@
         excel.parseExcel(files[0], "ExcelContent");
     }
 
-	//prepare upload
-    document.getElementById('upload').addEventListener('change', handleFileSelect);
-
     // window.saveFile = function saveFile() {
     //     var sheet_1_data = [{ Col_One: 1, Col_Two: 11 }, { Col_One: 2, Col_Two: 22 }];
     //     var sheet_2_data = [{ Col_One: 10, Col_Two: 110 }, { Col_One: 20, Col_Two: 220 }];
@@ -364,7 +355,8 @@
     // }
 
     function getFileExcel() {
-        let objectforSheet1 = '{' + getDictionaryText("LECTURE_ROADMAP_COL_1") + ':"1",' + getDictionaryText("LECTURE_ROADMAP_COL_2") + ':"2",' + getDictionaryText("LECTURE_ROADMAP_COL_3") + ':"3",' + getDictionaryText("LECTURE_ROADMAP_COL_4") + ':"4",' + getDictionaryText("LECTURE_ROADMAP_COL_5") + ':"5"}';
+          let objectforSheet1 = "[{\""+ getDictionaryText("LECTURE_ROADMAP_COL_1") + "\":\"1\",\"" + getDictionaryText("LECTURE_ROADMAP_COL_2") + "\":\"2\",\"" + getDictionaryText("LECTURE_ROADMAP_COL_3") +  "\":\"3\",\"" + getDictionaryText("LECTURE_ROADMAP_COL_4") +  "\":\"4\",\"" + getDictionaryText("LECTURE_ROADMAP_COL_5") +  "\":\"5\"}]";
+		//let  objectforSheet1= "[{ \"Col_One\": \"10\", \"Col_Two\": \"110\" }, { \"Col_One\": \"20\", \"Col_Two\": \"220\" }]";
         let sheet_1_data = JSON.parse(objectforSheet1);
         let sheet_2_data = [{ Col_One: 10, Col_Two: 110 }, { Col_One: 20, Col_Two: 220 }];
         let opts = [{
@@ -386,22 +378,25 @@
 	  a.download = name;
 	}
 	
-	document.getElementById("idNameOfLecture").addEventListener("keydown",function(e){
-		if (document.getElementById("spanNameOfLectureReference").textContent != null || document.getElementById("spanNameOfLectureReference").textContent != ""){
-			document.getElementById("spanNameOfLectureReference").textContent = "";
-			}
-		document.getElementById("spanNameOfLectureReference").textContent = e.target.value;
-	});
-	
-	document.getElementById("spanNameOfLectureReference").addEventListener("touchend",function(e){
-		document.getElementById("idNameOfLecture").focus();
-	});
-	
-	document.getElementById("mainTeacherSelector").addEventListener("click",function(e){
-		getChoosingSelectTeacherMain() ? setChoosingSelectTeacherMain(false) : setChoosingSelectTeacherMain(true);
-	});
-	
-	document.getElementById("listMainTeacherClose").addEventListener("click",function(e){
-		getChoosingSelectTeacherMain() && setChoosingSelectTeacherMain(false);
-	});
+	//prepare upload
+		document.getElementById('upload').addEventListener('change', handleFileSelect);
+
+		document.getElementById("idNameOfLecture").addEventListener("keydown",function(e){
+			if (document.getElementById("spanNameOfLectureReference").textContent != null || document.getElementById("spanNameOfLectureReference").textContent != ""){
+				document.getElementById("spanNameOfLectureReference").textContent = "";
+				}
+			document.getElementById("spanNameOfLectureReference").textContent = e.target.value;
+		});
+
+		document.getElementById("spanNameOfLectureReference").addEventListener("touchend",function(e){
+			document.getElementById("idNameOfLecture").focus();
+		});
+
+		document.getElementById("mainTeacherSelector").addEventListener("click",function(e){
+			getChoosingSelectTeacherMain() ? setChoosingSelectTeacherMain(false) : setChoosingSelectTeacherMain(true);
+		});
+
+		document.getElementById("listMainTeacherClose").addEventListener("click",function(e){
+			getChoosingSelectTeacherMain() && setChoosingSelectTeacherMain(false);
+		});
 </script>

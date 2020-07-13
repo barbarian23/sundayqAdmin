@@ -90,12 +90,20 @@
 
 							}
 						} else if($_GET["mode"] == "offline"){
- 							$arrForModeOfline = array($_GET["mode"]);
+ 							//$arrForModeOfline = array($_GET["mode"]);
 							echo "<script>setMode('offline')</script>";
  							//SunQHelper::callFunction("setMode",$arrForModeOfline);
- 							$temp ='123';
+ 							//$temp ='123';
 							//SunQHelper::consoleLogPHP($temp);
 							if(isset($_GET["page"])){
+ 								if(isset($_GET["action"])){
+ 									echo "<script>setCurrentACtion('" . $_GET["action"] . "')</script>";
+ 									//echo "<script>console.log('" . $_GET["action"] . "')</script>";
+ 								}
+								if(isset($_GET["id"])){
+ 									echo "<script>setCurrentEdit('" . $_GET["id"] . "')</script>";
+ 									//echo "<script>console.log('" . $_GET["action"] . "')</script>";
+ 								}
 								switch($_GET["page"]){
 									case "lecture":
 										 include get_theme_file_path( "home/offline/lecture/lecture.php" );

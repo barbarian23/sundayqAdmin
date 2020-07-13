@@ -6860,7 +6860,7 @@ a.to-the-top > * {
 }
 
 .manage-section-detail-left {
-    width: 30%;
+    width: 31%;
 /*     height: 100%; */
     display: flex;
     flex-direction: column;
@@ -6873,12 +6873,11 @@ a.to-the-top > * {
 	border: 1px solid #000;
 }
 
-.manage-section-detail-left-list {
+.manage-section-detail-left-list-parent{
 	position:absolute;
 	display:flex;
 	width:310px;
 	height:500px;
-	overflow-y:scroll;
 	justify-content:center;
 	align-items:center;
 	flex-direction:row;
@@ -6890,9 +6889,23 @@ a.to-the-top > * {
 	animation: bottomUp 0.15s linear;
 }
 
+.manage-section-detail-left-list {
+	
+	display:flex;
+	width:100%;
+	height:90%;
+	overflow-y:scroll;
+	justify-content:center;
+	align-items:center;
+	flex-direction:row;
+	flex-wrap:wrap;
+	z-index:9;
+	margin-top:10px;
+}
+
 .manage-section-detail-left-list-close {
 	position: absolute;
-	left: 10px;
+	right: 10px;
 	top: 10px;
 	font-weight: 600;
     cursor: pointer;
@@ -6945,12 +6958,63 @@ a.to-the-top > * {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.manage-section-detail-left-item-info-name {
+	font-weight: 600;
+	font-size: 20px;
+	color: #002546;
+}
+
+.manage-section-detail-left-item-info-university{
+	font-style: italic;
+	font-weight: normal;
+	font-size: 16px;
+	color: #321A05;
 }
 
 .manage-section-detail-left-item-info span{
-	margin: 3px auto;
+    margin-top:5px ;
+	margin-bottom:5px;
 	font-size: 16px;
+}
+
+.manage-section-detail-left-item-info span b{
+	
+	font-weight: 700;
+}
+
+.manage-section-detail-left-list-empty{
+	    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+
+.manage-section-detail-left-list-empty span{
+	font-weight: 600;
+	color:red;
+}
+
+.manage-section-detail-left-list-empty img{
+	width: 80%px;
+    height: 80%px;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 30px auto;
+}
+
+#managaeLectureEmpty{
+	display:none;
+}
+
+#managaeLectureError{
+	display:none;
+}
+
+#currentSelectDegree{
+font-style:italic;
 }
 
 .manage-section-detail-midlle {
@@ -7081,6 +7145,14 @@ a.to-the-top > * {
     width: 25%;
     background: #CF5134;
 	animation: creatingExcel 2.15s linear infinite;
+}
+
+#fetchListLectureProgress{
+	display:none;
+}
+
+#fetchListTeacherProgress{
+	display:none;
 }
 
 
@@ -7309,6 +7381,30 @@ input[type="file"] {
     vertical-align: middle;
 }
 
+.manage-content-bottom-action{
+	width:100%;
+	height:80px;
+	display:flex;
+	justify-content:flex-end;
+	align-items:center;
+	padding-right:10px;
+}
+
+.manage-content-bottom-action button{
+	width:240px;
+	height:70px;
+	background:#cf5134!important;
+    color: white;
+	text-decoration:none;
+	font-size:20px;
+	font-weight:600;
+}
+
+.manage-content-bottom-action button:hover{
+	background:#e7a698!important;
+	text-decoration:underline;
+}
+
 .manage-section-road-map-time-real-table-email {
     width: 260px;
     text-align: center;
@@ -7337,13 +7433,18 @@ input[type="file"] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 80%;
-    height: 80%;
+    width: 60%;
+    height: 60%;
+	position:absolute;
+	left: 50%;
+	top:50%;
+	transform:translate(-50%,-50%);
 }
 
 .login-input{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 80%;
@@ -7351,28 +7452,64 @@ input[type="file"] {
     margin: 15px auto;
 }
 
+.login-input label {
+	color: #002546;
+    font-weight: 600;
+    font-size: 27px;
+    margin: 5px 10px;
+    border-radius: 5px;
+}
+
 #loginInputLabel{
     height: 30px;
 }
 
-.login-input label{
-    font-size: 20px;
+#loginErrorSpan{
+	display:none;
+	color:red;
+	font-weight:600;
+	font-size:23px;
+    text-align: center;
+    margin: 6px auto;
+	animation: fadeinfadeout 1s linear infinite;
+}
+
+.login-input-loading{
+	    margin-top: 30px;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #4e3861;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+     display: none; 
+    position: absolute;
 }
 
 .login-input span{
     width: 100%;
     height: 20px;
-    margin: 5px auto;
+    margin: 5px auto;    
+	color: #002546;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 5px 10px;
+    border-radius: 5px;
 }
 
 .login-input input[type="text"],input[type="password"]{
     width: 100%;
     height: 60px;
-    margin: 5px auto;
+    margin: 5px auto;   
+	color: #002546;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 5px 10px;
+    border-radius: 5px;
 }
 
 .login-input ::placeholder{
-   padding-left: 10px;
+   padding-left: 1px;
 }
 
 /* Ripple effect */
@@ -7405,6 +7542,10 @@ input[type="file"] {
 	  background-color: #CF5134;
 	  box-shadow: 0 0 4px #999;
 	  outline: none;
+}
+
+.login-input input[type="submit"]:hover{
+    background:#e7a698;
 }
 
 /* list lecture */
@@ -7455,6 +7596,50 @@ input[type="file"] {
     width: 100%;
 }
 
+.manage-list-lecture-table-detail-tr-modified{
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-list-lecture-table-detail-tr-modified a{
+	text-decoration: none;
+	color:#002546!important;
+}
+
+.manage-list-lecture-table-detail-div-edit{
+    margin: 10px;
+    background: yellow;
+    padding: 8px;
+    /* border: 1px solid #000; */
+    border-radius: 6px;
+	cursor:pointer;    
+	font-size: 16px;
+    font-weight: 600;
+
+}
+
+.manage-list-lecture-table-detail-div-edit:hover {
+	background: #ffff99;
+}
+
+.manage-list-lecture-table-detail-div-delete{
+    margin: 10px;
+    background: red;
+    padding: 8px;
+    /* border: 1px solid #000; */
+    border-radius: 6px;
+	cursor:pointer;    
+	font-size: 16px;
+    font-weight: 600;
+
+}
+
+.manage-list-lecture-table-detail-div-delete:hover{
+    background: #ff8566;
+}
+
 .manage-list-lecture-table-detail th {
     background: black;
     color: white;
@@ -7471,11 +7656,20 @@ input[type="file"] {
     border-bottom: 1pt solid black;
 	border-top:none;
 	text-align:center;
-	vertical-align:center;
+	background:#fafafa;
+	cursor: grab;
+}
+
+.manage-list-lecture-table-detail-strong {
+    background:#cccccc!important;
+}
+
+.manage-list-lecture-table-detail tr:hover {
+    background:#b3b3b3!important;
 }
 
 .manage-list-lecture-table-detail td {
-    height: 65px;
+/*     height: 65px; */
 	border:none;
 }
 
@@ -7491,6 +7685,10 @@ input[type="file"] {
 }
 
 #listLectureEmpty{
+	display:none;
+}
+
+#listLectureError{
 	display:none;
 }
 
@@ -7604,6 +7802,10 @@ input[type="file"] {
 	display:none;
 }
 
+#listTeacherError{
+	display:none;
+}
+
 .manage-list-teacher-table-no-list img{
 	width: 340px;
 	height: 320px;
@@ -7623,6 +7825,14 @@ input[type="file"] {
     width: 100%;
 }
 
+.manage-list-teacher-table-detail-strong {
+	 background:#cccccc!important;
+}
+
+.manage-list-teacher-table-detail tr:hover {
+    background:#b3b3b3!important;
+}
+
 .manage-list-teacher-table-detail th {
     background: black;
     color: white;
@@ -7640,6 +7850,53 @@ input[type="file"] {
 	border-top:none;
 	text-align:center;
 	vertical-align:center;
+}
+
+.manage-list-teacher-table-detail-tr-modified {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-list-teacher-table-detail-tr-modified a{
+    text-decoration: none;
+	color:#002546!important;
+}
+
+
+.manage-list-teacher-table-detail-div-edit {
+    margin: 10px;
+    background: yellow;
+    padding: 8px;
+    /* border: 1px solid #000; */
+    border-radius: 6px;
+	cursor:pointer;    
+	font-size: 16px;
+    font-weight: 600;
+}
+
+.manage-list-teacher-table-detail-div-edit :hover{
+    background: #ffff99;
+}
+
+.manage-list-teacher-table-detail-div-delete {
+     margin: 10px;
+    background: red;
+    padding: 8px;
+    /* border: 1px solid #000; */
+    border-radius: 6px;
+	cursor:pointer;    
+	font-size: 16px;
+    font-weight: 600;
+}
+
+.manage-list-teacher-table-detail-div-delete :hover{
+    background: #ff8566;
+}
+
+.manage-list-teacher-table-detail tr:hover {
+    background:#cccccc;
 }
 
 .manage-list-teacher-table-detail td {
@@ -7687,13 +7944,22 @@ input[type="file"] {
 
 /* teacher */
 .manage-teacher-contain{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+	align-items:center;
+	border-radius: 10px;
+	border: 1px solid #000;
+	position:relative;
+}
+
+.manage-teacher-contain-data{
 	width:96%;
 	display:flex;
 	flex-direction:row;
 	justify-content:space-around;
 	align-items:center;
-	border-radius: 10px;
-	border: 1px solid #000;
 	position:relative;
 }
 
@@ -7795,7 +8061,36 @@ input[type="file"] {
     background: #b4b9be;
 }
 
+.manage-teacher-bottom-action{
+	width:100%;
+	height:80px;
+	display:flex;
+	justify-content:flex-end;
+	align-items:center;
+	padding-right:10px;
+}
+
+.manage-teacher-bottom-action button{
+	width:240px;
+	height:70px;
+	background:#cf5134!important;
+    color: white;
+	text-decoration:none;
+	font-size:20px;
+	font-weight:600;
+}
+
+.manage-teacher-bottom-action button:hover{
+	background:#e7a698!important;
+	text-decoration:underline;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
+	
+	.home-header{
+		margin: 20px auto 0px auto;
+	}
+	
 	  .home-middle-left {
 		display:none;
 	   }
@@ -7855,7 +8150,7 @@ input[type="file"] {
 		margin-top:46px;
 	}
 	
-	.manage-teacher-contain{
+	.manage-teacher-contain-data{
 		flex-direction: column;
 	}
 	
@@ -7886,6 +8181,10 @@ input[type="file"] {
   100% {margin-top: 0px;opacity:1;}
 }
 
+@keyframes fadeinfadeout {
+  0%   {opacity: 0.3;}
+  100% {opacity: 0.9;}
+}
 
 @keyframes expand {
   0%   {margin-top: -30px;opacity:0.5;}
@@ -7895,4 +8194,13 @@ input[type="file"] {
 @keyframes creatingExcel {
   0%   {margin-left: -74%;}
   100% {margin-left: 74%;}
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

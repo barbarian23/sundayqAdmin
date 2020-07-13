@@ -24,13 +24,15 @@
 		|| $actual_link == $GLOBALS["ADMIN_HOME_URL_WITH_SSL"] 
 		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITH_SSL"].'?mode')
 		|| strstr($actual_link, $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"].'?mode')
-		){
+		){echo "<script>console.log('admin')</script>";
+		  echo "<script>checkSession()</script>";
 		if ($GLOBALS["PREVENT_DUPLICATE"] == 0){
 			include get_theme_file_path( "/home/home.php" );
 			$GLOBALS["PREVENT_DUPLICATE"]++;
 		}
 	} else if ($actual_link == $GLOBALS["LOGIN_URL_WITHOUT_SSL"] || $actual_link == $GLOBALS["LOGIN_URL_WITH_SSL"]){
-		include get_theme_file_path( "/login/login.php" );
+		//echo "<script>console.log('login')</script>";
+		include get_theme_file_path( "/home/login/login.php" );
 		//header('Location: '.$GLOBALS["LOGIN_URL_WITHOUT_SSL"]);
 	} else {
 ?>

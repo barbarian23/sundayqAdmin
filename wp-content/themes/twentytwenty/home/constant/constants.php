@@ -14,8 +14,8 @@
 	//login
 	$GLOBALS["LOGIN_USERNAME_LABEL"] = "Tên đăng nhập";
 	$GLOBALS["LOGIN_USERNAME_PLACEHOLDER"] = "Nhập vào tên đăng nhập";
-	$GLOBALS["LOGIN_USERNAME_LABEL"] = "Mật khẩu";
-	$GLOBALS["LOGIN_USERNAME_PLACEHOLDER"] = "Nhập vào mật khẩu";
+	$GLOBALS["LOGIN_PASSWORD_LABEL"] = "Mật khẩu";
+	$GLOBALS["LOGIN_PASSWORD_PLACEHOLDER"] = "Nhập vào mật khẩu";
 	$GLOBALS["LOGIN_BUTTON_SUBMIT"] = "Đăng nhập";
 	$GLOBALS["LOGIN_WRONG_USERNAME_PASWORD"] = "Sai tên đăng nhập hoặc mật khẩu";
 
@@ -32,6 +32,7 @@
 	$GLOBALS["LECTURE_DETAIL"] = "Mô tả";
 	$GLOBALS["LECTURE_DETAIL_PLACEHOLDER"] = "Thêm mô tả ...";
 	$GLOBALS["LECTURE_MAIN_IMAGE"] = "Hình ảnh chính";	
+	$GLOBALS["LECTURE_SUBMIT"] = "Đồng ý";	
 
 	//list lecture
 	$GLOBALS["LECTURE_LIST_TITLE"] = "Danh sách khóa học";
@@ -61,10 +62,15 @@
 	$GLOBALS["TEACHER_LIST_COL_1"] = "Số thứ tự";
 	$GLOBALS["TEACHER_LIST_COL_2"] = "Tên giảng viên";
 	$GLOBALS["TEACHER_LIST_COL_3"] = "Chuyên khoa";
-	$GLOBALS["TEACHER_LIST_COL_4"] = "Chỉnh sửa";
+	$GLOBALS["TEACHER_LIST_COL_4"] = "Trường";
+	$GLOBALS["TEACHER_LIST_COL_5"] = "Chỉnh sửa";
 	$GLOBALS["TEACHER_LIST_BUTTON_EDIT_TEACHER"] = "Chỉnh sửa giảng viên";
 	$GLOBALS["TEACHER_LIST_BUTTON_DELETE_TEACHER"] = "Xóa giảng viên";
-	$GLOBALS["TEACHER_LIST_BUTTON_ADD_TEACHER"] = "Thêm mới giảng viên";
+	$GLOBALS["TEACHER_LIST_BUTTON_ADD_TEACHER"] = "Thêm mới giảng viên";	
+	$GLOBALS["TEACHER_LESSION_PREFIX"] = "Buổi ";
+	$GLOBALS["TEACHER_LESSION_SPECIALIST"] = "Chuyên khoa: ";
+	$GLOBALS["TEACHER_LESSION_EXP"] = "Kinh nghiệm giảng dạy: ";
+	$GLOBALS["TEACHER_LESSION_DEGREE"] = "Chức danh đối với học viên: ";
 
 	//infomation
 	
@@ -81,6 +87,7 @@
 	$GLOBALS["LECTURE_ROADMAP_COL_3"] = "Thời gian";
 	$GLOBALS["LECTURE_ROADMAP_COL_4"] = "Giảng viên";
 	$GLOBALS["LECTURE_ROADMAP_COL_5"] = "Trợ giảng";
+	$GLOBALS["LECTURE_TEACHER_TO_STUDENT"] = "Giáo viên";
 
 	//people who registed support
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký nhận tư vấn";
@@ -93,12 +100,14 @@
 	$GLOBALS["AGREE"] = "Đồng ý";
 	$GLOBALS["CANCEL"] = "Hủy bỏ";
 	$GLOBALS["CLOSE"] = "Đóng";
+	$GLOBALS["ERROR_CONNECTION"] = "Có lỗi mạng";
+	$GLOBALS["ERROR_CONNECTION_TRY_AGAIN"] = "Có lỗi mạng!Vui lòng thử lại!";
 	
 	//url
 	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/";
 	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://admin.sundayq.com/";
-	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/login";
-	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://admin.sundayq.com/login";
+	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/adminlogin/";
+	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://admin.sundayq.com/adminlogin/";
 
 	//image
 	$GLOBALS['CURRENT_URI'] = "/wp-content/themes/twentytwenty";
@@ -109,6 +118,10 @@
 	$GLOBALS['URI_FORWARD_ICON_LECTURE'] = $GLOBALS['CURRENT_URI'] . "/assets/images/forward_lecture.png";
 	$GLOBALS['URI_EMPTY_BOX'] = $GLOBALS['CURRENT_URI'] . "/assets/images/empty-box.png";
 	$GLOBALS['URI_ERROR_CONNECTION'] = $GLOBALS['CURRENT_URI'] . "/assets/images/error.png";
+
+	//timeout
+	$GLOBALS["SESION_TIMEOUT_SERVER_TITLE"] = 'Đã hết phiên đăng nhập';
+	$GLOBALS["SESION_TIMEOUT_SERVER_CONTENT"] = 'Chuyển hướng về trang đăng nhập <b></b> giây.';
 ?>
 <script>
 	var dictionary = {
@@ -123,6 +136,18 @@
 		LECTURE_CUSTOMER_NEED_SUPPORT_2: "Số điện thoại",
 		LECTURE_CUSTOMER_NEED_SUPPORT_3: "Email",
 		LECTURE_CUSTOMER_NEED_SUPPORT_4: "Ghi chú",
+		
+		
+		LECTURE_CUSTOMER_NEED_SUPPORT_4: "Ghi chú",
+		
+		LIST_LECTURE_EDIT:"<td class='manage-list-lecture-table-detail-tr-modified'><a href='?mode=offline&page=lecture&action=edit'><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a></td>",//<div class='manage-list-lecture-table-detail-div-delete'>Xóa</div></td>",
+		LIST_TEACHER_EDIT:"<td class='manage-list-teacher-table-detail-tr-modified'><a href='?mode=offline&page=teacher&action=edit'><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a></td>",
+		
+		SESSION_TIME: "Phiên đăng nhập hết hạn. vui lòng đăng nhập lại, trong",
+		UNIT_SECONDS: " giây",
+		SESION_TIMEOUT_SERVER_TITLE : 'Đã hết phiên đăng nhập',
+		SESION_TIMEOUT_SERVER_CONTENT : 'Chuyển hướng về trang đăng nhập <b></b> giây.',
+		MSEC: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4MDIxZTE5MTM0ZWEwMTcwN2MxZTFjMDI3M2I5ZmJhMTU5NDMyMDY5NDAwMSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTU5NDU5NDI3NSwiZXhwIjoxNTk0NjM3NDc1fQ.lj9HDTAJKykx4NXP8_uesCqJQqYezMjdsLRKKdu9OSU"
 	}
 	
 	var dictionaryKey = {
@@ -138,8 +163,13 @@
 		LECTURE_CUSTOMER_NEED_SUPPORT_3: "LECTURE_CUSTOMER_NEED_SUPPORT_3",
 		LECTURE_CUSTOMER_NEED_SUPPORT_4: "LECTURE_CUSTOMER_NEED_SUPPORT_4",
 		
+		SESION_TIMEOUT_SERVER: "SESION_TIMEOUT_SERVER",
+		
 		SESSION_TOKEN:"STKEN",
 		ERR_INFO:"Có lỗi: ",
+		timeoutReLogin: 1000,
+		
+		currentAction:"" //add - edit
 	}
 	
 	function getDictionaryText(key){
@@ -169,7 +199,25 @@
 		}
 	}
 	
+	var listLecture = [];
+	
+	var listTeacher = [];
+	
+	var listImage = [];
+	
+	var imageDetail = "";
+	
+	var networkCode = {
+	  	sessionTimeOut: 401,
+		success:200
+	};
+	
+	var indexCurrentTeacher = -1;
+	
 	var secret = "sunqcryptomessthisisimportantsoimportantheheheeee";
+	
+	var urlWebsiteLogin = "http://admin.sundayq.com/adminlogin";
+	var urlWebsiteHome = "http://admin.sundayq.com/";
 	
 	var mainURL= "http://server.sundayq.com/";
 	var accountPartURL = "account/";
@@ -188,7 +236,19 @@
 	var listLecturerUrl  = "courses";
 	var lecturerUrl  = "course";
 	
-	function getURLLogin(){
+	function getAdminHomeURL(){
+		return urlWebsiteHome;
+	}
+	
+	function getHomeURL(){
+		return mainURL;
+	}
+	
+	function getLoginURL(){//redirect
+		return urlWebsiteLogin;
+	}
+	
+	function getURLLogin(){//api
 		return mainURL+adminLoginUrl;
 	}
 	

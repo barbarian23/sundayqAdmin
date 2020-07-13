@@ -20,7 +20,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+		
 		<?php wp_head(); ?>
 
 	</head>
@@ -189,10 +189,12 @@
 		*/?>
 		<?php
 		// Output the menu modal.
-			include('home/constant/constants.php');
-			include get_theme_file_path("home/sunqjs/status.php" ); 
-			include get_theme_file_path("home/sunqjs/mainjs.php" ); 
-			include get_theme_file_path("home/sunqjs/alert.php" ); 
-			include get_theme_file_path("home/sunqjs/request.php" ); 
-			include get_theme_file_path("home/helper/helper.php" );
+			
+			include ("home/constant/constants.php");
+			include ("home/sunqjs/mainjs.php" ); 
+			include ("home/sunqjs/alert.php" ); 
+			include ("home/helper/helper.php" );
+			include ("home/sunqjs/request.php" ); 
+			include ("home/sunqjs/status.php" ); 
+			include ("home/sunqjs/interact-ui.php" ); 
 			//get_template_part( 'template-parts/modal-menu' );

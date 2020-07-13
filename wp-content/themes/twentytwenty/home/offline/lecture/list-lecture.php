@@ -2,18 +2,40 @@
 
 ?>
 <script>
-	requestToSever(
-	sunQRequestType.get,
-	getURLAllLecture(),
-	null,
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4MDIxZTE5MTM0ZWEwMTcwN2MxZTFjMDI3M2I5ZmJhMTU5NDMyMDY5NDAwMSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTU5NDUxMjI4MCwiZXhwIjoxNTk0NTU1NDgwfQ.QSFvnWddJs9zTkI0OUT2XZUlHRzqQrI9KHUhAFawS6o"	,
-	function(res){
-		console.log(res);
-	},
-	function(err){
-		console.log(dictionaryKey.ERR_INFO,err);
+	window.onload = function(){
+		setFetchingLecture(true);
+		requestToSever(
+		sunQRequestType.get,
+		getURLAllLecture(),
+		null,
+		getData(dictionary.MSEC),
+		function(res){
+			setFetchingLecture(false);
+			if(res.code === networkCode.success){
+				if (res.data == null || res.data.length == 0){
+					setGetLectureFromServerSuccess(false);
+				} else {
+					//setGetLectureFromServerSuccess(true);
+					emptyTableListLecture();
+					createListLEcture(res.data);
+				}
+			} else if (res.code === networkCode.sessionTimeOut){
+					makeAlertRedirect();
+			}
+		},
+		function(err){
+			setFetchingLecture(false);
+			console.log(dictionaryKey.ERR_INFO,err);
+			setIsGetLectureFromServerSuccess(false);
+// 			if(res != undefined){
+// 			if (res.code === networkCode.sessionTimeOut){
+// 					makeAlertRedirect();
+// 			}
+// 			}
+		}
+		);
 	}
-	);
+	
 </script>
 <div class="manage-list-lecture">
 	<div class="manage-list-lecture-title">
@@ -21,88 +43,27 @@
 	</div>
 	
 	<div class="manage-list-lecture-table">
+		<div class="sunq-process-contain" id="fetchListLectureProgress">
+			<div class="sunq-process-contain-running">
+				
+			</div>
+		</div>
 		<table class="manage-list-lecture-table-detail" id="tableListLecture">
-			<tr>
-				<th><?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?></th>
-				<th><?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?></th>
-				<th><?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?></th>
-				<th><?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?></th>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			
 		</table>
 		<div class="manage-list-lecture-table-detail-no-list" id="listLectureEmpty">
 			<img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
 			<span><?php echo $GLOBALS["LECTURE_NO_LIST"]; ?></span>
 		</div>
+		
+		<div class="manage-list-lecture-table-detail-no-list" id="listLectureError">
+			<img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
+			<span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
+		</div>
 	</div>
 	
 	<div class="manage-list-lecture-add-new">
-		<a href="?mode=offline&page=lecture">
+		<a href="?mode=offline&page=lecture&action=add">
 			<button>
 				<span><?php echo $GLOBALS["LECTURE_LIST_BUTTON_ADD_LECTURE"]; ?></span>
 			</button>
