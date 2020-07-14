@@ -17,6 +17,7 @@
 				} else {
 					//setGetLectureFromServerSuccess(true);
 					emptyTableListLecture();
+					listLecture = res.data;
 					createListLEcture(res.data);
 				}
 			} else if (res.code === networkCode.sessionTimeOut){
@@ -31,7 +32,70 @@
 		}
 		);
 	}
-	
+	function deleteLecture(mId){
+		console.log("delete",listLecture[mId]);
+		
+		SunQAlert()
+		.position('center')
+		.title(dictionaryKey.REQUEST_DELETE)
+		.type('success')
+		.confirmButtonColor("#3B4EDC")
+		.cancelButtonColor("#a8b1f5")
+		.confirmButtonText(dictionaryKey.AGREE)
+		.cancelButtonText(dictionaryKey.CANCEL)
+		.callback((result) => {
+			if (result.value) {
+				setFetchingLecture(true);
+				requestToSever(
+					sunQRequestType.delete,
+					getURLecture()+"/"+listLecture[mId].id,
+					null,
+					getData(dictionary.MSEC),
+					function(res){
+						//console.log(res);
+						setFetchingTeacher(false);
+						if(res.code === networkCode.success){
+							SunQAlert()
+							.position('center')
+							.title(dictionaryKey.LECTURE_DELETE_SUCCESS)
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.AGREE)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
+						} else if (res.code === networkCode.sessionTimeOut){
+								makeAlertRedirect();
+						}
+					},
+					function(err){
+						setFetchingLecture(false);
+						setIsGetLectureFromServerSuccess(false);
+						SunQAlert()
+							.position('center')
+							.title(dictionaryKey.LECTURE_DELETE_FAILED)
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.TRY_AGAIN)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
+						
+						console.log(dictionaryKey.ERR_INFO,err);
+						
+					}
+					);
+				
+			   } 
+			else if (result.dismiss === Swal.DismissReason.cancel) {
+				
+			}
+		   })
+		 .show();
+		
+	}
 </script>
 <div class="manage-list-lecture">
 	<div class="manage-list-lecture-title">

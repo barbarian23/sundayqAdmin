@@ -6880,6 +6880,30 @@ a.to-the-top > * {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+	overflow-y:scroll;
+}
+
+.manage-section-infomation-right-item {
+    width: 95%;
+    height: 420px;
+    margin: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-section-infomation-right-item-img {
+	cursor: crosshair;
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#uploadImgLectureURL{
+	display:none;
 }
 
 .lecture-hr{
@@ -8057,6 +8081,14 @@ input[type="file"] {
 	justify-content:space-around;
 	align-items:center;
 	position:relative;
+}
+
+.manage-teacher-contain-left-upload{
+	width:100%;
+}
+
+#uploadAvatarTeacher{
+	display:none;
 }
 
 .manage-teacher-contain-left span {

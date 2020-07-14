@@ -56,6 +56,7 @@
 	$GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"] = "Nhập kinh nghiệm giảng dạy của giảng viên";
 	$GLOBALS["TEACHER_INPUT_DETAIL"] = "Thông tin về giảng viên";
 	$GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào tên của giảng viên";
+	$GLOBALS["TEACHER_EXP_TEACHER_DETAIL"] = " năm";
 	
 	//list teacher
 	$GLOBALS["TEACHER_LIST_TITLE"] = "Danh sách giảng viên";
@@ -73,6 +74,10 @@
 	$GLOBALS["TEACHER_LESSION_EXP"] = "Kinh nghiệm giảng dạy: ";
 	$GLOBALS["TEACHER_LESSION_DEGREE"] = "Chức danh đối với học viên: ";
 
+
+	$GLOBALS["TEACHER_EDIT_SUCCESS"] = "Chính sửa thành công";
+	$GLOBALS["TEACHER_EDIT_SUCCESS"] = "Thêm mới thành công";
+	
 	//infomation
 	
 	//detail
@@ -106,10 +111,10 @@
 	$GLOBALS["LOADING_DATA"] = "Đang tải dữ liệu";
 	
 	//url
-	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/";
-	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://admin.sundayq.com/";
-	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/adminlogin/";
-	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://admin.sundayq.com/adminlogin/";
+	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/";
+	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://103.146.22.168/admin/";
+	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/adminlogin/";
+	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://103.146.22.168/admin/adminlogin";
 
 	//image
 	$GLOBALS['CURRENT_URI'] = "/wp-content/themes/twentytwenty";
@@ -133,6 +138,8 @@
 		LECTURE_ROADMAP_COL_3:"Thời gian",
 		LECTURE_ROADMAP_COL_4:"Giảng viên",
 		LECTURE_ROADMAP_COL_5:"Trợ giảng",
+		
+		LECTURE_ROADMAP_COURSE_1:"Khóa học",
 		
 		LECTURE_CUSTOMER_NEED_SUPPORT_1: "Họ và tên bố mẹ",
 		LECTURE_CUSTOMER_NEED_SUPPORT_2: "Số điện thoại",
@@ -165,7 +172,30 @@
 		LECTURE_CUSTOMER_NEED_SUPPORT_3: "LECTURE_CUSTOMER_NEED_SUPPORT_3",
 		LECTURE_CUSTOMER_NEED_SUPPORT_4: "LECTURE_CUSTOMER_NEED_SUPPORT_4",
 		
+		TEACHER_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		TEACHER_ADD_SUCCESS:"Thêm mới thành công",
+		TEACHER_EDIT_FAILED: "Chỉnh sửa không thành công",
+		TEACHER_ADD_FAILED:"Thêm mới không thành công",
+		
+		
+		UPLOAD_IMAGE_SUCCESS:"Tải ảnh lên thành công",
+		UPLOAD_IMAGE_FAILED: "Tải ảnh lên không thành công",
+		
+		LECTURE_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		LECTURE_ADD_SUCCESS:"Thêm mới thành công",
+		LECTURE_EDIT_FAILED: "Chỉnh sửa không thành công",
+		LECTURE_ADD_FAILED:"Thêm mới không thành công",
+		
+		
+		LECTURE_DELETE_FAILED: "Xóa không thành công",
+		LECTURE_DELETE_SUCCESS:"Xóa thành công",
+		REQUEST_DELETE:"Bạn có muốn xóa không?",
+		
 		SESION_TIMEOUT_SERVER: "SESION_TIMEOUT_SERVER",
+		
+		AGREE:"Đồng ý",
+		CANCEL:"Hủy bỏ",
+		TRY_AGAIN:"Thử lại",
 		
 		SESSION_TOKEN:"STKEN",
 		ERR_INFO:"Có lỗi: ",
@@ -175,6 +205,8 @@
 		currentAction:"", //add - edit,
 		addStatus:"add",
 		editStatus:"edit",
+		
+		DIRECTORY_IMAGE:"../../../../../home/lanit/release/sunq-server/private/image/",
 	}
 	
 	function getDictionaryText(key){
@@ -221,10 +253,10 @@
 	
 	var secret = "sunqcryptomessthisisimportantsoimportantheheheeee";
 	
-	var urlWebsiteLogin = "http://admin.sundayq.com/adminlogin";
-	var urlWebsiteHome = "http://admin.sundayq.com/";
+	var urlWebsiteLogin = "http://103.146.22.168/admin/adminlogin";
+	var urlWebsiteHome = "http://103.146.22.168/admin/";
 	
-	var mainURL= "http://server.sundayq.com/";
+	var mainURL= "http://103.146.22.168:3000/";
 	var accountPartURL = "account/";
 	var tokenPartURL = "token/check";
 	
@@ -275,6 +307,10 @@
 	
 	function getURLTeacher(){
 		return mainURL+teacherUrl;
+	}
+	
+	function getURLUploadImage(){
+		return mainURL+uploadImagePartUrl;	
 	}
 	
 </script>

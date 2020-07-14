@@ -247,7 +247,7 @@ Object.defineProperty(sunqStatus,"isUploadingDataTeacher",{
 	},
 	set(val){
 		_isUploadingDataTeacher = val;
-		val == true ? loadingDataLectureProgress() : val == false ? loadingDataLectureDone() : loadingDataLectureError();
+		val == true ? loadingDataTeacherProgress() : val == false ? loadingDataTeacherDone() : loadingDataTeacherError();
 		
 	}
 });	

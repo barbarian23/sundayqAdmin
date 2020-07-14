@@ -3,7 +3,7 @@
 <!-- <script src="wp-content/themes/twentytwenty/assets/js/crypto.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script> -->
 <script>
 
-	function requestToSever(type,url,data,token,onSuccess,onError){
+	function requestToSever(type,url,data,token,onSuccess,onError,isForm){
 		console.log("url",url);
 		console.log("data",data);
 		if (data == null) {
@@ -41,7 +41,27 @@
                 onError(err);
             });
 			 
-		}else{
+		}
+		else if(isForm){
+				fetch(url, {
+                method: type,
+                headers: {
+	
+          'Content-Type': undefined,
+					 'Authorization': 'Bearer ' + token
+                }
+            })
+            .then(response => {
+                return response.json()
+            })
+            .then(res => {
+                onSuccess(res);
+            })
+            .catch(err => {
+                onError(err);
+            });
+				}
+		else{
 			fetch(url, {
                 method: type,
                 headers: {
@@ -62,7 +82,7 @@
 		}
 		
 	}
-
+	
 	 function checkMobile() {
         const toMatch = [
             /Android/i,

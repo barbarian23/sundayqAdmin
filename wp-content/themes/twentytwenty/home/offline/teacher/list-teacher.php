@@ -17,6 +17,7 @@ window.onload = function(){
 					setGetTeacherFromServerSuccess(false);
 				} else {
 					emptyTableListTeacher();
+					listTeacher = res.data;
 					createListTeacher(res.data);
 				}
 			} else if (res.code === networkCode.sessionTimeOut){
@@ -35,6 +36,70 @@ window.onload = function(){
 		}
 		);
 }
+
+function deleteTeacher(mId){
+		console.log("delete",listTeacher[mId]);
+	//alert hỏi
+		SunQAlert()
+		.position('center')
+		.title(dictionaryKey.REQUEST_DELETE)
+		.type('success')
+		.confirmButtonColor("#3B4EDC")
+		.cancelButtonColor("#a8b1f5")
+		.confirmButtonText(dictionaryKey.AGREE)
+		.cancelButtonText(dictionaryKey.CANCEL)
+		.callback((result) => {
+			if (result.value) {
+				setFetchingTeacher(true);
+				requestToSever(
+					sunQRequestType.delete,
+					getURLTeacher()+"/"+listTeacher[mId].id,
+					null,
+					getData(dictionary.MSEC),
+					function(res){
+						//console.log(res);
+						setFetchingTeacher(false);
+						if(res.code === networkCode.success){
+							SunQAlert()
+							.position('center')
+							.title(dictionaryKey.LECTURE_DELETE_SUCCESS)
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.AGREE)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
+						} else if (res.code === networkCode.sessionTimeOut){
+								makeAlertRedirect();
+						}
+					},
+					function(err){
+						setFetchingTeacher(false);
+						setIsGetTeacherFromServerSuccess(false);
+						SunQAlert()
+							.position('center')
+							.title(dictionaryKey.LECTURE_DELETE_FAILED)
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.TRY_AGAIN)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
+						
+						console.log(dictionaryKey.ERR_INFO,err);
+						
+					}
+					);
+				
+			   } 
+			else if (result.dismiss === Swal.DismissReason.cancel) {
+				
+			}
+		   })
+		 .show();
+	}
 </script>
 <div class="manage-list-teacher">
 	<div class="manage-list-teacher-title">

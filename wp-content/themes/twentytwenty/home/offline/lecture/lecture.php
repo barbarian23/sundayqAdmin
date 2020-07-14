@@ -39,8 +39,12 @@
             <div class="manage-section-infomation-right-title">
 				<span id="spanNameOfLectureReference"></span>
             </div>
-            <div class="manage-section-infomation-right-list-image">
-
+            <div class="manage-section-infomation-right-list-image" id="listLEctureImg">
+<!-- 				<img id="lecture-list-img" class="manage-section-infomation-right-item" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'> -->
+				<label class="manage-section-infomation-right-item" for="uploadImgLectureURL">
+					<img id="lecture-img-0" class="manage-section-infomation-right-item-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
+					<input type="file" id="uploadImgLectureURL" name="uploadImgLectureURL">
+				</label>
             </div>
         </div>
     </div>
@@ -50,10 +54,11 @@
     <!-- chi tiết khóa học , ảnh -->
     <div class="manage-section-detail">
         <div class="manage-section-detail-left" id="mainTeacherSelector">
+<span>Giáo viên chủ nhiệm</span>
             <div class="manage-section-detail-left-item">
-                <div class="manage-section-detail-left-item-avatar">
+                <img id="currentSelectImg" class="manage-section-detail-left-item-avatar">
 					
-                </div>
+                
                 <div class="manage-section-detail-left-item-info">
 					<span class="manage-section-detail-left-item-info-name" id="currentSelectName"></span>
 					<span class="manage-section-detail-left-item-info-university" id="currentSelectUniversity"></span>
@@ -99,7 +104,10 @@
 				<span><?php echo $GLOBALS["LECTURE_MAIN_IMAGE"]; ?></span>
 			</div>
             <div class="manage-section-detail-right-item">
-				<img class="manage-section-detail-right-item-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
+				<label class="manage-section-detail-right-item" for="uploadDescriptionURL">
+					<img id="lecture-main-img" class="manage-section-detail-right-item-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
+					<input type="file" id="uploadDescriptionURL" name="uploadDescriptionURL">
+				</label>
             </div>
         </div>
     </div>
@@ -242,6 +250,16 @@
 
 <script>
 	//load from data teacher
+// 	coursePlans: [
+// 		id:"String",
+// 		dayIndex:"String",
+// 		title:"String",
+// 		description:"String",
+// 		time:"String",
+// 		teacherId:"String",
+// 		supporterId:"String",
+// 	]
+	var myCurrentLecture;
 	window.onload = function(){
 		
 		 mobiscroll.number('#idAgeOfLectureFrom', {
@@ -266,7 +284,7 @@
 			display: 'bubble',
 		});
 		
-		var myCurrentLecture;
+		
 		setFetchingTeacherLecture(true);
 		requestToSever(
 		sunQRequestType.get,
@@ -321,10 +339,23 @@
 						console.log("myCurrentLecture",myCurrentLecture);
 						document.getElementById("idNameOfLecture").value = myCurrentLecture.title;
 						document.getElementById("spanNameOfLectureReference").textContent = myCurrentLecture.title;
-						document.getElementById("idAgeOfLectureFrom").textContent = myCurrentLecture.minTargetAge;
-						document.getElementById("idAgeOfLectureTo").textContent = myCurrentLecture.maxTargetAge;
-						document.getElementById("idTypeOfLecture").textContent = myCurrentLecture.courseType;
+						document.getElementById("idAgeOfLectureFrom").value = myCurrentLecture.minTargetAge;
+						document.getElementById("idAgeOfLectureTo").value = myCurrentLecture.maxTargetAge;
+						document.getElementById("idTypeOfLecture").value = myCurrentLecture.courseType;
 						document.getElementById("lectureDetailTextArea").textContent = myCurrentLecture.description;
+						document.getElementById("lecture-main-img").src = getHomeURL()+myCurrentLecture.descriptionImgUrl;
+						
+						let parent = document.getElementById("listLEctureImg");
+						let imgTempLEcture = "";
+						let parentImgList = parent.innerHTML;
+						if(myCurrentLecture.otherImgUrls != null){
+						myCurrentLecture.otherImgUrls.forEach((item,index)=>{			
+							imgTempLEcture = imgTempLEcture + "<img id=\"lecture-img-" + (index+1) + "\"  class=\"manage-section-infomation-right-item\" src=\"" + getHomeURL()+item + "\" >";
+						});
+					}
+
+						parent.innerHTML = imgTempLEcture + parent.innerHTML;
+						
 					} else if (res.code === networkCode.sessionTimeOut){
 							makeAlertRedirect();
 					}
@@ -332,6 +363,16 @@
 				function(err){
 					setLoadingDataLEcture(dictionaryKey.ERR);
 					console.log(dictionaryKey.ERR_INFO,err);
+					SunQAlert()
+							.position('center')
+							.title("Tải dữ liệu không thành công")
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.TRY_AGAIN)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
 				}
 			);
 			
@@ -372,6 +413,15 @@
                     trInsideSchedule.appendChild(tdInsideScheduleTr);
                 }
             }
+			if (getCurrentACtion() == dictionaryKey.editStatus){
+					myCurrentLecture.coursePlans.dayIndex = index;
+					myCurrentLecture.coursePlans.title = index;
+					myCurrentLecture.coursePlans.description = index;
+					myCurrentLecture.coursePlans.time = index;
+					//map
+					myCurrentLecture.coursePlans.teacherId = index;
+					myCurrentLecture.coursePlans.supporterId = index;
+			}
             parentTableSchedulde.appendChild(trInsideSchedule);
         });
     }
@@ -472,8 +522,200 @@
 			getChoosingSelectTeacherMain() && setChoosingSelectTeacherMain(false);
 		});
 	
+	function upLoadIteminListImage(file){
+		let dataLectureImgage= new FormData();
+		dataLectureImgage.append('file', file);
+		
+		setLoadingDataLEcture(true);
+			requestToSever(
+				sunQRequestType.post,
+				getURLUploadImage(),
+				dataLectureImgage,
+				getLocalStorage(dictionary.MSEC),
+				function(res){
+					setLoadingDataLEcture(false);
+					if(res.code === networkCode.success){
+						myCurrentTeacher.otherImgUrls.push(res.data.urls[0]);
+					} else if (res.code === networkCode.sessionTimeOut){
+							makeAlertRedirect();
+					}
+				},
+				function(err){
+					setLoadingDataLEcture(dictionaryKey.ERR);
+					console.log(dictionaryKey.ERR_INFO,err);
+					SunQAlert()
+							.position('center')
+							.title("Tải ảnh thất bại")
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.TRY_AGAIN)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
+				}
+			);
+	}
+	
+	function upLoadDEsImage(file){
+		let dataLectureImgage= new FormData();
+		dataLectureImgage.append('file', file);
+		
+		setLoadingDataLEcture(true);
+			requestToSever(
+				sunQRequestType.post,
+				getURLUploadImage(),
+				dataLectureImgage,
+				getLocalStorage(dictionary.MSEC),
+				function(res){
+					setLoadingDataLEcture(false);
+					if(res.code === networkCode.success){
+						myCurrentTeacher.descriptionImgUrl = res.data.urls[0];
+					} else if (res.code === networkCode.sessionTimeOut){
+							makeAlertRedirect();
+					}
+				},
+				function(err){
+					setLoadingDataLEcture(dictionaryKey.ERR);
+					console.log(dictionaryKey.ERR_INFO,err);
+					SunQAlert()
+							.position('center')
+							.title("Tải ảnh thất bại")
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.TRY_AGAIN)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
+				}
+			);
+	}
+	
+	
+	document.getElementById("uploadDescriptionURL").addEventListener("change",function(evt){
+		var tgt = evt.target || window.event.srcElement,
+			files = tgt.files;
+		//upLoadImage(tgt.files[0]);
+		// FileReader support
+		// console.log("xxxxxxzz");
+		if (FileReader && files && files.length) {
+			var fr = new FileReader();
+			fr.onload = function () {
+				document.getElementById("lecture-main-img").src = fr.result;
+				upLoadDEsImage(files[0]);
+			}
+			fr.readAsDataURL(files[0]);
+		}
+
+		// Not supported
+		else {
+			// fallback -- perhaps submit the input to an iframe and temporarily store
+			// them on the server until the user's session ends.
+		}
+	});
+	
+	
+	document.getElementById("uploadImgLectureURL").addEventListener("change",function(evt){
+		var tgt = evt.target || window.event.srcElement,
+			files = tgt.files;
+		//upLoadImage(tgt.files[0]);
+		// FileReader support
+		//console.log("xxxxxxzz");
+		if (FileReader && files && files.length) {
+			var fr = new FileReader();
+			fr.onload = function () {
+			
+				let parent = document.getElementById("listLEctureImg");
+				
+				let imgTempLEcture = "<img id=\"lecture-img-" +getCurrentACtion() == dictionaryKey.editStatus ? myCurrentLecture.otherImgUrls.length : "" + "\"  class=\"manage-section-infomation-right-item\" src=\"" + fr.result + "\" >";
+				console.log("imgTempLEcture",imgTempLEcture);
+				let parentImgList = imgTempLEcture + parent.innerHTML;
+				
+				parent.innerHTML = parentImgList;
+				
+				upLoadIteminListImage(files[0]);
+			}
+			fr.readAsDataURL(files[0]);
+		}
+
+		// Not supported
+		else {
+			// fallback -- perhaps submit the input to an iframe and temporarily store
+			// them on the server until the user's session ends.
+		}
+	});
+	
+	document.getElementById("idNameOfLecture").addEventListener("keydown",function(e){
+		myCurrentLecture.title = e.target.value;
+	}); 
+
+	document.getElementById("idAgeOfLectureFrom").addEventListener("change",function(e){
+		myCurrentLecture.maxTargetAge = e.target.value;
+	});
+	document.getElementById("idAgeOfLectureTo").addEventListener("change",function(e){
+		myCurrentLecture.minTargetAge = e.target.value;
+	});
+	document.getElementById("idTypeOfLecture").addEventListener("keydown",function(e){
+		myCurrentLecture.courseType = e.target.value;
+	});
+	document.getElementById("lectureDetailTextArea").addEventListener("keydown",function(e){
+		myCurrentLecture.description = e.target.value;
+	});
+	
 	//submit form
 	document.getElementById("lectureSubmit").addEventListener("click",function(){
+		let tempmyCurrentLecture = myCurrentLecture;
+		delete tempmyCurrentLecture.createAt;
+		delete tempmyCurrentLecture.updateAt;
+		delete tempmyCurrentLecture.id;
+delete tempmyCurrentLecture.owner;
+		if(getCurrentACtion() == dictionaryKey.editStatus){
+			
+		}
 		
+		//delete tempmyCurrentLecture.coursePlans;
+console.log(tempmyCurrentLecture);
+		setLoadingDataLEcture(true);
+			requestToSever(
+				getCurrentACtion() == dictionaryKey.editStatus ? sunQRequestType.put : sunQRequestType.post,
+				getCurrentACtion() == dictionaryKey.editStatus ? getURLecture()+"/"+getCurrentEdit() : getURLecture(),
+				tempmyCurrentLecture,
+				getLocalStorage(dictionary.MSEC),
+				function(res){
+					setLoadingDataLEcture(false);
+					if(res.code === networkCode.success){
+						console.log("myCurrentLecture",myCurrentLecture);
+						let sunqalertfailed= getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.LECTURE_EDIT_SUCCESS : dictionaryKey.LECTURE_ADD_SUCCESS ;
+					SunQAlert()
+							.position('center')
+							.title(sunqalertfailed)
+							.type('success')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.AGREE)
+							.callback((result) => {
+									webpageRedirect("http://admin.sundayq.com/?mode=offline&page=list-lecture");
+							   })
+							 .show();
+					} else if (res.code === networkCode.sessionTimeOut){
+							makeAlertRedirect();
+					}
+				},
+				function(err){
+					setLoadingDataLEcture(dictionaryKey.ERR);
+					console.log(dictionaryKey.ERR_INFO,err);
+					let sunqalertfailed= getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.LECTURE_EDIT_FAILED : dictionaryKey.LECTURE_ADD_FAILED ;
+					SunQAlert()
+							.position('center')
+							.title(sunqalertfailed)
+							.type('error')
+							.confirmButtonColor("#3B4EDC")
+							.confirmButtonText(dictionaryKey.TRY_AGAIN)
+							.callback((result) => {
+									webpageRedirect(window.location.href);
+							   })
+							 .show();
+				}
+			);
 	});
 </script>

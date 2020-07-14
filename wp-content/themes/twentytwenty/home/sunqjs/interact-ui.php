@@ -151,8 +151,8 @@ function createListLEcture(list){
 		//console.log(item.id);
 	
 		
-		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COL_1+" "+(index + 1)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
-		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a></td>";
+		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index + 1)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
+		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+index+")\">Xóa</div></td>";
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);
@@ -172,7 +172,7 @@ function createListTeacher(list){
 			trContent.className = 'manage-list-lecture-table-detail-strong';
 		} 
 		trContent.innerHTML = "<td>"+(index + 1)+"</td><td>"+item.name+"</td><td>"+item.specialist+"</td><td>"+item.university+"</td>"
-		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a></td>";
+		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+index+")\">Xóa</div></td>";
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);
@@ -187,6 +187,7 @@ function createListTeacherLecture(list){
 		div1.id = "selecTeacher_"+index;
 		
 		let div2 = document.createElement("img");
+		div2.src=getHomeURL()+item.imgUrl;
 		div2.className = "manage-section-detail-left-item-avatar";
 
 		let div3 = document.createElement("div");
@@ -207,7 +208,7 @@ function createListTeacherLecture(list){
 		span3.innerHTML = "<b>"+'<?php echo $GLOBALS["TEACHER_LESSION_SPECIALIST"]; ?>'+"</b>"+item.specialist;
 		
 		let span4 = document.createElement("span");
-		span4.innerHTML = "<b>"+'<?php echo $GLOBALS["TEACHER_LESSION_EXP"]; ?>'+"</b>"+item.practiceAt;
+		span4.innerHTML = "<b>"+'<?php echo $GLOBALS["TEACHER_LESSION_EXP"]; ?>'+"</b>"+(new Date().getYear() - new Date(item.practiceAt).getYear()) + " năm";
 		
 		let span5 = document.createElement("span");
 		span5.innerHTML = "<b>"+'<?php echo $GLOBALS["TEACHER_LESSION_DEGREE"]; ?>'+"</b><span></span>Giáo viên";
@@ -235,7 +236,8 @@ function selectTeacherIndex(index){
 	document.getElementById("currentSelectName").innerHTML = index.degree + " " + index.name;
 	document.getElementById("currentSelectUniversity").innerHTML = index.university;
 	document.getElementById("currentSelectSpecial").innerHTML = index.specialist;
-	document.getElementById("currentSelectExp").innerHTML = index.practiceAt;
+	document.getElementById("currentSelectExp").innerHTML = new Date().getYear() -  new Date(index.practiceAt).getYear() + " năm";
+	document.getElementById("currentSelectImg").src = getHomeURL() + index.imgUrl;
 }
 	
 function logging(){
