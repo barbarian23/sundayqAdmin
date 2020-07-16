@@ -7,7 +7,7 @@
         </div>
         <div class="login-input">
             <span>
-                <?php echo $GLOBALS["LOGIN_USERNAME_LABEL"]; ?>
+                <?php echo $GLOBALS["LOGIN_USERNAME_LABEL"]; ?><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
             </span>
             <input type="text" placeholder="Nhập tên tài khoản" id="username" name="username" required>
         </div>
@@ -15,6 +15,7 @@
         <div class="login-input">
             <span>
                 <?php echo $GLOBALS["LOGIN_PASSWORD_LABEL"]; ?>
+			<span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
             </span>
             <input type="password" placeholder="Nhập mật khẩu" id="password" name="password" required>
         </div>

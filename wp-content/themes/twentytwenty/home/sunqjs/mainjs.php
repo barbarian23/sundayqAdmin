@@ -89,6 +89,18 @@
 		window.location.href = url;
 	}
 	
+	function setCallBackForArray(array,func,callback){
+		Object.defineProperty(array,func,{
+			enumerable: false,
+            writable: true,
+            value: function(...arg){
+                let result = Array.prototype.push.apply(this,arg);
+                callback(result);
+                return result
+            }
+		});
+	}
+	
 	function checkSession(){
 		requestToSever(
 			sunQRequestType.get,

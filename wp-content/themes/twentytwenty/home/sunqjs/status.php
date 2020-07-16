@@ -21,8 +21,8 @@ var sunqStatus = {
 	logining:false,
 	isloginfailed:false,
 	isUploadingDataLecture:false,
-	isUploadingDataTeacher:false
-	
+	isUploadingDataTeacher:false,
+	isChoosingMultiTeacher:false
 }
 var _mode = "offline",
 	_isOpenMenu = false,
@@ -42,7 +42,8 @@ var _mode = "offline",
 	_logining = false,
 	_isloginfailed = false,
 	_isUploadingDataLecture = false,
-	_isUploadingDataTeacher = false;
+	_isUploadingDataTeacher = false,
+	_isChoosingMultiTeacher = false;
 	
 //mode setting
 Object.defineProperty(sunqStatus,"mode",{
@@ -91,7 +92,7 @@ Object.defineProperty(sunqStatus,"isGetLectureFromServerLengthGreaterThanZero",{
 //fetching lecture
 Object.defineProperty(sunqStatus,"isFetchingLecture",{
 	get(){
-		return _isFetchingLectureo;
+		return _isFetchingLecture;
 	},
 	set(val){
 		_isFetchingLecture = val;
@@ -252,6 +253,26 @@ Object.defineProperty(sunqStatus,"isUploadingDataTeacher",{
 	}
 });	
 
+//choosemultiowner
+Object.defineProperty(sunqStatus,"isChoosingMultiTeacher",{
+	get(){
+		return _isChoosingMultiTeacher;
+	},
+	set(val){
+		_isChoosingMultiTeacher = val;
+		val == true ? chooseMultiOwwner() : chooseSingleOwwner();
+		
+	}
+});	
+
+function setChoosingMultiTeacher(val){
+	sunqStatus.isChoosingMultiTeacher = val;
+}
+
+function getChoosingMultiTeacher(){
+	return sunqStatus.isChoosingMultiTeacher;
+}
+	
 function setLoadingDataTeacher(val){
 	sunqStatus.isUploadingDataTeacher = val;
 }

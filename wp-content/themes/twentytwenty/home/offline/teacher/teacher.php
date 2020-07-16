@@ -1,275 +1,432 @@
 <?php
 ?>
-<div class="manage-teacher-contain">
-	<div class="manage-contain-teacher-loading" id="teacher-page-loading">
-		<span id="teacher-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>
-		<div class="login-input-loading" id="teacher-page-loading-progress">
-			
-		</div>
-		<div class="manage-contain-teacher-loading-err" id="teacher-page-loading-progress-error">
-			<img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
-			<span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
-		</div>
-	</div>
-	<div  class="manage-teacher-contain-data">
-		<div class="manage-teacher-contain-left">
-			<label class="manage-teacher-contain-left-upload" for="uploadAvatarTeacher">
-				<span>
-					<?php echo $GLOBALS["TEACHER_AVATAR"]; ?>
-				</span>
-				<img id="teacherAvatar" class="manage-teacher-contain-left-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
-				<input type="file" id="uploadAvatarTeacher" name="uploadAvatarTeacher"/>
-			</label>
-		</div>
-		<div class="manage-teacher-contain-right">
-			<div class="manage-teacher-contain-right-upper">
-				<span><?php echo $GLOBALS["TEACHER_INPUT_NAME"]; ?></span>
-				<input id="inputTeacherName" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_NAME_PLACEHOLDER"]; ?>'>
-				<span><?php echo $GLOBALS["TEACHER_INPUT_MAJOR"]; ?></span>
-				<input id="inputTeacherMajor" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_MAJOR_PLACEHOLDER"]; ?>'>
-				<span><?php echo $GLOBALS["TEACHER_INPUT_EXP"]; ?></span>
-				<input id="inputTeacherEXPReal" type="hidden" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"]; ?>'>
-				<input id="inputTeacherEXP" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"]; ?>'>
-			</div>
-			<hr class="manage-teacher-hr-between">
-			<div class="manage-teacher-contain-right-below">
-				<span><?php echo $GLOBALS["TEACHER_INPUT_DETAIL"]; ?></span>
-				<textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?>'></textarea>
-			</div>
-		</div>
-	</div>
-	<div class="manage-teacher-bottom-action">
-		<button id="lectureSubmit">
-			<?php echo $GLOBALS["LECTURE_SUBMIT"] ; ?>
-		</button>
-	</div>
-</div>
+<form class="manage-teacher-contain">
+    <div class="manage-contain-teacher-loading" id="teacher-page-loading">
+        <span id="teacher-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>
+        <div class="login-input-loading" id="teacher-page-loading-progress">
+
+        </div>
+        <div class="manage-contain-teacher-loading-err" id="teacher-page-loading-progress-error">
+            <img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
+            <span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
+        </div>
+    </div>
+    <div class="manage-teacher-contain-data">
+        <div class="manage-teacher-contain-left">
+            <label class="manage-teacher-contain-left-upload" for="uploadAvatarTeacher">
+                <span>
+                    <?php echo $GLOBALS["TEACHER_AVATAR"]; ?>
+                </span>
+				<span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <img id="teacherAvatar" class="manage-teacher-contain-left-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
+                <input type="file" id="uploadAvatarTeacher" name="uploadAvatarTeacher" />
+            </label>
+        </div>
+        <div class="manage-teacher-contain-right">
+            <div class="manage-teacher-contain-right-upper">
+				<!-- name -->
+                <span><?php echo $GLOBALS["TEACHER_INPUT_NAME"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherName" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_NAME_PLACEHOLDER"]; ?>' required>
+				
+				<!-- short name -->
+                <span><?php echo $GLOBALS["TEACHER_INPUT_SHORT"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherShort" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_SHORT_PLACEHOLDER"]; ?>' required>
+				
+				<!-- degree -->
+				<span><?php echo $GLOBALS["TEACHER_INPUT_DEGREE"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherDegree" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DEGREE_PLACEHOLDER"]; ?>' required>
+				
+				<!-- university -->
+				<span><?php echo $GLOBALS["TEACHER_INPUT_UNIVERSITY"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherUniversity" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_UNIVERSITY_PLACEHOLDER"]; ?>' required>
+				
+				<!-- major -->
+                <span><?php echo $GLOBALS["TEACHER_INPUT_MAJOR"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherMajor" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_MAJOR_PLACEHOLDER"]; ?>' required>
+
+				<!-- kinh nghiệm -->
+                <span><?php echo $GLOBALS["TEACHER_INPUT_EXP"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherEXPReal" type="hidden" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"]; ?>' required>
+                <input id="inputTeacherEXP" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"]; ?>' required>
+				<!-- email -->
+                <span><?php echo $GLOBALS["TEACHER_INPUT_EMAIL"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherEmail" type="email" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_EMAIL_PLACEHOLDER"]; ?>' required>
+				<!-- số điện thoại -->
+                <span><?php echo $GLOBALS["TEACHER_INPUT_PHONE"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <input id="inputTeacherPhone" type="text" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_PHONE_PLACEHOLDER"]; ?>'>
+            </div>
+            <hr class="manage-teacher-hr-between">
+            <div class="manage-teacher-contain-right-below">
+				<span><?php echo $GLOBALS["TEACHER_INPUT_DETAIL"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?>' required></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="manage-teacher-bottom-action">
+        <input type="submit" name='teacherSubmit' value='<?php echo $GLOBALS["LECTURE_SUBMIT"]; ?>' id="lectureSubmit">
+    </div>
+</form>
 <script>
-			var myCurrentTeacher = {
-			
-		};
-	window.onload = function(){
-		
+    var myCurrentTeacher = {
 
-		
+    };
+    window.onload = function() {
 
+
+        // 		if(getCurrentACtion() == dictionaryKey.editStatus){
+
+        // 		}
+
+
+//         mobiscroll.datetime('#inputTeacherEXP', {
+//             max: new Date(),
+//             dateFormat: 'd/mm/yy',
+//             timeFormat: 'H:ii',
+//         });
+
+		 mobiscroll.number('#inputTeacherEXP', {
+            theme: 'ios',
+            themeVariant: 'light',
+            layout: 'fixed',
+            value: 1,
+            step: 1,
+            min: 0,
+            max: 18,
+            display: 'bubble',
+        });
 		
-		mobiscroll.datetime('#inputTeacherEXP',{
-			max:new Date(),
-		 dateFormat: 'd/mm/yy',
-		timeFormat:'H:ii' ,
-		});
-		
-		//nếu là edit thì load dữ liệu về
-			if(getCurrentACtion() == dictionaryKey.editStatus){
-			
-			//fetch từ server
-			setLoadingDataTeacher(true);
-			requestToSever(
-				sunQRequestType.get,
-				getURLTeacher()+"/"+getCurrentEdit(),
-				null,
-				getLocalStorage(dictionary.MSEC),
-				function(res){
-					setLoadingDataTeacher(false);
-					if(res.code === networkCode.success){
-						myCurrentTeacher = res.data;
-console.log(res.data);
-						document.getElementById("inputTeacherName").value = myCurrentTeacher.degree +" "+ myCurrentTeacher.name;
-						document.getElementById("inputTeacherMajor").value = myCurrentTeacher.specialist;
-						let dateEXPTEAcher = new Date(myCurrentTeacher.practiceAt);
-						let yearEXP = new Date().getYear() - dateEXPTEAcher.getYear();
-						document.getElementById("inputTeacherEXP").value = yearEXP+'<?php echo $GLOBALS["TEACHER_EXP_TEACHER_DETAIL"];?>';
-						document.getElementById("teacherAvatar").src = getHomeURL()+myCurrentTeacher.imgUrl;
-						document.getElementById("teacherDetailTextArea").value = myCurrentTeacher.description;
-					} else if (res.code === networkCode.sessionTimeOut){
-							makeAlertRedirect();
-					}
-				},
-				function(err){
-					setLoadingDataTeacher(dictionaryKey.ERR);
-					console.log(dictionaryKey.ERR_INFO,err);
-					SunQAlert()
-							.position('center')
-							.title("Tải dữ liệu không thành công")
-							.type('error')
-							.confirmButtonColor("#3B4EDC")
-							.confirmButtonText(dictionaryKey.TRY_AGAIN)
-							.callback((result) => {
-									webpageRedirect(window.location.href);
-							   })
-							 .show();
+        //nếu là edit thì load dữ liệu về
+        if (getCurrentACtion() == dictionaryKey.editStatus) {
+
+            //fetch từ server
+            setLoadingDataTeacher(true);
+            requestToSever(
+                sunQRequestType.get,
+                getURLTeacher() + "/" + getCurrentEdit(),
+                null,
+                getLocalStorage(dictionary.MSEC),
+                function(res) {
+                    setLoadingDataTeacher(false);
+                    if (res.code === networkCode.success) {
+                        myCurrentTeacher = res.data;
+                        console.log(res.data);
+                        document.getElementById("inputTeacherName").value = myCurrentTeacher.name != null ? myCurrentTeacher.name : "";
+                        document.getElementById("inputTeacherMajor").value = myCurrentTeacher.specialist != null ? myCurrentTeacher.specialist : "";
+                        let dateEXPTEAcher = new Date(myCurrentTeacher.practiceAt);
+                        let yearEXP = new Date().getYear() - dateEXPTEAcher.getYear();
+                        document.getElementById("inputTeacherDegree").value = myCurrentTeacher.degree != null ? myCurrentTeacher.degree : "";
+						document.getElementById("inputTeacherShort").value = myCurrentTeacher.shortId != null ? myCurrentTeacher.shortId  : "" ;
+                        document.getElementById("inputTeacherUniversity").value = myCurrentTeacher.university != null ? myCurrentTeacher.university : "" ;
+                        document.getElementById("inputTeacherEmail").value = myCurrentTeacher.email != null ? myCurrentTeacher.email : "" ;
+                        document.getElementById("inputTeacherPhone").value = myCurrentTeacher.phone != null ? myCurrentTeacher.phone : "";
+                        document.getElementById("inputTeacherEXP").value = yearEXP;
+                        document.getElementById("teacherAvatar").src = getHomeURL() + myCurrentTeacher.imgUrl;
+                        document.getElementById("teacherDetailTextArea").value = myCurrentTeacher.description != null ? myCurrentTeacher.description : "";
+                    } else if (res.code === networkCode.sessionTimeOut) {
+                        makeAlertRedirect();
+                    }
+                },
+                function(err) {
+                    setLoadingDataTeacher(dictionaryKey.ERR);
+                    console.log(dictionaryKey.ERR_INFO, err);
+                    SunQAlert()
+                        .position('center')
+                        .title("Tải dữ liệu không thành công")
+                        .type('error')
+                        .confirmButtonColor("#3B4EDC")
+                        .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                        .callback((result) => {
+                            webpageRedirect(window.location.href);
+                        })
+                        .show();
+                }
+            );
+
+        }
+    }
+
+    function downloadImage(name, id) {
+        // 		//setLoadingDataTeacher(true);
+        // 		console.log();
+        // 		requestToSever(
+        // 				sunQRequestType.get,
+        // 				"http://server.sundayq.com/resource/download/image/9551af98e7fa66e998ed0945bacde55e-1594540738366.png",
+        // 				null,
+        // 				getLocalStorage(dictionary.MSEC),
+        // 				function(res){
+        // 					//setLoadingDataTeacher(false);
+        // 					console.log("res",res);
+        // 					if(res.code === networkCode.success){
+        // 						window.URL.createObjectURL(blob);
+        // 						document.getElementById("teacherAvatar").src = res.data;
+        // 					} else if (res.code === networkCode.sessionTimeOut){
+        // 							makeAlertRedirect();
+        // 					}
+        // 				},
+        // 				function(err){
+        // 					//setLoadingDataTeacher(dictionaryKey.ERR);
+        // 					console.log(dictionaryKey.ERR_INFO,err);
+        // 				}
+        // 			);
+    }
+
+    function upLoadImage(file) {
+        let dataLectureImgage = new FormData();
+        dataLectureImgage.append('file', file);
+        window.scrollTo(0, 0);
+        setLoadingDataTeacher(true);
+        requestToSever(
+            sunQRequestType.post,
+            getURLUploadImage(),
+            dataLectureImgage,
+            getLocalStorage(dictionary.MSEC),
+            function(res) {
+                setLoadingDataTeacher(false);
+//                 if (res.code === networkCode.success) {
+//                     console.log("success", res);
+// 					alert("successn");
+//                     myCurrentTeacher.imgUrl = res.data.urls[0];
+//                     //myCurrentTeacher.imgUrl
+//                 } else 
+					if (res.code === networkCode.sessionTimeOut) {
+                    makeAlertRedirect();
+                } else {
+					 myCurrentTeacher.imgUrl = res.urls[0];
+					//alert("loi cmn 123 " + JSON.stringify(res) +" "+res.code+" "+res.message);
 				}
-			);
-			
-		}
-	}
-	
-	function downloadImage(name,id){
-// 		//setLoadingDataTeacher(true);
-// 		console.log();
-// 		requestToSever(
-// 				sunQRequestType.get,
-// 				"http://server.sundayq.com/resource/download/image/9551af98e7fa66e998ed0945bacde55e-1594540738366.png",
-// 				null,
-// 				getLocalStorage(dictionary.MSEC),
-// 				function(res){
-// 					//setLoadingDataTeacher(false);
-// 					console.log("res",res);
-// 					if(res.code === networkCode.success){
-// 						window.URL.createObjectURL(blob);
-// 						document.getElementById("teacherAvatar").src = res.data;
-// 					} else if (res.code === networkCode.sessionTimeOut){
-// 							makeAlertRedirect();
-// 					}
-// 				},
-// 				function(err){
-// 					//setLoadingDataTeacher(dictionaryKey.ERR);
-// 					console.log(dictionaryKey.ERR_INFO,err);
-// 				}
-// 			);
-	}
-	
-	function upLoadImage(file){
-		let dataLectureImgage = new FormData();
-		dataLectureImgage.append('file', file);
-		
-		setLoadingDataTeacher(true);
-		requestToSever(
-				sunQRequestType.post,
-				getURLUploadImage(),
-				dataLectureImgage,
-				getLocalStorage(dictionary.MSEC),
-				function(res){
-					setLoadingDataTeacher(false);
-					if(res.code === networkCode.success){
-						console.log("success",res);
-						myCurrentTeacher.imgUrl = res.data.urls[0];
-						//myCurrentTeacher.imgUrl
-					} else if (res.code === networkCode.sessionTimeOut){
-							makeAlertRedirect();
-					}
-				},
-				function(err){
-					setLoadingDataTeacher(dictionaryKey.ERR);
-					let sunqalertfailed= getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.UPLOAD_IMAGE_FAILED : dictionaryKey.UPLOAD_IMAGE_FAILED ;
-					SunQAlert()
-							.position('center')
-							.title(sunqalertfailed)
-							.type('error')
-							.confirmButtonColor("#3B4EDC")
-							.confirmButtonText(dictionaryKey.TRY_AGAIN)
-							.callback((result) => {
-									webpageRedirect(window.location.href);
-							   })
-							 .show();
-					console.log(dictionaryKey.ERR_INFO,err);
-				},
-				true,
-			);
-	}
-	
-	document.getElementById("inputTeacherName").addEventListener("keydown",function(e){
-		myCurrentTeacher.name = e.target.value;
-	});
-	
-	document.getElementById("inputTeacherMajor").addEventListener("keydown",function(e){
-		myCurrentTeacher.specialist = e.target.value;
-	});
-	
-	document.getElementById("teacherDetailTextArea").addEventListener("keydown",function(e){
-		myCurrentTeacher.description = e.target.value;
-	});
-	
-	document.getElementById("inputTeacherEXP").addEventListener("change",function(e){
-		let dateChoosingEXPD = e.target.value.split(" ")[0];
-		
-		let newEXPDate = new Date(dateChoosingEXPD.split("/")[1] + "/" + dateChoosingEXPD.split("/")[0]  + "/" + dateChoosingEXPD.split("/")[2] );
-		console.log(e.target.value);
-		let newEXP = new Date().getYear() - newEXPDate.getYear();
-		document.getElementById("inputTeacherEXP").value = newEXP+'<?php echo $GLOBALS["TEACHER_EXP_TEACHER_DETAIL"]; ?>';
-		
-		document.getElementById("inputTeacherEXPReal").value=dateChoosingEXPD.split("/")[2] + "/" + dateChoosingEXPD.split("/")[1]  + "/" + dateChoosingEXPD.split("/")[0] +"T0:0:0" ;
-		myCurrentTeacher.practiceAt = dateChoosingEXPD.split("/")[2] + "/" + dateChoosingEXPD.split("/")[1]  + "/" + dateChoosingEXPD.split("/")[0] +"T0:0:0" ;
-	});
-	
-	document.getElementById('uploadAvatarTeacher').addEventListener("change",(evt) => {
-		var tgt = evt.target || window.event.srcElement,
-			files = tgt.files;
-		//upLoadImage(tgt.files[0]);
-		// FileReader support
-		if (FileReader && files && files.length) {
-			var fr = new FileReader();
-			fr.onload = function () {
-				document.getElementById("teacherAvatar").src = fr.result;
-				upLoadImage(files[0]);
-			}
-			fr.readAsDataURL(files[0]);
-		}
+            },
+            function(err) {
+                //setLoadingDataTeacher(dictionaryKey.ERR);
+				setLoadingDataTeacher(false);
+                let sunqalertfailed = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.UPLOAD_IMAGE_FAILED : dictionaryKey.UPLOAD_IMAGE_FAILED;
+                SunQAlert()
+                    .position('center')
+                    .title(sunqalertfailed)
+                    .type('error')
+                    .confirmButtonColor("#3B4EDC")
+                    .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                    .callback((result) => {
+                        webpageRedirect(window.location.href);
+                    })
+                    .show();
+                console.log(dictionaryKey.ERR_INFO, err);
+            },
+            true,
+        );
+    }
 
-		// Not supported
-		else {
-			// fallback -- perhaps submit the input to an iframe and temporarily store
-			// them on the server until the user's session ends.
+    document.getElementById("inputTeacherName").addEventListener("input", function(e) {
+        myCurrentTeacher.name = e.target.value;
+    });
+
+	 document.getElementById("inputTeacherDegree").addEventListener("input", function(e) {
+        myCurrentTeacher.degree = e.target.value;
+    });
+	
+	 document.getElementById("inputTeacherShort").addEventListener("input", function(e) {
+        myCurrentTeacher.shortId = e.target.value;
+    });
+	
+    document.getElementById("inputTeacherMajor").addEventListener("input", function(e) {
+        myCurrentTeacher.specialist = e.target.value;
+    });
+
+	document.getElementById("inputTeacherUniversity").addEventListener("input", function(e) {
+        myCurrentTeacher.university = e.target.value;
+    });
+	
+    document.getElementById("teacherDetailTextArea").addEventListener("input", function(e) {
+        myCurrentTeacher.description = e.target.value;
+    });
+
+    document.getElementById("inputTeacherEmail").addEventListener("input", function(e) {
+        myCurrentTeacher.email = e.target.value;
+		//console.log(myCurrentTeacher.email );
+    });
+    document.getElementById("inputTeacherPhone").addEventListener("input", function(e) {
+        myCurrentTeacher.phone = e.target.value;
+    });
+
+    document.getElementById("inputTeacherEXP").addEventListener("change", function(e) {
+//         let dateChoosingEXPD = e.target.value.split(" ")[0];
+
+//         let newEXPDate = new Date(dateChoosingEXPD.split("/")[1] + "/" + dateChoosingEXPD.split("/")[0] + "/" + dateChoosingEXPD.split("/")[2]);
+//         console.log(e.target.value);
+//         let newEXP = new Date().getYear() - newEXPDate.getYear();
+//         document.getElementById("inputTeacherEXP").value = newEXP + '<?php echo $GLOBALS["TEACHER_EXP_TEACHER_DETAIL"]; ?>';
+
+//         document.getElementById("inputTeacherEXPReal").value = dateChoosingEXPD.split("/")[2] + "/" + dateChoosingEXPD.split("/")[1] + "/" + dateChoosingEXPD.split("/")[0] + "T0:0:0.0Z";
+		let teachmYear = new Date().getFullYear() - Number.parseInt(e.target.value);
+        myCurrentTeacher.practiceAt = teachmYear + "-01-01T00:00:00.00Z";
+		//alert(new Date().getYear()+" "+e.target.value+" "+myCurrentTeacher.practiceAt);
+    });
+
+    document.getElementById('uploadAvatarTeacher').addEventListener("change", (evt) => {
+        var tgt = evt.target || window.event.srcElement,
+            files = tgt.files;
+        //upLoadImage(tgt.files[0]);
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function() {
+                document.getElementById("teacherAvatar").src = fr.result;
+                upLoadImage(files[0]);
+            }
+            fr.readAsDataURL(files[0]);
+        }
+
+        // Not supported
+        else {
+            // fallback -- perhaps submit the input to an iframe and temporarily store
+            // them on the server until the user's session ends.
+        }
+    });
+
+    function checkEmail(value) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(value).toLowerCase());
+    }
+
+	function checkPhone(value){
+    	var re = /[0-9]{8,}/;
+		return re.test(value);
+	}
+	
+    //submit form
+    document.getElementById("lectureSubmit").addEventListener("click", function(e) {
+        e.preventDefault();
+        //console.log("email", myCurrentTeacher.email);
+        if (myCurrentTeacher.imgUrl == "" || myCurrentTeacher.imgUrl == null ){
+			SunQAlert()
+                .position('center')
+                .title(dictionaryKey.WRONG_IMG_TEACHER)
+                .type('error')
+                .confirmButtonColor("#3B4EDC")
+                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                .callback((result) => {
+                    window.scrollTo(0,0);
+                })
+                .show();
 		}
-	});
-	
-	//submit form
-	document.getElementById("lectureSubmit").addEventListener("click",function(){
-		let tempmyCurrentTeacher = myCurrentTeacher;
-if(getCurrentACtion() == dictionaryKey.editStatus){
-delete tempmyCurrentTeacher.email;
-tempmyCurrentTeacher.phone = "0123456789";
-}else{
-  tempmyCurrentTeacher.email = "year@sundayq.com";
-  tempmyCurrentTeacher.phone = "123";
-}
-		delete tempmyCurrentTeacher.createAt;
-		delete tempmyCurrentTeacher.updateAt;
-		delete tempmyCurrentTeacher.id;
-//delete tempmyCurrentTeacher.email;
-//tempmyCurrentTeacher.phone = "123";	
-		setLoadingDataTeacher(true);
-			requestToSever(
-				getCurrentACtion() == dictionaryKey.editStatus ? sunQRequestType.put : sunQRequestType.post,
-				getCurrentACtion() == dictionaryKey.editStatus ? getURLTeacher()+"/"+getCurrentEdit() : getURLTeacher(),
-				tempmyCurrentTeacher,
-				getLocalStorage(dictionary.MSEC),
-				function(res){
-					setLoadingDataTeacher(false);
-					let sunqalertsuccess = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.TEACHER_EDIT_SUCCESS : dictionaryKey.TEACHER_ADD_SUCCESS ;
-					if(res.code === networkCode.success){
-						//myCurrentTeacher = res.data;
-							SunQAlert()
-							.position('center')
-							.title(sunqalertsuccess)
-							.type('success')
-							.confirmButtonColor("#3B4EDC")
-							.confirmButtonText(dictionaryKey.AGREE)
-							.callback((result) => {
-									webpageRedirect("http://103.146.22.168/admin?mode=offline&page=list-teacher");
-							   })
-							 .show();
-					} else if (res.code === networkCode.sessionTimeOut){
-							makeAlertRedirect();
-					}
-				},
-				function(err){
-					setLoadingDataTeacher(dictionaryKey.ERR);
-					let sunqalertfailed= getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.TEACHER_EDIT_FAILED : dictionaryKey.TEACHER_ADD_FAILED ;
-					SunQAlert()
-							.position('center')
-							.title(sunqalertfailed)
-							.type('error')
-							.confirmButtonColor("#3B4EDC")
-							.confirmButtonText(dictionaryKey.TRY_AGAIN)
-							.callback((result) => {
-									webpageRedirect(window.location.href);
-							   })
-							 .show();
-					console.log(dictionaryKey.ERR_INFO,err);
-				}
-			);
-	});
-	
+        else if (!checkEmail(myCurrentTeacher.email)) {
+            SunQAlert()
+                .position('center')
+                .title(dictionaryKey.WRONG_EMAIL)
+                .type('error')
+                .confirmButtonColor("#3B4EDC")
+                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                .callback((result) => {
+                    document.getElementById("inputTeacherEmail").focus();
+					document.getElementById("inputTeacherMajor").scrollIntoView();
+                })
+                .show();
+        } else if(!checkPhone(myCurrentTeacher.phone)){
+				SunQAlert()
+                .position('center')
+                .title(dictionaryKey.WRONG_PHONE)
+                .type('error')
+                .confirmButtonColor("#3B4EDC")
+                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                .callback((result) => {
+                    document.getElementById("inputTeacherPhone").focus();
+					document.getElementById("inputTeacherMajor").scrollIntoView();
+                })
+                .show();  
+		} else {
+            let titlleRequestTeacher = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT: dictionaryKey.REQUEST_ADD + dictionaryKey.LECTURE_NAME;
+			//alert("data lên " + JSON.stringify(myCurrentTeacher));
+            SunQAlert()
+                .position('center')
+                .title(titlleRequestTeacher)
+                .type('success')
+                .confirmButtonColor("#3B4EDC")
+                .cancelButtonColor("#a8b1f5")
+                .confirmButtonText(dictionaryKey.AGREE)
+                .cancelButtonText(dictionaryKey.CANCEL)
+                .callback((result) => {
+                    if (result.value) {
+                        window.scrollTo(0, 0);
+                        let tempmyCurrentTeacher = myCurrentTeacher;
+                        if (getCurrentACtion() == dictionaryKey.editStatus) {
+                           // delete tempmyCurrentTeacher.shortId;
+                            delete tempmyCurrentTeacher.email;
+                            //tempmyCurrentTeacher.phone = "0123456789";
+                        } 
+						//else {
+//                             //tempmyCurrentTeacher.email = "year@sundayq.com";
+//                             //tempmyCurrentTeacher.phone = "123";
+//                         }
+                        delete tempmyCurrentTeacher.createAt;
+                        delete tempmyCurrentTeacher.updateAt;
+                        delete tempmyCurrentTeacher.id;
+                        //delete tempmyCurrentTeacher.shortId;
+                        //delete tempmyCurrentTeacher.email;
+                        //tempmyCurrentTeacher.phone = "123";	
+                        //alert("up"+JSON.stringify(tempmyCurrentTeacher));
+                        setLoadingDataTeacher(true);
+                        requestToSever(
+                            getCurrentACtion() == dictionaryKey.editStatus ? sunQRequestType.put : sunQRequestType.post,
+                            getCurrentACtion() == dictionaryKey.editStatus ? getURLTeacher() + "/" + getCurrentEdit() : getURLTeacher(),
+                            tempmyCurrentTeacher,
+                            getLocalStorage(dictionary.MSEC),
+                            function(res) {
+                                setLoadingDataTeacher(false);
+                                let sunqalertsuccess = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.TEACHER_EDIT_SUCCESS : dictionaryKey.TEACHER_ADD_SUCCESS;
+                                if (res.code === networkCode.success) {
+                                    //myCurrentTeacher = res.data;
+                                    SunQAlert()
+                                        .position('center')
+                                        .title(sunqalertsuccess)
+                                        .type('success')
+                                        .confirmButtonColor("#3B4EDC")
+                                        .confirmButtonText(dictionaryKey.AGREE)
+                                        .callback((result) => {
+                                            webpageRedirect(getAdminHomeURL() + "?mode=offline&page=list-teacher");
+                                        })
+                                        .show();
+                                } else if (res.code === networkCode.sessionTimeOut) {
+                                    makeAlertRedirect();
+                                } else {
+									//alert("loi"+JSON.stringify(res));
+									SunQAlert()
+										.position('center')
+										.title(dictionaryKey.SERVER_INFO + res.message)
+										.type('error')
+										.confirmButtonColor("#3B4EDC")
+										.confirmButtonText(dictionaryKey.TRY_AGAIN)
+										.callback((result) => {
+// 										alert("name",myCurrentTeacher.name +"specialist",myCurrentTeacher.specialist +"degree",myCurrentTeacher.degree +"practiceAt",myCurrentTeacher.practiceAt +("inputTeacherEXP",myCurrentTeacher.inputTeacherEXP +"description",myCurrentTeacher.description );
+// 										(myCurrentTeacher.name == "" || myCurrentTeacher.name == null) && document.getElementById("inputTeacherName").focus();
+// 										(myCurrentTeacher.specialist == "" || myCurrentTeacher.specialist == null) && document.getElementById("inputTeacherMajor").focus();
+// 									   (myCurrentTeacher.degree == "" || myCurrentTeacher.degree == null) && document.getElementById("inputTeacherDegree").focus();
+// 									   (myCurrentTeacher.practiceAt == "" || myCurrentTeacher.practiceAt == null) && document.getElementById("teacherDetailTextArea").focus();
+// 									   (myCurrentTeacher.inputTeacherEXP == "" || myCurrentTeacher.inputTeacherEXP == null) &&  document.getElementById("inputTeacherEXP").focus();
+// 										(myCurrentTeacher.description == "" || myCurrentTeacher.description == null) && document.getElementById("teacherDetailTextArea").focus();
+										})
+										.show();  
+									//alert("vao else " + JSON.stringify(res) +" "+res.code+" "+res.message);
+								}
+                            },
+                            function(err) {
+                                setLoadingDataTeacher(dictionaryKey.ERR);
+                                let sunqalertfailed = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.TEACHER_EDIT_FAILED : dictionaryKey.TEACHER_ADD_FAILED;
+                                SunQAlert()
+                                    .position('center')
+                                    .title(sunqalertfailed)
+                                    .type('error')
+                                    .confirmButtonColor("#3B4EDC")
+                                    .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                    .callback((result) => {
+                                       // webpageRedirect(window.location.href);
+                             
+                                    })
+                                    .show();
+                                console.log(dictionaryKey.ERR_INFO, err);
+                            }
+                        );
+                    }
+                })
+                .show();
+        }
+    });
 </script>

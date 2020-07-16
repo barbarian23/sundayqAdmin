@@ -54,14 +54,14 @@ define('SECURE_AUTH_SALT', 'YPTwC>}mun)U2h6{8`%Qhimz4F6;><<3(4<~VWaVHw(s9B00Zu Z
 define('LOGGED_IN_SALT',   '8 pRw W+U[-&@|m.Kh-`|Z*lS}(!m}$<{8;[6dsnFM;; hwB_G~a}v1blXrV:m.I');
 define('NONCE_SALT',       '<f}@X}!-s+%M8H`8%T8`H}Q)Xdxtz}Z+D#s7G!ep)MA:uW3=;U1PTpmP-^]I+G+b');
 
-/*
+
 define('WP_HOME','http://admin.sundayq.com');
 define('WP_SITEURL','http://admin.sundayq.com');
-*/
 
+/*
 define('WP_HOME','http://103.146.22.168/admin');
 define('WP_SITEURL','http://103.146.22.168/admin');
-
+*/
 /**#@-*/
 
 /**

@@ -25,10 +25,11 @@
 	$GLOBALS["LECTURE_AGE_INPUT_FROM"] = "Độ tuổi từ:";
 	$GLOBALS["LECTURE_AGE_INPUT_PLACEHOLDER"] = "Nhập độ tuổi";	
 	$GLOBALS["LECTURE_AGE_INPUT_TO"] = "Đến độ tuổi:";
-	$GLOBALS["LECTURE_TYPE_INPUT"] = "Loại hình:";
-	$GLOBALS["LECTURE_TYPE_INPUT_PLACEHOLDER"] = "Nhập loại hình";
-	$GLOBALS["LECTURE_IMAGE_TITLE"] = "Loại hình:";	
-
+	$GLOBALS["LECTURE_TYPE_INPUT"] = "Loại hình giảng dạy:";
+	$GLOBALS["LECTURE_TYPE_INPUT_PLACEHOLDER"] = "Nhập loại hình giảng dạy";
+	$GLOBALS["LECTURE_IMAGE_TITLE"] = "Loại hình giảng dạy:";	
+	$GLOBALS["LECTURE_LIST_IMAGE"] = "Hình ảnh khóa học";		
+	$GLOBALS["LECTURE_CHECKBOX_CHOOSE_MULTI_OWNER"] = "Chọn nhiều giáo viên chủ nhiệm viên";	
 	
 	$GLOBALS["LECTURE_DETAIL"] = "Mô tả";
 	$GLOBALS["LECTURE_DETAIL_PLACEHOLDER"] = "Thêm mô tả ...";
@@ -45,17 +46,39 @@
 	$GLOBALS["LECTURE_LIST_BUTTON_EDIT_LECTURE"] = "Chỉnh sửa khóa học";
 	$GLOBALS["LECTURE_LIST_BUTTON_DELETE_LECTURE"] = "Xóa khóa học";
 	$GLOBALS["LECTURE_LIST_BUTTON_ADD_LECTURE"] = "Thêm mới khóa học";
-	
+
+
+	$GLOBALS["LECTURE_SIGNLE_OWNER"] = "Một giáo viên chủ nhiệm";
+	$GLOBALS["LECTURE_MULTI_OWNER"] = "Nhiều giáo viên chủ nhiệm";
+
+	$GLOBALS["LECTURE_CHOOSE_OWNER"] = "Chọn giáo viên chủ nhiệm";
+
+
+	$GLOBALS["LECTURE_EDIT_DES_IMG"] = "Đổi ảnh chi tiết khóa học";
+	$GLOBALS["LECTURE_ADD_DES_IMG"] = "Thêm ảnh chi tiết khóa học";
+
+$GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm ảnh";
+
 	//teacher
 	$GLOBALS["TEACHER_AVATAR"] = "Ảnh đại diện";
 	$GLOBALS["TEACHER_INPUT_NAME"] = "Tên giảng viên";
 	$GLOBALS["TEACHER_INPUT_NAME_PLACEHOLDER"] = "Nhập tên giảng viên";
+	$GLOBALS["TEACHER_INPUT_SHORT"] = "Mã giảng viên";
+	$GLOBALS["TEACHER_INPUT_SHORT_PLACEHOLDER"] = "Nhập mã giảng viên";
+	$GLOBALS["TEACHER_INPUT_DEGREE"] = "Bằng cấp";
+	$GLOBALS["TEACHER_INPUT_DEGREE_PLACEHOLDER"] = "Nhập vào bằng cấp của giảng viên";
+	$GLOBALS["TEACHER_INPUT_UNIVERSITY"] = "Trường học";
+	$GLOBALS["TEACHER_INPUT_UNIVERSITY_PLACEHOLDER"] = "Nhập vào trường của giảng viên";
 	$GLOBALS["TEACHER_INPUT_MAJOR"] = "Chuyên khoa";
 	$GLOBALS["TEACHER_INPUT_MAJOR_PLACEHOLDER"] = "Nhập vào chuyên khoa của giảng viên";
-	$GLOBALS["TEACHER_INPUT_EXP"] = "Kinh nghiệm giảng dạy";
-	$GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"] = "Nhập kinh nghiệm giảng dạy của giảng viên";
+	$GLOBALS["TEACHER_INPUT_EXP"] = "Năm kinh nghiệm";
+	$GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"] = "Nhập số năm kinh nghiệm";
 	$GLOBALS["TEACHER_INPUT_DETAIL"] = "Thông tin về giảng viên";
-	$GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào tên của giảng viên";
+	$GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin của giảng viên";
+	$GLOBALS["TEACHER_INPUT_EMAIL"] = "Email";
+	$GLOBALS["TEACHER_INPUT_EMAIL_PLACEHOLDER"] = "Nhập vào email";
+	$GLOBALS["TEACHER_INPUT_PHONE"] = "Số điện thoại";
+	$GLOBALS["TEACHER_INPUT_PHONE_PLACEHOLDER"] = "Nhập vào số điện thoại của giảng viên";
 	$GLOBALS["TEACHER_EXP_TEACHER_DETAIL"] = " năm";
 	
 	//list teacher
@@ -94,6 +117,7 @@
 	$GLOBALS["LECTURE_ROADMAP_COL_4"] = "Giảng viên";
 	$GLOBALS["LECTURE_ROADMAP_COL_5"] = "Trợ giảng";
 	$GLOBALS["LECTURE_TEACHER_TO_STUDENT"] = "Giáo viên";
+	$GLOBALS["LECTURE_ADD_IMAGE"] = "Thêm ảnh";
 
 	//people who registed support
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký nhận tư vấn";
@@ -101,6 +125,10 @@
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_2"] = "Số điện thoại";
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_3"] = "Email";
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_4"] = "Ghi chú";
+	
+	$GLOBALS["LECTURE_MAIN_TEACHER"] = "Giáo viên chủ nhiệm";
+
+	$GLOBALS["FIELD_REQUIRE"] = "*";
 
 	//misc
 	$GLOBALS["AGREE"] = "Đồng ý";
@@ -111,10 +139,15 @@
 	$GLOBALS["LOADING_DATA"] = "Đang tải dữ liệu";
 	
 	//url
-	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/";
-	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://103.146.22.168/admin/";
-	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/adminlogin/";
-	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://103.146.22.168/admin/adminlogin";
+// 	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/";
+// 	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://103.146.22.168/admin/";
+// 	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/adminlogin/";
+// 	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://103.146.22.168/admin/adminlogin";
+
+	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/";
+	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://admin.sundayq.com/";
+	$GLOBALS["LOGIN_URL_WITHOUT_SSL"] = "http://admin.sundayq.com/adminlogin/";
+	$GLOBALS["LOGIN_URL_WITH_SSL"] = "https://admin.sundayq.com/adminlogin";
 
 	//image
 	$GLOBALS['CURRENT_URI'] = "/wp-content/themes/twentytwenty";
@@ -146,6 +179,12 @@
 		LECTURE_CUSTOMER_NEED_SUPPORT_3: "Email",
 		LECTURE_CUSTOMER_NEED_SUPPORT_4: "Ghi chú",
 		
+		TEACHER_SHEET_COL_1:"Số thứ tự",
+		TEACHER_SHEET_COL_2:"Họ và tên",
+		TEACHER_SHEET_COL_3:"Số điện thoại",
+		TEACHER_SHEET_COL_4:"Email",
+		TEACHER_SHEET_COL_5:"Chuyên ngành",
+		TEACHER_SHEET_COL_6:"Kinh nghiệm",
 		
 		LECTURE_CUSTOMER_NEED_SUPPORT_4: "Ghi chú",
 		
@@ -167,6 +206,9 @@
 		LECTURE_ROADMAP_COL_4:"LECTURE_ROADMAP_COL_4",
 		LECTURE_ROADMAP_COL_5:"LECTURE_ROADMAP_COL_5",
 		
+		
+		
+		
 		LECTURE_CUSTOMER_NEED_SUPPORT_1: "LECTURE_CUSTOMER_NEED_SUPPORT_1",
 		LECTURE_CUSTOMER_NEED_SUPPORT_2: "LECTURE_CUSTOMER_NEED_SUPPORT_2",
 		LECTURE_CUSTOMER_NEED_SUPPORT_3: "LECTURE_CUSTOMER_NEED_SUPPORT_3",
@@ -186,10 +228,29 @@
 		LECTURE_EDIT_FAILED: "Chỉnh sửa không thành công",
 		LECTURE_ADD_FAILED:"Thêm mới không thành công",
 		
+		MISS_FIELD:"Bạn đã nhập thiếu thông tin!Vui lòng nhập lại",
+		
+		
+		REQUEST_ADD: "Bạn có muốn thêm",
+		REQUEST_EDIT: "Bạn có muốn sửa đổi",
+		
+		LECTURE_NAME:" khóa học này",
+		TEACHER_NAME:" giáo viên này",
+		
+		SERVER_INFO: "Server thông báo ",
 		
 		LECTURE_DELETE_FAILED: "Xóa không thành công",
 		LECTURE_DELETE_SUCCESS:"Xóa thành công",
 		REQUEST_DELETE:"Bạn có muốn xóa không?",
+		
+		
+		WRONG_IMG_LECTURE_LIST: "Bạn chưa tải một số hoạt động khóa học lên",
+		WRONG_IMG_LECTURE_DEC: "Bạn chưa tải ảnh mô tả khóa học lên",
+		WRONG_IMG_TEACHER: "Bạn chưa tải ảnh lên",
+		WRONG_OWNER:"Bạn chưa chọn giáo viên chủ nhiệm?",
+		
+		WRONG_PHONE: "Số điện thoại không đúng, vui lòng nhập lại",
+		WRONG_EMAIL: "Email không đúng, vui lòng nhập lại",
 		
 		SESION_TIMEOUT_SERVER: "SESION_TIMEOUT_SERVER",
 		
@@ -253,8 +314,11 @@
 	
 	var secret = "sunqcryptomessthisisimportantsoimportantheheheeee";
 	
-	var urlWebsiteLogin = "http://103.146.22.168/admin/adminlogin";
-	var urlWebsiteHome = "http://103.146.22.168/admin/";
+	//var adminURL = "http://103.146.22.168/admin/";
+	
+	var adminURL = "http://admin.sundayq.com/";
+	
+	var urlWebsiteLogin = adminURL+"adminlogin";
 	
 	var mainURL= "http://103.146.22.168:3000/";
 	var accountPartURL = "account/";
@@ -274,7 +338,7 @@
 	var lecturerUrl  = "course";
 	
 	function getAdminHomeURL(){
-		return urlWebsiteHome;
+		return adminURL;
 	}
 	
 	function getHomeURL(){

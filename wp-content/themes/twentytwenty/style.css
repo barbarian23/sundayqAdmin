@@ -6577,7 +6577,7 @@ a.to-the-top > * {
 	width:100%;
 	height:50px;
 	position:fixed;
-	top:46px;
+	top:0;
 	left:0;
 	display:none;
     flex-wrap: wrap;
@@ -6639,6 +6639,7 @@ a.to-the-top > * {
     flex-direction: row;
     flex-wrap: wrap;
     background: #23282d;
+	margin-top:50px;
 }
 
 .home-middle-left-menu-small{
@@ -6792,14 +6793,14 @@ a.to-the-top > * {
 .manage-section-infomation {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
 
 .manage-section-infomation-left {
-    width: 30%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -6842,7 +6843,7 @@ a.to-the-top > * {
 }
 
 .manage-section-infomation-right {
-    width: 68%;
+    width: 91%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -6871,27 +6872,103 @@ a.to-the-top > * {
     padding-left: 10px;
 }
 
+.manage-section-infomation-right-list-image-title{
+	    font-size: 26px;
+    font-weight: 600;
+    color: #002546;
+
+}
+
 .manage-section-infomation-right-list-image {
     width: 98%;
     height: 420px;
-    margin: 10px auto;
+    margin: 10px auto 10px auto;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-	overflow-y:scroll;
+	overflow-x:scroll;
+	overflow-y:hidden;
+}
+
+.manage-section-detail-right-item-input-change{
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-section-detail-right-item-input-change-label{
+	width: 100%;
+    height: 69px;
+    margin: 50px auto 0px auto;
+    background: #CF5134;
+	    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+	text-decoration: none!important;
+}
+
+
+.manage-section-detail-right-item-input-change-label:hover{
+	text-decoration: underline!important;
+    background:  #e7a698;
 }
 
 .manage-section-infomation-right-item {
     width: 95%;
-    height: 420px;
+     height: 420px; 
+/* 	height:80px; */
     margin: 10px 5px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.manage-section-infomation-right-item-div-add {
+    width: 97%;
+/*     height: 420px; */
+	height:80px;
+    margin: 25px 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+	border:#000 solid 1px;
+	border-radius:3px;
+	background:#f50;
+	color:white;
+	text-decoration:none!important;
+}
+
+.manage-section-infomation-right-item-div-add:hover {
+	background:#e7a698;
+	text-decoration:underline!important;
+}
+
+.manage-section-infomation-right-item-div-add:active {
+	background:#ffaa80;
+}
+
+.manage-section-infomation-right-item-div-add label{
+	width:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.manage-section-infomation-right-item-div-add label span{	
+	font-size:24px;
+	font-weight:600;
 }
 
 .manage-section-infomation-right-item-img {
@@ -6924,7 +7001,7 @@ a.to-the-top > * {
     width: 100%;
     min-height: 520px;
     display: flex;
-    flex-direction: row;
+    flex-direction: color;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
@@ -6932,7 +7009,7 @@ a.to-the-top > * {
 }
 
 .manage-section-detail-left {
-    width: 31%;
+    width: 91%;
 /*     height: 100%; */
     display: flex;
     flex-direction: column;
@@ -6943,6 +7020,18 @@ a.to-the-top > * {
     left: 25px; */
     border-radius: 4px;
 	border: 1px solid #000;
+}
+
+.manage-section-detail-left-title {
+	margin: 20px auto;
+}
+
+.manage-section-detail-left span{
+    font-weight: normal;
+	font-size: 22px;
+	font-weight:600;
+	color: #321A05;
+/*     margin: 10px auto; */
 }
 
 .manage-section-detail-left-list-parent{
@@ -6958,11 +7047,11 @@ a.to-the-top > * {
 	background:#f2f2f2;
     border: 1px solid #000;
 	padding:5px;
+	left:31%;
 	animation: bottomUp 0.15s linear;
 }
 
 .manage-section-detail-left-list {
-	
 	display:flex;
 	width:100%;
 	height:90%;
@@ -6987,12 +7076,115 @@ a.to-the-top > * {
 	background:#cccccc;
 }
 
+.manage-section-detail-left-choosing-button{
+	width: 97%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f50;
+    margin: 0px 5px 50px 5px;
+    border: 1px solid #000 ;
+    border-radius: 3px;
+}
+
+.manage-section-detail-left-choosing-button span{
+	font-weight:600;
+	font-size:24px;
+	color:white;
+	text-decoration:none!important;
+}
+
+.manage-section-detail-left-choosing-button:hover{
+    background: #e7a698;
+	text-decoration:underline!important;
+}
+
+.manage-section-detail-left-choosing-radio{
+	width: 40%;
+    height: 80px;
+    display: flex;   
+	flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px auto;
+
+}
+
+.containerLecture {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerLecture input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmarkLecture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.containerLecture:hover input ~ .checkmarkLecture {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerLecture input:checked ~ .checkmarkLecture {
+  background-color: #f50;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmarkLecture:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containerLecture input:checked ~ .checkmarkLecture:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerLecture .checkmarkLecture:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.manage-section-detail-left-choosing-radio label{
+	font-size: 22px;
+}
+
+
 .manage-section-detail-left-item {
     width: 95%;
 /*     height: 122px; */
     margin: 35px auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -7000,6 +7192,66 @@ a.to-the-top > * {
     position: relative;
 	border-radius:3px;
     border: 1px solid #000;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.manage-section-detail-left-item-teacher {
+    width: 95%;
+/*     height: 122px; */
+    margin: 35px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    position: relative;
+	border-radius:3px;
+    border: 1px solid #000;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.manage-section-detail-left-item-inside{
+	 width: 95%;
+/*     height: 122px; */
+    margin: 35px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    position: relative;
+	border-radius:3px;
+    border: 1px solid #000;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.manage-section-detail-left-item-inside-close{
+	width: 25px;
+    height: 25px;
+    background: #d9d9d9;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+}
+
+.manage-section-detail-left-item-span-teacher-info {
+   font-size: 23px;
+    font-weight: 600;
+    color: #321A05;
+}
+
+.manage-section-detail-left-item:hover{
+	background:#fafafa;
 }
 
 .manage-section-detail-left-item :hover{
@@ -7049,7 +7301,7 @@ a.to-the-top > * {
 .manage-section-detail-left-item-info span{
     margin-top:5px ;
 	margin-bottom:5px;
-	font-size: 16px;
+	font-size: 22px;
 }
 
 .manage-section-detail-left-item-info span b{
@@ -7090,7 +7342,7 @@ font-style:italic;
 }
 
 .manage-section-detail-midlle {
-    width: 34%;
+    width: 91%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -7098,10 +7350,11 @@ font-style:italic;
     justify-content: center;
     align-items: center;
     position: relative;
+	margin:15px auto;
 }
 
 .manage-section-detail-midlle-span {
-    width: 95%;
+    width: 100%;
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -7113,11 +7366,11 @@ font-style:italic;
     font-style: normal;
     font-weight: 600;
     font-size: 26px;
-	padding:5px;
+/* 	padding:5px; */
 }
 
 .manage-section-detail-midlle-item {
-    width: 95%;
+    width: 100%;
     height: 520px;
     margin: 10px auto;
     display: flex;
@@ -7128,8 +7381,8 @@ font-style:italic;
 }
 
 .manage-section-detail-right {
-    width: 35%;
-    height: 100%;
+    width: 91%;
+/*     height: 100%; */
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -7139,7 +7392,7 @@ font-style:italic;
 }
 
 .manage-section-detail-right-span {
-    width: 95%;
+    width: 100%;
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -7151,12 +7404,12 @@ font-style:italic;
     font-style: normal;
     font-weight: 600;
     font-size: 26px;
-	padding:5px;
+/* 	padding:5px; */
 }
 
 
 .manage-section-detail-right-item {
-    width: 95%;
+    width: 100%;
     height: 520px;
     margin: 10px auto;
     display: flex;
@@ -7200,6 +7453,10 @@ font-style:italic;
 
 .manage-section-road-map-upload-button:hover {
 	background:#dd836e!important;
+}
+
+#btnDownloadExcel{
+	display:none;
 }
 
 .sunq-process-contain{
@@ -7506,7 +7763,7 @@ input[type="file"] {
     justify-content: flex-start;
     align-items: center;
     width: 60%;
-    height: 60%;
+    /*height: 60%;*/
 	position:absolute;
 	left: 50%;
 	top:50%;
@@ -7520,8 +7777,9 @@ input[type="file"] {
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 100px;
+    /*height: 100px;*/
     margin: 15px auto;
+	position:relative;
 }
 
 .login-input label {
@@ -7601,7 +7859,7 @@ input[type="file"] {
 }
 
 .login-input input[type="submit"]{
-    width: 30%;
+    width: 45%;
     height: 60px;
     margin: 5px auto;
 	border: none;
@@ -7632,6 +7890,11 @@ input[type="file"] {
 	margin:10px auto;
 	border: 1px solid #000;
 	border-radius:10px;
+}
+
+.span-require{
+	color:red!important;
+	margin-left: 0px!important;
 }
 
 .manage-list-lecture-title{
@@ -7670,6 +7933,7 @@ input[type="file"] {
 
 .manage-list-lecture-table-detail-tr-modified{
 	display: flex;
+/* 	flex-wrap:wrap; */
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -7924,8 +8188,18 @@ input[type="file"] {
 	vertical-align:center;
 }
 
+.manage-list-teacher-table-detail td {
+/*      display: flex;
+ 	flex-wrap:wrap; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+
+}
+
 .manage-list-teacher-table-detail-tr-modified {
     display: flex;
+/*  	flex-wrap:wrap;  */
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -7972,7 +8246,7 @@ input[type="file"] {
 }
 
 .manage-list-teacher-table-detail td {
-    height: 65px;
+/*     height: 65px; */
 	border:none;
 }
 
@@ -8077,7 +8351,7 @@ input[type="file"] {
 .manage-teacher-contain-data{
 	width:96%;
 	display:flex;
-	flex-direction:row;
+	flex-direction:column;
 	justify-content:space-around;
 	align-items:center;
 	position:relative;
@@ -8100,7 +8374,8 @@ input[type="file"] {
 }
 
 .manage-teacher-contain-left{
-	width:458px;
+/* 	width:458px; */
+	width: 100%;
 	display:flex;
 	justify-content:center;
 	align-items:flex-start;
@@ -8111,13 +8386,14 @@ input[type="file"] {
 }
 
 .manage-teacher-contain-left-img{
-	width:427px;
+	width:95%;
+	max-width:800px;
 	height:569px;
 	margin:10px auto;
 }
 
 .manage-teacher-contain-right{
-	width:60%;
+	width:100%;
 	display:flex;
 	justify-content:center;
 	align-items:flex-start;
@@ -8193,12 +8469,12 @@ input[type="file"] {
 	width:100%;
 	height:80px;
 	display:flex;
-	justify-content:flex-end;
+	justify-content:center;
 	align-items:center;
 	padding-right:10px;
 }
 
-.manage-teacher-bottom-action button{
+.manage-teacher-bottom-action button,input[type="submit"]{
 	width:240px;
 	height:70px;
 	background:#cf5134!important;
@@ -8208,12 +8484,20 @@ input[type="file"] {
 	font-weight:600;
 }
 
-.manage-teacher-bottom-action button:hover{
+.manage-teacher-bottom-action button,input[type="submit"]:hover{
 	background:#e7a698!important;
 	text-decoration:underline;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+	
+	.login-contain{
+		width:95%;	
+	}
+	
+	.login-input input[type="submit"]{
+		width:55%;	
+	}
 	
 	.home-header{
 		margin: 20px auto 0px auto;
@@ -8291,6 +8575,7 @@ input[type="file"] {
 	
 	.manage-teacher-contain-left-img{	
 		width:95%;
+		height:300px;
 	}
 	
 	.manage-teacher-hr-between{
