@@ -2,23 +2,35 @@
 ?>
 <script>
 function showOffLineMode(){
+// 	let offlineOpen = document.getElementById("homeMenuOffline");
+// 	offlineOpen.style.display == "" || offlineOpen.style.display == undefined || offlineOpen.style.display == "none" ? function(){offlineOpen.style.display = "block"}() : function(){offlineOpen.style.display = "none"}();
 	let offlineOpen = document.getElementById("homeMenuOffline");
 	offlineOpen && function(){offlineOpen.style.display = "block"}();
 }
 	
-function hideOfflineMode(){
+function hideOffLineMode(){
 	let offlineOpen = document.getElementById("homeMenuOffline");
 	offlineOpen && function(){offlineOpen.style.display = "none"}();
 }
 
-function showOnlineMode(){
+function showOnLineMode(){
 	let onlineOpen = document.getElementById("homeMenuOnline");
 	onlineOpen && function(){onlineOpen.style.display = "block"}();
 }
 
-function hideOnlineMode(){
+function hideOnLineMode(){
 	let onlineOpen = document.getElementById("homeMenuOnline");
-	onlineOpen && function(){onlineOpen.style.display = "block"}();
+	onlineOpen && function(){onlineOpen.style.display = "none"}();
+}
+
+function showAccountMode(){
+	let adminOpen = document.getElementById("homeMenuAccount");
+	adminOpen && function(){adminOpen.style.display = "block"}();
+}
+
+function hideAccountMode(){
+	let adminOpen = document.getElementById("homeMenuAccount");
+	adminOpen && function(){adminOpen.style.display = "none"}();
 }
 	
 function getListLectureGreaterThanZero(){
@@ -134,9 +146,14 @@ function getListLectureTeacherGreaterThanZero(){
 	//fillTableListLecture();
 }
 	
-function createListLEcture(list){
-	listLecture = list;console.log("lisst lec",listLecture);
+function createListLEcture(result){
+	let list = result.data;
+	console.log("lisst lec",listLecture);
+	if (!listVisitedLecture.includes(getCurrentLecture())){
+			listVisitedLecture.push(getCurrentLecture());
+		}
 	let parent = document.getElementById("tableListLecture");
+		parent.innerHTML="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?>'+"</th>";
@@ -156,11 +173,57 @@ function createListLEcture(list){
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);
+	
+	//paging
+document.getElementById("span-title-lecture").style.display = "flex";
+let parentPaging = document.getElementById("pagingListLecture");
+parentPaging.innerHTML="";
+let maxPage = result.total;
+let maxPerList = dictionaryKey.limitRequestRegister;
+let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+console.log(totalPage);
+for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
+    let tempDivPaging = document.createElement("span");
+    tempDivPaging.className="manage-list-lecture-list-register-paging-index";
+    if(pagingIndex == getCurrentLecture()){
+       tempDivPaging.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+       }
+    
+    tempDivPaging.id="paging-index-"+pagingIndex;
+    tempDivPaging.innerHTML = Number.parseInt(pagingIndex) + 1;
+    
+    tempDivPaging.addEventListener("click",function(e){
+        for (let tI = 0 ; tI < totalPage ; tI++ ){
+            let tDiv = document.getElementById("paging-index-"+tI);
+                    if (tI != pagingIndex){
+            //đặt cho các số khác là màu in nhạt	
+                        tDiv.className="manage-list-lecture-list-register-paging-index";
+                        } else {console.log("choose");
+            //đặt cho số đang chọnc là màu in đậm	
+                        tDiv.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+                        }
+            }
+        if(!listVisitedLecture.includes(pagingIndex)){//load cái mới	
+           setCurrentLecture(pagingIndex);
+        } else {//load lại cái cũ
+            console.log("load lại cái cũ");
+            loadOldPageLecture(pagingIndex);
+        }
+    });
+    
+    parentPaging.appendChild(tempDivPaging);
+}
 }
 
-function createListTeacher(list){
-	listTeacher = list;
+function createListTeacher(result){
+	let list = result.data;
+	
+	if (!listVisitedTeacher.includes(getCurrentTeacher())){
+			listVisitedTeacher.push(getCurrentTeacher());
+	}
+	
 	let parent = document.getElementById("tableListTeacher");
+				parent.innerHTML ="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["TEACHER_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_5"]; ?>'+"</th>";
@@ -176,6 +239,46 @@ function createListTeacher(list){
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);
+	
+	//paging
+	document.getElementById("span-title-teacher").style.display = "flex";
+let parentPaging = document.getElementById("pagingListTeacher");
+parentPaging.innerHTML="";
+let maxPage = result.total;
+let maxPerList = dictionaryKey.limitRequestRegister;
+let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+console.log(totalPage);
+for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
+    let tempDivPaging = document.createElement("span");
+    tempDivPaging.className="manage-list-lecture-list-register-paging-index";
+    if(pagingIndex == getCurrentTeacher()){
+       tempDivPaging.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+       }
+    
+    tempDivPaging.id="paging-index-"+pagingIndex;
+    tempDivPaging.innerHTML = Number.parseInt(pagingIndex) + 1;
+    
+    tempDivPaging.addEventListener("click",function(e){
+        for (let tI = 0 ; tI < totalPage ; tI++ ){
+            let tDiv = document.getElementById("paging-index-"+tI);
+                    if (tI != pagingIndex){
+            //đặt cho các số khác là màu in nhạt	
+                        tDiv.className="manage-list-lecture-list-register-paging-index";
+                        } else {
+            //đặt cho số đang chọnc là màu in đậm	
+                        tDiv.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+                        }
+            }
+        if(!listVisitedTeacher.includes(pagingIndex)){//load cái mới	
+           setCurrentTeacher(pagingIndex);
+        } else {//load lại cái cũ
+            console.log("load lại cái cũ");
+            loadOldPageTeacher(pagingIndex);
+        }
+    });
+    
+    parentPaging.appendChild(tempDivPaging);
+	}
 }
 
 function createListTeacherLecture(list){
@@ -237,15 +340,29 @@ function createListTeacherLecture(list){
 // 		div1.appendChild(div2);
 // 		div1.appendChild(div3);
 		//chọn owner
-		div1.addEventListener("click",function(){
+		div1.addEventListener("click",function(){	console.log("click owner");
 			if(!getChoosingMultiTeacher()){	
 				//setCurrentSelectTeacher(item.id,item);
-				
 				currentOwners.push(item.id);
+				selectTeacherIndex(item);
 			} else {
-				currentOwners[0] = item.id;
+				let duppp = false;
+				console.log("check",item.id,currentOwners);
+					currentOwners.some((itemT,indexT)=>{
+				console.log("some",itemT);
+					if(itemT == item.id){
+						console.log("dup",item.name);
+					    //currentOwners.splice(indexT,1);
+					    duppp = true;
+						return
+					   }
+				});
+				if (duppp == false) { 
+					console.log("no dupp"); currentOwners.unshift( item.id);
+					selectTeacherIndex(item);
+				}
 			}
-			selectTeacherIndex(item);
+			
 				setChoosingSelectTeacherMain(false);
 		});
 		
@@ -369,6 +486,21 @@ function loadingDataTeacherError(){
 	document.getElementById("teacher-page-loading-progress-span").style.display = "none" ;
 }
 	
+function loadingDataRegisterProgress(){
+	document.getElementById("fetchListRegisterProgress").style.display = "flex" ;
+	document.getElementById("listRegisterError").style.display = "none" ;
+}
+	
+function loadingDataRegisterDone(){
+	document.getElementById("fetchListRegisterProgress").style.display = "none" ;;
+	document.getElementById("listRegisterError").style.display = "none" ;
+}
+	
+function loadingDataRegisterError(){
+	document.getElementById("listRegisterError").style.display = "flex" ;
+	document.getElementById("fetchListRegisterProgress").style.display = "none" ;
+}
+		
 function chooseMultiOwwner(){
 	
 }
@@ -376,4 +508,296 @@ function chooseMultiOwwner(){
 function chooseSingleOwwner(){
 	
 }
+	
+function createListRegister(result,isPush) {
+        //lấy danh sách regisster
+        //
+        let data = result.data;
+		if (!listVisited.includes(getCurrentView())){
+			listVisited.push(getCurrentView());
+		}
+        console.log("dataa",data,result.total,getCurrentView());
+        if (data != null) {
+            if (data.length > 0) {
+
+                let tableRegisterTitle = ["manage-section-helpdesk-real-table-order","manage-section-helpdesk-real-table-lecture","manage-section-helpdesk-real-table-name", "manage-section-helpdesk-real-table-time", "manage-section-road-map-time-real-table-phone", "manage-section-road-map-time-real-table-note","manage-section-road-map-time-real-table-admin"];
+                let tableRegisterTitleTDPropeties = ["stt","lecture","name","time", "phone", "note", "adminNote"];
+                let tableRegisterTitleHEADER = ['<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_1"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_2"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_3"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_4"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_5"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_6"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_7"] ?>'
+                ];
+                document.getElementById("tableRegister").style.display = "flex";
+
+                let parent = document.getElementById("tableRegisterInside");
+				parent.innerHTML ="";
+                let trFirst = document.createElement("tr");
+                tableRegisterTitle.forEach((item, index) => {
+                    let thFirst = document.createElement("th");
+                    thFirst.className = item;
+					thFirst.innerHTML = tableRegisterTitleHEADER[index];
+                    trFirst.appendChild(thFirst);
+                })
+                parent.appendChild(trFirst);
+
+                data.forEach((item, index) => {
+					console.log("item",item);
+					if (isPush){
+        				listRegister = listRegister.concat(item);
+					}
+                    let trRow = document.createElement("tr");
+                    tableRegisterTitleTDPropeties.forEach((itemProp, indexProp) => {
+                        let tdInside = document.createElement("td");
+                        tdInside.className = tableRegisterTitle[indexProp];
+						if (indexProp == 0){
+						   tdInside.innerHTML = getCurrentView() * dictionaryKey.limitRequestRegister + index + 1;
+						} else if(indexProp == 1){//title
+						   tdInside.innerHTML = item["course"]["title"];
+						}else if(indexProp == 3){//time
+							let dateRegister = new Date(item["createAt"]);
+							
+						   tdInside.innerHTML = inputNumberSmallerThanTen(dateRegister.getDay())+"/"+inputNumberSmallerThanTen(dateRegister.getMonth())+"/"+inputNumberSmallerThanTen(dateRegister.getFullYear())+" " + inputNumberSmallerThanTen(dateRegister.getHours())+":" + inputNumberSmallerThanTen(dateRegister.getMinutes());
+						} else if(indexProp == 6){//admin note
+							let valueAdminNote = item["adminNote"] != null ? item["adminNote"] : "";
+							 tdInside.innerHTML = "<textarea type=\"text\" style=\"resize: none;height:80px;padding:1px;\" id=\"text-area-" + 
+								 
+								 Number.parseInt(getCurrentView() * dictionaryKey.limitRequestRegister + index)
+								 
+								 + "\" >"+valueAdminNote+"</textarea>  <input type=\"button\" value=\"" + dictionaryKey.UPDATE +"\"  onclick=\"updateToRegister("+Number.parseInt(getCurrentView() * dictionaryKey.limitRequestRegister + index)+")\"> ";
+						}else {
+						   tdInside.innerHTML = item[itemProp] != null ? item[itemProp] : "";
+						}
+                        trRow.appendChild(tdInside);
+                    });
+                    parent.appendChild(trRow);
+                });
+				document.getElementById("span-title-regisster").style.display = "flex";
+				let parentPaging = document.getElementById("pagingList");
+				parentPaging.innerHTML="";
+				let maxPage = result.total;
+				let maxPerList = dictionaryKey.limitRequestRegister;
+				let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+				console.log(totalPage);
+				for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
+					let tempDivPaging = document.createElement("span");
+					tempDivPaging.className="manage-list-lecture-list-register-paging-index";
+					if(pagingIndex == getCurrentView()){
+					   tempDivPaging.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+					   }
+					
+					tempDivPaging.id="paging-index-"+pagingIndex;
+					tempDivPaging.innerHTML = Number.parseInt(pagingIndex) + 1;
+					
+					tempDivPaging.addEventListener("click",function(e){console.log("click",pagingIndex,totalPage,listVisited.includes(pagingIndex));
+						for (let tI = 0 ; tI < totalPage ; tI++ ){
+							let tDiv = document.getElementById("paging-index-"+tI);
+									if (tI != pagingIndex){
+							//đặt cho các số khác là màu in nhạt	
+										tDiv.className="manage-list-lecture-list-register-paging-index";
+										} else {console.log("choose");
+							//đặt cho số đang chọnc là màu in đậm	
+										tDiv.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+										}
+							}
+						if(!listVisited.includes(pagingIndex)){//load cái mới	
+						   setCurrentView(pagingIndex);
+						} else {//load lại cái cũ
+							console.log("load lại cái cũ");
+							loadOldPage(pagingIndex);
+						}
+					});
+					
+					parentPaging.appendChild(tempDivPaging);
+				}
+				//parent.;
+            } else {
+                document.getElementById("tableRegister").style.display = "flex";
+                document.getElementById("tableRegisterTitle").innerHTML = '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_EMPTY"]; ?>';
+                document.getElementById("tableRegisterInside").style.display = 'none';
+
+            }
+        } else {
+            document.getElementById("tableRegister").style.display = "flex";
+            document.getElementById("tableRegisterTitle").innerHTML = '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_EMPTY"]; ?>';
+            document.getElementById("tableRegisterInside").style.display = 'none';
+        }
+    }
+	
+	function loadOldPage(number){
+		let startIndex = number*dictionaryKey.limitRequestRegister;
+		let endIndex = dictionaryKey.limitRequestRegister;
+		let arrayOldPage = listRegister.slice(startIndex, endIndex);
+		console.log("arrayOldPage",arrayOldPage,listRegister,startIndex,endIndex);
+		
+		let tableRegisterTitle = ["manage-section-helpdesk-real-table-order","manage-section-helpdesk-real-table-lecture","manage-section-helpdesk-real-table-name", "manage-section-helpdesk-real-table-time", "manage-section-road-map-time-real-table-phone", "manage-section-road-map-time-real-table-note","manage-section-road-map-time-real-table-admin"];
+                let tableRegisterTitleTDPropeties = ["stt","lecture","name","time", "phone", "note", "adminNote"];
+                let tableRegisterTitleHEADER = ['<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_1"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_2"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_3"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_4"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_5"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_6"] ?>',
+                    '<?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_7"] ?>'
+                ];
+                document.getElementById("tableRegister").style.display = "flex";
+
+                let parent = document.getElementById("tableRegisterInside");
+				parent.innerHTML ="";
+                let trFirst = document.createElement("tr");
+                tableRegisterTitle.forEach((item, index) => {
+                    let thFirst = document.createElement("th");
+                    thFirst.className = item;
+					thFirst.innerHTML = tableRegisterTitleHEADER[index];
+                    trFirst.appendChild(thFirst);
+                })
+                parent.appendChild(trFirst);
+		
+		arrayOldPage.forEach((item, index) => {
+					console.log("item",item);
+				
+                    let trRow = document.createElement("tr");
+                    tableRegisterTitleTDPropeties.forEach((itemProp, indexProp) => {
+                        let tdInside = document.createElement("td");
+                        tdInside.className = tableRegisterTitle[indexProp];
+						if (indexProp == 0){
+						   tdInside.innerHTML = getCurrentView() * dictionaryKey.limitRequestRegister + index + 1;
+						} else if(indexProp == 1){//title
+						   tdInside.innerHTML = item["course"]["title"];
+						}else if(indexProp == 3){//time
+							let dateRegister = new Date(item["createAt"]);
+							
+						   tdInside.innerHTML = inputNumberSmallerThanTen(dateRegister.getDay())+"/"+inputNumberSmallerThanTen(dateRegister.getMonth())+"/"+inputNumberSmallerThanTen(dateRegister.getFullYear())+" " + inputNumberSmallerThanTen(dateRegister.getHours())+":" + inputNumberSmallerThanTen(dateRegister.getMinutes());
+						} else if(indexProp == 6){//admin note
+							let valueAdminNote = item["adminNote"] != null ? item["adminNote"] : "";
+							 tdInside.innerHTML = "<textarea type=\"text\" style=\"resize: none;height:80px;padding:1px;\" id=\"text-area-" + 
+								 
+								 Number.parseInt(getCurrentView() * dictionaryKey.limitRequestRegister + index)
+								 
+								 + "\" >"+valueAdminNote+"</textarea>  <input type=\"button\" value=\"" + dictionaryKey.UPDATE +"\"  onclick=\"updateToRegister("+Number.parseInt(getCurrentView() * dictionaryKey.limitRequestRegister + index)+")\"> ";
+						}else {
+						   tdInside.innerHTML = item[itemProp] != null ? item[itemProp] : "";
+						}
+                        trRow.appendChild(tdInside);
+                    });
+                    parent.appendChild(trRow);
+                });
+		
+	}
+	
+	function updateToRegister(number){
+		 SunQAlert()
+            .position('center')
+            .title(dictionaryKey.REQUEST_EDIT)
+            .type('success')
+            .confirmButtonColor("#3B4EDC")
+            .cancelButtonColor("#a8b1f5")
+            .confirmButtonText(dictionaryKey.AGREE)
+            .cancelButtonText(dictionaryKey.CANCEL)
+            .callback((result) => {
+                if (result.value) {
+					let dataUpdateRegister = {
+						isGotAdvice:true,
+						adminNote:document.getElementById("text-area-"+number).value
+					};
+				setLoadingCurrentView(true);
+                   requestToSever(
+						sunQRequestType.put,
+						getURLAccountAdvice()+"/"+listRegister[number]["id"],
+						dataUpdateRegister,
+						getData(dictionary.MSEC),
+                        function(res) {
+                            //console.log(res);
+                            setLoadingCurrentView(false);
+                            if (res.code === networkCode.success) {
+                                SunQAlert()
+                                    .position('center')
+                                    .title(dictionaryKey.REGISTER_EDIT_SUCCESS)
+                                    .type('success')
+                                    .confirmButtonColor("#3B4EDC")
+                                    .confirmButtonText(dictionaryKey.AGREE)
+                                    .callback((result) => {
+                                       //createListRegister(getCurrentView(),false);
+                                    })
+                                    .show();
+                            } else if (res.code === networkCode.sessionTimeOut) {
+                                makeAlertRedirect();
+                            }
+                        },
+                        function(err) {
+                            setLoadingCurrentView(false);
+                            SunQAlert()
+                                .position('center')
+                                .title(dictionaryKey.REGISTER_EDIT_FAILED)
+                                .type('error')
+                                .confirmButtonColor("#3B4EDC")
+                                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                .callback((result) => {
+                                   // createListRegister(getCurrentView(),false);
+                                })
+                                .show();
+
+                            console.log(dictionaryKey.ERR_INFO, err);
+
+                        }
+                    );
+				}
+		 }).show();
+	}
+	
+	function loadOldPageLecture(number){
+		let startIndex = number*dictionaryKey.limitRequestRegister;
+		let endIndex = dictionaryKey.limitRequestRegister;
+		let arrayOldPage = listLecture.slice(startIndex, endIndex);
+		//alert(listLecture+"old"+arrayOldPage+startIndex+endIndex);
+		let parent = document.getElementById("tableListLecture");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	arrayOldPage.forEach((item,index) => {
+		//console.log(index);
+		let trContent = document.createElement("tr");
+		if (index % 2 != 0){
+			trContent.className = 'manage-list-lecture-table-detail-strong';
+		} 
+		
+		//console.log(item.id);
+	
+		
+		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index + 1)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
+		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+index+")\">Xóa</div></td>";
+		tbody.appendChild(trContent);
+	});
+	parent.appendChild(tbody);
+		
+	}
+
+	function loadOldPageTeacher(number){
+		let startIndex = number*dictionaryKey.limitRequestRegister;
+		let endIndex = dictionaryKey.limitRequestRegister;
+		let arrayOldPage = listTeacher.slice(startIndex, endIndex);
+		
+		let parent = document.getElementById("tableListTeacher");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["TEACHER_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_5"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	arrayOldPage.forEach((item,index) => {
+		//console.log(index);
+		let trContent = document.createElement("tr");
+		if (index % 2 != 0){
+			trContent.className = 'manage-list-teacher-table-detail-strong';
+		} 
+		trContent.innerHTML = "<td>"+(index + 1)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
+		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+index+")\">Xóa</div></td>";
+		tbody.appendChild(trContent);
+	});
+	parent.appendChild(tbody);
+	}
+	
 </script>

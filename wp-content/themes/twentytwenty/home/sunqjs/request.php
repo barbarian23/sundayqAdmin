@@ -98,18 +98,15 @@
         });
     }
 
-    function checkMobileIOS() {
-        const toMatch = [
-            /webOS/i,
-            /iPhone/i,
-            /iPad/i,
-            /iPod/i,
-        ];
-        return toMatch.some((toMatchItem) => {
-            return navigator.userAgent.match(toMatchItem);
-        });
-    }
-
+	function prepareUrlForGetThatContainsBody(url,data){
+		url += "?";
+		for(let prop in data){
+			url +=  prop  + "=" + data[prop] + "&";
+		}
+		url = url.substring(0, url.length-1);
+		return url;
+	}
+	
     async function saveFunction(inp) {
         let formData = new FormData();
         let photo = inp.files[0];

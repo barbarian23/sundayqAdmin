@@ -13,23 +13,26 @@
 		<!-- home middle left -->
 		<!--  large screen-->
 		<div class="home-middle-left">
-			<form action="get">
+			<div class="home-middle-left-contain" action="get">
 				<div class="home-middle-left-menu" id="dashboardName">
 					<a  href=<?php echo $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"]; ?>><i class="fa fa-dashboard" id="dashboardIcon"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_TITLE"]; ?></span></a>
 				</div>
 				<!-- Học online -->
-				<div class="home-middle-left-menu">
-					<i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
-					<div id="homeMenuOline">
+				<div class="home-middle-left-menu" id="divShowOnline">
+					<div class="home-middle-left-menu-title">
+						<i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
+					</div>
+					<div class="home-middle-left-menu-content" id="homeMenuOline">
 
 					</div>
 				</div>
 					
 				<!-- Học offline -->
 				<div class="home-middle-left-menu" id="divShowOffline">
-					<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
-					
-					<div id="homeMenuOffline">
+					<div class="home-middle-left-menu-title">
+						<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
+					</div>
+					<div class="home-middle-left-menu-content" id="homeMenuOffline">
 						<div class="home-middle-left-menu">
 							<a href="?mode=offline&page=list-lecture"><i class="fa fa-calendar"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span></a>
 						</div>
@@ -39,7 +42,24 @@
 						</div>
 					</div>
 				</div>
-			</form>
+				
+				<!-- admin -->
+				<div class="home-middle-left-menu" id="divShowAccount">
+					<div class="home-middle-left-menu-title">
+						<i class="	fa fa-address-book"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
+					</div>
+					<div class="home-middle-left-menu-content" id="homeMenuAccount">
+						<div class="home-middle-left-menu">
+						<a href="?mode=offline"><i class="fa fa-address-card-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span></a>
+						</div>
+
+						<div class="home-middle-left-menu">
+							<a href="?mode=offline"><i class="fa fa-code-fork"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
 		</div>
 
 		<!--  small screen-->
@@ -111,6 +131,18 @@
 									case "teacher":
 										include get_theme_file_path( "home/offline/teacher/teacher.php" );
 										break;
+									case "account":
+										include get_theme_file_path( "home/offline/superadmin/account/account.php" );
+										break;
+									case "list-account":
+										include get_theme_file_path( "home/offline/superadmin/account/list-account.php" );
+										break;
+									case "group":
+										include get_theme_file_path( "home/offline/superadmin/group/group.php" );
+										break;
+									case "list-group":
+										include get_theme_file_path( "home/offline/superadmin/group/list-group.php" );
+										break;
 									case "list-lecture":
 										include get_theme_file_path( "home/offline/lecture/list-lecture.php" );
 										break;
@@ -122,6 +154,29 @@
 								}
 							}
 						}
+					} else {
+						?>
+					<div style="width: 100%;
+								display: flex;
+								flex-direction: column;
+								justify-content: flex-end;
+								align-items: flex-start;
+								position: relative;
+								padding-left: 9px;">
+						<h1 style="color: #66b3ff;">
+							Xin chào admin của SunQ
+						</h1>
+						<h2 id="mainmenuOnline" style="color: #66b3ff;margin-right:13%;cursor: pointer;">
+							-Lựa chọn học trực tuyến để chỉnh sửa
+						</h2>
+						<h2 id="mainmenuOffline" style="color: #66b3ff;margin-right:10%;cursor: pointer;">
+							-Lựa chọn học ngoại tuyến để chỉnh sửa
+						</h2>
+						<h2 id="mainmenuAccount" style="color: #66b3ff;margin-right:10%;cursor: pointer;">
+							-Lựa chọn quản lý tài khoản
+						</h2>
+					</div>
+						<?php
 					}
 				?>
 			</div>
@@ -173,6 +228,65 @@
 // 		}
 // 	}
 // });
+	
+	let sunqModeOfflineDiv = document.getElementById("divShowOffline");
+	sunqModeOfflineDiv && sunqModeOfflineDiv.addEventListener("click",function(){
+				//console.log("divShowOffline");
+				if(getMode() == sunQMode.offline){
+				   		hideOffLineMode();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.offline);
+				   }
+			});
+
+
+	let sunqModeOnlineDiv = document.getElementById("divShowOnline");
+	sunqModeOnlineDiv && sunqModeOnlineDiv.addEventListener("click",function(){
+				if(getMode() == sunQMode.online){
+				   		hideOnLineMode();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.online);
+				   }
+				//setMode(sunQMode.online);
+			});
+	
+	let sunQModeAccount = document.getElementById("divShowAccount");
+	sunQModeAccount && sunQModeAccount.addEventListener("click",function(){
+		if(getMode() == sunQMode.account){
+				   		hideAccountMode();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.account);
+				   }
+				//setMode(sunQMode.account);
+			});
+	
+let mainmenuOffline = document.getElementById("mainmenuOffline");
+	
+if(mainmenuOffline != null){
+	   document.getElementById("mainmenuOffline").addEventListener("click",function(){
+		 console.log("clickkkkk");
+		   showOffLineMode();
+	   });
+}
+
+let mainmenuOnline = document.getElementById("mainmenuOnline");
+	
+if(mainmenuOnline != null){
+	   document.getElementById("mainmenuOnline").addEventListener("click",function(){
+		   showOnLineMode();
+	   });
+}
+	
+let mainmenuAccount = document.getElementById("mainmenuAccount");
+	
+if(mainmenuAccount != null){
+	   document.getElementById("mainmenuAccount").addEventListener("click",function(){
+		   showAccountMode();
+	   });
+}
 	
 window.addEventListener("touchend",function(e){
 	let arrayContainIdValid = ["dashboardNameSmall","dashboardNameSmallA","dashboardNameSmallI","dashboardNameSmallSPAN","smallHomeMenuOfflineDivContainListLecture","smallHomeMenuOfflineAContainListLecture","smallHomeMenuOfflineIContainListLecture","smallHomeMenuOfflineDivContainListTeacher","smallHomeMenuOfflineAContainListTeacher","smallHomeMenuOfflineIContainListTeacher","dashboardIconTopSmallDivContain"];

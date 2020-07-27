@@ -2,40 +2,22 @@
 
 ?>
 <script>
+	var listRegister = [],listVisited=[],listLecture=[],listVisitedLecture=[];
     window.onload = function() {
-        setFetchingLecture(true);
-        requestToSever(
-            sunQRequestType.get,
-            getURLAllLecture(),
-            null,
-            getData(dictionary.MSEC),
-            function(res) {
-                setFetchingLecture(false);
-                if (res.code === networkCode.success) {
-                    if (res.data == null || res.data.length == 0) {
-                        setGetLectureFromServerSuccess(false);
-                    } else {
-                        //setGetLectureFromServerSuccess(true);
-                        emptyTableListLecture();
-                        listLecture = res.data;
-                        createListLEcture(res.data);
-                    }
-                } else if (res.code === networkCode.sessionTimeOut) {
-                    makeAlertRedirect();
-                }
-            },
-            function(err) {
-                setFetchingLecture(false);
-                console.log(dictionaryKey.ERR_INFO, err);
-                setIsGetLectureFromServerSuccess(false);
-
-            }
-        );
+		
+		//get list lecture
+		listVisitedLecture.push(0);
+		setCurrentLecture(0);
+		
+		//get list register
+		listVisited.push(0);
+		setCurrentView(0);
+		
     }
 
     function deleteLecture(mId) {
         console.log("delete", listLecture[mId]);
-
+		//alert(listLecture[mId]+listLecture[mId].id);
         SunQAlert()
             .position('center')
             .title(dictionaryKey.REQUEST_DELETE)
@@ -98,35 +80,77 @@
     }
 </script>
 <div class="manage-list-lecture">
-    <div class="manage-list-lecture-title">
-        <span><?php echo $GLOBALS["LECTURE_LIST_TITLE"]; ?></span>
-    </div>
-
-    <div class="manage-list-lecture-table">
-        <div class="sunq-process-contain" id="fetchListLectureProgress">
+	
+	<div class="manage-list-lecture-list-register">
+		
+		<div class="manage-section-helpdesk-title-table">
+				<span id="tableRegisterTitle"><?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT"]; ?></span>
+		</div>
+		
+		<div class="sunq-process-contain" id="fetchListRegisterProgress">
+            <span id="fetchListRegisterProgressText"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>
             <div class="sunq-process-contain-running">
 
             </div>
         </div>
-        <table class="manage-list-lecture-table-detail" id="tableListLecture">
-
-        </table>
-        <div class="manage-list-lecture-table-detail-no-list" id="listLectureEmpty">
-            <img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
-            <span><?php echo $GLOBALS["LECTURE_NO_LIST"]; ?></span>
-        </div>
-
-        <div class="manage-list-lecture-table-detail-no-list" id="listLectureError">
+	
+        <div class="manage-list-lecture-table-detail-no-list" id="listRegisterError">
             <img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
             <span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
         </div>
-    </div>
+		
+		<div class="manage-section-helpdesk" id="tableRegister">
+			
+			<div class="manage-section-helpdesk-table">
+				<table class="manage-section-helpdesk-real-table" id="tableRegisterInside">
 
-    <div class="manage-list-lecture-add-new">
-        <a href="?mode=offline&page=lecture&action=add">
-            <button>
-                <span><?php echo $GLOBALS["LECTURE_LIST_BUTTON_ADD_LECTURE"]; ?></span>
-            </button>
-        </a>
-    </div>
+				</table>
+			</div>
+    	</div> 
+		<!-- paging -->
+		<span class="manage-list-lecture-list-register-paging-span-title" id="span-title-regisster"><?php echo $GLOBALS["LECTURE_LIST_REGISTER_NUMBER_TITLE"]; ?></span>
+		<div class="manage-list-lecture-list-register-paging" id="pagingList">
+			
+		</div>
+	</div>
+	
+	<div class="manage-list-lecture-title-list-contain">
+		<div class="manage-list-lecture-title">
+			<span><?php echo $GLOBALS["LECTURE_LIST_TITLE"]; ?></span>
+		</div>
+
+		<div class="manage-list-lecture-table">
+			<div class="sunq-process-contain" id="fetchListLectureProgress">
+				<div class="sunq-process-contain-running">
+
+				</div>
+			</div>
+			<table class="manage-list-lecture-table-detail" id="tableListLecture">
+
+			</table>
+			<div class="manage-list-lecture-table-detail-no-list" id="listLectureEmpty">
+				<img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
+				<span><?php echo $GLOBALS["LECTURE_NO_LIST"]; ?></span>
+			</div>
+
+			<div class="manage-list-lecture-table-detail-no-list" id="listLectureError">
+				<img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
+				<span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
+			</div>
+		</div>
+
+		<!-- paging -->
+		<span class="manage-list-lecture-list-register-paging-span-title" id="span-title-lecture"><?php echo $GLOBALS["LECTURE_LIST_REGISTER_NUMBER_TITLE"]; ?></span>
+		<div class="manage-list-lecture-list-register-paging" id="pagingListLecture">
+			
+		</div>
+		
+		<div class="manage-list-lecture-add-new">
+			<a href="?mode=offline&page=lecture&action=add">
+				<button>
+					<span><?php echo $GLOBALS["LECTURE_LIST_BUTTON_ADD_LECTURE"]; ?></span>
+				</button>
+			</a>
+		</div>
+	</div>
 </div>

@@ -134,8 +134,17 @@
                 <span><?php echo $GLOBALS["LECTURE_DETAIL"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
             </div>
             <div class="manage-section-detail-midlle-item">
-                <textarea id="lectureDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["LECTURE_DETAIL_PLACEHOLDER"]; ?>' required></textarea>
+<!--                  <textarea id="lectureDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["LECTURE_DETAIL_PLACEHOLDER"]; ?>' required></textarea>  -->
+				<div id="lectureDetailTextArea-toolbar-container"></div>
+				<div id="lectureDetailTextArea" ><?php echo $GLOBALS["LECTURE_DETAIL_PLACEHOLDER"]; ?></div>
+				
             </div>
+			<div class="manage-section-detail-midlle-span">
+                <span><?php echo $GLOBALS["LECTURE_SUB_DETAIL"]; ?></span>
+            </div>
+			<div class="manage-section-detail-midlle-item">
+				<textarea id="lectureSubDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["LECTURE_SUB_DETAIL_PLACEHOLDER"]; ?>' required></textarea>
+			</div>
         </div>
         <div class="manage-section-detail-right">
             <div class="manage-section-detail-right-span">
@@ -237,48 +246,10 @@
         </div>
     </div>
 
-    <!--  đăng kí nhận tư vấn -->
-    <div class="manage-section-helpdesk" id="tableRegister">
-        <hr class="lecture-hr">
-        <div class="manage-section-helpdesk-title-table">
-            <span><?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT"]; ?></span>
-        </div>
-        <div class="manage-section-helpdesk-table">
-            <table class="manage-section-helpdesk-real-table" id="tableRegisterInside">
-                <!--                 <tr>
-                    <th class="manage-section-helpdesk-real-table-name">
-                        <span><?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_1"]; ?></span>
-                    </th>
-                    <th class="manage-section-helpdesk-real-table-phone">
-                        <span><?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_2"]; ?></span>
-                    </th>
-                    <th class="manage-section-road-map-time-real-table-email">
-                        <span><?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_3"]; ?></span>
-                    </th>
-                    <th class="manage-section-road-map-time-real-table-note">
-                        <span><?php echo $GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_4"]; ?></span>
-                    </th>
-                </tr>
-                <tr>
-                    <td class="manage-section-helpdesk-real-table-name">
-                        Buổi 1
-                    </td>
-                    <td class="manage-section-helpdesk-real-table-phone">
-                        Hoạt động ngoài trời
-                    </td>
-                    <td class="manage-section-road-map-time-real-table-email">
-                        9:30 am
-                    </td>
-                    <td class="manage-section-road-map-time-real-table-note">
-                        Nguyễn Văn A
-                    </td>
-                </tr> -->
-            </table>
-        </div>
-    </div>
+
 
     <div class="manage-content-bottom-action">
-        <input id="lectureSubmit" type="submit" value='<?php echo $GLOBALS["LECTURE_SUBMIT"]; ?>' name="submitLecture">
+        <input id="lectureSubmit" type="submit" value='<?php echo $GLOBALS["LECTURE_SUBMIT_ADD"]; ?>' name="submitLecture">
 
     </div>
 
@@ -289,7 +260,7 @@
 
 <script src="wp-content/themes/twentytwenty/assets/js/alasql.min.js"></script>
 <script src="wp-content/themes/twentytwenty/assets/js/xlsx.core.min.js"></script>
-
+<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/decoupled-document/ckeditor.js"></script>
 <script>
     //load from data teacher
     // 	coursePlans: [
@@ -306,6 +277,19 @@
     var sheet_2_data ;
     window.onload = function() {
 		myCurrentLecture =  {};
+		lectureDescription = "";
+		DecoupledEditor
+            .create( document.querySelector( '#lectureDetailTextArea' ) )
+            .then( editor => {
+				lectureDescription = editor;
+                const toolbarContainer = document.querySelector( '#lectureDetailTextArea-toolbar-container' );
+
+                toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+		
         mobiscroll.number('#idAgeOfLectureFrom', {
             theme: 'ios',
             themeVariant: 'light',
@@ -368,7 +352,7 @@
 		getCurrentACtion() == dictionaryKey.editStatus ? document.getElementById("btnUploadDesImg").innerHTML='<?php echo $GLOBALS["LECTURE_EDIT_DES_IMG"]; ?>' : document.getElementById("btnUploadDesImg").innerHTML='<?php echo $GLOBALS["LECTURE_ADD_DES_IMG"]; ?>' ;
         clearListImageAndDetailImage();
         if (getCurrentACtion() == dictionaryKey.editStatus) {
-
+			document.getElementById("lectureSubmit").value = '<?php echo $GLOBALS["LECTURE_SUBMIT_EDIT"] ?>';
             //fetch từ server
             setLoadingDataLEcture(true);
             requestToSever(
@@ -386,7 +370,9 @@
                         document.getElementById("idAgeOfLectureFrom").value = myCurrentLecture.minTargetAge;
                         document.getElementById("idAgeOfLectureTo").value = myCurrentLecture.maxTargetAge;
                         document.getElementById("idTypeOfLecture").value = myCurrentLecture.courseType;
-                        document.getElementById("lectureDetailTextArea").textContent = myCurrentLecture.description;
+                        document.getElementById("lectureSubDetailTextArea").value = myCurrentLecture.shortDescription == null ? "" : myCurrentLecture.shortDescription;
+                        //document.getElementById("lectureDetailTextArea").textContent = myCurrentLecture.description;
+						lectureDescription.setData(myCurrentLecture.description != null ? myCurrentLecture.description : "");
                         document.getElementById("lecture-main-img").src = getHomeURL() + myCurrentLecture.descriptionImgUrl;
 						//console.log(res.data);
 // 						if(res.data.coursePlans){
@@ -410,11 +396,29 @@
                         // 					}
 
                         // 						parent.innerHTML = imgTempLEcture + parent.innerHTML;
-                        let imgTempLEcture = "";
-                        let parentImgList = parent.innerHTML;
+                        
+                        //let parentImgList = parent.innerHTML;
                         if (myCurrentLecture.otherImgUrls != null) {
                             myCurrentLecture.otherImgUrls.forEach((item, index) => {
-                                imgTempLEcture = imgTempLEcture + "<img id=\"lecture-img-" + (index + 1) + "\"  class=\"manage-section-infomation-right-item\" src=\"" + getHomeURL() + item + "\" >";
+								let imgLEctureParrent = document.createElement("div");
+								imgLEctureParrent.className = "manage-section-infomation-right-item";
+								
+								let imgTempLEcture = document.createElement("img");
+								imgTempLEcture.id = "lecture-img-" + (index + 1);
+								imgTempLEcture.className = "manage-section-infomation-right-item-img";
+								imgTempLEcture.src = getHomeURL() + item;
+								let imgLEctureClose = document.createElement("div");
+								imgLEctureClose.className = "manage-section-infomation-right-list-image-drop";
+								imgLEctureClose.innerHTML = "x";
+								imgLEctureClose.addEventListener("click",function(){
+									imgLEctureClose.remove();
+									imgTempLEcture.remove();
+									myCurrentLecture.otherImgUrls.splice(index,1);
+								})
+                                /*imgTempLEcture = imgTempLEcture + "<div class=>x</div><img id=\"lecture-img-" + (index + 1) + "\"  class=\"manage-section-infomation-right-item\" src=\"" + getHomeURL() + item + "\" >";*/
+								imgLEctureParrent.appendChild(imgLEctureClose);
+								imgLEctureParrent.appendChild(imgTempLEcture);
+								parent.appendChild(imgLEctureParrent);
                             });
 							
                         } else {
@@ -443,6 +447,7 @@
 								
 								if(myCurrentLecture.owners.length > 1){
 							 	setChoosingMultiTeacher(true);
+									document.getElementById("multiOwner").checked = true;
 							} else {
 								setChoosingMultiTeacher(false);
 							}
@@ -462,9 +467,7 @@
 // ]);
  						}
 						
-						
-						
-                        parent.innerHTML = imgTempLEcture + parent.innerHTML;
+                        //parent.innerHTML = imgTempLEcture + parent.innerHTML;
 
                     } else if (res.code === networkCode.sessionTimeOut) {
                         makeAlertRedirect();
@@ -485,8 +488,10 @@
                         .show();
                 }
             );
-
-        }
+        } else {
+			
+			document.getElementById("lectureSubmit").value = '<?php echo $GLOBALS["LECTURE_SUBMIT_ADD"] ?>';
+		}
 
     }
 
@@ -522,18 +527,26 @@
 							tdInsideScheduleTr.innerHTML = cItem[arrayPropertyScheduleLecture[index]];
 							//console.log("ccc",myCurrentTacherInLecture);
 							if (index  == 3){
+								console.log("teacherid ",cItem.teacherId);
+								
 								if(myCurrentTacherInLecture != null){
 									myCurrentTacherInLecture.some((itemTeacher,indexTeacher) => {
+										console.log("teacherid some",itemTeacher.id);
 										if( cItem.teacherId == itemTeacher.id){
+											console.log("match",itemTeacher.shortId);
 										   tdInsideScheduleTr.innerHTML = itemTeacher.shortId ;
 										   return true;
 									}
 									});
+									if(tdInsideScheduleTr.innerHTML == "undefined" || cItem.teacherId == null){
+									   tdInsideScheduleTr.innerHTML = '<?php echo $GLOBALS["LACK_TEACHER"]; ?>';
+									   }
 								} else {
 									tdInsideScheduleTr.innerHTML = cItem.teacherId ;
 								}
-							    tdInsideScheduleTr.innerHTML = cItem.teacherId ;
+							  
 							} else if (index  == 4){
+								
 								if(myCurrentTacherInLecture != null){
 									myCurrentTacherInLecture.some((itemTeacher,indexTeacher) => {
 										if( cItem.supporterId == itemTeacher.id){
@@ -541,10 +554,14 @@
 										   return true;
 									}
 									});
+									console.log("");
+									if(tdInsideScheduleTr.innerHTML == "undefined"  || cItem.teacherId == null){
+									   tdInsideScheduleTr.innerHTML = '<?php echo $GLOBALS["LACK_TEACHER"]; ?>';
+									   }
 								} else {
 									tdInsideScheduleTr.innerHTML = cItem.supporterId ;
 								}
-							    //tdInsideScheduleTr.innerHTML = cItem.supporterId ;
+							  
 							}
 							//console.log("item",cItem.viewIndex);
 							//myCurrentLecture.coursePlans[countInsideSchedule] = item[arrayPropertyScheduleLecture[item]];
@@ -579,7 +596,8 @@
 		jsonInput.forEach(function(cItem,cIndex){
 		
 				let trInsideSchedule = document.createElement("tr");
-			    arrayTitleScheduleLecture.forEach(function(item, index) {console.log("item",item,"index",index);
+			    arrayTitleScheduleLecture.forEach(function(item, index) {
+					//console.log("item",item,"index",index);
 				let countInsideSchedule = 0;
 
 							let tdInsideScheduleTr = document.createElement("td");
@@ -613,6 +631,7 @@
 							let thInsideScheduleTr = document.createElement("th");
 							thInsideScheduleTr.className = arrayTitleScheduleLecture[countInsideSchedule++];
 							thInsideScheduleTr.innerHTML = prop;
+							console.log("th",prop);
 							trInsideSchedule.appendChild(thInsideScheduleTr);
 						}
                     }
@@ -622,48 +641,96 @@
         });
 		myCurrentLecture = myCurrentLecture == null ? {} : myCurrentLecture ;
 		myCurrentLecture.coursePlans = myCurrentLecture.coursePlans == null ? [] : myCurrentLecture.coursePlans;
-		console.log(myCurrentLecture.coursePlans);
+		//console.log(myCurrentLecture.coursePlans);
 		myCurrentLecture.coursePlans.length = 0;
         jsonInput.forEach(function(item, index) {
             let trInsideSchedule = document.createElement("tr");
             let countInsideSchedule = 0;
+			console.log("jsonInput",item[1],item[1] != "" && item[1] != undefined);
+			if(item["Nội dung"] != "" && item["Nội dung"] != undefined){
 			myCurrentLecture.coursePlans[index] = {};
             for (let prop in item) {
                 if (Object.prototype.hasOwnProperty.call(item, prop)) {
-                    //console.log(countInsideSchedule,prop, item[prop]);
+                    //console.log("let",countInsideSchedule,prop, item[prop]);
 					if(countInsideSchedule < 5){
 						let tdInsideScheduleTr = document.createElement("td");
 						tdInsideScheduleTr.className = arrayTitleScheduleLecture[countInsideSchedule];
 						tdInsideScheduleTr.innerHTML = item[prop];
 						//myCurrentLecture[arrayPropertyScheduleLecture[countInsideSchedule]] = item[prop];
 						
-						console.log(item[prop] , item.name, myCurrentTacherInLecture);
+						//console.log("excel",item[prop]);
 						if (countInsideSchedule == 0){
 							myCurrentLecture.coursePlans[index]["dayIndex"] = index;
 						}
 						else if (countInsideSchedule == 3){
+							let isFindName = false;
 							 myCurrentTacherInLecture.some((itemI,indexI)=>{
+								 //console.log("item in excel",item[prop],item[prop] == null);
 								if(item[prop] == itemI.shortId || item[prop] == itemI.name){
 									myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = itemI.id;
+									isFindName = true;
 								   return item.shortId;
 								}
 							});
+							if (!isFindName){
+								tdInsideScheduleTr.innerHTML = dictionaryKey.LACK_TEACHER;
+								myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = dictionaryKey.LACK_TEACHER;
+								}
 						} else if(countInsideSchedule == 4){
+							let isFindName = false;
 							myCurrentTacherInLecture.some((itemI,indexI)=>{
+								// console.log("item in excel",item[prop]);
 								if(item[prop] == itemI.shortId || item[prop] == itemI.name){
 									myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = itemI.id;
+								isFindName = true;
 								   return item.shortId;
 								}
 							});
-						} else {
+							console.log("isFindName",isFindName);
+							if (!isFindName){
+								tdInsideScheduleTr.innerHTML = dictionaryKey.LACK_TEACHER;
+								myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = dictionaryKey.LACK_TEACHER;
+								}
+						}
+						else {
 							myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = item[prop];
 						}
-						console.log("plan",myCurrentLecture.coursePlans[index]);
+					
+						//console.log("push to courrse plan",myCurrentLecture.coursePlans[index],myCurrentLecture);
 						trInsideSchedule.appendChild(tdInsideScheduleTr);
 						countInsideSchedule++;
 					}
-                }
+                } 
             }
+				console.log("yeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",countInsideSchedule);
+					if (countInsideSchedule == 3){
+						console.log("giảng viên",item["Giảng viên"]);
+								if(item["Giảng viên"] == null){
+									let tdInsideScheduleTr = document.createElement("td");
+						tdInsideScheduleTr.className = "manage-section-road-map-time-real-table-teacher";
+								tdInsideScheduleTr.innerHTML = dictionaryKey.LACK_TEACHER;
+									console.log("input",dictionaryKey.LACK_TEACHER);
+								myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = dictionaryKey.LACK_TEACHER;
+									trInsideSchedule.appendChild(tdInsideScheduleTr);
+								   }
+							}
+						if (countInsideSchedule + 1 == 4){
+							console.log("trợ giảng",item["Trợ giảng"]);
+									if(item["Trợ giảng"] == null){
+										let tdInsideScheduleTr = document.createElement("td");
+										tdInsideScheduleTr.className = "manage-section-road-map-time-real-table-sidekick";
+								tdInsideScheduleTr.innerHTML = dictionaryKey.LACK_TEACHER;
+								myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = dictionaryKey.LACK_TEACHER;
+										trInsideSchedule.appendChild(tdInsideScheduleTr);
+									   }
+							}
+				console.log("pussh new",myCurrentLecture.coursePlans);
+// 			if (item[3] == null){
+// 				myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = dictionaryKey.LACK_TEACHER;
+// 			}
+// 			if (item[4] == null){
+// 				myCurrentLecture.coursePlans[index][arrayPropertyScheduleLecture[countInsideSchedule]] = dictionaryKey.LACK_TEACHER;
+// 				}
 //             if (getCurrentACtion() == dictionaryKey.editStatus) {
 //                 myCurrentLecture.coursePlans.dayIndex = index;
 //                 myCurrentLecture.coursePlans.title = index;
@@ -675,6 +742,8 @@
 //             }
             myCurrentLecture.coursePlans[index]["description"] = "description";
             parentTableSchedulde.appendChild(trInsideSchedule);
+			
+		}
         });
     }
 
@@ -900,15 +969,31 @@
 					
 					let parent = document.getElementById("listLEctureImg");
                 	//parent.innerHTML = "";
+                	
+					let imgLEctureParrent = document.createElement("div");
+					imgLEctureParrent.className = "manage-section-infomation-right-item";
+					
                 	let imgTempLEcture  = document.createElement("img");
                 	imgTempLEcture.id = "lecture-img-" + myCurrentLecture.otherImgUrls.length + "" ;
-                	imgTempLEcture.className = "manage-section-infomation-right-item";
+                	imgTempLEcture.className = "manage-section-infomation-right-item-img";
                 	imgTempLEcture.src = getHomeURL()+res.urls[0];
                 				//console.log("add",parent.innerHTML);
 //                 let imgTempLEcture = "<img id=\"lecture-img-" +getCurrentACtion() == dictionaryKey.editStatus ? myCurrentLecture.otherImgUrls.length : "" + "\"  class=\"manage-section-infomation-right-item\" src=\"" + res.urls[0] + "\" >";
 //                 				//console.log("imgTempLEcture",imgTempLEcture);
 //                 	let parentImgList = imgTempLEcture + parent.innerHTML;
-                	parent.appendChild(imgTempLEcture);
+                	
+					let imgLEctureClose = document.createElement("div");
+								imgLEctureClose.className = "manage-section-infomation-right-list-image-drop";
+								imgLEctureClose.innerHTML = "x";
+								imgLEctureClose.addEventListener("click",function(){
+									imgTempLEcture.remove();
+									imgLEctureClose.remove();
+									myCurrentLecture.otherImgUrls.splice(index,1);
+								})
+                                /*imgTempLEcture = imgTempLEcture + "<div class=>x</div><img id=\"lecture-img-" + (index + 1) + "\"  class=\"manage-section-infomation-right-item\" src=\"" + getHomeURL() + item + "\" >";*/
+					imgLEctureParrent.appendChild(imgLEctureClose);
+					imgLEctureParrent.appendChild(imgTempLEcture);
+					parent.appendChild(imgLEctureParrent);
 				}
             },
             function(err) {
@@ -1020,16 +1105,20 @@
     });
 
     document.getElementById("idAgeOfLectureFrom").addEventListener("change", function(e) {
-        myCurrentLecture.maxTargetAge = e.target.value;
+        myCurrentLecture.minTargetAge = e.target.value;
     });
     document.getElementById("idAgeOfLectureTo").addEventListener("change", function(e) {
-        myCurrentLecture.minTargetAge = e.target.value;
+        myCurrentLecture.maxTargetAge = e.target.value;
     });
     document.getElementById("idTypeOfLecture").addEventListener("input", function(e) {
         myCurrentLecture.courseType = e.target.value;
     });
-    document.getElementById("lectureDetailTextArea").addEventListener("input", function(e) {
-        myCurrentLecture.description = e.target.value;
+//     document.getElementById("lectureDetailTextArea").addEventListener("input", function(e) {
+//         myCurrentLecture.description = e.target.value;
+//     });
+     
+	   document.getElementById("lectureSubDetailTextArea").addEventListener("input", function(e) {
+        myCurrentLecture.shortDescription = e.target.value;
     });
 
     //submit form
@@ -1042,21 +1131,26 @@
          delete myCurrentLecture.owners;
 		
 		
+		if(getCurrentACtion() == dictionaryKey.editStatus){
+		   delete myCurrentLecture.accountGetAdvices
+		   }
 						if(myCurrentLecture.coursePlans){
 						   	if (myCurrentLecture.coursePlans.length > 0){
 									myCurrentLecture.coursePlans.forEach((item,index)=>{
-										delete item.supporterId;
-										delete item.teacherId;
 										delete item.courseId ;
 										delete item.createAt ;
 										delete item.updateAt;
+										delete item.teacher;
+										delete item.supporter;
 									});
 								}
 						   }
 		
-		console.log(myCurrentLecture);
         let titlleRequestLecture = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_ADD : dictionaryKey.REQUEST_EDIT + dictionaryKey.TEACHER_NAME;
 		myCurrentLecture.ownerIds = currentOwners;
+		myCurrentLecture.description = lectureDescription.getData();
+		
+		console.log("push",myCurrentLecture);
  				myCurrentLecture.maxTargetAge = Number.parseInt(myCurrentLecture.maxTargetAge);
  				myCurrentLecture.minTargetAge = Number.parseInt(myCurrentLecture.minTargetAge);
 		if(myCurrentLecture.otherImgUrls == null){
@@ -1107,7 +1201,21 @@
                                     //webpageRedirect(window.location.href);
                                 })
                                 .show();
-		}else {
+		}  
+		else if(currentOwners.length == 0){
+			window.scrollTo(0,0);
+				  SunQAlert()
+                                .position('center')
+                                .title(dictionaryKey.WRONG_OWNER)
+                                .type('error')
+                                .confirmButtonColor("#3B4EDC")
+                                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                .callback((result) => {
+                                    
+                                })
+                                .show();
+				  }
+		else {
         SunQAlert()
             .position('center')
             .title(titlleRequestLecture)

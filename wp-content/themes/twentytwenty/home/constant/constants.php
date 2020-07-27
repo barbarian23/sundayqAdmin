@@ -11,6 +11,11 @@
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"] = "Quản lý khóa học";
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"] = "Quản lý giảng viên";
 
+	//super admin
+	$GLOBALS["ADMIN_SUPER"] = "Quyền quản trị";
+	$GLOBALS["ADMIN_SUPER_ACCOUNT"] = "Quản lý tài khoản";
+	$GLOBALS["ADMIN_SUPER_GROUP"] = "Quản lý nhóm quyền";
+
 	//login
 	$GLOBALS["LOGIN_USERNAME_LABEL"] = "Tên đăng nhập";
 	$GLOBALS["LOGIN_USERNAME_PLACEHOLDER"] = "Nhập vào tên đăng nhập";
@@ -33,10 +38,16 @@
 	
 	$GLOBALS["LECTURE_DETAIL"] = "Mô tả";
 	$GLOBALS["LECTURE_DETAIL_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["LECTURE_SUB_DETAIL"] = "Mô tả ngắn gọn";
+	$GLOBALS["LECTURE_SUB_DETAIL_PLACEHOLDER"] = "Thêm mô tả ngắn gọn ...";
 	$GLOBALS["LECTURE_MAIN_IMAGE"] = "Hình ảnh chính";	
-	$GLOBALS["LECTURE_SUBMIT"] = "Đồng ý";	
+	$GLOBALS["LECTURE_SUBMIT_ADD"] = "Thêm mới";	
+	$GLOBALS["LECTURE_SUBMIT_EDIT"] = "Chỉnh sửa";
+	$GLOBALS["BACK"] = "Chỉnh sửa";
 
 	//list lecture
+	$GLOBALS["LECTURE_LIST_REGISTER_TITLE"] = "Danh sách khách hàng đăng ký khóa học";
+	$GLOBALS["LECTURE_NO_LIST_REGISTER"] = "Danh sách khách hàng đang trống";
 	$GLOBALS["LECTURE_LIST_TITLE"] = "Danh sách khóa học";
 	$GLOBALS["LECTURE_NO_LIST"] = "Danh sách khóa học trống";
 	$GLOBALS["LECTURE_LIST_COL_1"] = "Số thứ tự";
@@ -46,7 +57,10 @@
 	$GLOBALS["LECTURE_LIST_BUTTON_EDIT_LECTURE"] = "Chỉnh sửa khóa học";
 	$GLOBALS["LECTURE_LIST_BUTTON_DELETE_LECTURE"] = "Xóa khóa học";
 	$GLOBALS["LECTURE_LIST_BUTTON_ADD_LECTURE"] = "Thêm mới khóa học";
+	$GLOBALS["LECTURE_LIST_REGISTER_NUMBER_TITLE"] = "Trang";
 
+
+	$GLOBALS["LACK_TEACHER"] = "Cần bổ sung";
 
 	$GLOBALS["LECTURE_SIGNLE_OWNER"] = "Một giáo viên chủ nhiệm";
 	$GLOBALS["LECTURE_MULTI_OWNER"] = "Nhiều giáo viên chủ nhiệm";
@@ -75,6 +89,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["TEACHER_INPUT_EXP_PLACEHOLDER"] = "Nhập số năm kinh nghiệm";
 	$GLOBALS["TEACHER_INPUT_DETAIL"] = "Thông tin về giảng viên";
 	$GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin của giảng viên";
+	$GLOBALS["TEACHER_INPUT_SUB_DETAIL"] = "Thông tin ngắn gọn về giảng viên";
+	$GLOBALS["TEACHER_INPUT_SUB_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin ngắn gọn của giảng viên";
 	$GLOBALS["TEACHER_INPUT_EMAIL"] = "Email";
 	$GLOBALS["TEACHER_INPUT_EMAIL_PLACEHOLDER"] = "Nhập vào email";
 	$GLOBALS["TEACHER_INPUT_PHONE"] = "Số điện thoại";
@@ -121,10 +137,14 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 
 	//people who registed support
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký nhận tư vấn";
-	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_1"] = "Họ và tên bố mẹ";
-	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_2"] = "Số điện thoại";
-	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_3"] = "Email";
-	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_4"] = "Ghi chú";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_EMPTY"] = "Hiện chưa có khách hàng đăng ký nhận tư vấn";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_1"] = "Số thứ tự";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_2"] = "Khóa học";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_3"] = "Họ và tên";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_4"] = "Thời gian";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_5"] = "Số điện thoại";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_6"] = "Ghi chú";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_7"] = "Ghi chú admin";
 	
 	$GLOBALS["LECTURE_MAIN_TEACHER"] = "Giáo viên chủ nhiệm";
 
@@ -181,7 +201,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		TEACHER_SHEET_COL_1:"Số thứ tự",
 		TEACHER_SHEET_COL_2:"Họ và tên",
-		TEACHER_SHEET_COL_3:"Số điện thoại",
+		TEACHER_SHEET_COL_3:"Mã giảng viên",
 		TEACHER_SHEET_COL_4:"Email",
 		TEACHER_SHEET_COL_5:"Chuyên ngành",
 		TEACHER_SHEET_COL_6:"Kinh nghiệm",
@@ -207,7 +227,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		LECTURE_ROADMAP_COL_5:"LECTURE_ROADMAP_COL_5",
 		
 		
-		
+		LACK_TEACHER: "Cần bổ sung",
 		
 		LECTURE_CUSTOMER_NEED_SUPPORT_1: "LECTURE_CUSTOMER_NEED_SUPPORT_1",
 		LECTURE_CUSTOMER_NEED_SUPPORT_2: "LECTURE_CUSTOMER_NEED_SUPPORT_2",
@@ -230,9 +250,11 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		MISS_FIELD:"Bạn đã nhập thiếu thông tin!Vui lòng nhập lại",
 		
+		REGISTER_EDIT_SUCCESS:"Chỉnh sửa chú thích thành công",
+		REGISTER_EDIT_FAILED: "Chỉnh sửa chú thích  không thành công",
 		
-		REQUEST_ADD: "Bạn có muốn thêm",
-		REQUEST_EDIT: "Bạn có muốn sửa đổi",
+		REQUEST_ADD: "Bạn có muốn thêm?",
+		REQUEST_EDIT: "Bạn có muốn sửa đổi?",
 		
 		LECTURE_NAME:" khóa học này",
 		TEACHER_NAME:" giáo viên này",
@@ -257,12 +279,15 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		AGREE:"Đồng ý",
 		CANCEL:"Hủy bỏ",
 		TRY_AGAIN:"Thử lại",
+		UPDATE:"Cập nhật",
 		
 		SESSION_TOKEN:"STKEN",
 		ERR_INFO:"Có lỗi: ",
 		ERR:"error",
+		NO_LIST:"no_list",
 		timeoutReLogin: 1000,
 		
+		limitRequestRegister:10,
 		currentAction:"", //add - edit,
 		addStatus:"add",
 		editStatus:"edit",
@@ -276,7 +301,9 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	var sunQMode = {
 		offline:"offline",
-		online:"online"
+		online:"online",
+		account:"account",
+		group:"group"
 	}
 	
 	var sunQRequestType = {
@@ -289,8 +316,13 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	var listScreen = {
 		offline:{
 			lecture:"lecture",
-			listLcture:"list-lecture",
-			teacher:"teacher"
+			listLecture:"list-lecture",
+			teacher:"teacher",
+			listTeacher:"",
+			account:"account",
+			listAccount:"list-account",
+			group:"group",
+			listGroup:"list-group",
 		},
 		online:{
 			
@@ -322,10 +354,16 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	var mainURL= "http://103.146.22.168:3000/";
 	var accountPartURL = "account/";
+	var listAdvicePartURL = "advices";
+	var advicePartURL = "advice";
 	var tokenPartURL = "token/check";
 	
 	//==>
-	var tokenCheckUrl  = accountPartURL+tokenPartURL;
+	var tokenCheckUrl  = accountPartURL + tokenPartURL;
+	
+	var listAdvicesPage = accountPartURL + listAdvicePartURL;
+	
+	var advicePage = accountPartURL + advicePartURL;
 	
 	var adminLoginPartURL = "admin/login";
 	//==>
@@ -375,6 +413,14 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	function getURLUploadImage(){
 		return mainURL+uploadImagePartUrl;	
+	}
+	
+	function getURLListAccountAdvice(){advicePage
+		return mainURL+listAdvicesPage;	
+	}
+	
+	function getURLAccountAdvice(){
+		return mainURL+advicePage;	
 	}
 	
 </script>

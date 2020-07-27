@@ -9,16 +9,7 @@
 <script src="wp-content/themes/twentytwenty//assets/js/mobiscroll.javascript.min.js"></script>
 <script>
 		window.onload = function(){
-			let sunqModeOfflineDiv = document.getElementById("divShowOffline");
-			sunqModeOfflineDiv && sunqModeOfflineDiv.addEventListener("click",function(){
-				setMode(sunQMode.offline);
-			});
-
-
-			let sunqModeOnlineDiv = document.getElementById("divShowOnline");
-			sunqModeOnlineDiv && sunqModeOnlineDiv.addEventListener("click",function(){
-				setMode(sunQMode.online);
-			});
+			
 		}
 		
 		function makeAlertRedirect(){
@@ -99,6 +90,22 @@
                 return result
             }
 		});
+	}
+	
+	function checkMobileIOS() {
+        const toMatch = [
+            /webOS/i,
+            /iPhone/i,
+            /iPad/i,
+            /iPod/i,
+        ];
+        return toMatch.some((toMatchItem) => {
+            return navigator.userAgent.match(toMatchItem);
+        });
+    }
+	
+	function inputNumberSmallerThanTen(input){
+		return input < 10 ? "0" + input : input;
 	}
 	
 	function checkSession(){

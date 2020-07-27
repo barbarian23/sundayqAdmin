@@ -195,6 +195,6 @@
 			include ("home/sunqjs/alert.php" ); 
 			include ("home/helper/helper.php" );
 			include ("home/sunqjs/request.php" ); 
-			include ("home/sunqjs/status.php" ); 
-			include ("home/sunqjs/interact-ui.php" ); 
+			include ("home/sunqjs/interact-ui.php" );
+			include ("home/sunqjs/status.php" );  
 			//get_template_part( 'template-parts/modal-menu' );

@@ -907,7 +907,7 @@ table {
 	font-size: 1.6rem;
 	margin: 4rem 0;
 	max-width: 100%;
-	overflow: hidden;
+/* 	overflow: hidden; */
 	width: 100%;
 }
 
@@ -6537,14 +6537,21 @@ a.to-the-top > * {
 	font-size:16px;
 }
 
+.home-middle-left-menu-content{
+	padding-left:5px;
+}
+
 .home-middle-left-menu{
-	position: relative;
-	text-align: left;
-	width:95%;
-	height:30px;
+	    position: relative;
+    text-align: left;
+    width: 95%;
+    /* height: 30px; */
     line-height: 30px;
-	margin: 14px auto;
-	font-size:14px;
+    margin: 14px auto;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .home-middle-left-menu:hover {
@@ -6598,6 +6605,11 @@ a.to-the-top > * {
 	display:none;
 }
 
+#homeMenuAccount{
+	display:none;
+}
+
+
 #dashboardIconTopSmallContent{
 	display:flex;
 	margin: 20px auto;
@@ -6630,6 +6642,15 @@ a.to-the-top > * {
 
 #dashboardIconSmall{
 	font-size:16px;
+}
+
+.home-middle-left-contain{
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 210px;
+    position: fixed;
+	left:0;
 }
 
 .home-middle-left-menu-small-content{
@@ -6704,6 +6725,10 @@ a.to-the-top > * {
     justify-content: center;
     align-items: center;
 	position:relative;
+}
+
+.home-middle-right-contain h2{
+    margin: 6rem 0rem 3rem 12%
 }
 
 .home-footer {
@@ -6879,7 +6904,25 @@ a.to-the-top > * {
 
 }
 
+.manage-section-infomation-right-list-image-drop{
+	position: absolute;
+    right: 2%;
+    top: 4%;
+    font-size: 15px;
+    background: grey;
+    /* padding: 3px; */
+    border-radius: 50px;
+    height: 25px;
+    width: 25px;
+    /* line-height: 17px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
 .manage-section-infomation-right-list-image {
+	position:relative;
     width: 98%;
     height: 420px;
     margin: 10px auto 10px auto;
@@ -6887,7 +6930,7 @@ a.to-the-top > * {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 	overflow-x:scroll;
 	overflow-y:hidden;
 }
@@ -6922,7 +6965,7 @@ a.to-the-top > * {
 }
 
 .manage-section-infomation-right-item {
-    width: 95%;
+    width: 500px;
      height: 420px; 
 /* 	height:80px; */
     margin: 10px 5px;
@@ -6931,6 +6974,12 @@ a.to-the-top > * {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+	position:relative;
+}
+
+.manage-section-infomation-right-item-img{
+	 width: 100%;
+     height: 100%; 
 }
 
 .manage-section-infomation-right-item-div-add {
@@ -6948,6 +6997,7 @@ a.to-the-top > * {
 	background:#f50;
 	color:white;
 	text-decoration:none!important;
+	    cursor: pointer;
 }
 
 .manage-section-infomation-right-item-div-add:hover {
@@ -7102,7 +7152,7 @@ a.to-the-top > * {
 
 .manage-section-detail-left-choosing-radio{
 	width: 40%;
-    height: 80px;
+/*     height: 80px; */
     display: flex;   
 	flex-wrap: wrap;
     flex-direction: row;
@@ -7371,13 +7421,16 @@ font-style:italic;
 
 .manage-section-detail-midlle-item {
     width: 100%;
-    height: 520px;
+/*     height: 520px; */
     margin: 10px auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+	padding: 0px 0px 0px 0px;
+    border: 1px solid #000;
+    border-radius: 4px;
 }
 
 .manage-section-detail-right {
@@ -7389,6 +7442,16 @@ font-style:italic;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+#lectureDetailTextArea-toolbar-container{
+	width:100%;
+	}
+
+#lectureSubDetailTextArea{
+	width:100%;
+	height:420px;
+	resize:none;
 }
 
 .manage-section-detail-right-span {
@@ -7447,7 +7510,7 @@ font-style:italic;
 #lectureDetailTextArea{
 	max-width:100%;
 	width:100%;
-	height:100%;
+	min-height:520px;
 	resize: none;
 }
 
@@ -7576,8 +7639,9 @@ input[type="file"] {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+	overflow-x:scroll;
 }
 
 #tableLecture {
@@ -7607,6 +7671,7 @@ input[type="file"] {
 .manage-section-road-map-time-real-table tr {
     height: 50px;
     border-bottom: 1pt solid black;
+	white-space:nowrap;
 }
 
 .manage-section-road-map-time-real-table td {
@@ -7659,10 +7724,10 @@ input[type="file"] {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding-left: 17px;
-    font-size: 27px;
+    font-size: 29px;
 	font-weight:600;
 	color:#002546;
 }
@@ -7675,6 +7740,7 @@ input[type="file"] {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+	overflow-x:scroll;
 }
 
 .manage-section-helpdesk-real-table {
@@ -7686,6 +7752,7 @@ input[type="file"] {
     color: white;
 	font-size:20px;
 	font-weight: 600;
+	white-space:nowrap;
 }
 
 .manage-section-helpdesk-real-table tr {
@@ -7699,7 +7766,7 @@ input[type="file"] {
 }
 
 .manage-section-helpdesk-real-table-name {
-    width: 255px;
+    width: 200px;
     text-align: center;
     vertical-align: middle;
 }
@@ -7710,11 +7777,17 @@ input[type="file"] {
     vertical-align: middle;
 }
 
+.manage-section-road-map-time-real-table-phone{
+	width: 144px;
+    text-align: center;
+    vertical-align: middle;
+}
+
 .manage-content-bottom-action{
 	width:100%;
 	height:80px;
 	display:flex;
-	justify-content:flex-end;
+	justify-content:center;
 	align-items:center;
 	padding-right:10px;
 }
@@ -7734,6 +7807,24 @@ input[type="file"] {
 	text-decoration:underline;
 }
 
+.manage-section-helpdesk-real-table-order{
+	width: 60px;
+	text-align: center;
+    vertical-align: middle;
+}
+
+.manage-section-helpdesk-real-table-lecture{
+	width: 200px;
+	text-align: center;
+    vertical-align: middle;
+}
+
+.manage-section-helpdesk-real-table-time{
+	width: 120px;
+	text-align: center;
+    vertical-align: middle;
+}
+
 .manage-section-road-map-time-real-table-email {
     width: 260px;
     text-align: center;
@@ -7741,8 +7832,77 @@ input[type="file"] {
 }
 
 .manage-section-road-map-time-real-table-note {
+	width:225px;
     text-align: center;
     vertical-align: middle;
+}
+
+.manage-section-road-map-time-real-table-admin {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.manage-section-road-map-time-real-table-admin input[type="button"]{
+    width: 100%;
+    height: 50px;
+    line-height: 11px;
+    background: #f50!important;
+    margin: 8px auto 0px auto;
+}
+
+.manage-section-road-map-time-real-table-admin input[type="button"]:hover{
+    background: #ffaa80!important;
+}
+
+.manage-list-lecture-list-register-paging-span-title{
+	font-weight: 600;
+    color: #002546;
+	font-size: 20px;
+    margin: 0px auto 18px auto;
+}
+
+#span-title-teacher{
+	margin:0px auto 5px auto;
+}
+
+#pagingListTeacher{
+	margin:0px auto 10px auto;
+}
+
+#span-title-lecture{
+	 margin: 0px auto 5px auto;
+}
+
+#pagingListLecture{
+    margin: 0px auto 10px auto;
+}
+
+#span-title-regisster{
+	display:none;
+}
+
+.manage-list-lecture-list-register-paging{
+	width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-list-lecture-list-register-paging-index{
+	font-weight: 600;
+    color: #002546;
+    margin: auto 5px;
+	cursor:pointer;
+}
+
+.manage-list-lecture-list-register-paging-index :hover{
+	color: #4dacff;
+}
+
+.manage-list-lecture-list-register-paging-index-selected{
+	font-weight: 800;
 }
 
 #ExcelContent {
@@ -7915,8 +8075,8 @@ input[type="file"] {
     color: #002546;
 }
 
-.manage-list-lecture-table{
-	width:98%;
+.manage-list-lecture-list-register{
+	width:100%;
 	display:flex;
 	flex-direction:row;
 	flex-wrap:wrap;
@@ -7924,6 +8084,38 @@ input[type="file"] {
 	align-items:center;
 	position:relative;
 	margin:5px auto 20px auto;
+}
+
+#listRegisterEmpty{
+	display:none;
+}
+
+#listRegisterError{
+	display:none;
+}
+
+.manage-list-lecture-title-list-contain{
+	width:100%;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:center;
+	align-items:center;
+	position:relative;
+	margin:5px auto 20px auto;
+}
+
+.manage-list-lecture-table{
+	width:98%;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:flex-start;
+	align-items:center;
+	position:relative;
+	margin:5px auto 20px auto;
+    padding-left: 11px;
+    overflow-x: scroll;
 }
 
 .manage-list-lecture-table-detail{
@@ -7994,6 +8186,7 @@ input[type="file"] {
 	text-align:center;
 	background:#fafafa;
 	cursor: grab;
+	white-space:nowrap;
 }
 
 .manage-list-lecture-table-detail-strong {
@@ -8048,7 +8241,7 @@ input[type="file"] {
 	display:flex;
 	flex-direction:row;
 	flex-wrap:wrap;
-	justify-content:flex-end;
+	justify-content:center;
 	align-items:center;
 	position:relative;
 	margin:5px auto 20px auto;
@@ -8117,10 +8310,11 @@ input[type="file"] {
 	display:flex;
 	flex-direction:row;
 	flex-wrap:wrap;
-	justify-content:center;
+	justify-content:flex-start;
 	align-items:center;
 	position:relative;
 	margin:5px auto 20px auto;
+	overflow-x:scroll;
 }
 
 .manage-list-teacher-table-no-list{
@@ -8159,6 +8353,7 @@ input[type="file"] {
 .manage-list-teacher-table-detail{
 	border:none;
     width: 100%;
+	overflow-x:scroll;
 }
 
 .manage-list-teacher-table-detail-strong {
@@ -8186,6 +8381,7 @@ input[type="file"] {
 	border-top:none;
 	text-align:center;
 	vertical-align:center;
+	white-space:nowrap;
 }
 
 .manage-list-teacher-table-detail td {
@@ -8256,7 +8452,7 @@ input[type="file"] {
 	display:flex;
 	flex-direction:row;
 	flex-wrap:wrap;
-	justify-content:flex-end;
+	justify-content:center;
 	align-items:center;
 	position:relative;
 	margin:5px auto 20px auto;
@@ -8387,7 +8583,7 @@ input[type="file"] {
 
 .manage-teacher-contain-left-img{
 	width:95%;
-	max-width:800px;
+	max-width:400px;
 	height:569px;
 	margin:10px auto;
 }
@@ -8442,6 +8638,20 @@ input[type="file"] {
     border: 1px solid #000;
 }
 
+#teacherDetailTextArea-toolbar-container{
+	width:100%;
+}
+
+#teacherSubDetailTextAreaTitle{
+	margin: 55px 0px 7px 0px;
+    font-size: 23px;
+}
+
+#teacherSubDetailTextArea{
+	height:420px;
+	margin:0px auto 4px auto;
+}
+
 .manage-teacher-contain-right-below span{
 	color: #002546;
     font-weight: 600;
@@ -8454,8 +8664,10 @@ input[type="file"] {
     font-size: 20px;
     margin: 5px 10px;
 	border-radius:5px;
-    height: 600px;
+    min-height: 600px;
 	resize:none;
+    border: 1px solid;
+    border-radius: 4px;
 }
 
 .manage-teacher-hr-between{
@@ -8472,6 +8684,7 @@ input[type="file"] {
 	justify-content:center;
 	align-items:center;
 	padding-right:10px;
+	padding-top:15px;
 }
 
 .manage-teacher-bottom-action button,input[type="submit"]{
@@ -8544,12 +8757,19 @@ input[type="file"] {
 	.home-middle-left-small{
 		display:flex;
 	}
+	
+	
+	.manage-teacher-contain-left-img{	
+		width:95%;
+		max-width:400px;
+		height:300px;
+	}
 }
 
 @media (max-width: 1125px) {
 
 	.home-middle-left{
-		width:auto;
+		width:35px;
 	}
 	
 	.home-middle-left-menu-text{
@@ -8575,7 +8795,7 @@ input[type="file"] {
 	
 	.manage-teacher-contain-left-img{	
 		width:95%;
-		height:300px;
+		max-width:400px;
 	}
 	
 	.manage-teacher-hr-between{

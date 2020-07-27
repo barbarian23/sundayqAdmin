@@ -2,43 +2,18 @@
 
 ?>
 <script>
+	let listVisitedTeacher=[];
+	
     window.onload = function() {
-        setFetchingTeacher(true);
-        requestToSever(
-            sunQRequestType.get,
-            getURLAllTeacher(),
-            null,
-            getData(dictionary.MSEC),
-            function(res) {
-                //console.log(res);
-                setFetchingTeacher(false);
-                if (res.code === networkCode.success) {
-                    if (res.data == null || res.data.length == 0) {
-                        setGetTeacherFromServerSuccess(false);
-                    } else {
-                        emptyTableListTeacher();
-                        listTeacher = res.data;
-                        createListTeacher(res.data);
-                    }
-                } else if (res.code === networkCode.sessionTimeOut) {
-                    makeAlertRedirect();
-                }
-            },
-            function(err) {
-                setFetchingTeacher(false);
-                setIsGetTeacherFromServerSuccess(false);
-                console.log(dictionaryKey.ERR_INFO, err);
-                // 			if(res != undefined){
-                // 			if (res.code === networkCode.sessionTimeOut){
-                // 				makeAlertRedirect();
-                // 			}
-                // 			}
-            }
-        );
+		listTeacher=[];
+       //get list register
+		listVisitedTeacher.push(0);
+		setCurrentTeacher(0);
     }
 
     function deleteTeacher(mId) {
         console.log("delete", listTeacher[mId]);
+		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
             .position('center')
@@ -135,6 +110,12 @@
         </div>
     </div>
 
+	<!-- paging -->
+		<span class="manage-list-lecture-list-register-paging-span-title" id="span-title-teacher"><?php echo $GLOBALS["LECTURE_LIST_REGISTER_NUMBER_TITLE"]; ?></span>
+		<div class="manage-list-lecture-list-register-paging" id="pagingListTeacher">
+			
+		</div>
+	
     <div class="manage-list-teacher-add-new">
         <a href="?mode=offline&page=teacher&action=add">
             <button>

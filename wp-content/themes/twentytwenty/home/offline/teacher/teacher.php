@@ -58,20 +58,41 @@
             <hr class="manage-teacher-hr-between">
             <div class="manage-teacher-contain-right-below">
 				<span><?php echo $GLOBALS["TEACHER_INPUT_DETAIL"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
-                <textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?>' required></textarea>
+              <!--  <textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?>' required></textarea>-->
+				<div id="teacherDetailTextArea-toolbar-container"></div>
+				<div id="teacherDetailTextArea" ><?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?></div>
+				
+				<span id="teacherSubDetailTextAreaTitle"><?php echo $GLOBALS["TEACHER_INPUT_SUB_DETAIL"]; ?></span>
+			<textarea id="teacherSubDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_SUB_DETAIL_PLACEHOLDER"]; ?>' required></textarea>
             </div>
+			
+			
+			
         </div>
     </div>
     <div class="manage-teacher-bottom-action">
-        <input type="submit" name='teacherSubmit' value='<?php echo $GLOBALS["LECTURE_SUBMIT"]; ?>' id="lectureSubmit">
+        <input type="submit" name='teacherSubmit' value='<?php echo $GLOBALS["LECTURE_SUBMIT"]; ?>' id="teacherSubmit">
     </div>
 </form>
+<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/decoupled-document/ckeditor.js"></script>
 <script>
     var myCurrentTeacher = {
 
     };
+	var teacherDesciption = "";
     window.onload = function() {
 
+		DecoupledEditor
+            .create( document.querySelector( '#teacherDetailTextArea' ) )
+            .then( editor => {
+				teacherDesciption = editor;
+                const toolbarContainer = document.querySelector( '#teacherDetailTextArea-toolbar-container' );
+
+                toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
 
         // 		if(getCurrentACtion() == dictionaryKey.editStatus){
 
@@ -97,6 +118,7 @@
 		
         //nếu là edit thì load dữ liệu về
         if (getCurrentACtion() == dictionaryKey.editStatus) {
+			document.getElementById("teacherSubmit").value = '<?php echo $GLOBALS["LECTURE_SUBMIT_EDIT"] ?>';
 
             //fetch từ server
             setLoadingDataTeacher(true);
@@ -121,7 +143,9 @@
                         document.getElementById("inputTeacherPhone").value = myCurrentTeacher.phone != null ? myCurrentTeacher.phone : "";
                         document.getElementById("inputTeacherEXP").value = yearEXP;
                         document.getElementById("teacherAvatar").src = getHomeURL() + myCurrentTeacher.imgUrl;
-                        document.getElementById("teacherDetailTextArea").value = myCurrentTeacher.description != null ? myCurrentTeacher.description : "";
+						teacherDesciption.setData(myCurrentTeacher.description != null ? myCurrentTeacher.description : "");
+						document.getElementById("teacherSubDetailTextArea").value = myCurrentTeacher.shortDescription != null ? myCurrentTeacher.shortDescription : "";
+                       /* document.getElementById("teacherDetailTextArea").value = myCurrentTeacher.description != null ? myCurrentTeacher.description : "";*/
                     } else if (res.code === networkCode.sessionTimeOut) {
                         makeAlertRedirect();
                     }
@@ -142,7 +166,10 @@
                 }
             );
 
-        }
+        } else {
+						document.getElementById("teacherSubmit").value = '<?php echo $GLOBALS["LECTURE_SUBMIT_ADD"] ?>';
+
+		}
     }
 
     function downloadImage(name, id) {
@@ -235,10 +262,18 @@
         myCurrentTeacher.university = e.target.value;
     });
 	
+	/*
     document.getElementById("teacherDetailTextArea").addEventListener("input", function(e) {
         myCurrentTeacher.description = e.target.value;
+		 //myCurrentTeacher.description = "<pre>"+e.target.value+"</prev>";
     });
+	*/
 
+	 document.getElementById("teacherSubDetailTextArea").addEventListener("input", function(e) {
+        myCurrentTeacher.shortDescription = e.target.value;
+		 //myCurrentTeacher.description = "<pre>"+e.target.value+"</prev>";
+    });
+			
     document.getElementById("inputTeacherEmail").addEventListener("input", function(e) {
         myCurrentTeacher.email = e.target.value;
 		//console.log(myCurrentTeacher.email );
@@ -293,7 +328,7 @@
 	}
 	
     //submit form
-    document.getElementById("lectureSubmit").addEventListener("click", function(e) {
+    document.getElementById("teacherSubmit").addEventListener("click", function(e) {
         e.preventDefault();
         //console.log("email", myCurrentTeacher.email);
         if (myCurrentTeacher.imgUrl == "" || myCurrentTeacher.imgUrl == null ){
@@ -334,7 +369,8 @@
                 .show();  
 		} else {
             let titlleRequestTeacher = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT: dictionaryKey.REQUEST_ADD + dictionaryKey.LECTURE_NAME;
-			//alert("data lên " + JSON.stringify(myCurrentTeacher));
+			console.log("data lên " + JSON.stringify(myCurrentTeacher));
+			//alert("data lên " + myCurrentTeacher.practiceAt);
             SunQAlert()
                 .position('center')
                 .title(titlleRequestTeacher)
@@ -359,6 +395,7 @@
                         delete tempmyCurrentTeacher.createAt;
                         delete tempmyCurrentTeacher.updateAt;
                         delete tempmyCurrentTeacher.id;
+						myCurrentTeacher.description = teacherDesciption.getData();
                         //delete tempmyCurrentTeacher.shortId;
                         //delete tempmyCurrentTeacher.email;
                         //tempmyCurrentTeacher.phone = "123";	

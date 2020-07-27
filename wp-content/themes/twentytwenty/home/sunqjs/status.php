@@ -3,7 +3,7 @@
 ?>
 <script>
 var sunqStatus = {
-	mode:"offline", //offline hoặc online
+	mode:"none", //offline , online , account
 	isOpenMenu:false,
 	isChoosingSelectTeacherMain:false,
 	isFetchingLecture:false,
@@ -22,9 +22,13 @@ var sunqStatus = {
 	isloginfailed:false,
 	isUploadingDataLecture:false,
 	isUploadingDataTeacher:false,
-	isChoosingMultiTeacher:false
+	isChoosingMultiTeacher:false,
+	currentView:0,//load danh sách người đăng ký 
+	loadingCurrentView:false,
+	currentTeacher:0,
+	currentLecture:0,
 }
-var _mode = "offline",
+var _mode = "none",
 	_isOpenMenu = false,
 	_isChoosingSelectTeacherMain = false,
 	_isFetchingLecture = false,
@@ -43,7 +47,11 @@ var _mode = "offline",
 	_isloginfailed = false,
 	_isUploadingDataLecture = false,
 	_isUploadingDataTeacher = false,
-	_isChoosingMultiTeacher = false;
+	_isChoosingMultiTeacher = false,
+	_currentView = 0,
+	_loadingCurrentView = false,
+	_currentTeacher = 0,
+	_currentLecture = 0;
 	
 //mode setting
 Object.defineProperty(sunqStatus,"mode",{
@@ -265,6 +273,173 @@ Object.defineProperty(sunqStatus,"isChoosingMultiTeacher",{
 	}
 });	
 
+//loadingCurrentView
+Object.defineProperty(sunqStatus,"loadingCurrentView",{
+	get(){
+		return _loadingCurrentView;
+	},
+	set(val){
+		_loadingCurrentView = val;
+		val == true ? loadingDataRegisterProgress() : val == false ? loadingDataRegisterDone() :  loadingDataRegisterError();
+		
+	}
+});	
+
+Object.defineProperty(sunqStatus,"currentView",{
+		get(){
+			return _currentView;
+		},
+		set(val){
+			_currentView = val;
+			console.log(val);
+			let dataCurrentViewRegister = {
+				page:val,
+				limit:dictionaryKey.limitRequestRegister,
+			};
+			setLoadingCurrentView(true);
+			requestToSever(
+            sunQRequestType.get,
+            prepareUrlForGetThatContainsBody(getURLListAccountAdvice(),dataCurrentViewRegister),
+            null,
+            getData(dictionary.MSEC),
+            function(res) {
+                setLoadingCurrentView(false);
+                if (res.code === networkCode.success) {
+                    createListRegister(res,true);
+                } else if (res.code === networkCode.sessionTimeOut) {
+                    makeAlertRedirect();
+                }
+            },
+            function(err) {
+                setLoadingCurrentView(dictionaryKey.ERR);
+                console.log(dictionaryKey.ERR_INFO, err);
+            }
+        );
+			
+		}
+	});
+	
+	Object.defineProperty(sunqStatus,"currentTeacher",{
+		get(){
+			return _currentView;
+		},
+		set(val){
+			_currentTeacher = val;
+			
+			let dataCurrentViewTeacher= {
+				page:val,
+				limit:dictionaryKey.limitRequestRegister,
+			};
+			//alert("currentTeacher",val);
+		setFetchingTeacher(true);
+        requestToSever(
+            sunQRequestType.get,
+			prepareUrlForGetThatContainsBody(getURLAllTeacher(),dataCurrentViewTeacher),
+            //getURLAllTeacher(),
+            null,
+            getData(dictionary.MSEC),
+            function(res) {
+                //console.log(res);
+                setFetchingTeacher(false);
+                if (res.code === networkCode.success) {
+                    if (res.data == null || res.data.length == 0) {
+                        setGetTeacherFromServerSuccess(false);
+                    } else {
+                        emptyTableListTeacher();
+                        listTeacher = listTeacher.concat(res.data);
+                        createListTeacher(res);
+                    }
+                } else if (res.code === networkCode.sessionTimeOut) {
+                    makeAlertRedirect();
+                }
+            },
+            function(err) {
+                setFetchingTeacher(false);
+                setIsGetTeacherFromServerSuccess(false);
+				//alert(err);
+                console.log(dictionaryKey.ERR_INFO, err);
+            }
+        );
+		}
+	});
+	
+	Object.defineProperty(sunqStatus,"currentLecture",{
+		get(){
+			return _currentLecture;
+		},
+		set(val){
+			_currentLecture = val;
+			
+			let dataCurrentViewLecture= {
+				page:val,
+				limit:dictionaryKey.limitRequestRegister,
+			};
+			
+			setFetchingLecture(true);
+        	requestToSever(
+            sunQRequestType.get,
+            //getURLAllLecture(),
+            prepareUrlForGetThatContainsBody(getURLAllLecture(),dataCurrentViewLecture),
+            null,
+            getData(dictionary.MSEC),
+            function(res) {
+                setFetchingLecture(false);
+                if (res.code === networkCode.success) {
+                    if (res.data == null || res.data.length == 0) {
+                        setGetLectureFromServerSuccess(false);
+                    } else {
+                        //setGetLectureFromServerSuccess(true);
+                        emptyTableListLecture();
+                        listLecture = listLecture.concat(res.data);
+                        createListLEcture(res);
+                    }
+                } else if (res.code === networkCode.sessionTimeOut) {
+                    makeAlertRedirect();
+                }
+            },
+            function(err) {
+                setFetchingLecture(false);
+                console.log(dictionaryKey.ERR_INFO, err);
+                setIsGetLectureFromServerSuccess(false);
+
+            }
+        );
+			
+		}
+	});
+	
+function setLoadingCurrentView(val){
+	sunqStatus.loadingCurrentView = val;
+}
+	
+function getLoadingCurrentView(){
+	return sunqStatus.loadingCurrentView;
+}
+
+	function getCurrentLecture(){
+		return sunqStatus.currentLecture;
+	}
+	
+function setCurrentLecture(val){
+		sunqStatus.currentLecture = val;
+	}
+	
+function setCurrentTeacher(val){
+		sunqStatus.currentTeacher = val;
+	}
+	
+function getCurrentTeacher(){
+		return sunqStatus.currentTeacher;
+	}
+	
+function setCurrentView(val){
+		sunqStatus.currentView = val;
+	}
+	
+function getCurrentView(){
+		return sunqStatus.currentView;
+	}
+	
 function setChoosingMultiTeacher(val){
 	sunqStatus.isChoosingMultiTeacher = val;
 }
@@ -428,6 +603,35 @@ function getMode(){
 }
 	
 function handleChooseMode(val){
-	val == sunQMode.offline ? (showOffLineMode(), hideOnlineMode()) :  (hideOfflineMode(), showOnlineMode());
+	console.log("handleChooseMode",val);
+	switch(val){
+		   case sunQMode.online:
+		        showOnLineMode();
+		   		hideOffLineMode();
+		   		hideAccountMode();
+		   break;
+		   case sunQMode.offline:
+				hideOnLineMode();
+				showOffLineMode();
+				hideAccountMode()
+		   break;
+		   case sunQMode.account:
+				hideOnLineMode();
+				hideOffLineMode();
+				showAccountMode();
+		   break;
+		   case sunQMode.group:
+		   break;
+		   default:
+		   break;
+		   }
+	/*
+	if (val == sunQMode.offline){
+		showOffLineMode();
+		} else {
+			hideOnlineMode()
+		}
+	*/	
+	// ? (showOffLineMode(), hideOnlineMode()) :  (hideOfflineMode(), showOnlineMode());
 } 
 </script>
