@@ -117,6 +117,31 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["TEACHER_EDIT_SUCCESS"] = "Chính sửa thành công";
 	$GLOBALS["TEACHER_EDIT_SUCCESS"] = "Thêm mới thành công";
 	
+	//list group	
+	$GLOBALS["GROUP_LIST_TITLE"] = "Danh sách nhóm quyền";
+	$GLOBALS["GROUP_NO_LIST"] = "Danh sách nhóm quyền trống";
+	$GLOBALS["GROUP_LIST_BUTTON_EDIT_GROUP"] = "Chỉnh sửa nhóm quyền";
+	$GLOBALS["GROUP_LIST_BUTTON_DELETE_GROUP"] = "Xóa nhóm quyền";
+	$GLOBALS["GROUP_LIST_BUTTON_ADD_GROUP"] = "Thêm mới nhóm quyền";	
+
+	//group
+	
+
+	//list account	
+	$GLOBALS["ACCOUNT_LIST_TITLE"] = "Danh sách tài khoản";
+	$GLOBALS["ACCOUNT_NO_LIST"] = "Danh sách tài khoản trống";
+	$GLOBALS["ACCOUNT_LIST_BUTTON_EDIT_ACCOUNT"] = "Chỉnh sửa tài khoản";
+	$GLOBALS["ACCOUNT_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa tài khoản";
+	$GLOBALS["ACCOUNT_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới tài khoản";	
+
+	//account
+	$GLOBALS["ACCOUNT_INPUT_NAME"] = "Tên tài khoản";
+	$GLOBALS["ACCOUNT_INPUT_NAME_PLACEHOLDER"] = "Nhập vào tên tài khoản";
+	$GLOBALS["ACCOUNT_INPUT_PASSWORD"] = "Mật khẩu";
+	$GLOBALS["ACCOUNT_INPUT_PASSWORD_PLACEHOLDER"] = "Nhập vào mật khẩu";
+	$GLOBALS["ACCOUNT_INPUT_PERMISSION"] = "Quyền tài khoản";	
+	$GLOBALS["ACCOUNT_INPUT_PERMISSION_PLACEHOLDER"] = "Nhập vào quyền tài khoản";	
+
 	//infomation
 	
 	//detail

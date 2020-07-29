@@ -159,6 +159,7 @@ function createListLEcture(result){
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	list.forEach((item,index) => {
+		index = getCurrentTeacher() * dictionaryKey.limitRequestRegister + index + 1;
 		//console.log(index);
 		let trContent = document.createElement("tr");
 		if (index % 2 != 0){
@@ -168,8 +169,8 @@ function createListLEcture(result){
 		//console.log(item.id);
 	
 		
-		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index + 1)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
-		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+index+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
+		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+(index-1)+")\">Xóa</div></td>";
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);
@@ -229,13 +230,15 @@ function createListTeacher(result){
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["TEACHER_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_5"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	list.forEach((item,index) => {
+		//alert(getCurrentTeacher()+" "+index);
+		index = getCurrentTeacher() * dictionaryKey.limitRequestRegister + index + 1;
 		//console.log(index);
 		let trContent = document.createElement("tr");
 		if (index % 2 != 0){
 			trContent.className = 'manage-list-teacher-table-detail-strong';
 		} 
-		trContent.innerHTML = "<td>"+(index + 1)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
-		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+index+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
+		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+(index-1)+")\">Xóa</div></td>";
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);
@@ -542,12 +545,12 @@ function createListRegister(result,isPush) {
                     trFirst.appendChild(thFirst);
                 })
                 parent.appendChild(trFirst);
-
+				if (isPush){
+        				listRegister = listRegister.concat(data);
+					}
                 data.forEach((item, index) => {
 					console.log("item",item);
-					if (isPush){
-        				listRegister = listRegister.concat(item);
-					}
+					
                     let trRow = document.createElement("tr");
                     tableRegisterTitleTDPropeties.forEach((itemProp, indexProp) => {
                         let tdInside = document.createElement("td");
@@ -657,13 +660,12 @@ function createListRegister(result,isPush) {
 		
 		arrayOldPage.forEach((item, index) => {
 					console.log("item",item);
-				
                     let trRow = document.createElement("tr");
                     tableRegisterTitleTDPropeties.forEach((itemProp, indexProp) => {
                         let tdInside = document.createElement("td");
                         tdInside.className = tableRegisterTitle[indexProp];
 						if (indexProp == 0){
-						   tdInside.innerHTML = getCurrentView() * dictionaryKey.limitRequestRegister + index + 1;
+						   tdInside.innerHTML = number * dictionaryKey.limitRequestRegister + index + 1;
 						} else if(indexProp == 1){//title
 						   tdInside.innerHTML = item["course"]["title"];
 						}else if(indexProp == 3){//time
@@ -759,6 +761,7 @@ function createListRegister(result,isPush) {
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	arrayOldPage.forEach((item,index) => {
+		index = number * dictionaryKey.limitRequestRegister + index + 1;
 		//console.log(index);
 		let trContent = document.createElement("tr");
 		if (index % 2 != 0){
@@ -768,8 +771,8 @@ function createListRegister(result,isPush) {
 		//console.log(item.id);
 	
 		
-		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index + 1)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
-		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+index+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
+		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+(index-1)+")\">Xóa</div></td>";
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);
@@ -788,13 +791,14 @@ function createListRegister(result,isPush) {
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["TEACHER_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_5"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	arrayOldPage.forEach((item,index) => {
+		index = number * dictionaryKey.limitRequestRegister + index + 1;
 		//console.log(index);
 		let trContent = document.createElement("tr");
 		if (index % 2 != 0){
 			trContent.className = 'manage-list-teacher-table-detail-strong';
 		} 
-		trContent.innerHTML = "<td>"+(index + 1)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
-		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+index+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
+		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+(index-1)+")\">Xóa</div></td>";
 		tbody.appendChild(trContent);
 	});
 	parent.appendChild(tbody);

@@ -6515,6 +6515,7 @@ a.to-the-top > * {
 	position:relative;
 	display:flex;
 	flex-direction:row;
+	justify-content:space-between;
 	margin:0;
 	padding:0;
 }
@@ -6529,7 +6530,7 @@ a.to-the-top > * {
 }
 
 #dashboardName{
-	margin: 22px auto 26px auto;
+/* 	margin: 22px auto 26px auto; */
 	font-size:16px;
 }
 
@@ -6541,13 +6542,49 @@ a.to-the-top > * {
 	padding-left:5px;
 }
 
+
+
+   .home-middle-left-menu-tooltip {
+	   	      display: none; 
+    /* flex-wrap: wrap; */
+    padding: 0px;
+    /* color: red; */
+    width: 120px;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 500;
+    /* height: 30px; */
+    background: grey;
+    /* border: 1px solid #000; */
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    left: 172%;
+    top: 10%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 4px;
+    }
+    .home-middle-left-menu-tooltip:before {
+		 content: "";
+    position: absolute;
+    right: 100%;
+    top: 5px;
+    width: 0;
+    height: 0;
+    border: 1px solid #000;
+    border-top: 9px solid transparent;
+    border-right: 26px solid grey;
+    border-bottom: 9px solid transparent;
+}
+
 .home-middle-left-menu{
-	    position: relative;
+	       position: relative;
     text-align: left;
-    width: 95%;
+    /* width: 86%; */
     /* height: 30px; */
     line-height: 30px;
-    margin: 14px auto;
+    margin: 10px 0px;
     font-size: 14px;
     display: flex;
     flex-direction: column;
@@ -6557,6 +6594,7 @@ a.to-the-top > * {
 .home-middle-left-menu:hover {
 	background:#434d56;
 }
+
 
 .home-middle-left-menu-text{;
 	font-family: Be Vietnam;
@@ -6636,7 +6674,7 @@ a.to-the-top > * {
 }
 
 #dashboardNameSmall{
-	margin: 10px auto 10px auto;
+ 	margin: 10px auto 10px auto; 
 	font-size:16px;
 }
 
@@ -6648,7 +6686,7 @@ a.to-the-top > * {
 	display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 210px;
+    width: 180px;
     position: fixed;
 	left:0;
 }
@@ -6725,6 +6763,7 @@ a.to-the-top > * {
     justify-content: center;
     align-items: center;
 	position:relative;
+	padding: 7px;
 }
 
 .home-middle-right-contain h2{
@@ -8542,6 +8581,7 @@ input[type="file"] {
 	border-radius: 10px;
 	border: 1px solid #000;
 	position:relative;
+    padding: 11px 0px 35px 0px;
 }
 
 .manage-teacher-contain-data{
@@ -8684,7 +8724,7 @@ input[type="file"] {
 	justify-content:center;
 	align-items:center;
 	padding-right:10px;
-	padding-top:15px;
+	padding-top:30px;
 }
 
 .manage-teacher-bottom-action button,input[type="submit"]{
@@ -8767,19 +8807,46 @@ input[type="file"] {
 }
 
 @media (max-width: 1125px) {
-
+.home-middle-left-menu-title:hover .home-middle-left-menu-tooltip { display: flex; }
 	.home-middle-left{
 		width:35px;
+	}
+	
+	#dashboardName:hover .home-middle-left-menu-tooltip ,
+	#homeMenuOfflineListLecture:hover .home-middle-left-menu-tooltip,
+	#homeMenuOfflinListTeacher:hover .home-middle-left-menu-tooltip,
+	#homeMenuAccountSuper:hover .home-middle-left-menu-tooltip,
+	#homeMenuAccountGroup:hover .home-middle-left-menu-tooltip{ 
+		display: flex; 
+	}
+	
+	.home-middle-left-menu{
+		width:33px;
+	}
+	
+	.home-middle-right{
+		width:95%;	
 	}
 	
 	.home-middle-left-menu-text{
 		display:none;
 	}
 	
+	.home-middle-left-menu-text:after{
+		display:none;
+		content:'';
+	}
+	
+	.home-middle-left-contain{
+		z-index:2;
+		color:black;
+	}
+	
 	/*teacher*/
-	.home-middle-right {
-		width:100%;
-		margin-top:46px;
+	
+	
+	.home-middle-left-menu{
+		    margin: 10px 0px;	
 	}
 	
 	.manage-teacher-contain-data{

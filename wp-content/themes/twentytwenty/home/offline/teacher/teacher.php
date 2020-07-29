@@ -104,17 +104,46 @@
 //             dateFormat: 'd/mm/yy',
 //             timeFormat: 'H:ii',
 //         });
-
-		 mobiscroll.number('#inputTeacherEXP', {
+		 if (getCurrentACtion() == dictionaryKey.addStatus){
+			 mobiscroll.number('#inputTeacherEXP', {
             theme: 'ios',
             themeVariant: 'light',
             layout: 'fixed',
             value: 1,
             step: 1,
             min: 0,
-            max: 18,
+            max: 30,
             display: 'bubble',
         });
+		 }
+		 
+		
+		
+		let tempArray = localStorage.getItem('listScroll1'); 
+		tempArray = JSON.parse(tempArray);
+		console.log("tempArray",tempArray);
+		let tempCheckExist = true;
+		tempArray.some((item,index)=>{
+			if(item.id == "inputTeacherEXP"){
+				tempCheckExist = false;
+			   return true;
+			}
+		});
+		console.log("tempCheckExist",tempCheckExist);
+		if (tempCheckExist){
+			tempArray.push({id:"inputTeacherEXP",lib:'number'});
+		}
+		
+		/*
+		let listScroll = [
+		{id:"idAgeOfLectureFrom",lib:'number'},
+		{id:"idAgeOfLectureTo",lib:'number'},
+		];
+		*/
+		//tempArray.length = 0;
+		localStorage.setItem('language','vietnam');
+		localStorage.setItem('listScroll1',JSON.stringify(tempArray));
+		
 		
         //nếu là edit thì load dữ liệu về
         if (getCurrentACtion() == dictionaryKey.editStatus) {
@@ -142,6 +171,17 @@
                         document.getElementById("inputTeacherEmail").value = myCurrentTeacher.email != null ? myCurrentTeacher.email : "" ;
                         document.getElementById("inputTeacherPhone").value = myCurrentTeacher.phone != null ? myCurrentTeacher.phone : "";
                         document.getElementById("inputTeacherEXP").value = yearEXP;
+						 mobiscroll.number('#inputTeacherEXP', {
+            theme: 'ios',
+            themeVariant: 'light',
+            layout: 'fixed',
+            value: 1,
+			defaultValue:yearEXP,
+            step: 1,
+            min: 0,
+            max: 30,
+            display: 'bubble',
+        });
                         document.getElementById("teacherAvatar").src = getHomeURL() + myCurrentTeacher.imgUrl;
 						teacherDesciption.setData(myCurrentTeacher.description != null ? myCurrentTeacher.description : "");
 						document.getElementById("teacherSubDetailTextArea").value = myCurrentTeacher.shortDescription != null ? myCurrentTeacher.shortDescription : "";

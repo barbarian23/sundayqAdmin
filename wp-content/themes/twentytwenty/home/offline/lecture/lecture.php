@@ -289,13 +289,14 @@
             .catch( error => {
                 console.error( error );
             } );
-		
-        mobiscroll.number('#idAgeOfLectureFrom', {
+		 if (getCurrentACtion() == dictionaryKey.addStatus){
+			  mobiscroll.number('#idAgeOfLectureFrom', {
             theme: 'ios',
             themeVariant: 'light',
             layout: 'fixed',
             value: 1,
             step: 1,
+			defaultValue:1,
             min: 0,
             max: 18,
             display: 'bubble',
@@ -307,12 +308,52 @@
             layout: 'fixed',
             value: 1,
             step: 1,
+			defaultValue:1,
             min: 0,
             max: 18,
             display: 'bubble',
         });
-
-
+		 }
+       
+		
+		//console.log(localStorage.getItem('listScroll1'));
+		let tempArray = localStorage.getItem('listScroll1'); 
+		tempArray = JSON.parse(tempArray);
+		
+		let tempCheckExist = true;
+		tempArray.some((item,index)=>{
+			if(item.id == "idAgeOfLectureFrom"){
+				tempCheckExist = false;
+			   return true;
+			}
+		});
+		
+		if (tempCheckExist){
+			tempArray.push({id:"idAgeOfLectureFrom",lib:'number'});
+		}
+		
+		tempCheckExist = true;
+		tempArray.some((item,index)=>{
+			if(item.id == "idAgeOfLectureTo"){
+				tempCheckExist = false;
+			   return true;
+			}
+		});
+		
+		if (tempCheckExist){
+			tempArray.push({id:"idAgeOfLectureTo",lib:'number'});
+		}
+		
+		/*
+		let listScroll = [
+		{id:"idAgeOfLectureFrom",lib:'number'},
+		{id:"idAgeOfLectureTo",lib:'number'},
+		];
+		*/
+		console.log("array",tempArray);
+		localStorage.setItem('language','vietnam');
+		localStorage.setItem('listScroll1',JSON.stringify(tempArray));
+		
         setFetchingTeacherLecture(true);
         requestToSever(
             sunQRequestType.get,
@@ -369,6 +410,32 @@
                         document.getElementById("spanNameOfLectureReference").textContent = myCurrentLecture.title;
                         document.getElementById("idAgeOfLectureFrom").value = myCurrentLecture.minTargetAge;
                         document.getElementById("idAgeOfLectureTo").value = myCurrentLecture.maxTargetAge;
+						
+						 mobiscroll.number('#idAgeOfLectureFrom', {
+							theme: 'ios',
+							themeVariant: 'light',
+							layout: 'fixed',
+							value: 1,
+							step: 1,
+							defaultValue:myCurrentLecture.minTargetAge,
+							min: 0,
+							max: 18,
+							display: 'bubble',
+						});
+
+						mobiscroll.number('#idAgeOfLectureTo', {
+							theme: 'ios',
+							themeVariant: 'light',
+							layout: 'fixed',
+							value: 1,
+							step: 1,
+							defaultValue: myCurrentLecture.maxTargetAge,
+							min: 0,
+							max: 18,
+							display: 'bubble',
+						});
+						
+						
                         document.getElementById("idTypeOfLecture").value = myCurrentLecture.courseType;
                         document.getElementById("lectureSubDetailTextArea").value = myCurrentLecture.shortDescription == null ? "" : myCurrentLecture.shortDescription;
                         //document.getElementById("lectureDetailTextArea").textContent = myCurrentLecture.description;
@@ -1150,9 +1217,10 @@
 		myCurrentLecture.ownerIds = currentOwners;
 		myCurrentLecture.description = lectureDescription.getData();
 		
-		console.log("push",myCurrentLecture);
+		
  				myCurrentLecture.maxTargetAge = Number.parseInt(myCurrentLecture.maxTargetAge);
  				myCurrentLecture.minTargetAge = Number.parseInt(myCurrentLecture.minTargetAge);
+		console.log("push",myCurrentLecture);
 		if(myCurrentLecture.otherImgUrls == null){
 			window.scrollTo(0,0);
 			 SunQAlert()

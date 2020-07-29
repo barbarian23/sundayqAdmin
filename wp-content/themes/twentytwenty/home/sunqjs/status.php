@@ -6,27 +6,29 @@ var sunqStatus = {
 	mode:"none", //offline , online , account
 	isOpenMenu:false,
 	isChoosingSelectTeacherMain:false,
-	isFetchingLecture:false,
-	isGetLectureFromServerSuccess:false,
-	isGetLectureFromServerLengthGreaterThanZero:false,
-	isFetchingTeacher:false,
-	isGetTeacherFromServerSuccess:false,
-	isGetTeacherFromServerLengthGreaterThanZero:false,
-	currentSelectTeacher:-1,
-	isLEctureGetTeacherGreaterThanZero:false,
-	isGetLectureTeacherFromServerSuccess:false,
-	isFetchingTeacherLecture:false,
 	currentACtion:"",
 	currentEdit:"",
 	logining:false,
 	isloginfailed:false,
-	isUploadingDataLecture:false,
-	isUploadingDataTeacher:false,
-	isChoosingMultiTeacher:false,
-	currentView:0,//load danh sách người đăng ký 
+	
+	isFetchingLecture:false,//đang load khóa học hiện tại
+	isGetLectureFromServerSuccess:false,
+	isGetLectureFromServerLengthGreaterThanZero:false,
+	isLEctureGetTeacherGreaterThanZero:false,//danh sách teacher do lecture load đang bị trống
 	loadingCurrentView:false,
-	currentTeacher:0,
-	currentLecture:0,
+	isUploadingDataLecture:false,
+	isChoosingMultiTeacher:false,
+	currentLecture:0,//trang load danh sách khóa học
+	currentView:0,//trang load danh sách người đăng ký 
+	
+	isFetchingTeacher:false,//đang load teacher hiện tại
+	isGetTeacherFromServerSuccess:false,
+	isGetTeacherFromServerLengthGreaterThanZero:false,
+	isGetLectureTeacherFromServerSuccess:false,
+	currentSelectTeacher:-1,
+	isFetchingTeacherLecture:false,
+	isUploadingDataTeacher:false,
+	currentTeacher:0,//trang load danh sách teacher
 }
 var _mode = "none",
 	_isOpenMenu = false,

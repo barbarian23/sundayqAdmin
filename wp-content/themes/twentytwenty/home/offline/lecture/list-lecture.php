@@ -17,7 +17,7 @@
 
     function deleteLecture(mId) {
         console.log("delete", listLecture[mId]);
-		//alert(listLecture[mId]+listLecture[mId].id);
+		//alert("lecture "+mId+" "+listLecture[mId].title);
         SunQAlert()
             .position('center')
             .title(dictionaryKey.REQUEST_DELETE)

@@ -4,7 +4,7 @@
 <div class="home-parent">
 	<!-- home header -->
 	<div class="home-header">
-		<img class="home-header-img" src='<?php echo $GLOBALS['URI_HEADER_ICON'] ; ?>'>
+		<a href="/"><img class="home-header-img" src='<?php echo $GLOBALS['URI_HEADER_ICON'] ; ?>'></a>
 	</div>
 	
 	<!-- home middle -->
@@ -16,11 +16,17 @@
 			<div class="home-middle-left-contain" action="get">
 				<div class="home-middle-left-menu" id="dashboardName">
 					<a  href=<?php echo $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"]; ?>><i class="fa fa-dashboard" id="dashboardIcon"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_TITLE"]; ?></span></a>
+					<div class="home-middle-left-menu-tooltip">
+						<span><?php echo $GLOBALS["ADMIN_TITLE"]; ?></span>
+					</div>
 				</div>
 				<!-- Học online -->
 				<div class="home-middle-left-menu" id="divShowOnline">
 					<div class="home-middle-left-menu-title">
 						<i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
+						<div class="home-middle-left-menu-tooltip">
+							<span><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
+						</div>
 					</div>
 					<div class="home-middle-left-menu-content" id="homeMenuOline">
 
@@ -31,30 +37,48 @@
 				<div class="home-middle-left-menu" id="divShowOffline">
 					<div class="home-middle-left-menu-title">
 						<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
+						<div class="home-middle-left-menu-tooltip">
+							<span><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
+						</div>
 					</div>
 					<div class="home-middle-left-menu-content" id="homeMenuOffline">
-						<div class="home-middle-left-menu">
+						<div class="home-middle-left-menu" id="homeMenuOfflineListLecture">
 							<a href="?mode=offline&page=list-lecture"><i class="fa fa-calendar"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span></a>
+							<div class="home-middle-left-menu-tooltip">
+								<span><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span>
+							</div>
 						</div>
 
-						<div class="home-middle-left-menu">
+						<div class="home-middle-left-menu" id="homeMenuOfflinListTeacher">
 							<a href="?mode=offline&page=list-teacher"><i class="fa fa-newspaper-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span></a>
+							<div class="home-middle-left-menu-tooltip">
+								<span><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span>
+							</div>
 						</div>
 					</div>
 				</div>
 				
 				<!-- admin -->
 				<div class="home-middle-left-menu" id="divShowAccount">
-					<div class="home-middle-left-menu-title">
+					<div class="home-middle-left-menu-title" id="homeMenuOfflinListTeacher">
 						<i class="	fa fa-address-book"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
+						<div class="home-middle-left-menu-tooltip">
+							<span><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
+						</div>
 					</div>
 					<div class="home-middle-left-menu-content" id="homeMenuAccount">
-						<div class="home-middle-left-menu">
-						<a href="?mode=offline"><i class="fa fa-address-card-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span></a>
+						<div class="home-middle-left-menu" id="homeMenuAccountSuper">
+						<a href="?mode=offline&page=list-account"><i class="fa fa-address-card-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span></a>
+							<div class="home-middle-left-menu-tooltip">
+								<span><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span>
+							</div>
 						</div>
 
-						<div class="home-middle-left-menu">
-							<a href="?mode=offline"><i class="fa fa-code-fork"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
+						<div class="home-middle-left-menu" id="homeMenuAccountGroup">
+							<a href="?mode=offline&page=list-group"><i class="fa fa-code-fork"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
+							<div class="home-middle-left-menu-tooltip">
+								<span><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -132,16 +156,16 @@
 										include get_theme_file_path( "home/offline/teacher/teacher.php" );
 										break;
 									case "account":
-										include get_theme_file_path( "home/offline/superadmin/account/account.php" );
+										include get_theme_file_path( "home/admin/account/account.php" );
 										break;
 									case "list-account":
-										include get_theme_file_path( "home/offline/superadmin/account/list-account.php" );
+										include get_theme_file_path( "home/admin/account/list-account.php" );
 										break;
 									case "group":
-										include get_theme_file_path( "home/offline/superadmin/group/group.php" );
+										include get_theme_file_path( "home/admin/group/group.php" );
 										break;
 									case "list-group":
-										include get_theme_file_path( "home/offline/superadmin/group/list-group.php" );
+										include get_theme_file_path( "home/admin/group/list-group.php" );
 										break;
 									case "list-lecture":
 										include get_theme_file_path( "home/offline/lecture/list-lecture.php" );
