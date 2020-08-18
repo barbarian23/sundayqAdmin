@@ -7,7 +7,7 @@
 	$GLOBALS["ADMIN_ONLINE"] = "Học trực tuyến";
 
 	//offline
-	$GLOBALS["ADMIN_OFFLINE"] = "Học ngoại tuyến";
+	$GLOBALS["ADMIN_OFFLINE"] = "Q-Academy";
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"] = "Quản lý khóa học";
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"] = "Quản lý giảng viên";
 
@@ -123,24 +123,58 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["GROUP_LIST_BUTTON_EDIT_GROUP"] = "Chỉnh sửa nhóm quyền";
 	$GLOBALS["GROUP_LIST_BUTTON_DELETE_GROUP"] = "Xóa nhóm quyền";
 	$GLOBALS["GROUP_LIST_BUTTON_ADD_GROUP"] = "Thêm mới nhóm quyền";	
+	$GLOBALS["GROUP_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["GROUP_LIST_COL_2"] = "Tên nhóm quyền";
+	$GLOBALS["GROUP_LIST_COL_3"] = "Ngày tạo";
+	$GLOBALS["GROUP_LIST_COL_4"] = "Chỉnh sửa";
 
 	//group
+	$GLOBALS["GROUP_INPUT_NAME"] = "Tên nhóm quyền";
+	$GLOBALS["GROUP_INPUT_NAME_PLACEHOLDER"] = "Nhập vào tên nhóm quyền";
+	$GLOBALS["GROUP_INPUT_RESOURCE"] = "Chức năng";
+	$GLOBALS["GROUP_INPUT_RESOURCE_PLACEHOLDER"] = "Chọn chức năng";
+	$GLOBALS["GROUP_PERMISSION"] = "Chức năng";
+	$GLOBALS["GROUP_PERMISSION_1"] = "Xem";
+	$GLOBALS["GROUP_PERMISSION_2"] = "Tạo mới";
+	$GLOBALS["GROUP_PERMISSION_3"] = "Chỉnh sửa";
+	$GLOBALS["GROUP_PERMISSION_4"] = "Thiết lập trạng thái tài khoản";
+	$GLOBALS["GROUP_PERMISSION_5"] = "Xóa";
+	$GLOBALS["GROUP_SUBMIT_ADD"] = "Thêm mới";	
+	$GLOBALS["GROUP_SUBMIT_EDIT"] = "Chỉnh sửa";
 	
-
 	//list account	
 	$GLOBALS["ACCOUNT_LIST_TITLE"] = "Danh sách tài khoản";
 	$GLOBALS["ACCOUNT_NO_LIST"] = "Danh sách tài khoản trống";
 	$GLOBALS["ACCOUNT_LIST_BUTTON_EDIT_ACCOUNT"] = "Chỉnh sửa tài khoản";
 	$GLOBALS["ACCOUNT_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa tài khoản";
 	$GLOBALS["ACCOUNT_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới tài khoản";	
+	$GLOBALS["ACCOUNT_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["ACCOUNT_LIST_COL_2"] = "Loại tài khoản";
+	$GLOBALS["ACCOUNT_LIST_COL_3"] = "Email";
+	$GLOBALS["ACCOUNT_LIST_COL_4"] = "Số điện thoại";
+	$GLOBALS["ACCOUNT_LIST_COL_5"] = "Trạng thái";
+	$GLOBALS["ACCOUNT_LIST_COL_6"] = "Chỉnh sửa";
+	$GLOBALS["ACCOUNT_LIST_COL_5_CONTENT_DISABLED"] = "Không hoạt động";
+	$GLOBALS["ACCOUNT_LIST_COL_5_CONTENT_ENABLED"] = "Đang hoạt động";
 
 	//account
 	$GLOBALS["ACCOUNT_INPUT_NAME"] = "Tên tài khoản";
 	$GLOBALS["ACCOUNT_INPUT_NAME_PLACEHOLDER"] = "Nhập vào tên tài khoản";
+	$GLOBALS["ACCOUNT_INPUT_EMAIL"] = "Email";
+	$GLOBALS["ACCOUNT_INPUT_EMAIL_PLACEHOLDER"] = "Nhập vào Email";
+	$GLOBALS["ACCOUNT_INPUT_PHONE"] = "Số điện thoại";
+	$GLOBALS["ACCOUNT_INPUT_PHONE_PLACEHOLDER"] = "Nhập vào mật khẩu số điện thoại";
 	$GLOBALS["ACCOUNT_INPUT_PASSWORD"] = "Mật khẩu";
 	$GLOBALS["ACCOUNT_INPUT_PASSWORD_PLACEHOLDER"] = "Nhập vào mật khẩu";
 	$GLOBALS["ACCOUNT_INPUT_PERMISSION"] = "Quyền tài khoản";	
 	$GLOBALS["ACCOUNT_INPUT_PERMISSION_PLACEHOLDER"] = "Nhập vào quyền tài khoản";	
+	$GLOBALS["ACCOUNT_SUBMIT_ADD"] = "Thêm mới";	
+	$GLOBALS["ACCOUNT_SUBMIT_EDIT"] = "Chỉnh sửa";
+	$GLOBALS["ACCOUNT_CHANGE_PASSWORD"] = "Đổi mật khẩu";
+	$GLOBALS["ACCOUNT_CHANGE_GROUP"] = "Đổi nhóm quyền";
+	$GLOBALS["ACCOUNT_INFO_CHANGE"] = "Chỉnh sửa thông tin tài khoản";
+	$GLOBALS["ACCOUNT_PASSWORD_CHANGE"] = "Chỉnh sửa mật khẩu tài khoản";
+	$GLOBALS["ACCOUNT_PERMISION_CHANGE"] = "Chỉnh sửa quyền tài khoản";
 
 	//infomation
 	
@@ -207,6 +241,9 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	//timeout
 	$GLOBALS["SESION_TIMEOUT_SERVER_TITLE"] = 'Đã hết phiên đăng nhập';
 	$GLOBALS["SESION_TIMEOUT_SERVER_CONTENT"] = 'Chuyển hướng về trang đăng nhập <b></b> giây.';
+
+	//access denied
+	$GLOBALS["ACCESS_DENIED_SERVER_TITLE"] = 'Bạn chưa có quyền này';
 ?>
 <script>
 	var dictionary = {
@@ -240,7 +277,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		UNIT_SECONDS: " giây",
 		SESION_TIMEOUT_SERVER_TITLE : 'Đã hết phiên đăng nhập',
 		SESION_TIMEOUT_SERVER_CONTENT : 'Chuyển hướng về trang đăng nhập <b></b> giây.',
-		MSEC: ""
+		MSEC: "",
 	}
 	
 	var dictionaryKey = {
@@ -258,6 +295,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		LECTURE_CUSTOMER_NEED_SUPPORT_2: "LECTURE_CUSTOMER_NEED_SUPPORT_2",
 		LECTURE_CUSTOMER_NEED_SUPPORT_3: "LECTURE_CUSTOMER_NEED_SUPPORT_3",
 		LECTURE_CUSTOMER_NEED_SUPPORT_4: "LECTURE_CUSTOMER_NEED_SUPPORT_4",
+		
+		IMAGE_LOADED_FAILED:"Tải ảnh thất bại",
 		
 		TEACHER_EDIT_SUCCESS: "Chỉnh sửa thành công",
 		TEACHER_ADD_SUCCESS:"Thêm mới thành công",
@@ -280,16 +319,36 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		REQUEST_ADD: "Bạn có muốn thêm?",
 		REQUEST_EDIT: "Bạn có muốn sửa đổi?",
+		REQUEST_CHANGE_PASWORD: "Bạn có muốn thay đổi mật khẩu?",
+		REQUEST_CHANGE_PERMISSION: "Bạn có muốn thay đổi nhóm quyền?",
 		
 		LECTURE_NAME:" khóa học này",
 		TEACHER_NAME:" giáo viên này",
 		
 		SERVER_INFO: "Server thông báo ",
+	
+		NOT_AVAILABLE:"Chưa có",
+		
+		
+		LECTURE_COURSE_PLAN_NULL: "Nội dung khóa học không được để trống.Tại khóa học thứ ",
+		
+		REQUEST_DELETE:"Bạn có muốn xóa không?",
+		REQUEST_ACTIVE:"Bạn có muốn kích hoạt tài khoản này?",
+		REQUEST_DEACTIVE:"Bạn có muốn tạm thời vô hiệu hóa tài khoản này?",
+		
+		LECTURE_DELETE_SUCCESS:"Xóa thành công",
+		REQUEST_ACTIVE_SUCCESS:"Kích hoạt tài khoản thành công",
+		REQUEST_DEACTIVE_SUCCESS:"Vô hiệu hóa tài khoản thành công",
+		REQUEST_CHANGE_PASWORD_SUCCESS: "Thay đổi mật khẩu thành công",
+		REQUEST_CHANGE_PERMISSION_SUCCESS: "Thay đổi nhóm quyền thành công",
+		
+		GROUP_PERMISSION_INFO:"Xem thông tin trên quyền",
 		
 		LECTURE_DELETE_FAILED: "Xóa không thành công",
-		LECTURE_DELETE_SUCCESS:"Xóa thành công",
-		REQUEST_DELETE:"Bạn có muốn xóa không?",
-		
+		REQUEST_ACTIVE_FAILED:"Kích hoạt tài khoản không thành công",
+		REQUEST_DEACTIVE_FAILED:"Vô hiệu hóa tài khoản không thành công",
+		REQUEST_CHANGE_PASWORD_FAILED: "Thay đổi mật khẩu không thành công",
+		REQUEST_CHANGE_PERMISSION_FAILED: "Thay đổi nhóm quyền không thành công",
 		
 		WRONG_IMG_LECTURE_LIST: "Bạn chưa tải một số hoạt động khóa học lên",
 		WRONG_IMG_LECTURE_DEC: "Bạn chưa tải ảnh mô tả khóa học lên",
@@ -297,9 +356,26 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		WRONG_OWNER:"Bạn chưa chọn giáo viên chủ nhiệm?",
 		
 		WRONG_PHONE: "Số điện thoại không đúng, vui lòng nhập lại",
+		WRONG_BLANK_PHONE: "Bạn chưa nhập số điện thoại",
 		WRONG_EMAIL: "Email không đúng, vui lòng nhập lại",
+		WRONG_NAME: "Bạn chưa nhập tên",
+		WRONG_TITLE_LECTURE: "Bạn chưa nhập tên khóa học",
+		WRONG_DESCRIPTION_LECTURE: "Bạn chưa nhập chi tiết khóa học",
+		WRONG_COURSE_TYPE_LECTURE: "Bạn chưa nhập loại hình giảng dạy",
+		WRONG_AGE_MIN_LECTURE: "Bạn chưa nhập độ tuổi giới hạn",
+		WRONG_AGE_MAX_LECTURE: "Bạn chưa nhập độ tuổi giới hạn",
 		
 		SESION_TIMEOUT_SERVER: "SESION_TIMEOUT_SERVER",
+		ACCESS_DENIED_SERVER_TITLE: "ACCESS_DENIED_SERVER_TITLE",
+		
+		ERROR_API_MESSAGE:"Tải dữ liệu không thành công",
+		
+		WRONG_PASSWORD:"Bạn chưa nhập mật khẩu",
+		WRONG_PASSWORD_LENGTH:"Mật khẩu chưa đủ độ dài",
+		WRONG_PASSWORD_FORMAT:"Mật khẩu chưa đúng định dạng",
+		WRONG_GROUP_NAME:"Bạn chưa nhập tên nhóm quyền",
+		WRONG_GROUP_RESOURCE:"Bạn chưa chọn chức năng",
+		WRONG_GROUP_PERMISSION:"Bạn chưa chọn danh sách thao tác trên quyền",
 		
 		AGREE:"Đồng ý",
 		CANCEL:"Hủy bỏ",
@@ -320,6 +396,29 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		DIRECTORY_IMAGE:"../../../../../home/lanit/release/sunq-server/private/image/",
 	}
 	
+	var rollGroupList = [ {//xem
+						  name:"read",
+						  id:0,
+						  display:'<?php echo $GLOBALS["GROUP_PERMISSION_1"]; ?>'
+						 }, {//tạo mới
+						  name:"create",
+						  id:1,
+						  display:'<?php echo $GLOBALS["GROUP_PERMISSION_2"]; ?>'
+						 }, {//sửa
+						  name:"edit",
+						  id:2,
+						  display:'<?php echo $GLOBALS["GROUP_PERMISSION_3"]; ?>'
+						 }, {//đổi trạng thái tài khoản  api state
+						  name:"exe",
+						  id:3,
+						  display:'<?php echo $GLOBALS["GROUP_PERMISSION_4"]; ?>'
+						 }, {//xóa
+						  name:"delete",
+						  id:4,
+						  display:'<?php echo $GLOBALS["GROUP_PERMISSION_5"]; ?>'
+						 }];
+	
+
 	function getDictionaryText(key){
 		return dictionary[key];
 	}
@@ -327,6 +426,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	var sunQMode = {
 		offline:"offline",
 		online:"online",
+		sa:"sa",
 		account:"account",
 		group:"group"
 	}
@@ -344,15 +444,18 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 			listLecture:"list-lecture",
 			teacher:"teacher",
 			listTeacher:"",
+		},
+		online:{
+			
+		},account:{
 			account:"account",
 			listAccount:"list-account",
 			group:"group",
 			listGroup:"list-group",
-		},
-		online:{
-			
 		}
 	}
+	
+	var adminAccountType = ["admin"];
 	
 	var listLecture = [];
 	
@@ -364,9 +467,10 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	var networkCode = {
 	  	sessionTimeOut: 401,
+		accessDenied: 403,
 		success:200
 	};
-	
+
 	var indexCurrentTeacher = -1;
 	
 	var secret = "sunqcryptomessthisisimportantsoimportantheheheeee";
@@ -374,31 +478,52 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	//var adminURL = "http://103.146.22.168/admin/";
 	
 	var adminURL = "http://admin.sundayq.com/";
-	
 	var urlWebsiteLogin = adminURL+"adminlogin";
 	
+	//server url
 	var mainURL= "http://103.146.22.168:3000/";
+	
+	//account login
 	var accountPartURL = "account/";
+	var listAccountURL = "accounts/";
+	
+	//login
+	var adminLoginPartURL = "admin/login";
+	//==>
+	var adminLoginUrl  = accountPartURL + adminLoginPartURL;
+	
+	//advice
 	var listAdvicePartURL = "advices";
 	var advicePartURL = "advice";
+	var listAdvicesPage = accountPartURL + listAdvicePartURL;
+	var advicePage = accountPartURL + advicePartURL;
+	
+	//token check
 	var tokenPartURL = "token/check";
 	
 	//==>
 	var tokenCheckUrl  = accountPartURL + tokenPartURL;
 	
-	var listAdvicesPage = accountPartURL + listAdvicePartURL;
-	
-	var advicePage = accountPartURL + advicePartURL;
-	
-	var adminLoginPartURL = "admin/login";
-	//==>
-	var adminLoginUrl  = accountPartURL + adminLoginPartURL;
-	
+	//upload image
 	var uploadImagePartUrl = "resource/image";	
+	
+	//teacher
 	var listTeacherUrl  = "teachers";
 	var teacherUrl  = "teacher";
+	
+	//lecture
 	var listLecturerUrl  = "courses";
 	var lecturerUrl  = "course";
+	
+	//group (role-group)
+	var listGroupUrl  = "rolegroups";
+	var groupUrl  = "rolegroup";
+	var groupResource = "/resources";
+	
+	var allResources = groupUrl + groupResource;
+	
+	//admin account
+	var adminUrl = "admin";
 	
 	function getAdminHomeURL(){
 		return adminURL;
@@ -411,41 +536,91 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	function getLoginURL(){//redirect
 		return urlWebsiteLogin;
 	}
-	
+	//login
 	function getURLLogin(){//api
 		return mainURL+adminLoginUrl;
 	}
-	
+	//check token
 	function getURLCheckToken(){
 		return mainURL+tokenCheckUrl;
 	}
-	
+	//list-lecture
 	function getURLAllLecture(){
 		return mainURL+listLecturerUrl;
 	}
-	
+	//lecture
 	function getURLecture(){
 		return mainURL+lecturerUrl;
 	}
-	
+	//list-teacher
 	function getURLAllTeacher(){
 		return mainURL+listTeacherUrl;
 	}
-	
+	//teacher
 	function getURLTeacher(){
 		return mainURL+teacherUrl;
 	}
-	
+	//upload image
 	function getURLUploadImage(){
 		return mainURL+uploadImagePartUrl;	
 	}
-	
-	function getURLListAccountAdvice(){advicePage
+	//all register
+	function getURLListAccountAdvice(){
 		return mainURL+listAdvicesPage;	
 	}
-	
+	//get advice in lecture detail
 	function getURLAccountAdvice(){
 		return mainURL+advicePage;	
 	}
 	
+	//<group>
+	//group get all resource
+	function getAllResources(){
+		return mainURL + allResources;
+	}
+	//post roll group
+	function postRollGroup(){
+		return mainURL + groupUrl;
+	}
+	//get roll group
+	function getRollGroup(){
+		return groupUrl;
+	}
+	//get list roll group
+	function getListRollGroup(){
+		return mainURL + listGroupUrl;
+	}
+	
+	//<admin>
+	//post admin
+	function postAdmin(){
+		return mainURL + adminUrl;
+	}
+	//put admin role
+	function putAdminRole(adid,rgid){
+		return mainURL + adminUrl + "/" + adid + "/" + rolegroups + "/" +rgid;
+	}
+	
+	//<account managed by admin>
+	//change password
+	function putAccountPassword(aid){//reset password
+		return mainURL + accountPartURL + adid + "/password";
+	}
+	//change status
+	function putAccountState(aid){//dành cho admin
+		return mainURL + accountPartURL + aid + "/state";
+	}
+	//password
+	function setAccountPassword(aid){//onlyforadmin
+		return mainURL + accountPartURL + aid;
+	}
+	//list account
+	function getListAccount(){//dành cho giáo viên
+		return mainURL + listAccountURL;
+	}
+	
+	//url redirect
+	function getRedirectUrl(mode,page){
+		return adminURL + "?mode="+mode+"&page="+page;
+	}
 </script>

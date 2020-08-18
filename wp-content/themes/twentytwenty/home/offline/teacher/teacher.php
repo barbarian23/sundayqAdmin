@@ -120,19 +120,26 @@
 		
 		
 		let tempArray = localStorage.getItem('listScroll1'); 
-		tempArray = JSON.parse(tempArray);
-		console.log("tempArray",tempArray);
-		let tempCheckExist = true;
-		tempArray.some((item,index)=>{
-			if(item.id == "inputTeacherEXP"){
-				tempCheckExist = false;
-			   return true;
+		
+		if (tempArray){
+			tempArray = JSON.parse(tempArray);
+			console.log("tempArray",tempArray);
+			let tempCheckExist = true;
+			tempArray.some((item,index)=>{
+				if(item.id == "inputTeacherEXP"){
+					tempCheckExist = false;
+				   return true;
+				}
+			});
+			console.log("tempCheckExist",tempCheckExist);
+			if (tempCheckExist){
+				tempArray.push({id:"inputTeacherEXP",lib:'number'});
 			}
-		});
-		console.log("tempCheckExist",tempCheckExist);
-		if (tempCheckExist){
-			tempArray.push({id:"inputTeacherEXP",lib:'number'});
-		}
+		} else {
+			tempArray = [];
+				tempArray.push({id:"inputTeacherEXP",lib:'number'});
+			}
+		
 		
 		/*
 		let listScroll = [
@@ -195,7 +202,7 @@
                     console.log(dictionaryKey.ERR_INFO, err);
                     SunQAlert()
                         .position('center')
-                        .title("Tải dữ liệu không thành công")
+                        .title(dictionaryKey.ERROR_API_MESSAGE)
                         .type('error')
                         .confirmButtonColor("#3B4EDC")
                         .confirmButtonText(dictionaryKey.TRY_AGAIN)
@@ -283,23 +290,28 @@
     }
 
     document.getElementById("inputTeacherName").addEventListener("input", function(e) {
-        myCurrentTeacher.name = e.target.value;
+		let tttValue = e.target.value;
+        myCurrentTeacher.name = tttValue.escape();
     });
 
 	 document.getElementById("inputTeacherDegree").addEventListener("input", function(e) {
-        myCurrentTeacher.degree = e.target.value;
+		 let tttValue = e.target.value;
+        myCurrentTeacher.degree = tttValue.escape();
     });
 	
 	 document.getElementById("inputTeacherShort").addEventListener("input", function(e) {
-        myCurrentTeacher.shortId = e.target.value;
+		 let tttValue = e.target.value;
+        myCurrentTeacher.shortId = tttValue.escape();
     });
 	
     document.getElementById("inputTeacherMajor").addEventListener("input", function(e) {
-        myCurrentTeacher.specialist = e.target.value;
+		 let tttValue = e.target.value;
+        myCurrentTeacher.specialist = tttValue.escape();
     });
 
 	document.getElementById("inputTeacherUniversity").addEventListener("input", function(e) {
-        myCurrentTeacher.university = e.target.value;
+		 let tttValue = e.target.value;
+        myCurrentTeacher.university = tttValue.escape();
     });
 	
 	/*
@@ -315,11 +327,13 @@
     });
 			
     document.getElementById("inputTeacherEmail").addEventListener("input", function(e) {
-        myCurrentTeacher.email = e.target.value;
+		 let tttValue = e.target.value;
+        myCurrentTeacher.email = tttValue.escape();
 		//console.log(myCurrentTeacher.email );
     });
     document.getElementById("inputTeacherPhone").addEventListener("input", function(e) {
-        myCurrentTeacher.phone = e.target.value;
+		 let tttValue = e.target.value;
+        myCurrentTeacher.phone = tttValue.escape();
     });
 
     document.getElementById("inputTeacherEXP").addEventListener("change", function(e) {
@@ -356,7 +370,7 @@
             // them on the server until the user's session ends.
         }
     });
-
+	/*
     function checkEmail(value) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(value).toLowerCase());
@@ -366,7 +380,7 @@
     	var re = /[0-9]{8,}/;
 		return re.test(value);
 	}
-	
+	*/
     //submit form
     document.getElementById("teacherSubmit").addEventListener("click", function(e) {
         e.preventDefault();
@@ -461,7 +475,9 @@
                                             webpageRedirect(getAdminHomeURL() + "?mode=offline&page=list-teacher");
                                         })
                                         .show();
-                                } else if (res.code === networkCode.sessionTimeOut) {
+                                } else if (res.code === networkCode.accessDenied){
+									   makeAlertPermisionDenial();
+									   }else if (res.code === networkCode.sessionTimeOut) {
                                     makeAlertRedirect();
                                 } else {
 									//alert("loi"+JSON.stringify(res));

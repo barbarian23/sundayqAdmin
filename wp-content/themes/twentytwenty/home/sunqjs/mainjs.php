@@ -12,6 +12,92 @@
 			
 		}
 		
+	
+	
+		function saveData(key,data){
+					localStorage.saveItem(key,data);
+				}
+
+			function getData(key,data){
+					return localStorage.getItem(key);
+				}
+
+			function saveToLocalStorage(key, input){
+				localStorage.setItem(key, input);
+			}
+
+			function getLocalStorage(key){
+				return localStorage.getItem(key);
+			}
+
+
+			function setCookie(cname,cvalue,exdays) {
+		  var d = new Date();
+		  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		  var expires = "expires=" + d.toGMTString();
+		  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function getCookie(cname) {
+		  var name = cname + "=";
+		  var decodedCookie = decodeURIComponent(document.cookie);
+		  var ca = decodedCookie.split(';');
+		  for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+			  c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+			  return c.substring(name.length, c.length);
+			}
+		  }
+		  return "";
+		}
+		function eraseCookie(name) {   
+			document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		}function saveData(key,data){
+					localStorage.saveItem(key,data);
+				}
+
+			function getData(key,data){
+					return localStorage.getItem(key);
+				}
+
+			function saveToLocalStorage(key, input){
+				localStorage.setItem(key, input);
+			}
+
+			function getLocalStorage(key){
+				return localStorage.getItem(key);
+			}
+
+
+			function setCookie(cname,cvalue,exdays) {
+		  var d = new Date();
+		  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		  var expires = "expires=" + d.toGMTString();
+		  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function getCookie(cname) {
+		  var name = cname + "=";
+		  var decodedCookie = decodeURIComponent(document.cookie);
+		  var ca = decodedCookie.split(';');
+		  for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+			  c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+			  return c.substring(name.length, c.length);
+			}
+		  }
+		  return "";
+		}
+		function eraseCookie(name) {   
+			document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		}
+	
 		function makeAlertRedirect(){
 					let timerIntervalListTeacher;
 					let textRedirectTiele = dictionary.SESION_TIMEOUT_SERVER_TITLE;
@@ -20,11 +106,11 @@
 						.position('center')
 						.title(textRedirectTiele)
 						.html(textRedirectSecond)
-						.type('success')
+						.type('error')
 						.timer(dictionaryKey.timeoutReLogin)
 						.timerProgressBar(true)
 						.confirmButtonColor("#3B4EDC")
-						.confirmButtonText("Đồng ý")
+						.confirmButtonText(dictionaryKey.AGREE)
 						.onBeforeOpen(()=>{
 							 Swal.showLoading()
 							timerIntervalListTeacher = setInterval(() => {
@@ -45,20 +131,28 @@
 						  .show();
 		}
 	
+		function makeAlertPermisionDenial(){
+					let timerIntervalListTeacher;
+					let textRedirectTitle = dictionary.ACCESS_DENIED_SERVER_TITLE;
+					SunQAlert()
+                    .position('center')
+                    .title(textRedirectTitle)
+                    .type('error')
+                    .confirmButtonColor("#3B4EDC")
+                    .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                    .callback((result) => {
+                       
+                    })
+                    .show();
+		}
+	
 		function clearListImageAndDetailImage(){
 			console.log("clearListImageAndDetailImage");
 			listImage.length = 0;
 			imageDetail = "";
 		}
 	
-		function saveData(key,data){
-			localStorage.saveItem(key,data);
-		}
-	
-	function getData(key,data){
-			return localStorage.getItem(key);
-		}
-	
+		
 		function encrypt(input,secretMessage){
 		 return encrypted = CryptoJS.AES.encrypt(input, secretMessage);
 	}
@@ -66,14 +160,6 @@
 	function decrypto(input,secretMessage){
 		let decrypted = CryptoJS.AES.decrypt(encrypted, secretMessage);
 		return decrypted.toString(CryptoJS.enc.Utf8);
-	}
-	
-	function saveToLocalStorage(key, input){
-		localStorage.setItem(key, input);
-	}
-	
-	function getLocalStorage(key){
-		return localStorage.getItem(key);
 	}
 	
 	function webpageRedirect(url){
@@ -90,6 +176,13 @@
                 return result
             }
 		});
+	}
+	//?mode=offline&page=account&action=edit&id="+item.id+"\"
+	function makeATagRedirect(mode,page,action,id){
+		if(id){
+			return "?mode="+mode+"&page="+page+"&action="+action+"&id="+id;
+		}
+		return "?mode="+mode+"&page="+page+"&action="+action;
 	}
 	
 	function checkMobileIOS() {
@@ -131,4 +224,25 @@
 			}
 		);
 	}
+	
+	function checkEmail(value) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(value).toLowerCase());
+    }
+
+	function checkPhone(value){
+    	var re = /[0-9]{8,}/;
+		return re.test(value);
+	}
+	
+	String.prototype.escape = function() {
+    var tagsToReplace = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;'
+    };
+    return this.replace(/[&<>]/g, function(tag) {
+        return tagsToReplace[tag] || tag;
+		});
+	};
 </script>

@@ -180,7 +180,7 @@
             <label for="upload" class="manage-section-road-map-label-for-upload">
                 <i class="fa fa-cloud-upload"></i> <?php echo $GLOBALS["LECTURE_UPLOAD_PLAN_PLACEHOLDER"]; ?>
             </label>
-            <input id="upload" type=file name="files[]">
+            <input id="upload" type=file name="files[]" onclick="this.value=null;">
             <p class="manage-section-road-map-upload-download-file-return" id="fileSelected"></p>
             <p class="manage-section-road-map-upload-download-file-return" id="fileSelectedAbsolutePath"></p>
         </div>
@@ -272,6 +272,18 @@
     // 		teacherId:"String",
     // 		supporterId:"String",
     // 	]
+    
+	String.prototype.escape = function() {
+    var tagsToReplace = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;'
+    };
+    return this.replace(/[&<>]/g, function(tag) {
+        return tagsToReplace[tag] || tag;
+		});
+	};
+	
     var myCurrentLecture={}, myCurrentTacherInLecture , currentOwners = [];
 	var sheet_1_data ;
     var sheet_2_data ;
@@ -318,31 +330,37 @@
 		
 		//console.log(localStorage.getItem('listScroll1'));
 		let tempArray = localStorage.getItem('listScroll1'); 
-		tempArray = JSON.parse(tempArray);
-		
-		let tempCheckExist = true;
-		tempArray.some((item,index)=>{
-			if(item.id == "idAgeOfLectureFrom"){
-				tempCheckExist = false;
-			   return true;
+		if(tempArray){
+		   tempArray = JSON.parse(tempArray);
+			let tempCheckExist = true;
+			tempArray.some((item,index)=>{
+				if(item.id == "idAgeOfLectureFrom"){
+					tempCheckExist = false;
+				   return true;
+				}
+			});
+
+			if (tempCheckExist){
+				tempArray.push({id:"idAgeOfLectureFrom",lib:'number'});
 			}
-		});
-		
-		if (tempCheckExist){
+
+			tempCheckExist = true;
+			tempArray.some((item,index)=>{
+				if(item.id == "idAgeOfLectureTo"){
+					tempCheckExist = false;
+				   return true;
+				}
+			});
+
+			if (tempCheckExist){
+				tempArray.push({id:"idAgeOfLectureTo",lib:'number'});
+			}
+		} else {
+			tempArray= [];
 			tempArray.push({id:"idAgeOfLectureFrom",lib:'number'});
-		}
-		
-		tempCheckExist = true;
-		tempArray.some((item,index)=>{
-			if(item.id == "idAgeOfLectureTo"){
-				tempCheckExist = false;
-			   return true;
-			}
-		});
-		
-		if (tempCheckExist){
 			tempArray.push({id:"idAgeOfLectureTo",lib:'number'});
 		}
+		
 		
 		/*
 		let listScroll = [
@@ -371,7 +389,9 @@
 						myCurrentTacherInLecture = res.data;
                         //createListTeacherLecture(res.data);
                     }
-                } else if (res.code === networkCode.sessionTimeOut) {
+                }else if (res.code === networkCode.accessDenied){
+									   makeAlertPermisionDenial();
+									   } else if (res.code === networkCode.sessionTimeOut) {
                     makeAlertRedirect();
                 }
             },
@@ -545,7 +565,7 @@
                     console.log(dictionaryKey.ERR_INFO, err);
                     SunQAlert()
                         .position('center')
-                        .title("Tải dữ liệu không thành công")
+                        .title(dictionaryKey.ERROR_API_MESSAGE)
                         .type('error')
                         .confirmButtonColor("#3B4EDC")
                         .confirmButtonText(dictionaryKey.TRY_AGAIN)
@@ -685,6 +705,7 @@
     function readExcelFile(jsonInput) {
         let arrayTitleScheduleLecture = ["manage-section-road-map-time-real-table-number", "manage-section-road-map-time-real-table-contain", "manage-section-road-map-time-real-table-time", "manage-section-road-map-time-real-table-teacher", "manage-section-road-map-time-real-table-sidekick"];
 		let arrayPropertyScheduleLecture = ["dayIndex","title","time","teacherId","supporterId"];
+		let arrayCheckName = ["Buổi","Nội dung","Thời gian","Giảng viên","Trợ giảng"];
         document.getElementById("tableLecture").style.display = "flex";
         let parentTableSchedulde = document.getElementById("tableLectureInside");
         parentTableSchedulde.innerHTML = "";
@@ -692,14 +713,17 @@
             let trInsideSchedule = document.createElement("tr");
             if (index == 0) {
                 let countInsideSchedule = 0;
+				let counrArrayName = 0;
                 for (let prop in item) {
                     if (Object.prototype.hasOwnProperty.call(item, prop)) {
 						if(countInsideSchedule < 5){
 							let thInsideScheduleTr = document.createElement("th");
 							thInsideScheduleTr.className = arrayTitleScheduleLecture[countInsideSchedule++];
-							thInsideScheduleTr.innerHTML = prop;
-							console.log("th",prop);
+							//thInsideScheduleTr.innerHTML = prop;
+							thInsideScheduleTr.innerHTML = arrayCheckName[counrArrayName] == prop ? prop : arrayCheckName[counrArrayName];
+							console.log("th",prop,arrayCheckName[counrArrayName],counrArrayName);
 							trInsideSchedule.appendChild(thInsideScheduleTr);
+							counrArrayName=counrArrayName+1;
 						}
                     }
                 }
@@ -714,15 +738,22 @@
             let trInsideSchedule = document.createElement("tr");
             let countInsideSchedule = 0;
 			console.log("jsonInput",item[1],item[1] != "" && item[1] != undefined);
-			if(item["Nội dung"] != "" && item["Nội dung"] != undefined){
+			if(item["Nội dung"] != "" && item["Nội dung"] != undefined){console.log("741",item["Nội dung"],item["Buổi"] );
 			myCurrentLecture.coursePlans[index] = {};
+			let counrArrayName = 0;
+																		
             for (let prop in item) {
                 if (Object.prototype.hasOwnProperty.call(item, prop)) {
                     //console.log("let",countInsideSchedule,prop, item[prop]);
 					if(countInsideSchedule < 5){
 						let tdInsideScheduleTr = document.createElement("td");
 						tdInsideScheduleTr.className = arrayTitleScheduleLecture[countInsideSchedule];
-						tdInsideScheduleTr.innerHTML = item[prop];
+						let temp = arrayCheckName[counrArrayName] == prop ? prop : arrayCheckName[counrArrayName];
+						let temppValue = item[temp] == null ? dictionaryKey.LACK_TEACHER : item[temp];
+						console.log("data",prop,counrArrayName,temppValue,item[counrArrayName]);
+						//item[prop] = temppValue.escape();
+						tdInsideScheduleTr.innerHTML = temppValue.escape();
+						counrArrayName++;
 						//myCurrentLecture[arrayPropertyScheduleLecture[countInsideSchedule]] = item[prop];
 						
 						//console.log("excel",item[prop]);
@@ -810,7 +841,22 @@
             myCurrentLecture.coursePlans[index]["description"] = "description";
             parentTableSchedulde.appendChild(trInsideSchedule);
 			
+		} 
+			
+			else if((item["Nội dung"] == "" || item["Nội dung"] == undefined) && (item["Buổi"] != null && item["Buổi"] != "")){
+			console.log("845",item["Nội dung"],item["Buổi"] );
+			 SunQAlert()
+                                .position('center')
+                                .title(dictionaryKey.LECTURE_COURSE_PLAN_NULL + " " + item["Buổi"])
+                                .type('error')
+                                .confirmButtonColor("#3B4EDC")
+                                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                .callback((result) => {
+                                    
+                                })
+                                .show();
 		}
+		
         });
     }
 
@@ -1069,7 +1115,7 @@
                 console.log(dictionaryKey.ERR_INFO, err);
                 SunQAlert()
                     .position('center')
-                    .title("Tải ảnh thất bại "+err)
+                    .title(dictionaryKey.IMAGE_LOADED_FAILED)
                     .type('error')
                     .confirmButtonColor("#3B4EDC")
                     .confirmButtonText(dictionaryKey.TRY_AGAIN)
@@ -1107,7 +1153,7 @@
                 console.log(dictionaryKey.ERR_INFO, err);
                 SunQAlert()
                     .position('center')
-                    .title("Tải ảnh thất bại "+err)
+                    .title(dictionaryKey.IMAGE_LOADED_FAILED)
                     .type('error')
                     .confirmButtonColor("#3B4EDC")
                     .confirmButtonText(dictionaryKey.TRY_AGAIN)
@@ -1168,7 +1214,8 @@
     });
 
     document.getElementById("idNameOfLecture").addEventListener("input", function(e) {
-        myCurrentLecture.title = e.target.value;
+		let tttValue = e.target.value;
+        myCurrentLecture.title = tttValue.escape();
     });
 
     document.getElementById("idAgeOfLectureFrom").addEventListener("change", function(e) {
@@ -1178,14 +1225,16 @@
         myCurrentLecture.maxTargetAge = e.target.value;
     });
     document.getElementById("idTypeOfLecture").addEventListener("input", function(e) {
-        myCurrentLecture.courseType = e.target.value;
+		let tttValue = e.target.value;
+        myCurrentLecture.courseType = tttValue.escape();
     });
 //     document.getElementById("lectureDetailTextArea").addEventListener("input", function(e) {
 //         myCurrentLecture.description = e.target.value;
 //     });
      
 	   document.getElementById("lectureSubDetailTextArea").addEventListener("input", function(e) {
-        myCurrentLecture.shortDescription = e.target.value;
+		   let tttValue = e.target.value;
+        myCurrentLecture.shortDescription = tttValue.escape();
     });
 
     //submit form
@@ -1258,10 +1307,10 @@
                                     })
                                     .show();
 				 }
-				 else if (myCurrentLecture.descriptionImgUrl == "" || myCurrentLecture.descriptionImgUrl == null){
+				 else if (myCurrentLecture.title == "" || myCurrentLecture.title== null){
 			SunQAlert()
                                 .position('center')
-                                .title("")
+                                .title(dictionaryKey.WRONG_TITLE_LECTURE)
                                 .type('error')
                                 .confirmButtonColor("#3B4EDC")
                                 .confirmButtonText(dictionaryKey.TRY_AGAIN)
@@ -1269,7 +1318,51 @@
                                     //webpageRedirect(window.location.href);
                                 })
                                 .show();
-		}  
+		}  else if (myCurrentLecture.description == "" || myCurrentLecture.description== null){
+			SunQAlert()
+                                .position('center')
+                                .title(dictionaryKey.WRONG_DESCRIPTION_LECTURE)
+                                .type('error')
+                                .confirmButtonColor("#3B4EDC")
+                                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                .callback((result) => {	
+                                    //webpageRedirect(window.location.href);
+                                })
+                                .show();
+		} else if (myCurrentLecture.courseType == "" || myCurrentLecture.courseType== null){
+			SunQAlert()
+                                .position('center')
+                                .title(dictionaryKey.WRONG_COURSE_TYPE_LECTURE)
+                                .type('error')
+                                .confirmButtonColor("#3B4EDC")
+                                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                .callback((result) => {	
+                                    //webpageRedirect(window.location.href);
+                                })
+                                .show();
+		} else if (myCurrentLecture.maxTargetAge == "" || myCurrentLecture.maxTargetAge== null){
+			SunQAlert()
+                                .position('center')
+                                .title(dictionaryKey.WRONG_AGE_MAX_LECTURE)
+                                .type('error')
+                                .confirmButtonColor("#3B4EDC")
+                                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                .callback((result) => {	
+                                    //webpageRedirect(window.location.href);
+                                })
+                                .show();
+		} else if (myCurrentLecture.minTargetAge == "" || myCurrentLecture.minTargetAge== null){
+			SunQAlert()
+                                .position('center')
+                                .title(dictionaryKey.WRONG_AGE_MIN_LECTURE)
+                                .type('error')
+                                .confirmButtonColor("#3B4EDC")
+                                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                .callback((result) => {	
+                                    //webpageRedirect(window.location.href);
+                                })
+                                .show();
+		} 
 		else if(currentOwners.length == 0){
 			window.scrollTo(0,0);
 				  SunQAlert()
@@ -1329,7 +1422,9 @@
                                     .show();
                             } else if (res.code === networkCode.sessionTimeOut) {
                                 makeAlertRedirect();
-                            } else {
+                            }else if (res.code === networkCode.accessDenied){
+									   makeAlertPermisionDenial();
+									   } else {
 								SunQAlert()
                                     .position('center')
                                     .title(dictionaryKey.MISS_FIELD+" "+JSON.stringify(res))

@@ -48,7 +48,9 @@
                                         webpageRedirect(window.location.href);
                                     })
                                     .show();
-                            } else if (res.code === networkCode.sessionTimeOut) {
+                            }else if (res.code === networkCode.accessDenied){
+									   makeAlertPermisionDenial();
+									   } else if (res.code === networkCode.sessionTimeOut) {
                                 makeAlertRedirect();
                             }
                         },

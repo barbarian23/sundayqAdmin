@@ -1,36 +1,72 @@
 <?php
 ?>
 <script>
+//offline
 function showOffLineMode(){
 // 	let offlineOpen = document.getElementById("homeMenuOffline");
 // 	offlineOpen.style.display == "" || offlineOpen.style.display == undefined || offlineOpen.style.display == "none" ? function(){offlineOpen.style.display = "block"}() : function(){offlineOpen.style.display = "none"}();
+	if(window.innerWidth > 480){
 	let offlineOpen = document.getElementById("homeMenuOffline");
 	offlineOpen && function(){offlineOpen.style.display = "block"}();
+	} else {
+	   let offlineOpen = document.getElementById("smallHomeMenuOffline");
+	offlineOpen && function(){offlineOpen.style.display = "block"}();
+	   }
 }
 	
 function hideOffLineMode(){
-	let offlineOpen = document.getElementById("homeMenuOffline");
+	if(window.innerWidth > 480){
+	   let offlineOpen = document.getElementById("homeMenuOffline");
 	offlineOpen && function(){offlineOpen.style.display = "none"}();
+	} else {
+	    let offlineOpen = document.getElementById("smallHomeMenuOffline");
+	offlineOpen && function(){offlineOpen.style.display = "none"}();
+	   }
+	
 }
-
+//online
 function showOnLineMode(){
-	let onlineOpen = document.getElementById("homeMenuOnline");
+	if(window.innerWidth > 480){
+	   let onlineOpen = document.getElementById("homeMenuOnline");
 	onlineOpen && function(){onlineOpen.style.display = "block"}();
+	} else {
+	   let onlineOpen = document.getElementById("smallHomeMenuOnline");
+	onlineOpen && function(){onlineOpen.style.display = "block"}();
+	   }
+	
 }
 
 function hideOnLineMode(){
-	let onlineOpen = document.getElementById("homeMenuOnline");
+	if(window.innerWidth > 480){
+	   	let onlineOpen = document.getElementById("homeMenuOnline");
 	onlineOpen && function(){onlineOpen.style.display = "none"}();
-}
+	} else {
+	   let onlineOpen = document.getElementById("smallHomeMenuOnline");
+	onlineOpen && function(){onlineOpen.style.display = "none"}();
+	   }
 
+}
+//account
 function showAccountMode(){
-	let adminOpen = document.getElementById("homeMenuAccount");
-	adminOpen && function(){adminOpen.style.display = "block"}();
+	if(window.innerWidth > 480){
+	   let adminOpen = document.getElementById("homeMenuAccount");
+		adminOpen && function(){adminOpen.style.display = "block"}();
+	} else {
+	     let adminOpen = document.getElementById("smallHomeMenuAccount");
+		adminOpen && function(){adminOpen.style.display = "block"}();
+	   }
+	
 }
 
 function hideAccountMode(){
-	let adminOpen = document.getElementById("homeMenuAccount");
-	adminOpen && function(){adminOpen.style.display = "none"}();
+	if(window.innerWidth > 480){
+	   let adminOpen = document.getElementById("homeMenuAccount");
+		adminOpen && function(){adminOpen.style.display = "none"}();
+	} else {
+	     let adminOpen = document.getElementById("smallHomeMenuAccount");
+		adminOpen && function(){adminOpen.style.display = "none"}();
+	   }
+	
 }
 	
 function getListLectureGreaterThanZero(){
@@ -121,12 +157,12 @@ function hideProgressListTeacherLecture(){
 
 function emptyTableListLecture(){
 	document.getElementById("tableListLecture").innerHTML = "";
-	listLecture.length = 0;
+	//listLecture.length = 0;
 }
 
 function emptyTableListTeacher(){
 	document.getElementById("tableListTeacher").innerHTML = "";
-	listTeacher.length = 0;
+	//listTeacher.length = 0;
 }
 
 function emptyTableListTeacherLecture(){
@@ -145,6 +181,316 @@ function getListLectureTeacherGreaterThanZero(){
 	document.getElementById("managaeLectureEmpty").style.display = "none" ;
 	//fillTableListLecture();
 }
+
+//group
+function showProgressListGroup(){
+	document.getElementById("fetchListGroupProgress").style.display = "flex" ;
+}
+
+function hideProgressListGroup(){
+	document.getElementById("fetchListGroupProgress").style.display = "none" ;
+}
+
+function getListGroupSuccess(){
+	document.getElementById("listGroupError").style.display = "none" ;
+	document.getElementById("tableListGroup").style.display = "flex" ;
+}
+
+function getListGroupFailed(){
+	document.getElementById("listGroupError").style.display = "flex" ;
+	document.getElementById("tableListGroup").style.display = "none" ;
+}
+	
+function getListGroupGreaterThanZero(){
+	document.getElementById("listGroupEmpty").style.display = "none" ;
+	document.getElementById("tableListGroup").style.display = "flex" ;
+	//fillTableListLecture();
+}
+
+function getListGroupEqualToZero(){
+	document.getElementById("listGroupEmpty").style.display = "flex" ;
+	document.getElementById("tableListGroup").style.display = "none" ;
+	emptyTableListLecture();
+}
+	
+function loadingDataGroupProgress(){
+	document.getElementById("group-page-loading").style.display = "flex" ;
+	document.getElementById("group-page-loading-progress-error").style.display = "none" ;
+	document.getElementById("group-page-loading-progress").style.display = "block" ;
+	document.getElementById("group-page-loading-progress-span").style.display = "block" ;
+}
+	
+function loadingDataGroupDone(){
+	document.getElementById("group-page-loading").style.display = "none" ;
+}
+	
+function loadingDataGroupError(){
+	document.getElementById("group-page-loading-progress-error").style.display = "flex" ;
+	document.getElementById("group-page-loading-progress").style.display = "none" ;
+	document.getElementById("group-page-loading-progress-span").style.display = "none" ;
+}
+	
+function selectGroupIndex(item){
+	
+}
+	
+function emptyTableListGroup(){
+	document.getElementById("tableListGroup").innerHTML = "";
+	//listRollGroup.length = 0;
+}
+	
+function createListGroup(result){
+	let list = result.data;
+	console.log("lisst lec",listRollGroup);
+	if (!listVisitedRollGroup.includes(getCurrentGroup())){
+			listVisitedRollGroup.push(getCurrentGroup());
+		}
+	let parent = document.getElementById("tableListGroup");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["GROUP_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["GROUP_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["GROUP_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["GROUP_LIST_COL_4"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	loadTableGroup(tbody,list,getCurrentGroup());
+	parent.appendChild(tbody);
+	
+	//paging
+document.getElementById("span-title-group").style.display = "flex";
+let parentPaging = document.getElementById("pagingListGroup");
+parentPaging.innerHTML="";
+let maxPage = result.total ? result.total : list.length ;
+let maxPerList = dictionaryKey.limitRequestRegister;
+let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+console.log(totalPage);
+for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
+    let tempDivPaging = document.createElement("span");
+    tempDivPaging.className="manage-list-lecture-list-register-paging-index";
+    if(pagingIndex == getCurrentGroup()){
+       tempDivPaging.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+       }
+    
+    tempDivPaging.id="paging-index-"+pagingIndex;
+    tempDivPaging.innerHTML = Number.parseInt(pagingIndex) + 1;
+    
+    tempDivPaging.addEventListener("click",function(e){
+        for (let tI = 0 ; tI < totalPage ; tI++ ){
+            let tDiv = document.getElementById("paging-index-"+tI);
+                    if (tI != pagingIndex){
+            //đặt cho các số khác là màu in nhạt	
+                        tDiv.className="manage-list-lecture-list-register-paging-index";
+                        } else {
+            //đặt cho số đang chọnc là màu in đậm	
+                        tDiv.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+                        }
+            }
+        if(!listVisitedRollGroup.includes(pagingIndex)){//load cái mới	
+           setCurrentGroup(pagingIndex);
+        } else {//load lại cái cũ
+            console.log("load lại cái cũ");
+            loadOldPageGroup(pagingIndex);
+        }
+    });
+    
+    parentPaging.appendChild(tempDivPaging);
+}
+}
+
+function loadOldPageGroup(number){
+		let startIndex = number*dictionaryKey.limitRequestRegister;
+		let endIndex = dictionaryKey.limitRequestRegister;
+		let arrayOldPage = listRollGroup.slice(startIndex, endIndex);
+		
+		let parent = document.getElementById("tableListGroup");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["GROUP_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["GROUP_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["GROUP_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["GROUP_LIST_COL_4"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	loadTableGroup(tbody,arrayOldPage,number);
+	parent.appendChild(tbody);
+		
+	}
+	
+	function loadTableGroup(tbody,input,number){
+		input.forEach((item,index) => {
+		index = number * dictionaryKey.limitRequestRegister + index + 1;
+		//console.log(index);
+		let trContent = document.createElement("tr");
+		if (index % 2 != 0){
+			trContent.className = 'manage-list-lecture-table-detail-strong';
+		} 
+		
+		//console.log(item.id);
+		
+		let dateGroup = new Date(item.updateAt);
+		
+		let tempAHref = makeATagRedirect(sunQMode.sa,listScreen.account.group,dictionaryKey.editStatus,item.id);
+		let modified = item.name == "root" ? "<td></td>" : "<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteGroup("+(index-1)+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.name+"</td><td>"+(dateGroup.getDate()+"/"+dateGroup.getMonth()+"/"+dateGroup.getFullYear())+"</td>"
+		+ modified;
+		
+		tbody.appendChild(trContent);
+	});
+	}
+	
+//acount
+function showProgressListAccount(){
+	document.getElementById("fetchListAccountProgress").style.display = "flex" ;
+}
+
+function hideProgressListAccount(){
+	document.getElementById("fetchListAccountProgress").style.display = "none" ;
+}
+
+function getListAccountSuccess(){
+	document.getElementById("listAccountpError").style.display = "none" ;
+	document.getElementById("tableListAccount").style.display = "flex" ;
+}
+
+function getListAccountFailed(){
+	document.getElementById("listAccountError").style.display = "flex" ;
+	document.getElementById("tableListAccount").style.display = "none" ;
+}
+	
+function getListAccountGreaterThanZero(){
+	document.getElementById("listAccountEmpty").style.display = "none" ;
+	document.getElementById("tableListAccount").style.display = "flex" ;
+	//fillTableListLecture();
+}
+
+function getListAccountEqualToZero(){
+	document.getElementById("listAccountEmpty").style.display = "flex" ;
+	document.getElementById("tableListAccount").style.display = "none" ;
+	emptyTableListLecture();
+}
+	
+function loadingDataAccountProgress(){
+	document.getElementById("account-page-loading").style.display = "flex" ;
+	document.getElementById("account-page-loading-progress-error").style.display = "none" ;
+	document.getElementById("account-page-loading-progress").style.display = "block" ;
+	document.getElementById("account-page-loading-progress-span").style.display = "block" ;
+}
+	
+function loadingDataAccountDone(){
+	document.getElementById("account-page-loading").style.display = "none" ;
+}
+	
+function loadingDataAccountError(){
+	document.getElementById("account-page-loading-progress-error").style.display = "flex" ;
+	document.getElementById("account-page-loading-progress").style.display = "none" ;
+	document.getElementById("account-page-loading-progress-span").style.display = "none" ;
+}
+	
+function selectAccountIndex(item){
+	
+}
+	
+function emptyTableListAccount(){
+	document.getElementById("tableListAccount").innerHTML = "";
+	//listAccount.length = 0;
+}
+	
+function createListAccount(result){
+	let list = result.data;
+	console.log("lisst lec",listAccount);
+	if (!listVisitedAccount.includes(getCurrentAccount())){
+			listVisitedAccount.push(getCurrentAccount());
+		}
+	let parent = document.getElementById("tableListAccount");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["ACCOUNT_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_5"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_6"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	createTableAccount(tbody,list,getCurrentAccount());
+	parent.appendChild(tbody);
+	
+	//paging
+document.getElementById("span-title-account").style.display = "flex";
+let parentPaging = document.getElementById("pagingListAccount");
+parentPaging.innerHTML="";
+let maxPage = result.total;
+let maxPerList = dictionaryKey.limitRequestRegister;
+let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+console.log(totalPage);
+for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
+    let tempDivPaging = document.createElement("span");
+    tempDivPaging.className="manage-list-lecture-list-register-paging-index";
+    if(pagingIndex == getCurrentAccount()){
+       tempDivPaging.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+       }
+    
+    tempDivPaging.id="paging-index-"+pagingIndex;
+    tempDivPaging.innerHTML = Number.parseInt(pagingIndex) + 1;
+    
+    tempDivPaging.addEventListener("click",function(e){
+        for (let tI = 0 ; tI < totalPage ; tI++ ){
+            let tDiv = document.getElementById("paging-index-"+tI);
+                    if (tI != pagingIndex){
+            //đặt cho các số khác là màu in nhạt	
+                        tDiv.className="manage-list-lecture-list-register-paging-index";
+                        } else {
+            //đặt cho số đang chọnc là màu in đậm	
+                        tDiv.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
+                        }
+            }
+        if(!listVisitedAccount.includes(pagingIndex)){//load cái mới	
+           setCurrentAccount(pagingIndex);
+        } else {//load lại cái cũ
+            console.log("load lại cái cũ");
+            loadOldPageAccount(pagingIndex);
+        }
+    });
+    
+    parentPaging.appendChild(tempDivPaging);
+}
+}
+	
+function loadOldPageAccount(number){
+	let startIndex = number*dictionaryKey.limitRequestRegister;
+	let endIndex = dictionaryKey.limitRequestRegister;
+	let arrayOldPage = listAccount.slice(startIndex, endIndex);
+	console.log(arrayOldPage,startIndex, endIndex,listAccount);
+	let parent = document.getElementById("tableListAccount");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["ACCOUNT_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_5"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["ACCOUNT_LIST_COL_6"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	createTableAccount(tbody,arrayOldPage,number);
+	parent.appendChild(tbody);
+}
+	
+function createTableAccount(tbody,input,number){
+	input.forEach((item,index) => {
+		index = number * dictionaryKey.limitRequestRegister + index + 1;
+		//console.log(index);
+		let trContent = document.createElement("tr");
+		if (index % 2 != 0){
+			trContent.className = 'manage-list-lecture-table-detail-strong';
+		} 
+		let isChecked = item.state=="active"?"checked":"";
+		let switchState = "<label class='manage-list-lecture-table-detail-switch'><input onchange='changeState("+(index-1)+")' id='"+(index-1)+"' type='checkbox' " + isChecked + "><span class='manage-list-lecture-table-detail-slider'></span></label>";
+		
+		let tempAHref = item.accountType == "admin" ? makeATagRedirect(sunQMode.sa,listScreen.account.account,dictionaryKey.editStatus,item.id) 
+			: item.accountType == "teacher" ? makeATagRedirect(sunQMode.offline,listScreen.offline.teacher,dictionaryKey.editStatus,item.id)
+			: "";
+		
+		let isModifiable = item.accountType == "admin" ? 
+			"<td id=\"tdGroup3Option\" class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"&addition=edit\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><a href=\""+tempAHref+"&addition=password\"><div class='manage-list-lecture-table-detail-div-edit'>Đổi mật khẩu</div></a><a href=\""+tempAHref+"&addition=permission\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa quyền</div></a></td>" 
+			: item.accountType == "teacher" ? "<td id=\"tdGroup3Option\" class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a></td>" 
+			: "<td></td>";
+	
+		if(item.email === "admin@sunq.com"){
+		   isModifiable = "<td></td>";
+			switchState = "";
+		  }
+	
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.accountType+"</td><td>"+item.email+"</td><td>" +( item.phone == null ? dictionaryKey.LACK_TEACHER : item.phone )+
+		"</td><td>"+switchState+"</td>"+isModifiable;
+		tbody.appendChild(trContent);
+	});
+}
 	
 function createListLEcture(result){
 	let list = result.data;
@@ -158,21 +504,7 @@ function createListLEcture(result){
 	let trFirst = document.createElement("tr");
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
-	list.forEach((item,index) => {
-		index = getCurrentTeacher() * dictionaryKey.limitRequestRegister + index + 1;
-		//console.log(index);
-		let trContent = document.createElement("tr");
-		if (index % 2 != 0){
-			trContent.className = 'manage-list-lecture-table-detail-strong';
-		} 
-		
-		//console.log(item.id);
-	
-		
-		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
-		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+(index-1)+")\">Xóa</div></td>";
-		tbody.appendChild(trContent);
-	});
+	createTableLecture(tbody,list,getCurrentLecture() );
 	parent.appendChild(tbody);
 	
 	//paging
@@ -216,6 +548,42 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 }
 }
 
+function loadOldPageLecture(number){
+		let startIndex = number*dictionaryKey.limitRequestRegister;
+		let endIndex = dictionaryKey.limitRequestRegister;
+		let arrayOldPage = listLecture.slice(startIndex, endIndex);
+		//alert(listLecture+"old"+arrayOldPage+startIndex+endIndex);
+		let parent = document.getElementById("tableListLecture");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	createTableLecture(tbody,arrayOldPage,number);
+	parent.appendChild(tbody);
+		
+	}	
+	
+	function createTableLecture(tbody,input,number){
+		input.forEach((item,index) => {
+		index = number * dictionaryKey.limitRequestRegister + index + 1;
+		//console.log(index);
+		let trContent = document.createElement("tr");
+		if (index % 2 != 0){
+			trContent.className = 'manage-list-lecture-table-detail-strong';
+		} 
+		
+		//console.log(item.id);
+	
+		
+		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.offline.lecture,dictionaryKey.editStatus,item.id);
+		
+		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
+		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+(index-1)+")\">Xóa</div></td>";
+		tbody.appendChild(trContent);
+	});
+	}
+	
 function createListTeacher(result){
 	let list = result.data;
 	
@@ -229,18 +597,7 @@ function createListTeacher(result){
 	let trFirst = document.createElement("tr");
 	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["TEACHER_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_5"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
-	list.forEach((item,index) => {
-		//alert(getCurrentTeacher()+" "+index);
-		index = getCurrentTeacher() * dictionaryKey.limitRequestRegister + index + 1;
-		//console.log(index);
-		let trContent = document.createElement("tr");
-		if (index % 2 != 0){
-			trContent.className = 'manage-list-teacher-table-detail-strong';
-		} 
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
-		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+(index-1)+")\">Xóa</div></td>";
-		tbody.appendChild(trContent);
-	});
+	createTableTeacher(tbody,list,getCurrentTeacher());
 	parent.appendChild(tbody);
 	
 	//paging
@@ -284,6 +641,38 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 	}
 }
 
+	function loadOldPageTeacher(number){
+		let startIndex = number*dictionaryKey.limitRequestRegister;
+		let endIndex = dictionaryKey.limitRequestRegister;
+		let arrayOldPage = listTeacher.slice(startIndex, endIndex);
+		
+		let parent = document.getElementById("tableListTeacher");
+		parent.innerHTML="";
+	let tbody = document.createElement("tbody");
+	let trFirst = document.createElement("tr");
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["TEACHER_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_5"]; ?>'+"</th>";
+	tbody.appendChild(trFirst);
+	createTableTeacher(tbody,arrayOldPage,number);
+	parent.appendChild(tbody);
+	}
+	
+	function createTableTeacher(tboby,input,number){
+		input.forEach((item,index) => {
+		index = number * dictionaryKey.limitRequestRegister + index + 1;
+		//console.log(index);
+		let trContent = document.createElement("tr");
+		if (index % 2 != 0){
+			trContent.className = 'manage-list-teacher-table-detail-strong';
+		} 
+		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.offline.teacher,dictionaryKey.editStatus,item.id);
+		
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
+		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+(index-1)+")\">Xóa</div></td>";
+		
+		tboby.appendChild(trContent);
+	});
+	}
+	
 function createListTeacherLecture(list){
 	let parent = document.getElementById("divTeacherInLecture");
 	parent.innerHTML = "";
@@ -372,6 +761,7 @@ function createListTeacherLecture(list){
 		parent.appendChild(div1);
 	})
 }
+
 //select giáo viên chủ nhiệm - owner
 function selectTeacherIndex(index){
 	let parent = document.getElementById("currentListsOwner");
@@ -700,9 +1090,10 @@ function createListRegister(result,isPush) {
             .cancelButtonText(dictionaryKey.CANCEL)
             .callback((result) => {
                 if (result.value) {
+					let tttValue = document.getElementById("text-area-"+number).value;
 					let dataUpdateRegister = {
 						isGotAdvice:true,
-						adminNote:document.getElementById("text-area-"+number).value
+						adminNote:JSON.stringify(tttValue).escape()
 					};
 				setLoadingCurrentView(true);
                    requestToSever(
@@ -748,60 +1139,4 @@ function createListRegister(result,isPush) {
 				}
 		 }).show();
 	}
-	
-	function loadOldPageLecture(number){
-		let startIndex = number*dictionaryKey.limitRequestRegister;
-		let endIndex = dictionaryKey.limitRequestRegister;
-		let arrayOldPage = listLecture.slice(startIndex, endIndex);
-		//alert(listLecture+"old"+arrayOldPage+startIndex+endIndex);
-		let parent = document.getElementById("tableListLecture");
-		parent.innerHTML="";
-	let tbody = document.createElement("tbody");
-	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["LECTURE_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["LECTURE_LIST_COL_4"]; ?>'+"</th>";
-	tbody.appendChild(trFirst);
-	arrayOldPage.forEach((item,index) => {
-		index = number * dictionaryKey.limitRequestRegister + index + 1;
-		//console.log(index);
-		let trContent = document.createElement("tr");
-		if (index % 2 != 0){
-			trContent.className = 'manage-list-lecture-table-detail-strong';
-		} 
-		
-		//console.log(item.id);
-	
-		
-		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
-		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?mode=offline&page=lecture&action=edit&id="+item.id+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+(index-1)+")\">Xóa</div></td>";
-		tbody.appendChild(trContent);
-	});
-	parent.appendChild(tbody);
-		
-	}
-
-	function loadOldPageTeacher(number){
-		let startIndex = number*dictionaryKey.limitRequestRegister;
-		let endIndex = dictionaryKey.limitRequestRegister;
-		let arrayOldPage = listTeacher.slice(startIndex, endIndex);
-		
-		let parent = document.getElementById("tableListTeacher");
-		parent.innerHTML="";
-	let tbody = document.createElement("tbody");
-	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["TEACHER_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["TEACHER_LIST_COL_5"]; ?>'+"</th>";
-	tbody.appendChild(trFirst);
-	arrayOldPage.forEach((item,index) => {
-		index = number * dictionaryKey.limitRequestRegister + index + 1;
-		//console.log(index);
-		let trContent = document.createElement("tr");
-		if (index % 2 != 0){
-			trContent.className = 'manage-list-teacher-table-detail-strong';
-		} 
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
-		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?mode=offline&page=teacher&action=edit&id="+item.id+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+(index-1)+")\">Xóa</div></td>";
-		tbody.appendChild(trContent);
-	});
-	parent.appendChild(tbody);
-	}
-	
 </script>

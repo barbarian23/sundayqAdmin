@@ -68,14 +68,14 @@
 					</div>
 					<div class="home-middle-left-menu-content" id="homeMenuAccount">
 						<div class="home-middle-left-menu" id="homeMenuAccountSuper">
-						<a href="?mode=offline&page=list-account"><i class="fa fa-address-card-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span></a>
+						<a href="?mode=sa&page=list-account"><i class="fa fa-address-card-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span></a>
 							<div class="home-middle-left-menu-tooltip">
 								<span><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span>
 							</div>
 						</div>
 
 						<div class="home-middle-left-menu" id="homeMenuAccountGroup">
-							<a href="?mode=offline&page=list-group"><i class="fa fa-code-fork"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
+							<a href="?mode=sa&page=list-group"><i class="fa fa-code-fork"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
 							<div class="home-middle-left-menu-tooltip">
 								<span><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span>
 							</div>
@@ -99,16 +99,16 @@
 						<a  id="dashboardNameSmallA" href=<?php echo $GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"]; ?>><i id="dashboardNameSmallI" class="fa fa-dashboard" ></i><span id="dashboardNameSmallSPAN"><?php echo $GLOBALS["ADMIN_TITLE"]; ?></span></a>
 					</div>
 
-					<!-- Học online -->
-					<div class="home-middle-left-menu-small">
+					<!-- Học online small-->
+					<div class="home-middle-left-menu-small" id="smallDivShowOnline">
 						<i class="fa fa-mortar-board"></i><span><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
 						<div id="smallHomeMenuOnline">
 							
 						</div>
 					</div>
 
-					<!-- Học offline -->
-					<div class="home-middle-left-menu-small">
+					<!-- Học offline small-->
+					<div class="home-middle-left-menu-small" id="smallDivShowOffline">
 						<i class="fa fa-calendar"></i><span><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
 						<div id="smallHomeMenuOffline">
 							<div class="home-middle-left-menu-small" id="smallHomeMenuOfflineDivContainListLecture">
@@ -120,6 +120,20 @@
 							</div>
 						</div>
 					</div>
+					<!--Account small -->
+					<div class="home-middle-left-menu-small" id="smallDivShowAccount">
+						<i class="fa fa-calendar"></i><span><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
+						<div id="smallHomeMenuAccount">
+							<div class="home-middle-left-menu-small" id="smallHomeMenuAccountSuper">
+								<a href="?mode=sa&page=list-account" id="smallHomeMenuAccountSuperAContainListAccount"><i id="smallHomeMenuOfflineIContainListLecture" class="fa fa-newspaper-o"></i><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></a>
+							</div>
+
+							<div class="home-middle-left-menu-small" id="smallHomeMenuAccountGroup">
+								<a id="smallHomeMenuAccountGroupAContainListGroup" href="?mode=sa&page=list-group"><i id="smallHomeMenuOfflineIContainListTeacher" class="fa fa-vcard"></i><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></a>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</form>
 		</div>
@@ -133,13 +147,14 @@
 							if(isset($_GET["page"])){
 
 							}
-						} else if($_GET["mode"] == "offline"){
+						} else if($_GET["mode"] == "offline" || $_GET["mode"] == "sa"){
  							//$arrForModeOfline = array($_GET["mode"]);
-							echo "<script>setMode('offline')</script>";
+							echo "<script>setMode('" . $_GET["mode"] . "')</script>";
  							//SunQHelper::callFunction("setMode",$arrForModeOfline);
  							//$temp ='123';
 							//SunQHelper::consoleLogPHP($temp);
 							if(isset($_GET["page"])){
+								echo "<script>setPage('" . $_GET["page"] . "')</script>";
  								if(isset($_GET["action"])){
  									echo "<script>setCurrentACtion('" . $_GET["action"] . "')</script>";
  									//echo "<script>console.log('" . $_GET["action"] . "')</script>";
@@ -252,7 +267,7 @@
 // 		}
 // 	}
 // });
-	
+	//large screen
 	let sunqModeOfflineDiv = document.getElementById("divShowOffline");
 	sunqModeOfflineDiv && sunqModeOfflineDiv.addEventListener("click",function(){
 				//console.log("divShowOffline");
@@ -278,11 +293,11 @@
 	
 	let sunQModeAccount = document.getElementById("divShowAccount");
 	sunQModeAccount && sunQModeAccount.addEventListener("click",function(){
-		if(getMode() == sunQMode.account){
+		if(getMode() == sunQMode.sa){
 				   		hideAccountMode();
 						setMode("none");
 				   }else {
-						setMode(sunQMode.account);
+						setMode(sunQMode.sa);
 				   }
 				//setMode(sunQMode.account);
 			});
@@ -312,18 +327,60 @@ if(mainmenuAccount != null){
 	   });
 }
 	
+//small screen
+	
+	let smallSunqModeOfflineDiv = document.getElementById("smallDivShowOnline");
+	smallSunqModeOfflineDiv && smallSunqModeOfflineDiv.addEventListener("touchend",function(){
+				//console.log("divShowOffline");
+				if(getMode() == sunQMode.online){
+				   		hideOnLineMode();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.online);
+				   }
+			});
+
+
+	let smallSunqModeOnlineDiv = document.getElementById("smallDivShowOffline");
+	smallSunqModeOnlineDiv && smallSunqModeOnlineDiv.addEventListener("touchend",function(){
+				if(getMode() == sunQMode.offline){
+				   		hideOffLineMode();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.offline);
+				   }
+			
+			});
+	
+	let smallSunQModeAccount = document.getElementById("smallDivShowAccount");
+	smallSunQModeAccount && smallSunQModeAccount.addEventListener("touchend",function(){
+		if(getMode() == sunQMode.sa){
+				   		hideAccountMode();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.sa);
+				   }
+				
+			});
+	
 window.addEventListener("touchend",function(e){
-	let arrayContainIdValid = ["dashboardNameSmall","dashboardNameSmallA","dashboardNameSmallI","dashboardNameSmallSPAN","smallHomeMenuOfflineDivContainListLecture","smallHomeMenuOfflineAContainListLecture","smallHomeMenuOfflineIContainListLecture","smallHomeMenuOfflineDivContainListTeacher","smallHomeMenuOfflineAContainListTeacher","smallHomeMenuOfflineIContainListTeacher","dashboardIconTopSmallDivContain"];
+	if(window.innerWidth < 480){
+	let arrayContainInValid = ["dashboardNameSmall","dashboardNameSmallA","dashboardNameSmallI","dashboardNameSmallSPAN","smallHomeMenuOfflineDivContainListLecture","smallHomeMenuOfflineAContainListLecture","smallHomeMenuOfflineIContainListLecture","smallHomeMenuOfflineDivContainListTeacher","smallHomeMenuOfflineAContainListTeacher","smallHomeMenuOfflineIContainListTeacher","dashboardIconTopSmallDivContain","smallHomeMenuAccount","smallHomeMenuAccountSuper","smallHomeMenuAccountSuperAContainListAccount","smallHomeMenuAccountGroup","smallHomeMenuAccountGroupAContainListGroup","smallDivShowOnline","smallDivShowOffline","smallDivShowAccount"];
 	let arrayContainValid = ["dashboardIconTopSmall","dashboardIconTopSmallDivContain"];
 	//console.log(e.target.id,arrayContainIdValid.includes(e.target.id));
-	if(!arrayContainIdValid.includes(e.target.id)){
-		if (arrayContainValid.includes(e.target.id)){
+	let checkId = e.target.id;
+		let checkInValid = arrayContainInValid.includes(checkId);
+		let checkValid = arrayContainValid.includes(checkId);
+		//alert(e.target.id+" invalid "+checkInValid+" valid "+checkValid+" "+typeof e.target.id);
+	if(checkInValid == false){
+		if (checkValid){
 			getOpenMenu() ? setOpenMenu(false) : setOpenMenu(true);
 		} else {
-		 setOpenMenu(false);
+		setOpenMenu(false);
 		}
-	} else {
+	} else { 
 		//getOpenMenu() ? setOpenMenu(false) : setOpenMenu(true);
+	}
 	}
 });
 </script>

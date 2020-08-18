@@ -1,7 +1,65 @@
 <script>
-    window.onload = function() {
+  var listRollGroup = [], listVisitedRollGroup = [];
+  var listPermisionOnGroup ;
+	window.onload = function(){
+		listRollGroup = [];
+		listVisitedRollGroup = [];
+		setCurrentGroup(0);
+	}
 	
-    }
+	function deleteGroup(mId){
+		 SunQAlert()
+            .position('center')
+            .title(dictionaryKey.REQUEST_DELETE)//+" "+listRollGroup[mId].id)
+            .type('success')
+            .confirmButtonColor("#3B4EDC")
+            .cancelButtonColor("#a8b1f5")
+            .confirmButtonText(dictionaryKey.AGREE)
+            .cancelButtonText(dictionaryKey.CANCEL)
+            .callback((result) => {
+                if (result.value) {
+                   setFetchingGroup(true);
+                    requestToSever(
+                        sunQRequestType.delete,
+                        postRollGroup() + "/" + listRollGroup[mId].id,
+                        null,
+                        getData(dictionary.MSEC),
+                        function(res) {
+                            //console.log(res);
+                            setFetchingGroup(false);
+                            if (res.code === networkCode.success) {
+                                SunQAlert()
+                                    .position('center')
+                                    .title(dictionaryKey.LECTURE_DELETE_SUCCESS)
+                                    .type('success')
+                                    .confirmButtonColor("#3B4EDC")
+                                    .confirmButtonText(dictionaryKey.AGREE)
+                                    .callback((result) => {
+                                        webpageRedirect(window.location.href);
+                                    })
+                                    .show();
+                            } else if (res.code === networkCode.accessDenied){
+									   makeAlertPermisionDenial();
+									   }else if (res.code === networkCode.sessionTimeOut) {
+                                makeAlertRedirect();
+                            }else {
+								alert("thiếu");
+							}
+                        },
+                        function(err) {alert("err"+err);
+                            setFetchingGroup(false);
+                            setGetGroupFromServerSuccess(false);
+                            console.log(dictionaryKey.ERR_INFO, err);
+
+                        }
+                    );
+
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+                }
+            })
+            .show();
+	}
 </script>
 <div class="manage-list-teacher">
     <div class="manage-list-teacher-title">
@@ -35,7 +93,7 @@
 		</div>
 	
     <div class="manage-list-teacher-add-new">
-        <a href="?mode=offline&page=group&action=add">
+        <a href="?mode=sa&page=group&action=add">
             <button>
                 <span><?php echo $GLOBALS["GROUP_LIST_BUTTON_ADD_GROUP"]; ?></span>
             </button>
