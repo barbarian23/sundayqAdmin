@@ -7598,7 +7598,8 @@ font-style:italic;
 #lectureDetailTextArea{
 	max-width:100%;
 	width:100%;
-	min-height:520px;
+	height:520px;
+/* 	min-height:520px; */
 	resize: none;
 }
 
@@ -8940,7 +8941,8 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
     font-size: 20px;
     margin: 5px 10px;
 	border-radius:5px;
-    min-height: 600px;
+/*     min-height: 600px; */
+    height: 600px;
 	width:100%;
 	resize:none;
     border: 1px solid;
