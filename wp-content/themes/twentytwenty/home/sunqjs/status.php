@@ -958,6 +958,10 @@
         return sunqStatus.page;
     }
 	
+	function handleChoosePage(val){
+		
+	}
+	
     function handleChooseMode(val) {
         console.log("handleChooseMode", val);
         switch (val) {
@@ -969,7 +973,19 @@
             case sunQMode.offline:
                 hideOnLineMode();
                 showOffLineMode();
-                hideAccountMode()
+                hideAccountMode();
+                break;
+			case sunQMode.qacademy:
+				showQAcademy();
+                hideOnLineMode();
+                showOffLineMode();
+                hideAccountMode();
+                break;
+			case sunQMode.qvisit:
+				showQVisit();
+                hideOnLineMode();
+                showOffLineMode();
+                hideAccountMode();
                 break;
             case sunQMode.sa:
                 hideOnLineMode();

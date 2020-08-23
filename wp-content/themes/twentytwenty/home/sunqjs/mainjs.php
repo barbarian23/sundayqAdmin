@@ -12,8 +12,6 @@
 			
 		}
 		
-	
-	
 		function saveData(key,data){
 					localStorage.saveItem(key,data);
 				}

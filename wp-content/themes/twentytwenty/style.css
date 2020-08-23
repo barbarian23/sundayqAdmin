@@ -6585,7 +6585,7 @@ a.to-the-top > * {
     /* width: 86%; */
     /* height: 30px; */
     line-height: 30px;
-    margin: 10px 0px;
+/*     margin: 10px 0px; */
     font-size: 14px;
     display: flex;
     flex-direction: column;
@@ -6599,7 +6599,7 @@ a.to-the-top > * {
 
 .home-middle-left-menu-text{;
 	font-family: Be Vietnam;
-	color:#fafafa;
+	color:rgba(240,245,250,.7);
 }
 
 .home-middle-left-menu a{
@@ -6641,6 +6641,14 @@ a.to-the-top > * {
 }
 
 #homeMenuOnline{
+	display:none;
+}
+
+#homeMenuQAcedemy{
+	display:none;
+}
+
+#homeMenuQVisit{
 	display:none;
 }
 
@@ -6728,6 +6736,10 @@ a.to-the-top > * {
 	font-size:14px;
 	color:#fafafa;
 	cursor:pointer;
+}
+
+.home-middle-left-menu-header-text-style{
+	color:#f2f2f2;
 }
 
 /* .home-middle-left-menu-small div {
@@ -6873,6 +6885,22 @@ a.to-the-top > * {
 }
 
 #lecture-page-loading{
+	display:none;
+}
+
+#event-page-loading{
+	display:none;
+}
+
+#contact-page-loading{
+	display:none;
+}
+
+#exhibition-page-loading{
+	display:none;
+}
+
+#ticket-page-loading{
 	display:none;
 }
 
@@ -7636,6 +7664,21 @@ font-style:italic;
 	display:none;
 }
 
+#fetchListExhibitionProgress{
+	display:none;
+}
+
+#fetchListEventProgress{
+	display:none;
+}
+
+#fetchListContactProgress{
+	display:none;
+}
+
+#fetchListTicketProgress{
+	display:none;
+}
 
 #uploadcontain{
 	display:none;
@@ -8507,6 +8550,38 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	display:none;
 }
 
+#listExhibitionError{
+	display:none;
+}
+
+#listExhibitionEmpty{
+	display:none;
+}
+
+#listEventError{
+	display:none;
+}
+
+#listEventEmpty{
+	display:none;
+}
+
+#listContactError{
+	display:none;
+}
+
+#listContactEmpty{
+	display:none;
+}
+
+#listTicketError{
+	display:none;
+}
+
+#listTicketEmpty{
+	display:none;
+}
+
 .manage-list-teacher-table-no-list img{
 	width: 340px;
 	height: 320px;
@@ -8981,6 +9056,24 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	text-decoration:underline;
 }
 
+.home-middle-left-menu-title-choosing{
+	background: #0073aa;
+}
+
+.home-middle-left-menu-title-choosing:after{
+	  content:"";
+      position: absolute;
+      right: 0;
+	  margin-top:7px;
+	/*  top:20.25%;
+      bottom: 0; */
+      width: 0;
+      height: 0;
+      border-right: 8px solid white;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
 	
 	.login-contain{
@@ -9055,7 +9148,13 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	#homeMenuOfflineListLecture:hover .home-middle-left-menu-tooltip,
 	#homeMenuOfflinListTeacher:hover .home-middle-left-menu-tooltip,
 	#homeMenuAccountSuper:hover .home-middle-left-menu-tooltip,
-	#homeMenuAccountGroup:hover .home-middle-left-menu-tooltip{ 
+	#homeMenuAccountGroup:hover .home-middle-left-menu-tooltip,
+	#divShowQAcademy:hover .home-middle-left-menu-tooltip,
+	#divShowQVisit:hover .home-middle-left-menu-tooltip,
+	#homeMenuQVisitListExhibiton:hover .home-middle-left-menu-tooltip,
+	#homeMenuQVisitListEvent:hover .home-middle-left-menu-tooltip,
+	#homeMenuQVisitListContact:hover .home-middle-left-menu-tooltip,
+	#homeMenuQVisitListTicket:hover .home-middle-left-menu-tooltip,{ 
 		display: flex; 
 	}
 	

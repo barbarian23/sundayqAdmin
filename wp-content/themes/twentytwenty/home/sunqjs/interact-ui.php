@@ -6,32 +6,77 @@ function showOffLineMode(){
 // 	let offlineOpen = document.getElementById("homeMenuOffline");
 // 	offlineOpen.style.display == "" || offlineOpen.style.display == undefined || offlineOpen.style.display == "none" ? function(){offlineOpen.style.display = "block"}() : function(){offlineOpen.style.display = "none"}();
 	if(window.innerWidth > 480){
-	let offlineOpen = document.getElementById("homeMenuOffline");
-	offlineOpen && function(){offlineOpen.style.display = "block"}();
+		let offlineOpen = document.getElementById("homeMenuOffline");
+		offlineOpen && function(){offlineOpen.style.display = "block"}();
 	} else {
 	   let offlineOpen = document.getElementById("smallHomeMenuOffline");
-	offlineOpen && function(){offlineOpen.style.display = "block"}();
+		offlineOpen && function(){offlineOpen.style.display = "block"}();
 	   }
 }
 	
 function hideOffLineMode(){
+	hideQAcademy();
+	hideQVisit();
 	if(window.innerWidth > 480){
 	   let offlineOpen = document.getElementById("homeMenuOffline");
-	offlineOpen && function(){offlineOpen.style.display = "none"}();
+		offlineOpen && function(){offlineOpen.style.display = "none"}();
 	} else {
 	    let offlineOpen = document.getElementById("smallHomeMenuOffline");
-	offlineOpen && function(){offlineOpen.style.display = "none"}();
+		offlineOpen && function(){offlineOpen.style.display = "none"}();
 	   }
 	
 }
+	
+//q-academy
+function showQAcademy(){
+	if(window.innerWidth > 480){
+	   let qacademyOpen = document.getElementById("homeMenuQAcedemy");
+		qacademyOpen && function(){qacademyOpen.style.display = "block"}();
+	} else {
+	    let qacademyOpen = document.getElementById("smallhomeMenuQAcedemy");
+		qacademyOpen && function(){qacademyOpen.style.display = "block"}();
+	   }
+}
+
+function hideQAcademy(){
+	if(window.innerWidth > 480){
+	   let qacademyOpen = document.getElementById("homeMenuQAcedemy");
+		qacademyOpen && function(){qacademyOpen.style.display = "none"}();
+	} else {
+	    let qacademyOpen = document.getElementById("smallhomeMenuQAcedemy");
+		qacademyOpen && function(){qacademyOpen.style.display = "none"}();
+	   }
+}
+	
+//q-visit
+function showQVisit(){
+	if(window.innerWidth > 480){
+	   let qavisitOpen = document.getElementById("homeMenuQVisit");
+		qavisitOpen && function(){qavisitOpen.style.display = "block"}();
+	} else {
+	    let qavisitOpen = document.getElementById("smallhMenuQVisit");
+		qavisitOpen && function(){qavisitOpen.style.display = "block"}();
+	   }
+}
+
+function hideQVisit(){
+	if(window.innerWidth > 480){
+	   let qavisitOpen = document.getElementById("homeMenuQVisit");
+		qavisitOpen && function(){qavisitOpen.style.display = "none"}();
+	} else {
+	    let qavisitOpen = document.getElementById("smallhMenuQVisit");
+		qavisitOpen && function(){qavisitOpen.style.display = "none"}();
+	   }
+}
+	
 //online
 function showOnLineMode(){
 	if(window.innerWidth > 480){
 	   let onlineOpen = document.getElementById("homeMenuOnline");
-	onlineOpen && function(){onlineOpen.style.display = "block"}();
+		onlineOpen && function(){onlineOpen.style.display = "block"}();
 	} else {
 	   let onlineOpen = document.getElementById("smallHomeMenuOnline");
-	onlineOpen && function(){onlineOpen.style.display = "block"}();
+		onlineOpen && function(){onlineOpen.style.display = "block"}();
 	   }
 	
 }
@@ -54,7 +99,7 @@ function showAccountMode(){
 	} else {
 	     let adminOpen = document.getElementById("smallHomeMenuAccount");
 		adminOpen && function(){adminOpen.style.display = "block"}();
-	   }
+	 }
 	
 }
 
@@ -938,35 +983,7 @@ function createListRegister(result,isPush) {
 				if (isPush){
         				listRegister = listRegister.concat(data);
 					}
-                data.forEach((item, index) => {
-					console.log("item",item);
-					
-                    let trRow = document.createElement("tr");
-                    tableRegisterTitleTDPropeties.forEach((itemProp, indexProp) => {
-                        let tdInside = document.createElement("td");
-                        tdInside.className = tableRegisterTitle[indexProp];
-						if (indexProp == 0){
-						   tdInside.innerHTML = getCurrentView() * dictionaryKey.limitRequestRegister + index + 1;
-						} else if(indexProp == 1){//title
-						   tdInside.innerHTML = item["course"]["title"];
-						}else if(indexProp == 3){//time
-							let dateRegister = new Date(item["createAt"]);
-							
-						   tdInside.innerHTML = inputNumberSmallerThanTen(dateRegister.getDay())+"/"+inputNumberSmallerThanTen(dateRegister.getMonth())+"/"+inputNumberSmallerThanTen(dateRegister.getFullYear())+" " + inputNumberSmallerThanTen(dateRegister.getHours())+":" + inputNumberSmallerThanTen(dateRegister.getMinutes());
-						} else if(indexProp == 6){//admin note
-							let valueAdminNote = item["adminNote"] != null ? item["adminNote"] : "";
-							 tdInside.innerHTML = "<textarea type=\"text\" style=\"resize: none;height:80px;padding:1px;\" id=\"text-area-" + 
-								 
-								 Number.parseInt(getCurrentView() * dictionaryKey.limitRequestRegister + index)
-								 
-								 + "\" >"+valueAdminNote+"</textarea>  <input type=\"button\" value=\"" + dictionaryKey.UPDATE +"\"  onclick=\"updateToRegister("+Number.parseInt(getCurrentView() * dictionaryKey.limitRequestRegister + index)+")\"> ";
-						}else {
-						   tdInside.innerHTML = item[itemProp] != null ? item[itemProp] : "";
-						}
-                        trRow.appendChild(tdInside);
-                    });
-                    parent.appendChild(trRow);
-                });
+				loadTableRegister(parent,tableRegisterTitleTDPropeties,tableRegisterTitle,data,getCurrentView());
 				document.getElementById("span-title-regisster").style.display = "flex";
 				let parentPaging = document.getElementById("pagingList");
 				parentPaging.innerHTML="";
@@ -1047,8 +1064,11 @@ function createListRegister(result,isPush) {
                     trFirst.appendChild(thFirst);
                 })
                 parent.appendChild(trFirst);
-		
-		arrayOldPage.forEach((item, index) => {
+				loadTableRegister(parent,tableRegisterTitleTDPropeties,tableRegisterTitle,arrayOldPage,number);
+	}
+	
+	function loadTableRegister(parent,tableRegisterTitleTDPropeties,tableRegisterTitle,input,number){
+		input.forEach((item, index) => {
 					console.log("item",item);
                     let trRow = document.createElement("tr");
                     tableRegisterTitleTDPropeties.forEach((itemProp, indexProp) => {
@@ -1076,7 +1096,6 @@ function createListRegister(result,isPush) {
                     });
                     parent.appendChild(trRow);
                 });
-		
 	}
 	
 	function updateToRegister(number){
@@ -1093,7 +1112,7 @@ function createListRegister(result,isPush) {
 					let tttValue = document.getElementById("text-area-"+number).value;
 					let dataUpdateRegister = {
 						isGotAdvice:true,
-						adminNote:JSON.stringify(tttValue).escape()
+						adminNote: tttValue.escape()
 					};
 				setLoadingCurrentView(true);
                    requestToSever(
@@ -1138,5 +1157,35 @@ function createListRegister(result,isPush) {
                     );
 				}
 		 }).show();
+	}
+	
+	function setHightLightText(val){
+		arrayHightlightTitle.forEach(function(item,index) {
+			document.getElementById(item["id"]).style.color = "rgba(240,245,250,.7)";
+			   document.getElementById(item["id"]).style.fontWeight = "500";
+		});
+		arrayHightlightTitle.some(function(item,index) {
+			if(item["key"] == val){
+				 document.getElementById(item["id"]).style.color = "#fafafa";
+			   document.getElementById(item["id"]).style.fontWeight = "800";
+				return true;
+			 }
+		});
+	}
+	
+	function setBlueBackground(val){
+		arrayBlueBackground.forEach(function(item,index) {
+			document.getElementById(item["id"]).classList.remove("home-middle-left-menu-title-choosing");
+		});
+		
+		arrayBlueBackground.some(function(item,index) {
+			
+			if(item["key"] == val){
+				 document.getElementById(item["id"]).classList.add("home-middle-left-menu-title-choosing");
+			   		document.getElementById(item["body"]).style.background = "#32373c";
+				return true;
+				 //console.log("adddd",document.getElementById(item["id"]).classList);
+			 }
+		});
 	}
 </script>

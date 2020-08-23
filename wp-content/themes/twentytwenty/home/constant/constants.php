@@ -4,12 +4,18 @@
 	$GLOBALS["ADMIN_TITLE"] = "Trang quản trị";
 
 	//online
-	$GLOBALS["ADMIN_ONLINE"] = "Học trực tuyến";
+	$GLOBALS["ADMIN_ONLINE"] = "Học Online";
 
 	//offline
-	$GLOBALS["ADMIN_OFFLINE"] = "Q-Academy";
+	$GLOBALS["ADMIN_OFFLINE"] = "Học Offline";
+	$GLOBALS["ADMIN_Q_ACADEMY"] = "Q-Academy";
+	$GLOBALS["ADMIN_Q_VISIT"] = "Q-Visit";
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"] = "Quản lý khóa học";
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"] = "Quản lý giảng viên";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EXHIBITION"] = "Quản lý triển lãm";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"] = "Quản lý sư kiện";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"] = "Quản lý liên hệ";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"] = "Quản lý vé";
 
 	//super admin
 	$GLOBALS["ADMIN_SUPER"] = "Quyền quản trị";
@@ -157,6 +163,53 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["ACCOUNT_LIST_COL_5_CONTENT_DISABLED"] = "Không hoạt động";
 	$GLOBALS["ACCOUNT_LIST_COL_5_CONTENT_ENABLED"] = "Đang hoạt động";
 
+	//event
+	$GLOBALS["EVENT_NAME_INPUT"] = "Tên sự kiện:";
+	$GLOBALS["EVENT_NAME_INPUT_PLACEHOLDER"] = "Nhập tên sự kiện";
+	$GLOBALS["EVENT_DETAIL"] = "Mô tả";
+	$GLOBALS["EVENT_DETAIL_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["EVENT_SUB_DETAIL"] = "Mô tả ngắn gọn";
+	$GLOBALS["EVENT_SUB_DETAIL_PLACEHOLDER"] = "Thêm mô tả ngắn gọn ...";
+	$GLOBALS["EVENT_MAIN_IMAGE"] = "Hình ảnh chính";	
+	$GLOBALS["EVENT_SUBMIT_ADD"] = "Thêm mới";	
+	$GLOBALS["EVENT_SUBMIT_EDIT"] = "Chỉnh sửa";
+
+	//list-event
+	$GLOBALS["EVENT_LIST_TITLE"] = "Danh sách các sự kiện sắp diễn ra";
+	$GLOBALS["EVENT_NO_LIST"] = "Danh sách các sự kiện trống";
+	$GLOBALS["EVENT_LIST_BUTTON_EDIT_ACCOUNT"] = "Chỉnh sửa sự kiện";
+	$GLOBALS["EVENT_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa sự kiện";
+	$GLOBALS["EVENT_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới sự kiện";
+	$GLOBALS["EVENT_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["EVENT_LIST_COL_2"] = "Tiêu đề sự kiện";
+	$GLOBALS["EVENT_LIST_COL_3"] = "Mô tả ngắn gọn";
+	$GLOBALS["EVENT_LIST_COL_4"] = "Chỉnh sửa";
+
+	//exhibition
+	$GLOBALS["EXHIBITON_NAME_INPUT"] = "Tên triển lãm:";
+	$GLOBALS["EXHIBITON_NAME_INPUT_PLACEHOLDER"] = "Nhập tên triên lãm";
+	$GLOBALS["EXHIBITON_AGE_INPUT_FROM"] = "Độ tuổi từ:";
+	$GLOBALS["EXHIBITON_AGE_INPUT_PLACEHOLDER"] = "Nhập độ tuổi";	
+	$GLOBALS["EXHIBITON_AGE_INPUT_TO"] = "Đến độ tuổi:";
+	$GLOBALS["EXHIBITON_DETAIL"] = "Mô tả";
+	$GLOBALS["EXHIBITON_DETAIL_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["EXHIBITON_SUB_DETAIL"] = "Mô tả ngắn gọn";
+	$GLOBALS["EXHIBITON_SUB_DETAIL_PLACEHOLDER"] = "Thêm mô tả ngắn gọn ...";
+	$GLOBALS["EXHIBITON_MAIN_IMAGE"] = "Hình ảnh chính";	
+	$GLOBALS["EXHIBITON_SUBMIT_ADD"] = "Thêm mới";	
+	$GLOBALS["EXHIBITON_SUBMIT_EDIT"] = "Chỉnh sửa";
+
+	//list-exhibition
+	$GLOBALS["EXHIBITON_LIST_TITLE"] = "Danh sách cuộc triển lãm";
+	$GLOBALS["EXHIBITON_NO_LIST"] = "Danh sách cuộc triển lãm trống";
+	$GLOBALS["EXHIBITON_LIST_BUTTON_EDIT_ACCOUNT"] = "Chỉnh sửa triển lãm";
+	$GLOBALS["EXHIBITON_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa triển lãm";
+	$GLOBALS["EXHIBITON_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới triển lãm";
+	$GLOBALS["EXHIBITON_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["EXHIBITON_LIST_COL_2"] = "Tiêu đề triển lãm";
+	$GLOBALS["EXHIBITON_LIST_COL_3"] = "Mô tả ngắn gọn";
+	$GLOBALS["EXHIBITON_LIST_COL_4"] = "Chỉnh sửa";
+
 	//account
 	$GLOBALS["ACCOUNT_INPUT_NAME"] = "Tên tài khoản";
 	$GLOBALS["ACCOUNT_INPUT_NAME_PLACEHOLDER"] = "Nhập vào tên tài khoản";
@@ -217,6 +270,24 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["ERROR_CONNECTION_TRY_AGAIN"] = "Có lỗi mạng!Vui lòng thử lại!";
 	$GLOBALS["LOADING_DATA"] = "Đang tải dữ liệu";
 	
+	$GLOBALS["CONTACT_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký liên hệ";
+	$GLOBALS["CONTACT_NEED_SUPPORT_EMPTY"] = "Hiện chưa có khách hàng đăng ký liên hệ";
+	$GLOBALS["CONTACT_NEED_SUPPORT_1"] = "Số thứ tự";
+	$GLOBALS["CONTACT_NEED_SUPPORT_2"] = "Họ và tên";
+	$GLOBALS["CONTACT_NEED_SUPPORT_3"] = "Email";
+	$GLOBALS["CONTACT_NEED_SUPPORT_4"] = "Số điện thoại";
+	$GLOBALS["CONTACT_NEED_SUPPORT_5"] = "Tin nhắn";
+	$GLOBALS["CONTACT_NEED_SUPPORT_6"] = "Ghi chú admin";
+
+	$GLOBALS["TICKET_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký liên hệ";
+	$GLOBALS["TICKET_NEED_SUPPORT_EMPTY"] = "Hiện chưa có khách hàng đăng ký liên hệ";
+	$GLOBALS["TICKET_NEED_SUPPORT_1"] = "Số thứ tự";
+	$GLOBALS["TICKET_NEED_SUPPORT_2"] = "Họ và tên";
+	$GLOBALS["TICKET_NEED_SUPPORT_3"] = "Email";
+	$GLOBALS["TICKET_NEED_SUPPORT_4"] = "Số điện thoại";
+	$GLOBALS["TICKET_NEED_SUPPORT_5"] = "Tin nhắn";
+	$GLOBALS["TICKET_NEED_SUPPORT_6"] = "Ghi chú admin";
+
 	//url
 // 	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/";
 // 	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://103.146.22.168/admin/";
@@ -425,6 +496,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	var sunQMode = {
 		offline:"offline",
+		qacademy:"qacademy",
+		qvisit:"qvisit",
 		online:"online",
 		sa:"sa",
 		account:"account",
@@ -438,12 +511,52 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		delete:"delete"
 	};
 	
+	var arrayHightlightTitle = [
+		{key:"lecture",id:"title-manage-lecture"},
+		{key:"list-lecture",id:"title-manage-lecture"},
+		{key:"teacher",id:"title-manage-teacher"},
+		{key:"list-teacher",id:"title-manage-teacher"},
+		{key:"exhibition",id:"title-manage-exhibition"},
+		{key:"list-exhibition",id:"title-manage-exhibition"},
+		{key:"event",id:"title-manage-event"},
+		{key:"list-event",id:"title-manage-event"},
+		{key:"list-contact",id:"title-manage-contact"},
+		{key:"list-ticket",id:"title-manage-ticket"},
+		{key:"account",id:"title-manage-account"},
+		{key:"list-account",id:"title-manage-account"},
+		{key:"group",id:"title-manage-group"},
+		{key:"list-group",id:"title-manage-group"}
+	];
+	
+	var arrayBlueBackground = [
+		{key:"lecture",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
+		{key:"list-lecture",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
+		{key:"teacher",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
+		{key:"list-teacher",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
+		{key:"exhibition",id:"divShowQVisit",body:"homeMenuQVisit"},
+		{key:"list-exhibition",id:"divShowQVisit",body:"homeMenuQVisit"},
+		{key:"event",id:"divShowQVisit",body:"homeMenuQVisit"},
+		{key:"list-event",id:"divShowQVisit",body:"homeMenuQVisit"},
+		{key:"list-contact",id:"divShowQVisit",body:"homeMenuQVisit"},
+		{key:"list-ticket",id:"divShowQVisit",body:"homeMenuQVisit"},
+		{key:"account",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
+		{key:"list-account",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
+		{key:"group",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
+		{key:"list-group",id:"homeMenuManageAdmin",body:"homeMenuAccount"}
+	];
+	
 	var listScreen = {
 		offline:{
 			lecture:"lecture",
 			listLecture:"list-lecture",
 			teacher:"teacher",
 			listTeacher:"",
+			listTicket:"list-ticket",
+			listContact:"list-contact",
+			listEvent:"list-event",
+			event:"event",
+			listExhibition:"list-exhibition",
+			exhibition:"exhibition"
 		},
 		online:{
 			
@@ -522,6 +635,20 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	var allResources = groupUrl + groupResource;
 	
+	//contact
+	var feedbackUrl  = "/feedback";
+	var listFeedbackUrl  = "/feedbacks";
+	
+	//ticket
+	
+	//exhibition
+	var listExhibitonUrl  = "exhibitions";
+	var exhibitonUrl  = "exhibition";
+	
+	//event
+	var listEventUrl  = "events";
+	var eventUrl  = "event";
+	
 	//admin account
 	var adminUrl = "admin";
 	
@@ -571,6 +698,44 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	//get advice in lecture detail
 	function getURLAccountAdvice(){
 		return mainURL+advicePage;	
+	}
+	
+	//<contact>feedbackUrl
+	function getFeedback(id){
+		return mainURL + feedbackUrl + "/" + id;
+	}
+	//get list feedback
+	function getListFeedback(){
+		return mainURL + listFeedbackUrl;
+	}
+	//post feedback with service
+	function postFeedback(service){
+		return mainURL + feedbackUrl + "/" + service;
+	}
+	
+	//ticket
+	
+	//<exhibition>
+	//get exhibition
+	function getExhibition(id){
+		return mainURL + exhibitonUrl + "/" + id;
+	}
+	//get list exhibition
+	function getListExhibition(){
+		return mainURL + listExhibitonUrl;
+	}
+	
+	//<event>
+	function getEvent(id){
+		return mainURL + eventUrl + "/" + id;
+	}
+	//get list event
+	function getListEvent(){
+		return mainURL + listEventUrl;
+	}
+	//post event with service
+	function postEvent(service){
+		return mainURL + eventUrl + "/" + service;
 	}
 	
 	//<group>

@@ -122,7 +122,7 @@ var  _isFetchingContact = false,
                 limit: dictionaryKey.limitRequestRegister,
             };
             //alert("currentGroup",val);
-            setFetchingGroup(true);
+            seFetchingContact(true);
             requestToSever(
                 sunQRequestType.get,
                 prepareUrlForGetThatContainsBody(getListContact(), dataCurrentViewContact),

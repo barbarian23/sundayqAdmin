@@ -23,7 +23,7 @@
 				<!-- Học online -->
 				<div class="home-middle-left-menu" id="divShowOnline">
 					<div class="home-middle-left-menu-title">
-						<i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
+						<i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text  home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
 						<div class="home-middle-left-menu-tooltip">
 							<span><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
 						</div>
@@ -36,23 +36,74 @@
 				<!-- Học offline -->
 				<div class="home-middle-left-menu" id="divShowOffline">
 					<div class="home-middle-left-menu-title">
-						<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
+						<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
 						<div class="home-middle-left-menu-tooltip">
 							<span><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
 						</div>
 					</div>
 					<div class="home-middle-left-menu-content" id="homeMenuOffline">
-						<div class="home-middle-left-menu" id="homeMenuOfflineListLecture">
-							<a href="?mode=offline&page=list-lecture"><i class="fa fa-calendar"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span></a>
-							<div class="home-middle-left-menu-tooltip">
-								<span><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span>
+						<!-- Q-Academy -->
+							<div class="" id="divShowQAcademy">
+								<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY"]; ?></span>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_Q_ACADEMY"]; ?></span>
+								</div>
+							</div>
+						<div class="home-middle-left-menu-content" id="homeMenuQAcedemy">	
+							<!-- khóa học -->
+							<div class="home-middle-left-menu" id="homeMenuOfflineListLecture">
+								<a href="?mode=offline&page=list-lecture"><i class="fa fa-calendar"></i><span id="title-manage-lecture" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span></a>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span>
+								</div>
+							</div>
+
+							<!-- giảng viên -->
+							<div class="home-middle-left-menu" id="homeMenuOfflinListTeacher">
+								<a href="?mode=offline&page=list-teacher"><i class="fa fa-newspaper-o"></i><span id="title-manage-teacher" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span></a>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span>
+								</div>
 							</div>
 						</div>
-
-						<div class="home-middle-left-menu" id="homeMenuOfflinListTeacher">
-							<a href="?mode=offline&page=list-teacher"><i class="fa fa-newspaper-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span></a>
+						<!-- Q-Visit -->
+						<div class="" id="divShowQVisit">
+							<i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_VISIT"]; ?></span>
 							<div class="home-middle-left-menu-tooltip">
-								<span><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span>
+								<span><?php echo $GLOBALS["ADMIN_Q_VISIT"]; ?></span>
+							</div>
+						</div>
+						<div class="home-middle-left-menu-content" id="homeMenuQVisit">
+							<!-- triển lãm -->
+							<div class="home-middle-left-menu" id="homeMenuQVisitListExhibiton">
+								<a href="?mode=offline&page=list-exhibition"><i class="fa fa-calendar"></i><span id="title-manage-exhibition" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EXHIBITION"]; ?></span></a>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EXHIBITION"]; ?></span>
+								</div>
+							</div>
+
+							<!-- sự kiện đang diễn ra -->
+							<div class="home-middle-left-menu" id="homeMenuQVisitListEvent">
+								<a href="?mode=offline&page=list-event"><i class="fa fa-newspaper-o"></i><span id="title-manage-event" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"]; ?></span></a>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"]; ?></span>
+								</div>
+							</div>
+							
+							<!-- liên hệ q-visit -->
+							<div class="home-middle-left-menu" id="homeMenuQVisitListContact">
+								<a href="?mode=offline&page=list-contact"><i class="fa fa-newspaper-o"></i><span id="title-manage-contact" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"]; ?></span></a>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"]; ?></span>
+								</div>
+							</div>
+							
+							<!-- ticket -->
+							<div class="home-middle-left-menu" id="homeMenuQVisitListTicket">
+								<a href="?mode=offline&page=list-ticket"><i class="fa fa-newspaper-o"></i><span id="title-manage-ticket" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"]; ?></span></a>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"]; ?></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -60,22 +111,22 @@
 				
 				<!-- admin -->
 				<div class="home-middle-left-menu" id="divShowAccount">
-					<div class="home-middle-left-menu-title" id="homeMenuOfflinListTeacher">
-						<i class="	fa fa-address-book"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
+					<div class="home-middle-left-menu-title" id="homeMenuManageAdmin">
+						<i class="	fa fa-address-book"></i><span class="home-middle-left-menu-text home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
 						<div class="home-middle-left-menu-tooltip">
 							<span><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
 						</div>
 					</div>
 					<div class="home-middle-left-menu-content" id="homeMenuAccount">
 						<div class="home-middle-left-menu" id="homeMenuAccountSuper">
-						<a href="?mode=sa&page=list-account"><i class="fa fa-address-card-o"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span></a>
+						<a href="?mode=sa&page=list-account"><i class="fa fa-address-card-o"></i><span id="title-manage-account" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span></a>
 							<div class="home-middle-left-menu-tooltip">
 								<span><?php echo $GLOBALS["ADMIN_SUPER_ACCOUNT"]; ?></span>
 							</div>
 						</div>
 
 						<div class="home-middle-left-menu" id="homeMenuAccountGroup">
-							<a href="?mode=sa&page=list-group"><i class="fa fa-code-fork"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
+							<a href="?mode=sa&page=list-group"><i class="fa fa-code-fork"></i><span id="title-manage-group" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
 							<div class="home-middle-left-menu-tooltip">
 								<span><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span>
 							</div>
@@ -155,6 +206,8 @@
 							//SunQHelper::consoleLogPHP($temp);
 							if(isset($_GET["page"])){
 								echo "<script>setPage('" . $_GET["page"] . "')</script>";
+								echo "<script>setHightLightText('" . $_GET["page"] . "')</script>";
+								echo "<script>setBlueBackground('" . $_GET["page"] . "')</script>";
  								if(isset($_GET["action"])){
  									echo "<script>setCurrentACtion('" . $_GET["action"] . "')</script>";
  									//echo "<script>console.log('" . $_GET["action"] . "')</script>";
@@ -163,13 +216,8 @@
  									echo "<script>setCurrentEdit('" . $_GET["id"] . "')</script>";
  									//echo "<script>console.log('" . $_GET["action"] . "')</script>";
  								}
+								
 								switch($_GET["page"]){
-									case "lecture":
-										 include get_theme_file_path( "home/offline/lecture/lecture.php" );
-										break;
-									case "teacher":
-										include get_theme_file_path( "home/offline/teacher/teacher.php" );
-										break;
 									case "account":
 										include get_theme_file_path( "home/admin/account/account.php" );
 										break;
@@ -183,10 +231,44 @@
 										include get_theme_file_path( "home/admin/group/list-group.php" );
 										break;
 									case "list-lecture":
+										echo "<script>setMode('qacademy')</script>";
 										include get_theme_file_path( "home/offline/lecture/list-lecture.php" );
 										break;
+									case "lecture":
+										echo "<script>setMode('qacademy')</script>";
+										include get_theme_file_path( "home/offline/lecture/lecture.php" );
+										break;
 									case "list-teacher":
+										echo "<script>setMode('qacademy')</script>";
 										include get_theme_file_path( "home/offline/teacher/list-teacher.php" );
+										break;
+									case "teacher":
+										echo "<script>setMode('qacademy')</script>";
+										include get_theme_file_path( "home/offline/teacher/teacher.php" );
+										break;
+									case "list-contact":
+										echo "<script>setMode('qvisit')</script>";
+										include get_theme_file_path( "home/offline/qvisit/contact/list-contact.php" );
+										break;
+									case "list-event":
+										echo "<script>setMode('qvisit')</script>";
+										include get_theme_file_path( "home/offline/qvisit/event/list-event.php" );
+										break;
+									case "event":
+										echo "<script>setMode('qvisit')</script>";
+										include get_theme_file_path( "home/offline/qvisit/event/event.php" );
+										break;
+									case "list-exhibition":
+										echo "<script>setMode('qvisit')</script>";
+										include get_theme_file_path( "home/offline/qvisit/exhibition/list-exhibition.php" );
+										break;
+									case "exhibition":
+										echo "<script>setMode('qvisit')</script>";
+										include get_theme_file_path( "home/offline/qvisit/exhibition/exhibition.php" );
+										break;
+									case "list-ticket":
+										echo "<script>setMode('qvisit')</script>";
+										include get_theme_file_path( "home/offline/qvisit/ticket/list-ticket.php" );
 										break;
 									default:
 										break;
@@ -279,6 +361,27 @@
 				   }
 			});
 
+	let sunqModeQAcademyDiv = document.getElementById("divShowQAcademy");
+	sunqModeQAcademyDiv && sunqModeQAcademyDiv.addEventListener("click",function(){
+				//console.log("divShowOffline");
+				if(document.getElementById("homeMenuQAcedemy").style.display != "none" && document.getElementById("homeMenuQAcedemy").style.display != ""){
+				   		hideQAcademy();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.qacademy);
+				   }
+			});
+	
+	let sunqModeQVisitDiv = document.getElementById("divShowQVisit");
+	sunqModeQVisitDiv && sunqModeQVisitDiv.addEventListener("click",function(){
+				//console.log("divShowOffline");
+				if(document.getElementById("homeMenuQVisit").style.display != "none" && document.getElementById("homeMenuQVisit").style.display != ""){
+				   		hideQVisit();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.qvisit);
+				   }
+			});
 
 	let sunqModeOnlineDiv = document.getElementById("divShowOnline");
 	sunqModeOnlineDiv && sunqModeOnlineDiv.addEventListener("click",function(){
@@ -303,7 +406,6 @@
 			});
 	
 let mainmenuOffline = document.getElementById("mainmenuOffline");
-	
 if(mainmenuOffline != null){
 	   document.getElementById("mainmenuOffline").addEventListener("click",function(){
 		 console.log("clickkkkk");
