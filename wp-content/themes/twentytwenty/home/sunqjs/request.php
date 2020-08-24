@@ -5,7 +5,7 @@
     function requestToSever(type, url, data, token, onSuccess, onError, isForm) {
         console.log("url", url);
         console.log("data", data);
-        //console.log("token", token);
+        console.log("token", token);
         if (data == null) {
             fetch(url, {
                     method: type,

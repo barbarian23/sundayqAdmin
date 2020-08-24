@@ -1,17 +1,16 @@
 <?php 
-	include ("home/offline/qvisit/contact/contact-status.php");
-	include ("home/offline/qvisit/contact/contatc-interact-ui.php" ); 
+	include get_theme_file_path("home/offline/qvisit/contact/contact-status.php");
+	include get_theme_file_path("home/offline/qvisit/contact/contatc-interact-ui.php" ); 
 ?>
-
 <script>
 var listContact = [], listVisitedContact = [];
 	
 	window.onload = function() {
-		
+		//alert("yea onload");
 		//get list ticket
 		listVisitedContact.push(0);
 		setCurrentContact(0);
-
+			
 		
     }
 	
@@ -31,7 +30,10 @@ var listContact = [], listVisitedContact = [];
 
             </div>
         </div>
-	
+		<div class="manage-list-teacher-table-no-list" id="listContactEmpty">
+            <img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
+            <span><?php echo $GLOBALS["CONTACT_NEED_SUPPORT_EMPTY"]; ?></span>
+        </div>
         <div class="manage-list-lecture-table-detail-no-list" id="listContactError">
             <img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
             <span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>

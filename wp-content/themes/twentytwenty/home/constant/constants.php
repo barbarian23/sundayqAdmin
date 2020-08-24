@@ -288,6 +288,9 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["TICKET_NEED_SUPPORT_5"] = "Tin nhắn";
 	$GLOBALS["TICKET_NEED_SUPPORT_6"] = "Ghi chú admin";
 
+	//contact
+	
+
 	//url
 // 	$GLOBALS["ADMIN_HOME_URL_WITHOUT_SSL"] = "http://103.146.22.168/admin/";
 // 	$GLOBALS["ADMIN_HOME_URL_WITH_SSL"] = "https://103.146.22.168/admin/";
@@ -374,6 +377,15 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		TEACHER_EDIT_FAILED: "Chỉnh sửa không thành công",
 		TEACHER_ADD_FAILED:"Thêm mới không thành công",
 		
+		EVENT_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		EVENT_ADD_SUCCESS:"Thêm mới thành công",
+		EVENT_EDIT_FAILED: "Chỉnh sửa không thành công",
+		EVENT_ADD_FAILED:"Thêm mới không thành công",
+		
+		EXHIBITION_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		EXHIBITION_ADD_SUCCESS:"Thêm mới thành công",
+		EXHIBITION_EDIT_FAILED: "Chỉnh sửa không thành công",
+		EXHIBITION_ADD_FAILED:"Thêm mới không thành công",
 		
 		UPLOAD_IMAGE_SUCCESS:"Tải ảnh lên thành công",
 		UPLOAD_IMAGE_FAILED: "Tải ảnh lên không thành công",
@@ -385,6 +397,9 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		MISS_FIELD:"Bạn đã nhập thiếu thông tin!Vui lòng nhập lại",
 		
+		CONTACT_EDIT_SUCCESS:"Chỉnh sửa liên hệ thành công",
+		CONTACT_EDIT_FAILED: "Chỉnh sửa liên hệ  không thành công",
+		
 		REGISTER_EDIT_SUCCESS:"Chỉnh sửa chú thích thành công",
 		REGISTER_EDIT_FAILED: "Chỉnh sửa chú thích  không thành công",
 		
@@ -395,6 +410,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		LECTURE_NAME:" khóa học này",
 		TEACHER_NAME:" giáo viên này",
+		EXHIBITION_NAME:" giáo viên này",
+		EVENT_NAME:" giáo viên này",
 		
 		SERVER_INFO: "Server thông báo ",
 	
@@ -425,6 +442,14 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		WRONG_IMG_LECTURE_DEC: "Bạn chưa tải ảnh mô tả khóa học lên",
 		WRONG_IMG_TEACHER: "Bạn chưa tải ảnh lên",
 		WRONG_OWNER:"Bạn chưa chọn giáo viên chủ nhiệm?",
+		
+		WRONG_EVENT_TITLE:"Bạn chưa nhập tiêu đề của sự kiện",
+		WRONG_EVENT_DESCRIPTION:"Bạn chưa nhập mô tả của sự kiện",
+		
+		WRONG_EXHIBITION_TITLE:"Bạn chưa nhập tiêu đề của triển lãm",
+		WRONG_EXHIBITION_MINTARGETAGE:"Bạn chưa nhập giới hạn độ tuổi nhỏ nhất của triển lãm",
+		WRONG_EXHIBITION_MAXTARGETAGE:"Bạn chưa nhập giới hạn độ tuổi lớn nhất của triển lãm",
+		WRONG_EXHIBITION_DESCRIPTION:"Bạn chưa nhập mô tả của triển lãm",
 		
 		WRONG_PHONE: "Số điện thoại không đúng, vui lòng nhập lại",
 		WRONG_BLANK_PHONE: "Bạn chưa nhập số điện thoại",
@@ -568,6 +593,10 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		}
 	}
 	
+	var service = {
+		qvisit:"q-visit"
+	}
+	
 	var adminAccountType = ["admin"];
 	
 	var listLecture = [];
@@ -652,6 +681,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	//admin account
 	var adminUrl = "admin";
 	
+	var systemUrl = "system";
+	
 	function getAdminHomeURL(){
 		return adminURL;
 	}
@@ -702,15 +733,15 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	//<contact>feedbackUrl
 	function getFeedback(id){
-		return mainURL + feedbackUrl + "/" + id;
+		return mainURL + systemUrl + feedbackUrl + "/" + id;
 	}
 	//get list feedback
 	function getListFeedback(){
-		return mainURL + listFeedbackUrl;
+		return mainURL + systemUrl + listFeedbackUrl;
 	}
 	//post feedback with service
 	function postFeedback(service){
-		return mainURL + feedbackUrl + "/" + service;
+		return mainURL + systemUrl + feedbackUrl + "/" + service;
 	}
 	
 	//ticket

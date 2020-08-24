@@ -42,7 +42,7 @@ var  _isFetchingContact = false,
         },
         set(val) {
             _isGetContactFromServerSuccess = val;
-            val ? getListLectureContact() : getListContactFailed();
+            val ? getListContactSuccess() : getListContactFailed();
         }
     });
 
@@ -116,16 +116,15 @@ var  _isFetchingContact = false,
         },
         set(val) {
             _currentContact = val;
-
             let dataCurrentViewContact = {
                 page: val,
                 limit: dictionaryKey.limitRequestRegister,
             };
-            //alert("currentGroup",val);
+            //alert("currentAccount",val);
             seFetchingContact(true);
             requestToSever(
                 sunQRequestType.get,
-                prepareUrlForGetThatContainsBody(getListContact(), dataCurrentViewContact),
+                prepareUrlForGetThatContainsBody(getListFeedback(), dataCurrentViewContact),
                 null,
                 getData(dictionary.MSEC),
                 function(res) {
@@ -133,7 +132,7 @@ var  _isFetchingContact = false,
                     seFetchingContact(false);
                     if (res.code === networkCode.success) {
                         if (res.data == null || res.data.length == 0) {
-                            setGetContactFromServerLengthGreaterThanZero(false);
+                            setGetContactFromServerSuccess(false);
                         } else {
                             emptyTableListContact();
                             listContact = listContact.concat(res.data);

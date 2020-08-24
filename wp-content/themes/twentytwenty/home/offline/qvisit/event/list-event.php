@@ -5,7 +5,14 @@
 
 <script>
 var listVisitedEvent = [];
+window.onload = function() {
+		
+		//get list ticket
+		listVisitedEvent.push(0);
+		setCurrentEvent(0);
 
+		
+    }
 </script>
 <div class="manage-list-lecture">
 	<div class="manage-list-lecture-title-list-contain">

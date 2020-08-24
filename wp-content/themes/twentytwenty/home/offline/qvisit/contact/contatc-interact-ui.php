@@ -184,7 +184,7 @@ function createListContact(result,isPush) {
 						if (indexProp == 0){
 						   tdInside.innerHTML = number * dictionaryKey.limitRequestRegister + index + 1;
 						} else if(indexProp == 1){//title
-						   tdInside.innerHTML = item["course"]["name"];
+						   tdInside.innerHTML = item["name"];
 						} else if(indexProp == 5){//admin note
 							let valueAdminNote = item["adminNote"] != null ? item["adminNote"] : "";
 							 tdInside.innerHTML = "<textarea type=\"text\" style=\"resize: none;height:80px;padding:1px;\" id=\"text-area-" + 
@@ -214,22 +214,22 @@ function createListContact(result,isPush) {
                 if (result.value) {
 					let tttValue = document.getElementById("text-area-"+number).value;
 					let dataUpdateContact = {
-						isGotAdvice:true,
+						isReplied:true,
 						adminNote: tttValue.escape()
 					};
-				setLoadingCurrentView(true);
+				seFetchingContact(true);
                    requestToSever(
 						sunQRequestType.put,
-						getURLContact()+"/"+listContact[number]["id"],
+						getFeedback(listContact["id"]),
 						dataUpdateContact,
 						getData(dictionary.MSEC),
                         function(res) {
                             //console.log(res);
-                            setLoadingDataContact(false);
+                            seFetchingContact(false);
                             if (res.code === networkCode.success) {
                                 SunQAlert()
                                     .position('center')
-                                    .title(dictionaryKey.REGISTER_EDIT_SUCCESS)
+                                    .title(dictionaryKey.CONTACT_EDIT_SUCCESS)
                                     .type('success')
                                     .confirmButtonColor("#3B4EDC")
                                     .confirmButtonText(dictionaryKey.AGREE)
@@ -237,15 +237,17 @@ function createListContact(result,isPush) {
                                        //createListRegister(getCurrentView(),false);
                                     })
                                     .show();
-                            } else if (res.code === networkCode.sessionTimeOut) {
+                            } else if (res.code === networkCode.accessDenied){
+									   makeAlertPermisionDenial();
+									   }else if (res.code === networkCode.sessionTimeOut) {
                                 makeAlertRedirect();
                             }
                         },
                         function(err) {
-                            setLoadingDataContact(false);
+                            seFetchingContact(false);
                             SunQAlert()
                                 .position('center')
-                                .title(dictionaryKey.REGISTER_EDIT_FAILED)
+                                .title(dictionaryKey.CONTACT_EDIT_FAILED)
                                 .type('error')
                                 .confirmButtonColor("#3B4EDC")
                                 .confirmButtonText(dictionaryKey.TRY_AGAIN)

@@ -1,11 +1,18 @@
 <?php 
-	include ("home/offline/qvisit/exhibition/exhibition-status.php");
-	include ("home/offline/qvisit/exhibition/exhibition-interact-ui.php" ); 
+	include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-status.php");
+	include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-ui.php" ); 
 ?>
 
 <script>
 var listVisitedExhibition = [];
+window.onload = function() {
+		
+		//get list ticket
+		listVisitedExhibition.push(0);
+		setCurrentExhibition(0);
 
+		
+    }
 </script>
 <div class="manage-list-lecture">
 	<div class="manage-list-lecture-title-list-contain">
