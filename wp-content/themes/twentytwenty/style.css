@@ -7519,6 +7519,18 @@ font-style:italic;
 	margin:15px auto;
 }
 
+.manage-section-common-detail-midlle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+	margin:15px auto;
+}
+
 .manage-section-detail-midlle-span {
     width: 100%;
     height: 40px;
@@ -7563,13 +7575,27 @@ font-style:italic;
 #lectureDetailTextArea-toolbar-container{
 	width:100%;
 	}
-
+#exhibitionDetailTextArea-toolbar-container{
+	width:100%;
+}
+#eventDetailTextArea-toolbar-container{
+	width:100%;
+}
 #lectureSubDetailTextArea{
 	width:100%;
 	height:420px;
 	resize:none;
 }
-
+#exhibitionSubDetailTextArea{
+	width:100%;
+	height:420px;
+	resize:none;
+}
+#eventSubDetailTextArea{
+	width:100%;
+	height:420px;
+	resize:none;
+}
 .manage-section-detail-right-span {
     width: 100%;
     height: 40px;
@@ -7624,6 +7650,22 @@ font-style:italic;
 }
 
 #lectureDetailTextArea{
+	max-width:100%;
+	width:100%;
+	height:520px;
+/* 	min-height:520px; */
+	resize: none;
+}
+
+#exhibitionDetailTextArea{
+	max-width:100%;
+	width:100%;
+	height:520px;
+/* 	min-height:520px; */
+	resize: none;
+}
+
+#eventDetailTextArea{
 	max-width:100%;
 	width:100%;
 	height:520px;

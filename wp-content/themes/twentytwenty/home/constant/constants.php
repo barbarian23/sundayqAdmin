@@ -408,6 +408,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		REQUEST_CHANGE_PASWORD: "Bạn có muốn thay đổi mật khẩu?",
 		REQUEST_CHANGE_PERMISSION: "Bạn có muốn thay đổi nhóm quyền?",
 		
+		UPLOAD_EDITOR_ERROR: "Tải ảnh lên bị lỗi!Vui lòng tải lại",
+		
 		LECTURE_NAME:" khóa học này",
 		TEACHER_NAME:" giáo viên này",
 		EXHIBITION_NAME:" giáo viên này",
@@ -648,6 +650,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	//upload image
 	var uploadImagePartUrl = "resource/image";	
+	var uploadImageEditorUrl = "resource/ckediter/image";	
 	
 	//teacher
 	var listTeacherUrl  = "teachers";
@@ -721,6 +724,10 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	//upload image
 	function getURLUploadImage(){
 		return mainURL+uploadImagePartUrl;	
+	}
+	//upload image editor
+	function getUploadImageEditorUrl(tt){
+		return mainURL+uploadImageEditorUrl + "?token=" + tt + "responseType=json";	
 	}
 	//all register
 	function getURLListAccountAdvice(){

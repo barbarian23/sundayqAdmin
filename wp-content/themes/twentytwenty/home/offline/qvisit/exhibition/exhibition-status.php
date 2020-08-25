@@ -146,7 +146,6 @@ var  _isFetchingExhibition = false,
                     }
                 },
                 function(err) {
-            alert(err);
                     seFetchingExhibition(false);
                     setIsGetExhibitionFromServerSuccess(false);
                     console.log(dictionaryKey.ERR_INFO, err);

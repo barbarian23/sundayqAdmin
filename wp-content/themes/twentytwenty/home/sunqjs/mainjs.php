@@ -243,4 +243,107 @@
         return tagsToReplace[tag] || tag;
 		});
 	};
+	
+	//image
+	class MyUploadAdapter {
+        constructor(loader) {
+            // CKEditor 5's FileLoader instance.
+            this.fileName= "";
+            this.loader = loader;
+            // URL where to send files.
+            this.url = getUploadImageEditorUrl(getData(dictionary.MSEC));
+        }
+
+        // Starts the upload process.
+        upload() {
+            return new Promise((resolve, reject) => {
+                this._initRequest();
+                this._initListeners(resolve, reject);
+                this._sendRequest();
+            });
+        }
+
+        // Aborts the upload process.
+        abort() {
+            if (this.xhr) {
+                this.xhr.abort();
+            }
+        }
+
+        // Example implementation using XMLHttpRequest.
+        _initRequest() {
+            this.xhr = new XMLHttpRequest();
+
+            
+            //xhr.responseType = 'json';
+        }
+
+        // Initializes XMLHttpRequest listeners.
+        _initListeners(resolve, reject) {
+            const xhr = this.xhr;
+            const loader = this.loader;
+            const genericErrorText = dictionaryKey.UPLOAD_EDITOR_ERROR;
+
+            xhr.addEventListener('error', () => reject(genericErrorText));
+            xhr.addEventListener('abort', () => reject());
+            xhr.addEventListener('load', () => {
+                const response = xhr.response;
+				let urlResponce = JSON.parse(response)["urls"][0];
+                if (!response || response.error) {
+                    return reject(response && response.error ? response.error.message : genericErrorText);
+                }
+
+                // If the upload is successful, resolve the upload promise with an object containing
+                // at least the "default" URL, pointing to the image on the server.
+                resolve({
+                    default: getHomeURL()+urlResponce
+                });
+            });
+
+            if (xhr.upload) {
+                xhr.upload.addEventListener('progress', evt => {
+                    if (evt.lengthComputable) {
+                        loader.uploadTotal = evt.total;
+                        loader.uploaded = evt.loaded;
+                    }
+                });
+            }
+        }
+
+        // Prepares the data and sends the request.
+        _sendRequest() {
+            
+            this.loader.file.then(i=>{
+                
+                const data = new FormData();
+                this.fileName = i.name;
+            data.append('file', i);
+            this.xhr.open('POST', this.url, true);
+            this.xhr.send(data);
+                });
+           
+        }
+    }
+
+    function myCustomUploadAdapterPlugin(editor) {
+        editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+            return new MyUploadAdapter(loader);
+        };
+    }
+	/*
+    DecoupledEditor
+        .create(document.querySelector('#CKEditor'), {
+            extraPlugins: [ MyCustomUploadAdapterPlugin ],
+
+        })
+        .then(editor => {
+            edd = editor;
+            const toolbarContainer = document.querySelector( '#toolbar-container' );
+
+            toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+        })
+        .catch(error => {
+            console.error(error);
+        });
+	*/
 </script>
