@@ -58,7 +58,7 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
 </form>
 <script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script>
 <script>
-    let edd = "";
+    let exhibitionDescription = "";
     window.onload = function() {
         myCurrentExhibition = {};
 
@@ -68,7 +68,7 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
                 extraPlugins: [myCustomUploadAdapterPlugin],
             })
             .then(editor => {
-                edd = editor;
+                exhibitionDescription = editor;
                 let toolbarContainer = document.querySelector('#exhibitionDetailTextArea-toolbar-container');
 
                 toolbarContainer.appendChild(editor.ui.view.toolbar.element);
@@ -168,19 +168,33 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
                     if (res.code === networkCode.success) {
                         myCurrentExhibition = res.data;
                         console.log(res.data);
+						
+                        document.getElementById("idTitleExhibition").value = myCurrentExhibition.title == null ? "" : myCurrentExhibition.title;
+                        mobiscroll.number('#idAgeOfExhibitionFrom', {
+							theme: 'ios',
+							themeVariant: 'light',
+							layout: 'fixed',
+							value: 1,
+							step: 1,
+							defaultValue: myCurrentExhibition.minTargetAge,
+							min: 0,
+							max: 18,
+							display: 'bubble',
+						});
 
-                        mobiscroll.number('#', {
-                            theme: 'ios',
-                            themeVariant: 'light',
-                            layout: 'fixed',
-                            value: 1,
-                            defaultValue: yearEXP,
-                            step: 1,
-                            min: 0,
-                            max: 30,
-                            display: 'bubble',
-                        });
-
+						mobiscroll.number('#idAgeOfExhibitionTo', {
+							theme: 'ios',
+							themeVariant: 'light',
+							layout: 'fixed',
+							value: 1,
+							step: 1,
+							defaultValue: myCurrentExhibition.maxTargetAge,
+							min: 0,
+							max: 18,
+							display: 'bubble',
+						});
+						exhibitionDescription.setData(myCurrentLecture.description != null ? "" : myCurrentLecture.description);
+						document.getElementById("exhibitionSubDetailTextArea").value = myCurrentLecture.shortDescription == null ? "" : myCurrentLecture.shortDescription;
                     } else if (res.code === networkCode.sessionTimeOut) {
                         makeAlertRedirect();
                     }
@@ -204,10 +218,30 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
         }
     }
 
+	//on input
+	 document.getElementById("idTitleExhibition").addEventListener("input", function(e) {
+		let tttValue = e.target.value;
+        myCurrentExhibition.title = tttValue.escape();
+    });
 
+    document.getElementById("idAgeOfExhibitionFrom").addEventListener("change", function(e) {
+        myCurrentExhibition.minTargetAge = e.target.value;
+    });
+    document.getElementById("idAgeOfExhibitionTo").addEventListener("change", function(e) {
+        myCurrentExhibition.maxTargetAge = e.target.value;
+    });
+
+	document.getElementById("exhibitionSubDetailTextArea").addEventListener("input", function(e) {
+		   let tttValue = e.target.value;
+        myCurrentExhibition.shortDescription = tttValue.escape();
+    });
+	
     //submit form
     document.getElementById("exhibitionSubmit").addEventListener("click", function(e) {
         e.preventDefault();
+				myCurrentExhibition.description = exhibitionDescription.getData();
+ 				myCurrentExhibition.maxTargetAge = Number.parseInt(myCurrentLecture.maxTargetAge);
+ 				myCurrentExhibition.minTargetAge = Number.parseInt(myCurrentLecture.minTargetAge);
         //console.log("email", myCurrentTeacher.email);
         if (myCurrentExhibition.title == "" || myCurrentExhibition.title == null) {
             SunQAlert()

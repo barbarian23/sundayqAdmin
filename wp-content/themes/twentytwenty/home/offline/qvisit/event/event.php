@@ -48,6 +48,8 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
 </form>
 <script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script>
 <script>
+	let myCurrentEvent = {};
+	let exhibitionDescription = "";
     window.onload = function() {
         myCurrentEvent = {};
 
@@ -57,7 +59,7 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
                 extraPlugins: [myCustomUploadAdapterPlugin],
             })
             .then(editor => {
-                edd = editor;
+                exhibitionDescription = editor;
                 let toolbarContainer = document.querySelector('#eventDetailTextArea-toolbar-container');
 
                 toolbarContainer.appendChild(editor.ui.view.toolbar.element);
@@ -80,6 +82,9 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
                     setLoadingDataEvent(false);
                     if (res.code === networkCode.success) {
                         myCurrentEvent = res.data;
+						document.getElementById("idTitleEvent").value = myCurrentEvent.title == null ? "" : myCurrentEvent.title;
+						exhibitionDescription.setData(myCurrentEvent.description != null ? "" : myCurrentEvent.description);
+						document.getElementById("eventSubDetailTextArea").value = myCurrentEvent.shortDescription == null ? "" : myCurrentEvent.shortDescription;
                         console.log(res.data);
                     } else if (res.code === networkCode.sessionTimeOut) {
                         makeAlertRedirect();
@@ -104,6 +109,16 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
         }
     }
 
+	 document.getElementById("idTitleEvent").addEventListener("input", function(e) {
+		let tttValue = e.target.value;
+        myCurrentEvent.title = tttValue.escape();
+    });
+
+	document.getElementById("eventSubDetailTextAreaTitle").addEventListener("input", function(e) {
+		   let tttValue = e.target.value;
+           myCurrentEvent.shortDescription = tttValue.escape();
+    });
+	
     //submit form
     document.getElementById("eventSubmit").addEventListener("click", function(e) {
         e.preventDefault();
@@ -154,7 +169,7 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
                         delete tempmyCurrentEvent.createAt;
                         delete tempmyCurrentEvent.updateAt;
                         delete tempmyCurrentEvent.id;
-                        myCurrentEvent.description = teacherDesciption.getData();
+                        myCurrentEvent.description = eventDescription.getData();
 
                         setLoadingDataEvent(true);
                         requestToSever(
