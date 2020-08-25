@@ -4,7 +4,7 @@
 ?>
 
 <script>
-var listVisitedExhibition = [];
+var listVisitedExhibition = [],listExhibition = [];
 window.onload = function() {
 		
 		//get list ticket
@@ -26,7 +26,7 @@ window.onload = function() {
 
 				</div>
 			</div>
-			<table class="manage-list-lecture-table-detail" id="tableListExhibitiont">
+			<table class="manage-list-lecture-table-detail" id="tableListExhibition">
 
 			</table>
 			<div class="manage-list-lecture-table-detail-no-list" id="listExhibitionEmpty">

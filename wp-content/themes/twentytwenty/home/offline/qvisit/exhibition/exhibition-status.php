@@ -1,6 +1,6 @@
 <?php ?>
 <script>
-var ExhibitionStatus = {
+var exhibitionStatus = {
 		isFetchingExhibition: false, //đang load danh sách liên lạc
         isGetExhibitionFromServerSuccess: false,
         isGetExhibitionFromServerLengthGreaterThanZero: false,
@@ -17,7 +17,7 @@ var  _isFetchingExhibition = false,
      _currentExhibition = 0;
 	
 	//fetching Exhibition
-    Object.defineProperty(ExhibitionStatus, "isFetchingExhibition", {
+    Object.defineProperty(exhibitionStatus, "isFetchingExhibition", {
         get() {
             return _isFetchingExhibition;
         },
@@ -28,15 +28,15 @@ var  _isFetchingExhibition = false,
     });
 
     function seFetchingExhibition(val) {
-        ExhibitionStatus.isFetchingExhibition = val;
+        exhibitionStatus.isFetchingExhibition = val;
     }
 
     function getFetchingExhibition() {
-        return ExhibitionStatus.isFetchingExhibition;
+        return exhibitionStatus.isFetchingExhibition;
     }
 	
 	 //get Exhibition from server
-    Object.defineProperty(ExhibitionStatus, "isGetExhibitionFromServerSuccess", {
+    Object.defineProperty(exhibitionStatus, "isGetExhibitionFromServerSuccess", {
         get() {
             return _isGetExhibitionFromServerSuccess;
         },
@@ -48,14 +48,14 @@ var  _isFetchingExhibition = false,
 
 
     function setIsGetExhibitionFromServerSuccess(val) {
-        ExhibitionStatus.isGetExhibitionFromServerSuccess = val;
+        exhibitionStatus.isGetExhibitionFromServerSuccess = val;
     }
 
     function getIsGetExhibitionFromServerSuccess() {
-        return ExhibitionStatus.isGetExhibitionFromServerSuccess;
+        return exhibitionStatus.isGetExhibitionFromServerSuccess;
     }
 
-	Object.defineProperty(ExhibitionStatus, "isGetExhibitionFromServerLengthGreaterThanZero", {
+	Object.defineProperty(exhibitionStatus, "isGetExhibitionFromServerLengthGreaterThanZero", {
         get() {
             return _isGetExhibitionFromServerLengthGreaterThanZero;
         },
@@ -66,15 +66,15 @@ var  _isFetchingExhibition = false,
     });
 
     function setGetExhibitionFromServerSuccess(val) {
-        ExhibitionStatus.isGetExhibitionFromServerLengthGreaterThanZero = val;
+        exhibitionStatus.isGetExhibitionFromServerLengthGreaterThanZero = val;
     }
 
     function getGetExhibitionFromServerSuccess() {
-        return ExhibitionStatus.isGetExhibitionFromServerLengthGreaterThanZero;
+        return exhibitionStatus.isGetExhibitionFromServerLengthGreaterThanZero;
     }
 	
 	 //loadingCurrentExhibition
-    Object.defineProperty(ExhibitionStatus, "currentSelectExhibition", {
+    Object.defineProperty(exhibitionStatus, "currentSelectExhibition", {
         get() {
             return _currentSelectExhibition;
         },
@@ -84,15 +84,15 @@ var  _isFetchingExhibition = false,
     });
 
     function setCurrentSelectExhibition(val) {
-        ExhibitionStatus.currentSelectExhibition = val;
+        exhibitionStatus.currentSelectExhibition = val;
     }
 
     function getCurrentSelectExhibition() {
-        return ExhibitionStatus.currentSelectExhibition;
+        return exhibitionStatus.currentSelectExhibition;
     }
 	
 	  //loading data isUploadingDataExhibition
-    Object.defineProperty(ExhibitionStatus, "isUploadingDataExhibition", {
+    Object.defineProperty(exhibitionStatus, "isUploadingDataExhibition", {
         get() {
             return _isUploadingDataExhibition;
         },
@@ -103,14 +103,14 @@ var  _isFetchingExhibition = false,
     });
 
     function setLoadingDataExhibition(val) {
-        ExhibitionStatus.isUploadingDataExhibition = val;
+        exhibitionStatus.isUploadingDataExhibition = val;
     }
 
     function getLoadingDataExhibition() {
-        return ExhibitionStatus.isUploadingDataExhibition;
+        return exhibitionStatus.isUploadingDataExhibition;
     }
 	
-	Object.defineProperty(ExhibitionStatus, "currentExhibition", {
+	Object.defineProperty(exhibitionStatus, "currentExhibition", {
         get() {
             return _currentExhibition;
         },
@@ -146,6 +146,7 @@ var  _isFetchingExhibition = false,
                     }
                 },
                 function(err) {
+            alert(err);
                     seFetchingExhibition(false);
                     setIsGetExhibitionFromServerSuccess(false);
                     console.log(dictionaryKey.ERR_INFO, err);
@@ -155,11 +156,11 @@ var  _isFetchingExhibition = false,
     });
 
     function setCurrentExhibition(val) {
-        ExhibitionStatus.currentExhibition = val;
+        exhibitionStatus.currentExhibition = val;
     }
 
     function getCurrentExhibition() {
-        return ExhibitionStatus.currentExhibition;
+        return exhibitionStatus.currentExhibition;
     }
 	
 </script>

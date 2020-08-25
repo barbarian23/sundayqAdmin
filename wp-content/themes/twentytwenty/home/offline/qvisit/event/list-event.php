@@ -1,10 +1,10 @@
 <?php 
-	include ("home/offline/qvisit/event/event-status.php");
-	include ("home/offline/qvisit/event/event-interact-ui.php" ); 
+	include get_theme_file_path("home/offline/qvisit/event/event-status.php");
+	include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php" ); 
 ?>
 
 <script>
-var listVisitedEvent = [];
+var listVisitedEvent = [],listEvent= [];
 window.onload = function() {
 		
 		//get list ticket

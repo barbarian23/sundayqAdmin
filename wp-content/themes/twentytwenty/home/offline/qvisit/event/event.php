@@ -1,3 +1,7 @@
+<?php 
+	include get_theme_file_path("home/offline/qvisit/event/event-status.php");
+	include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php" ); 
+?>
 <form class="manage-contain">
     <div class="manage-contain-loading" id="event-page-loading">
         <span id="event-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>

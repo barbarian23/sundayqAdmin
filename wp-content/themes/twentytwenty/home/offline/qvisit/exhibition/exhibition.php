@@ -1,6 +1,6 @@
 <?php 
-	include ("home/offline/qvisit/exhibition/exhibition-status.php");
-	include ("home/offline/qvisit/exhibition/exhibition-interact-ui.php" ); 
+	include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-status.php");
+	include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-ui.php" ); 
 ?>
 <form class="manage-contain">
     <div class="manage-contain-loading" id="exhibition-page-loading">
@@ -44,8 +44,6 @@
     </div>
 </form>
 <script>
-var listExhibition = [];
-
 	 window.onload = function() {
 		myCurrentExhibition =  {};
 		

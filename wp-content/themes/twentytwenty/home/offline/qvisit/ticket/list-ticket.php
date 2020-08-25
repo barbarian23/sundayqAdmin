@@ -1,6 +1,6 @@
 <?php 
-	include ("home/offline/qvisit/ticket/ticket-status.php");
-	include ("home/offline/qvisit/ticket/ticket-interact-ui.php" ); 
+	include get_theme_file_path("home/offline/qvisit/ticket/ticket-status.php");
+	include get_theme_file_path("home/offline/qvisit/ticket/ticket-interact-ui.php" ); 
 ?>
 
 <script>
@@ -30,7 +30,10 @@ var listTicket = [], listVisitedTicket  = [];
 
             </div>
         </div>
-	
+	<div class="manage-list-teacher-table-no-list" id="listTicketEmpty">
+            <img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
+            <span><?php echo $GLOBALS["TICKET_NEED_SUPPORT_EMPTY"]; ?></span>
+        </div>
         <div class="manage-list-lecture-table-detail-no-list" id="listTicketError">
             <img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
             <span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>

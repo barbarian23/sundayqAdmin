@@ -90,7 +90,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
     tempDivPaging.id="paging-index-"+pagingIndex;
     tempDivPaging.innerHTML = Number.parseInt(pagingIndex) + 1;
     
-    tempDivPaging.addExhibitionListener("click",function(e){
+    tempDivPaging.addEventListener("click",function(e){
         for (let tI = 0 ; tI < totalPage ; tI++ ){
             let tDiv = document.getElementById("paging-index-"+tI);
                     if (tI != pagingIndex){

@@ -1,6 +1,6 @@
 <?php ?>
 <script>
-var EventStatus = {
+var eventStatus = {
 		isFetchingEvent: false, //đang load danh sách liên lạc
         isGetEventFromServerSuccess: false,
         isGetEventFromServerLengthGreaterThanZero: false,
@@ -17,7 +17,7 @@ var  _isFetchingEvent = false,
      _currentEvent = 0;
 	
 	//fetching Event
-    Object.defineProperty(EventStatus, "isFetchingEvent", {
+    Object.defineProperty(eventStatus, "isFetchingEvent", {
         get() {
             return _isFetchingEvent;
         },
@@ -28,15 +28,15 @@ var  _isFetchingEvent = false,
     });
 
     function seFetchingEvent(val) {
-        EventStatus.isFetchingEvent = val;
+        eventStatus.isFetchingEvent = val;
     }
 
     function getFetchingEvent() {
-        return EventStatus.isFetchingEvent;
+        return eventStatus.isFetchingEvent;
     }
 	
 	 //get Event from server
-    Object.defineProperty(EventStatus, "isGetEventFromServerSuccess", {
+    Object.defineProperty(eventStatus, "isGetEventFromServerSuccess", {
         get() {
             return _isGetEventFromServerSuccess;
         },
@@ -48,14 +48,14 @@ var  _isFetchingEvent = false,
 
 
     function setIsGetEventFromServerSuccess(val) {
-        EventStatus.isGetEventFromServerSuccess = val;
+        eventStatus.isGetEventFromServerSuccess = val;
     }
 
     function getIsGetEventFromServerSuccess() {
-        return EventStatus.isGetEventFromServerSuccess;
+        return eventStatus.isGetEventFromServerSuccess;
     }
 
-	Object.defineProperty(EventStatus, "isGetEventFromServerLengthGreaterThanZero", {
+	Object.defineProperty(eventStatus, "isGetEventFromServerLengthGreaterThanZero", {
         get() {
             return _isGetEventFromServerLengthGreaterThanZero;
         },
@@ -66,15 +66,15 @@ var  _isFetchingEvent = false,
     });
 
     function setGetEventFromServerSuccess(val) {
-        EventStatus.isGetEventFromServerLengthGreaterThanZero = val;
+        eventStatus.isGetEventFromServerLengthGreaterThanZero = val;
     }
 
     function getGetEventFromServerSuccess() {
-        return EventStatus.isGetEventFromServerLengthGreaterThanZero;
+        return eventStatus.isGetEventFromServerLengthGreaterThanZero;
     }
 	
 	 //loadingCurrentEvent
-    Object.defineProperty(EventStatus, "currentSelectEvent", {
+    Object.defineProperty(eventStatus, "currentSelectEvent", {
         get() {
             return _currentSelectEvent;
         },
@@ -84,15 +84,15 @@ var  _isFetchingEvent = false,
     });
 
     function setCurrentSelectEvent(val) {
-        EventStatus.currentSelectEvent = val;
+        eventStatus.currentSelectEvent = val;
     }
 
     function getCurrentSelectEvent() {
-        return EventStatus.currentSelectEvent;
+        return eventStatus.currentSelectEvent;
     }
 	
 	  //loading data isUploadingDataEvent
-    Object.defineProperty(EventStatus, "isUploadingDataEvent", {
+    Object.defineProperty(eventStatus, "isUploadingDataEvent", {
         get() {
             return _isUploadingDataEvent;
         },
@@ -103,14 +103,14 @@ var  _isFetchingEvent = false,
     });
 
     function setLoadingDataEvent(val) {
-        EventStatus.isUploadingDataEvent = val;
+        eventStatus.isUploadingDataEvent = val;
     }
 
     function getLoadingDataEvent() {
-        return EventStatus.isUploadingDataEvent;
+        return eventStatus.isUploadingDataEvent;
     }
 	
-	Object.defineProperty(EventStatus, "currentEvent", {
+	Object.defineProperty(eventStatus, "currentEvent", {
         get() {
             return _currentEvent;
         },
@@ -145,7 +145,7 @@ var  _isFetchingEvent = false,
                         makeAlertRedirect();
                     }
                 },
-                function(err) {
+                function(err) {alert(err);
                     seFetchingEvent(false);
                     setIsGetEventFromServerSuccess(false);
                     console.log(dictionaryKey.ERR_INFO, err);
@@ -155,11 +155,11 @@ var  _isFetchingEvent = false,
     });
 
     function setCurrentEvent(val) {
-        EventStatus.currentEvent = val;
+        eventStatus.currentEvent = val;
     }
 
     function getCurrentEvent() {
-        return EventStatus.currentEvent;
+        return eventStatus.currentEvent;
     }
 	
 </script>
