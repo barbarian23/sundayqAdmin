@@ -19,10 +19,10 @@
         Cancel: "Cancel",
         "Cannot upload file:": "Cannot upload file:",
         "Centered image": "Centered image",
-        "Change image text alternative": "Change image text alternative",
+        "Change image text alternative": "Sửa tên ảnh",
         "Choose heading": "Choose heading",
         Column: "Column",
-        "Could not insert image at the current position.": "Could not insert image at the current position.",
+        "Could not insert image at the current position.": "Không thể chèn ảnh vào vị trí này.",
         "Could not obtain resized image URL.": "Could not obtain resized image URL.",
         "Decrease indent": "Decrease indent",
         Default: "Default",
@@ -34,7 +34,7 @@
         "Dropdown toolbar": "Dropdown toolbar",
         "Edit link": "Edit link",
         "Editor toolbar": "Editor toolbar",
-        "Enter image caption": "Enter image caption",
+        "Enter image caption": "Sửa tiêu đề ảnh",
         "Font Background Color": "Font Background Color",
         "Font Color": "Font Color",
         "Font Family": "Font Family",
@@ -87,7 +87,7 @@
         "Open link in new tab": "Open link in new tab",
         Orange: "Orange",
         Paragraph: "Paragraph",
-        "Paste the media URL in the input.": "Paste the media URL in the input.",
+        "Paste the media URL in the input.": "Dán địa chỉ URL vào ô.",
         Previous: "Previous",
         Purple: "Purple",
         Red: "Red",
@@ -947,8 +947,9 @@ function(t, e) {
         };
         o(i, r);
         t.exports = i.locals || {}
-    }, function(t, e) {
-        t.exports = ".ck.ck-editor__editable .image{position:relative}.ck.ck-editor__editable .image .ck-progress-bar{position:absolute;top:0;left:0}.ck.ck-editor__editable .image.ck-appear{animation:fadeIn .7s}.ck.ck-editor__editable .image .ck-progress-bar{height:2px;width:0;background:var(--ck-color-upload-bar-background);transition:width .1s}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}"
+    }, function(t, e) {//123456789
+        //progress bar
+        t.exports = ".ck.ck-editor__editable .image{position:relative}.ck.ck-editor__editable .image .ck-progress-bar{position:absolute;top:0;left:0}.ck.ck-editor__editable .image.ck-appear{animation:fadeIn .7s}.ck.ck-editor__editable .image .ck-progress-bar{height:20px;width:100%;padding:5px 10px;color:white;background:var(--ck-color-upload-bar-background);transition:width .1s}.ck.ck-editor__editable .image .ck-progress-bar:after{content:'Đang tải ảnh lên ...'}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}"
     }, function(t, e, n) {
         var o = n(1),
             i = n(70);
@@ -965,8 +966,10 @@ function(t, e) {
         };
         o(i, r);
         t.exports = i.locals || {}
-    }, function(t, e) {
-        t.exports = '.ck-image-upload-complete-icon{display:block;position:absolute;top:10px;right:10px;border-radius:50%}.ck-image-upload-complete-icon:after{content:"";position:absolute}:root{--ck-color-image-upload-icon:#fff;--ck-color-image-upload-icon-background:#008a00;--ck-image-upload-icon-size:20px;--ck-image-upload-icon-width:2px}.ck-image-upload-complete-icon{width:var(--ck-image-upload-icon-size);height:var(--ck-image-upload-icon-size);opacity:0;background:var(--ck-color-image-upload-icon-background);animation-name:ck-upload-complete-icon-show,ck-upload-complete-icon-hide;animation-fill-mode:forwards,forwards;animation-duration:.5s,.5s;font-size:var(--ck-image-upload-icon-size);animation-delay:0ms,3s}.ck-image-upload-complete-icon:after{left:25%;top:50%;opacity:0;height:0;width:0;transform:scaleX(-1) rotate(135deg);transform-origin:left top;border-top:var(--ck-image-upload-icon-width) solid var(--ck-color-image-upload-icon);border-right:var(--ck-image-upload-icon-width) solid var(--ck-color-image-upload-icon);animation-name:ck-upload-complete-icon-check;animation-duration:.5s;animation-delay:.5s;animation-fill-mode:forwards;box-sizing:border-box}@keyframes ck-upload-complete-icon-show{0%{opacity:0}to{opacity:1}}@keyframes ck-upload-complete-icon-hide{0%{opacity:1}to{opacity:0}}@keyframes ck-upload-complete-icon-check{0%{opacity:1;width:0;height:0}33%{width:.3em;height:0}to{opacity:1;width:.3em;height:.45em}}'
+    }, function(t, e) {//123456789
+         //uoload successfull
+        //t.exports = '.ck-image-upload-complete-icon{display:block;position:absolute;top:10px;right:10px;border-radius:50%}.ck-image-upload-complete-icon:after{content:"";position:absolute}:root{--ck-color-image-upload-icon:#fff;--ck-color-image-upload-icon-background:#008a00;--ck-image-upload-icon-size:20px;--ck-image-upload-icon-width:2px}.ck-image-upload-complete-icon{content:"yea123456789";width:var(--ck-image-upload-icon-size);height:var(--ck-image-upload-icon-size);opacity:0;background:var(--ck-color-image-upload-icon-background);animation-name:ck-upload-complete-icon-show,ck-upload-complete-icon-hide;animation-fill-mode:forwards,forwards;animation-duration:.5s,.5s;font-size:var(--ck-image-upload-icon-size);animation-delay:0ms,3s}.ck-image-upload-complete-icon:after{left:25%;top:50%;opacity:0;height:0;width:0;transform:scaleX(-1) rotate(135deg);transform-origin:left top;border-top:var(--ck-image-upload-icon-width) solid var(--ck-color-image-upload-icon);border-right:var(--ck-image-upload-icon-width) solid var(--ck-color-image-upload-icon);animation-name:ck-upload-complete-icon-check;animation-duration:.5s;animation-delay:.5s;animation-fill-mode:forwards;box-sizing:border-box}@keyframes ck-upload-complete-icon-show{0%{opacity:0}to{opacity:1}}@keyframes ck-upload-complete-icon-hide{0%{opacity:1}to{opacity:0}}@keyframes ck-upload-complete-icon-check{0%{opacity:1;width:0;height:0}33%{width:.3em;height:0}to{opacity:1;width:.3em;height:.45em}}'
+        t.exports = '.ck-image-upload-complete-icon{display:block;position:absolute;top:10px;right:10px;padding:5px 10px;}.ck-image-upload-complete-icon:after{color:white;content:"Tải ảnh lên thành công"}:root{--ck-color-image-upload-icon:#fff;--ck-color-image-upload-icon-background:#008a00;--ck-image-upload-icon-size:20px;--ck-image-upload-icon-width:2px}.ck-image-upload-complete-icon{height:20px;opacity:0;background:var(--ck-color-image-upload-icon-background);animation-name:ck-upload-complete-icon-show,ck-upload-complete-icon-hide;animation-fill-mode:forwards,forwards;animation-duration:1.5s,1.5s;font-size:var(--ck-image-upload-icon-size);animation-delay:0ms,3s}.ck-image-upload-complete-icon:after{left:25%;top:50%;opacity:0;animation-name:ck-upload-complete-icon-check;animation-duration:1.5s;animation-delay:1.5s;animation-fill-mode:forwards;box-sizing:border-box}@keyframes ck-upload-complete-icon-show{0%{opacity:0}to{opacity:1}}@keyframes ck-upload-complete-icon-hide{0%{opacity:1}to{opacity:0}}@keyframes ck-upload-complete-icon-check{0%{opacity:1;width:0;height:0}33%{width:.3em;height:0}to{opacity:1;width:.3em;height:.45em}}'
     }, function(t, e, n) {
         var o = n(1),
             i = n(72);
@@ -18313,6 +18316,7 @@ function(t, e) {
                             });
                             return t.setCustomProperty("progressBar", !0, e), e
                         }(e);
+                        //123456789
                         e.insert(e.createPositionAt(t, "end"), i), n.on("change:uploadedPercent", (t, e, n) => {
                             o.change(t => {
                                 t.setStyle("width", n + "%", i)
@@ -18329,10 +18333,10 @@ function(t, e) {
                         const o = e.createUIElement("div", {
                             class: "ck-image-upload-complete-icon",
                         });
-                        //e.innerHTML="yeaeaeaeaeaeae";123456789
+                        //123456789
                         e.insert(e.createPositionAt(t, "end"), o), setTimeout(() => {
                             n.change(t => t.remove(t.createRangeOn(o)))
-                        }, 3e3)
+                        }, 300000)
                     }(l, d, o.editing.view),
                     function(t, e) {
                         hg(t, e, "progressBar")
