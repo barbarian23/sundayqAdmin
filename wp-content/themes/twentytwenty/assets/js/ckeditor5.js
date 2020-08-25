@@ -949,7 +949,7 @@ function(t, e) {
         t.exports = i.locals || {}
     }, function(t, e) {//123456789
         //progress bar
-        t.exports = ".ck.ck-editor__editable .image{position:relative}.ck.ck-editor__editable .image .ck-progress-bar{position:absolute;top:0;left:0}.ck.ck-editor__editable .image.ck-appear{animation:fadeIn .7s}.ck.ck-editor__editable .image .ck-progress-bar{height:20px;width:100%;padding:5px 10px;color:white;background:var(--ck-color-upload-bar-background);transition:width .1s}.ck.ck-editor__editable .image .ck-progress-bar:after{content:'Đang tải ảnh lên ...'}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}"
+        t.exports = ".ck.ck-editor__editable .image{position:relative}.ck.ck-editor__editable .image .ck-progress-bar{position:absolute;top:0;left:0}.ck.ck-editor__editable .image.ck-appear{animation:fadeIn .7s}.ck.ck-editor__editable .image .ck-progress-bar{height:30px;width:100%;padding:5px 10px;color:white;background:var(--ck-color-upload-bar-background);transition:width .1s}.ck.ck-editor__editable .image .ck-progress-bar:after{content:'Đang tải ảnh lên ...'}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}"
     }, function(t, e, n) {
         var o = n(1),
             i = n(70);
