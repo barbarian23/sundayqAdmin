@@ -741,7 +741,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	}
 	//upload image editor
 	function getUploadImageEditorUrl(tt){
-		return mainURL+uploadImageEditorUrl + "?token=" + tt + "responseType=json";	
+		return mainURL+uploadImageEditorUrl + "?token=" + tt + "&responseType=json";	
 	}
 	//all register
 	function getURLListAccountAdvice(){

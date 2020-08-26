@@ -259,7 +259,7 @@
         constructor(loader) {
             // CKEditor 5's FileLoader instance.
             this.fileName= "";
-            this.loader = loader;
+            this.loader = loader;//console.log(getData(dictionary.MSEC));
             // URL where to send files.
             this.url = getUploadImageEditorUrl(getData(dictionary.MSEC));
         }
@@ -298,16 +298,19 @@
             xhr.addEventListener('abort', () => reject());
             xhr.addEventListener('load', () => {
                 const response = xhr.response;
+				if(response.code == null && typeof response === "string"){
 				let urlResponce = JSON.parse(response)["urls"][0];
-                if (!response || response.error) {
-                    return reject(response && response.error ? response.error.message : genericErrorText);
+					 console.log("responce", urlResponce);
+					// If the upload is successful, resolve the upload promise with an object containing
+					// at least the "default" URL, pointing to the image on the server.
+					resolve({
+						default: "http://103.146.22.168:3000/"+urlResponce
+					});
+				}
+                else {
+					//console.log("responce", response);
+                    return reject(response && response.error ? alert(response.error.message) : alert(genericErrorText));
                 }
-
-                // If the upload is successful, resolve the upload promise with an object containing
-                // at least the "default" URL, pointing to the image on the server.
-                resolve({
-                    default: getHomeURL()+urlResponce
-                });
             });
 
             if (xhr.upload) {
