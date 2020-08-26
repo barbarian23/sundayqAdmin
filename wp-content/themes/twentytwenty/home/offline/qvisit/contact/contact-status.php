@@ -144,7 +144,7 @@ var  _isFetchingContact = false,
                         makeAlertRedirect();
                     }
                 },
-                function(err) {
+                function(err) {alert(err);
                     seFetchingContact(false);
                     setIsGetContactFromServerSuccess(false);
                     console.log(dictionaryKey.ERR_INFO, err);

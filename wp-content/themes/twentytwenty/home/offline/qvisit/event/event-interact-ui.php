@@ -27,7 +27,7 @@ function getListEventGreaterThanZero(){
 function getListEventEqualToZero(){
 	document.getElementById("listEventEmpty").style.display = "flex" ;
 	document.getElementById("tableListEvent").style.display = "none" ;
-	emptyTableListLecture();
+	emptyTableListEvent();
 }
 	
 function loadingDataEventProgress(){
@@ -67,7 +67,7 @@ function createListEvent(result){
 				parent.innerHTML ="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["EVENT_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_4"]; ?>'+"</th>";
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["EVENT_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_5"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_6"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	createTableEvent(tbody,list,getCurrentEvent());
 	parent.appendChild(tbody);
@@ -122,7 +122,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		parent.innerHTML="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["EVENT_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_4"]; ?>'+"</th>";
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["EVENT_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_5"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["EVENT_LIST_COL_6"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	createTableEvent(tbody,arrayOldPage,number);
 	parent.appendChild(tbody);
@@ -138,7 +138,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		} 
 		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.offline.event,dictionaryKey.editStatus,item.id);
 		
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteEvent("+(index-1)+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td>"+getDateString(new Date(item.startAt))+"</td><td>"+getDateString(new Date(item.finishAt))+"</td><td>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteEvent("+(index-1)+")\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

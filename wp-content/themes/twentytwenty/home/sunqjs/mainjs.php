@@ -95,7 +95,17 @@
 		function eraseCookie(name) {   
 			document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 		}
-	
+	function correctDate(date){
+		return date.getFullYear() + "-" + inputNumberSmallerThanTen((date.getMonth()+1)) + "-" + inputNumberSmallerThanTen(date.getDate()) + "T00:00:00Z";
+	}
+	function getDateString(date){
+		return inputNumberSmallerThanTen(date.getDate()) + "/" + inputNumberSmallerThanTen((date.getMonth()+1)) + "/" + date.getFullYear() ;
+	}
+	function corectDateForOnlyDate(date){
+		let tempDate = date.split("/");
+		//năm - tháng - ngày
+		return tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0] + "T00:00:00Z" ;
+	}
 		function makeAlertRedirect(){
 					let timerIntervalListTeacher;
 					let textRedirectTiele = dictionary.SESION_TIMEOUT_SERVER_TITLE;

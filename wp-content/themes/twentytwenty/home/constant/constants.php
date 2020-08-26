@@ -164,8 +164,13 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["ACCOUNT_LIST_COL_5_CONTENT_ENABLED"] = "Đang hoạt động";
 
 	//event
+	$GLOBALS["EVENT_SHORT_DESCRIPTION_IMG"] = "Ảnh khóa học";
 	$GLOBALS["EVENT_NAME_INPUT"] = "Tên sự kiện:";
 	$GLOBALS["EVENT_NAME_INPUT_PLACEHOLDER"] = "Nhập tên sự kiện";
+	$GLOBALS["EVENT_START_AT"] = "Ngày bắt đầu";
+	$GLOBALS["EVENT_START_AT_PLACEHOLDER"] = "Nhập vào ngày bắt đầu";
+	$GLOBALS["EVENT_FINISH_AT"] = "Ngày kết thúc";
+	$GLOBALS["EVENT_FINISH_AT_PLACEHOLDER"] = "Nhập vào ngày kết thúc";
 	$GLOBALS["EVENT_DETAIL"] = "Mô tả";
 	$GLOBALS["EVENT_DETAIL_PLACEHOLDER"] = "Thêm mô tả ...";
 	$GLOBALS["EVENT_SUB_DETAIL"] = "Mô tả ngắn gọn";
@@ -182,10 +187,13 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["EVENT_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới sự kiện";
 	$GLOBALS["EVENT_LIST_COL_1"] = "Số thứ tự";
 	$GLOBALS["EVENT_LIST_COL_2"] = "Tiêu đề sự kiện";
-	$GLOBALS["EVENT_LIST_COL_3"] = "Mô tả ngắn gọn";
-	$GLOBALS["EVENT_LIST_COL_4"] = "Chỉnh sửa";
+	$GLOBALS["EVENT_LIST_COL_3"] = "Thời gian bắt đầu";
+	$GLOBALS["EVENT_LIST_COL_4"] = "Thời gian kết thúc";
+	$GLOBALS["EVENT_LIST_COL_5"] = "Mô tả ngắn gọn";
+	$GLOBALS["EVENT_LIST_COL_6"] = "Chỉnh sửa";
 
 	//exhibition
+	$GLOBALS["EXHIBITON_SHORT_DESCRIPTION_IMG"] = "Ảnh triển lãm";
 	$GLOBALS["EXHIBITON_NAME_INPUT"] = "Tên triển lãm:";
 	$GLOBALS["EXHIBITON_NAME_INPUT_PLACEHOLDER"] = "Nhập tên triên lãm";
 	$GLOBALS["EXHIBITON_AGE_INPUT_FROM"] = "Độ tuổi từ:";
@@ -276,7 +284,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["CONTACT_NEED_SUPPORT_2"] = "Họ và tên";
 	$GLOBALS["CONTACT_NEED_SUPPORT_3"] = "Email";
 	$GLOBALS["CONTACT_NEED_SUPPORT_4"] = "Số điện thoại";
-	$GLOBALS["CONTACT_NEED_SUPPORT_5"] = "Tin nhắn";
+	$GLOBALS["CONTACT_NEED_SUPPORT_5"] = "Lời nhắn";
 	$GLOBALS["CONTACT_NEED_SUPPORT_6"] = "Ghi chú admin";
 
 	$GLOBALS["TICKET_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký liên hệ";
@@ -285,7 +293,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["TICKET_NEED_SUPPORT_2"] = "Họ và tên";
 	$GLOBALS["TICKET_NEED_SUPPORT_3"] = "Email";
 	$GLOBALS["TICKET_NEED_SUPPORT_4"] = "Số điện thoại";
-	$GLOBALS["TICKET_NEED_SUPPORT_5"] = "Tin nhắn";
+	$GLOBALS["TICKET_NEED_SUPPORT_5"] = "Lời nhắn";
 	$GLOBALS["TICKET_NEED_SUPPORT_6"] = "Ghi chú admin";
 
 	//contact
@@ -412,8 +420,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		LECTURE_NAME:" khóa học này",
 		TEACHER_NAME:" giáo viên này",
-		EXHIBITION_NAME:" giáo viên này",
-		EVENT_NAME:" giáo viên này",
+		EXHIBITION_NAME:" triển lãm này",
+		EVENT_NAME:" sự kiện này",
 		
 		SERVER_INFO: "Server thông báo ",
 	
@@ -442,11 +450,15 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		WRONG_IMG_LECTURE_LIST: "Bạn chưa tải một số hoạt động khóa học lên",
 		WRONG_IMG_LECTURE_DEC: "Bạn chưa tải ảnh mô tả khóa học lên",
-		WRONG_IMG_TEACHER: "Bạn chưa tải ảnh lên",
+		WRONG_IMG_TEACHER: "Bạn chưa tải ảnh đại diện của giảng viên lên",
+		WRONG_IMG_EXHIBITION: "Bạn chưa tải ảnh sự kiện lên",
+		WRONG_IMG_EVENT: "Bạn chưa tải ảnh triển lãm lên",
 		WRONG_OWNER:"Bạn chưa chọn giáo viên chủ nhiệm?",
 		
 		WRONG_EVENT_TITLE:"Bạn chưa nhập tiêu đề của sự kiện",
 		WRONG_EVENT_DESCRIPTION:"Bạn chưa nhập mô tả của sự kiện",
+		WRONG_EVENT_START_AT:"Bạn chưa nhập ngày bắt đầu của sự kiện",
+		WRONG_EVENT_FINISH_AT:"Bạn chưa nhập ngày kết thúc của sự kiện",
 		
 		WRONG_EXHIBITION_TITLE:"Bạn chưa nhập tiêu đề của triển lãm",
 		WRONG_EXHIBITION_MINTARGETAGE:"Bạn chưa nhập giới hạn độ tuổi nhỏ nhất của triển lãm",
@@ -672,6 +684,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	var listFeedbackUrl  = "/feedbacks";
 	
 	//ticket
+	var ticketUrl  = "ticket";
+	var listTicketUrl  = "tickets";
 	
 	//exhibition
 	var listExhibitonUrl  = "exhibitions";
@@ -752,9 +766,23 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	}
 	
 	//ticket
-	
+	//<ticket>
+	function getTicket(id){
+		return mainURL + ticketUrl + "/" + id;
+	}
+	//get list ticket
+	function getListTicket(){
+		return mainURL + ticketUrl;
+	}
+	//post feedback with ticket
+	function postTicket(service){
+		return mainURL + ticketUrl + "/" + service;
+	}
 	//<exhibition>
 	//get exhibition
+	function postExhibition(){
+		return mainURL + exhibitonUrl;
+	}
 	function getExhibition(id){
 		return mainURL + exhibitonUrl + "/" + id;
 	}

@@ -39,10 +39,10 @@ var listContact = [], listVisitedContact = [];
             <span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
         </div>
 		
-		<div class="manage-section-helpdesk" id="tableContact">
+		<div class="manage-section-helpdesk" id="tableListContact">
 			
 			<div class="manage-section-helpdesk-table">
-				<table class="manage-section-helpdesk-real-table" id="tableContactInside">
+				<table class="manage-section-helpdesk-real-table" id="tableContact">
 
 				</table>
 			</div>

@@ -14,6 +14,17 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
         </div>
     </div>
 
+	 <div class="manage-teacher-contain-left">
+            <label class="manage-teacher-contain-left-upload" for="uploadShortDescriptionImg">
+                <span>
+                    <?php echo $GLOBALS["EXHIBITON_SHORT_DESCRIPTION_IMG"]; ?>
+                </span>
+				<span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+                <img id="shortDescriptionImg" class="manage-teacher-contain-left-img" src='<?php echo $GLOBALS["URI_ADD_NEW"]; ?>'>
+                <input type="file" id="uploadShortDescriptionImg" name="uploadShortDescriptionImg" />
+            </label>
+     </div>
+	
     <div class="manage-teacher-contain-right">
         <div class="manage-teacher-contain-right-upper">
             <!-- title -->
@@ -32,7 +43,7 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
         <!-- mô tả -->
 		<div class="manage-section-common-detail-midlle">
 			<div class="manage-section-detail-midlle-span">
-				<span id="exhibitionSubDetailTextAreaTitle"><?php echo $GLOBALS["EXHIBITON_DETAIL"]; ?></span>
+				<span id="exhibitionSubDetailTextAreaTitle"><?php echo $GLOBALS["EXHIBITON_DETAIL"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
 			</div>
 			<div class="manage-section-detail-midlle-item">
 				<!--  <textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["EXHIBITON_DETAIL_PLACEHOLDER"]; ?>' required></textarea>-->
@@ -45,7 +56,7 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
         <!-- mô tả ngắn gọn -->
 		<div class="manage-section-common-detail-midlle">
 			<div class="manage-section-detail-midlle-span">
-				<span id="exhibitionSubDetailTextAreaTitle"><?php echo $GLOBALS["EXHIBITON_DETAIL"]; ?></span>
+				<span id="exhibitionSubDetailTextAreaTitle"><?php echo $GLOBALS["EXHIBITON_SUB_DETAIL"]; ?></span>
 			</div>
 			<div class="manage-section-detail-midlle-item">
 				<textarea id="exhibitionSubDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["EXHIBITON_SUB_DETAIL_PLACEHOLDER"]; ?>' required></textarea>
@@ -58,10 +69,10 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
 </form>
 <script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script>
 <script>
-    let exhibitionDescription = "";
+    var exhibitionDescription = "";
     window.onload = function() {
         myCurrentExhibition = {};
-
+		exhibitionDescription = "";
         //edit
         DecoupledEditor
             .create(document.querySelector('#exhibitionDetailTextArea'), {
@@ -168,7 +179,6 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
                     if (res.code === networkCode.success) {
                         myCurrentExhibition = res.data;
                         console.log(res.data);
-						
                         document.getElementById("idTitleExhibition").value = myCurrentExhibition.title == null ? "" : myCurrentExhibition.title;
                         mobiscroll.number('#idAgeOfExhibitionFrom', {
 							theme: 'ios',
@@ -193,13 +203,18 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
 							max: 18,
 							display: 'bubble',
 						});
-						exhibitionDescription.setData(myCurrentLecture.description != null ? "" : myCurrentLecture.description);
-						document.getElementById("exhibitionSubDetailTextArea").value = myCurrentLecture.shortDescription == null ? "" : myCurrentLecture.shortDescription;
+						document.getElementById("idAgeOfExhibitionFrom").value = myCurrentExhibition.minTargetAge == null ? "" : myCurrentExhibition.minTargetAge;
+						document.getElementById("idAgeOfExhibitionTo").value = myCurrentExhibition.maxTargetAge == null ? "" : myCurrentExhibition.maxTargetAge;
+						document.getElementById("shortDescriptionImg").src = myCurrentExhibition.descriptionImgUrl != null ? getHomeURL() + myCurrentExhibition.descriptionImgUrl : '<?php echo $GLOBALS["URI_ADD_NEW"]; ?>';
+						exhibitionDescription.setData(myCurrentExhibition.description != null ? myCurrentExhibition.description : "");
+						
+						document.getElementById("exhibitionSubDetailTextArea").value = myCurrentExhibition.shortDescription == null ? "" : myCurrentExhibition.shortDescription;
                     } else if (res.code === networkCode.sessionTimeOut) {
                         makeAlertRedirect();
                     }
                 },
                 function(err) {
+					//alert(err);
                     setLoadingDataExhibition(dictionaryKey.ERR);
                     console.log(dictionaryKey.ERR_INFO, err);
                     SunQAlert()
@@ -218,6 +233,43 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
         }
     }
 
+	function upLoadImage(file) {
+        let dataExhibitionImage = new FormData();
+        dataExhibitionImage.append('file', file);
+        window.scrollTo(0, 0);
+        setLoadingDataExhibition(true);
+        requestToSever(
+            sunQRequestType.post,
+            getURLUploadImage(),
+            dataExhibitionImage,
+            getLocalStorage(dictionary.MSEC),
+            function(res) {
+                setLoadingDataExhibition(false);
+					if (res.code === networkCode.sessionTimeOut) {
+                    makeAlertRedirect();
+                } else {
+					 myCurrentExhibition.descriptionImgUrl = res.urls[0];
+				}
+            },
+            function(err) {
+				setLoadingDataExhibition(false);
+                let sunqalertfailed = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.UPLOAD_IMAGE_FAILED : dictionaryKey.UPLOAD_IMAGE_FAILED;
+                SunQAlert()
+                    .position('center')
+                    .title(sunqalertfailed)
+                    .type('error')
+                    .confirmButtonColor("#3B4EDC")
+                    .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                    .callback((result) => {
+                       // webpageRedirect(window.location.href);
+                    })
+                    .show();
+                console.log(dictionaryKey.ERR_INFO, err);
+            },
+            true,
+        );
+    }
+	
 	//on input
 	 document.getElementById("idTitleExhibition").addEventListener("input", function(e) {
 		let tttValue = e.target.value;
@@ -236,13 +288,48 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
         myCurrentExhibition.shortDescription = tttValue.escape();
     });
 	
+	document.getElementById('uploadShortDescriptionImg').addEventListener("change", (evt) => {
+        var tgt = evt.target || window.event.srcElement,
+            files = tgt.files;
+        //upLoadImage(tgt.files[0]);
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function() {
+                document.getElementById("shortDescriptionImg").src = fr.result;
+                upLoadImage(files[0]);
+            }
+            fr.readAsDataURL(files[0]);
+        }
+
+        // Not supported
+        else {
+            // fallback -- perhaps submit the input to an iframe and temporarily store
+            // them on the server until the user's session ends.
+        }
+    });
+	
     //submit form
     document.getElementById("exhibitionSubmit").addEventListener("click", function(e) {
         e.preventDefault();
 				myCurrentExhibition.description = exhibitionDescription.getData();
- 				myCurrentExhibition.maxTargetAge = Number.parseInt(myCurrentLecture.maxTargetAge);
- 				myCurrentExhibition.minTargetAge = Number.parseInt(myCurrentLecture.minTargetAge);
+ 				myCurrentExhibition.maxTargetAge = Number.parseInt(myCurrentExhibition.maxTargetAge);
+ 				myCurrentExhibition.minTargetAge = Number.parseInt(myCurrentExhibition.minTargetAge);
         //console.log("email", myCurrentTeacher.email);
+        /*
+        if (myCurrentExhibition.descriptionImgUrl == "" || myCurrentExhibition.descriptionImgUrl == null) {
+            SunQAlert()
+                .position('center')
+                .title(dictionaryKey.WRONG_IMG_EVENT)
+                .type('error')
+                .confirmButtonColor("#3B4EDC")
+                .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                .callback((result) => {
+                    window.scrollTo(0, 0);
+                })
+                .show();
+        }
+		*/
         if (myCurrentExhibition.title == "" || myCurrentExhibition.title == null) {
             SunQAlert()
                 .position('center')
@@ -291,9 +378,9 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
                 })
                 .show();
         } else {
-            let titlleRequestExhibition = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : dictionaryKey.REQUEST_ADD + dictionaryKey.LECTURE_NAME;
+            let titlleRequestExhibition = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : dictionaryKey.REQUEST_ADD + dictionaryKey.EXHIBITION_NAME;
             console.log("data lên " + JSON.stringify(myCurrentExhibition));
-            //alert("data lên " + myCurrentTeacher.practiceAt);
+            //alert("data lên " + JSON.stringify(myCurrentExhibition));
             SunQAlert()
                 .position('center')
                 .title(titlleRequestExhibition)
@@ -313,13 +400,12 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
                         delete tempmyCurrentExhibition.createAt;
                         delete tempmyCurrentExhibition.updateAt;
                         delete tempmyCurrentExhibition.id;
-                        myCurrentExhibition.description = teacherDesciption.getData();
-
+						
                         setLoadingDataExhibition(true);
                         requestToSever(
                             getCurrentACtion() == dictionaryKey.editStatus ? sunQRequestType.put : sunQRequestType.post,
-                            getExhibition(getCurrentEdit()),
-                            tempmyCurrentTeacher,
+                            getCurrentACtion() == dictionaryKey.editStatus ? getExhibition(getCurrentEdit()) : postExhibition(),
+                            tempmyCurrentExhibition,
                             getLocalStorage(dictionary.MSEC),
                             function(res) {
                                 setLoadingDataExhibition(false);
@@ -352,7 +438,7 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
                                         .show();
                                 }
                             },
-                            function(err) {
+                            function(err) {alert(err);
                                 setLoadingDataTeacher(dictionaryKey.ERR);
                                 let sunqalertfailed = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.EXHIBITION_EDIT_FAILED : dictionaryKey.EXHIBITION_ADD_FAILED;
                                 SunQAlert()

@@ -27,7 +27,7 @@ function getListContactGreaterThanZero(){
 function getListContactEqualToZero(){
 	document.getElementById("listContactEmpty").style.display = "flex" ;
 	document.getElementById("tableListContact").style.display = "none" ;
-	emptyTableListLecture();
+	emptyTableListContact();
 }
 	
 function loadingDataContactProgress(){
@@ -76,9 +76,9 @@ function createListContact(result,isPush) {
                     '<?php echo $GLOBALS["CONTACT_NEED_SUPPORT_5"] ?>',
                     '<?php echo $GLOBALS["CONTACT_NEED_SUPPORT_6"] ?>'
                 ];
-                document.getElementById("tableContact").style.display = "flex";
+                document.getElementById("tableListContact").style.display = "flex";
 
-                let parent = document.getElementById("tableContactInside");
+                let parent = document.getElementById("tableContact");
 				parent.innerHTML ="";
                 let trFirst = document.createElement("tr");
                 tableRegisterTitle.forEach((item, index) => {
@@ -132,15 +132,15 @@ function createListContact(result,isPush) {
 				}
 				//parent.;
             } else {
-                document.getElementById("tableContact").style.display = "flex";
+                document.getElementById("tableListContact").style.display = "flex";
                 document.getElementById("tableContactTitle").innerHTML = '<?php echo $GLOBALS["CONTACT_NEED_SUPPORT"]; ?>';
-                document.getElementById("tableContactInside").style.display = 'none';
+                document.getElementById("tableContact").style.display = 'none';
 
             }
         } else {
-            document.getElementById("tableContact").style.display = "flex";
+            document.getElementById("tableListContact").style.display = "flex";
             document.getElementById("tableContactTitle").innerHTML = '<?php echo $GLOBALS["CONTACT_NEED_SUPPORT_EMPTY"]; ?>';
-            document.getElementById("tableContactInside").style.display = 'none';
+            document.getElementById("tableContact").style.display = 'none';
         }
     }
 	
@@ -159,9 +159,9 @@ function createListContact(result,isPush) {
                     '<?php echo $GLOBALS["CONTACT_NEED_SUPPORT_5"] ?>',
                     '<?php echo $GLOBALS["CONTACT_NEED_SUPPORT_6"] ?>',
                 ];
-                document.getElementById("tableContact").style.display = "flex";
+                document.getElementById("tableListContact").style.display = "flex";
 
-                let parent = document.getElementById("tableContactInside");
+                let parent = document.getElementById("tableContact");
 				parent.innerHTML ="";
                 let trFirst = document.createElement("tr");
                 tableContactTitle.forEach((item, index) => {

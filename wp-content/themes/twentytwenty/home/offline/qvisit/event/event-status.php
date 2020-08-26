@@ -42,7 +42,7 @@ var  _isFetchingEvent = false,
         },
         set(val) {
             _isGetEventFromServerSuccess = val;
-            val ? getListLectureEvent() : getListEventFailed();
+            val ? getListEventSuccess() : getListEventFailed();
         }
     });
 

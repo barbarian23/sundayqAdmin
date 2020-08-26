@@ -57,11 +57,12 @@
             </div>
             <hr class="manage-teacher-hr-between">
             <div class="manage-teacher-contain-right-below">
+				<!-- mô tả -->
 				<span><?php echo $GLOBALS["TEACHER_INPUT_DETAIL"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
               <!--  <textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?>' required></textarea>-->
 				<div id="teacherDetailTextArea-toolbar-container"></div>
 				<div id="teacherDetailTextArea" ><?php echo $GLOBALS["TEACHER_INPUT_DETAIL_PLACEHOLDER"]; ?></div>
-				
+				<!-- mô tả ngắn gọn -->
 				<span id="teacherSubDetailTextAreaTitle"><?php echo $GLOBALS["TEACHER_INPUT_SUB_DETAIL"]; ?></span>
 			<textarea id="teacherSubDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["TEACHER_INPUT_SUB_DETAIL_PLACEHOLDER"]; ?>' required></textarea>
             </div>
@@ -74,7 +75,8 @@
         <input type="submit" name='teacherSubmit' value='<?php echo $GLOBALS["LECTURE_SUBMIT"]; ?>' id="teacherSubmit">
     </div>
 </form>
-<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/decoupled-document/ckeditor.js"></script>
+
+<script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script>
 <script>
     var myCurrentTeacher = {
 
@@ -83,7 +85,9 @@
     window.onload = function() {
 
 		DecoupledEditor
-            .create( document.querySelector( '#teacherDetailTextArea' ) )
+            .create( document.querySelector( '#teacherDetailTextArea' ), {
+                extraPlugins: [myCustomUploadAdapterPlugin],
+            } )
             .then( editor => {
 				teacherDesciption = editor;
                 const toolbarContainer = document.querySelector( '#teacherDetailTextArea-toolbar-container' );
@@ -189,7 +193,7 @@
             max: 30,
             display: 'bubble',
         });
-                        document.getElementById("teacherAvatar").src = getHomeURL() + myCurrentTeacher.imgUrl;
+                        document.getElementById("teacherAvatar").src = myCurrentTeacher.imgUrl != null ? getHomeURL() + myCurrentTeacher.imgUrl : '<?php echo $GLOBALS["URI_ADD_NEW"]; ?>';
 						teacherDesciption.setData(myCurrentTeacher.description != null ? myCurrentTeacher.description : "");
 						document.getElementById("teacherSubDetailTextArea").value = myCurrentTeacher.shortDescription != null ? myCurrentTeacher.shortDescription : "";
                        /* document.getElementById("teacherDetailTextArea").value = myCurrentTeacher.description != null ? myCurrentTeacher.description : "";*/
@@ -280,7 +284,7 @@
                     .confirmButtonColor("#3B4EDC")
                     .confirmButtonText(dictionaryKey.TRY_AGAIN)
                     .callback((result) => {
-                        webpageRedirect(window.location.href);
+                        //webpageRedirect(window.location.href);
                     })
                     .show();
                 console.log(dictionaryKey.ERR_INFO, err);

@@ -42,7 +42,7 @@ var  _isFetchingTicket = false,
         },
         set(val) {
             _isGetTicketFromServerSuccess = val;
-            val ? getListLectureTicket() : getListTicketFailed();
+            val ? getListTicketSuccess() : getListTicketFailed();
         }
     });
 

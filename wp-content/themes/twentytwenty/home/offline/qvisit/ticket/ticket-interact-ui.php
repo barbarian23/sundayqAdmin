@@ -76,9 +76,9 @@ function createListTicket(result,isPush) {
                     '<?php echo $GLOBALS["TICKET_NEED_SUPPORT_5"] ?>',
                     '<?php echo $GLOBALS["TICKET_NEED_SUPPORT_6"] ?>',
                 ];
-                document.getElementById("tableTicket").style.display = "flex";
+                document.getElementById("tableListTicket").style.display = "flex";
 
-                let parent = document.getElementById("tableTicketInside");
+                let parent = document.getElementById("tableTicket");
 				parent.innerHTML ="";
                 let trFirst = document.createElement("tr");
                 tableRegisterTitle.forEach((item, index) => {
@@ -132,15 +132,15 @@ function createListTicket(result,isPush) {
 				}
 				//parent.;
             } else {
-                document.getElementById("tableTicket").style.display = "flex";
+                document.getElementById("tableListTicket").style.display = "flex";
                 document.getElementById("tableTicketTitle").innerHTML = '<?php echo $GLOBALS["TICKET_NEED_SUPPORT"]; ?>';
-                document.getElementById("tableTicketInside").style.display = 'none';
+                document.getElementById("tableTicket").style.display = 'none';
 
             }
         } else {
-            document.getElementById("tableTicket").style.display = "flex";
+            document.getElementById("tableListTicket").style.display = "flex";
             document.getElementById("tableTicketTitle").innerHTML = '<?php echo $GLOBALS["TICKET_NEED_SUPPORT_EMPTY"]; ?>';
-            document.getElementById("tableTicketInside").style.display = 'none';
+            document.getElementById("tableTicket").style.display = 'none';
         }
     }
 	
@@ -159,9 +159,9 @@ function createListTicket(result,isPush) {
                     '<?php echo $GLOBALS["TICKET_NEED_SUPPORT_5"] ?>',
                     '<?php echo $GLOBALS["TICKET_NEED_SUPPORT_6"] ?>',
                 ];
-                document.getElementById("tableTicket").style.display = "flex";
+                document.getElementById("tableListTicket").style.display = "flex";
 
-                let parent = document.getElementById("tableTicketInside");
+                let parent = document.getElementById("tableTicket");
 				parent.innerHTML ="";
                 let trFirst = document.createElement("tr");
                 tableTicketTitle.forEach((item, index) => {

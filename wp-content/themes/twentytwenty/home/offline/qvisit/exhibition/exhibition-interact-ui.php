@@ -27,7 +27,7 @@ function getListExhibitionGreaterThanZero(){
 function getListExhibitionEqualToZero(){
 	document.getElementById("listExhibitionEmpty").style.display = "flex" ;
 	document.getElementById("tableListExhibition").style.display = "none" ;
-	emptyTableListLecture();
+	emptyTableListExhibition();
 }
 	
 function loadingDataExhibitionProgress(){

@@ -39,10 +39,10 @@ var listTicket = [], listVisitedTicket  = [];
             <span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
         </div>
 		
-		<div class="manage-section-helpdesk" id="tableTicket">
+		<div class="manage-section-helpdesk" id="tableListTicket">
 			
 			<div class="manage-section-helpdesk-table">
-				<table class="manage-section-helpdesk-real-table" id="tableTicketInside">
+				<table class="manage-section-helpdesk-real-table" id="tableTicket">
 
 				</table>
 			</div>
