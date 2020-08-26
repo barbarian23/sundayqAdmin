@@ -1,6 +1,6 @@
 <?php ?>
 <script>
-var TicketStatus = {
+var ticketStatus = {
 		isFetchingTicket: false, //đang load danh sách liên lạc
         isGetTicketFromServerSuccess: false,
         isGetTicketFromServerLengthGreaterThanZero: false,
@@ -17,7 +17,7 @@ var  _isFetchingTicket = false,
      _currentTicket = 0;
 	
 	//fetching Ticket
-    Object.defineProperty(TicketStatus, "isFetchingTicket", {
+    Object.defineProperty(ticketStatus, "isFetchingTicket", {
         get() {
             return _isFetchingTicket;
         },
@@ -28,15 +28,15 @@ var  _isFetchingTicket = false,
     });
 
     function seFetchingTicket(val) {
-        TicketStatus.isFetchingTicket = val;
+        ticketStatus.isFetchingTicket = val;
     }
 
     function getFetchingTicket() {
-        return TicketStatus.isFetchingTicket;
+        return ticketStatus.isFetchingTicket;
     }
 	
 	 //get Ticket from server
-    Object.defineProperty(TicketStatus, "isGetTicketFromServerSuccess", {
+    Object.defineProperty(ticketStatus, "isGetTicketFromServerSuccess", {
         get() {
             return _isGetTicketFromServerSuccess;
         },
@@ -48,14 +48,14 @@ var  _isFetchingTicket = false,
 
 
     function setIsGetTicketFromServerSuccess(val) {
-        TicketStatus.isGetTicketFromServerSuccess = val;
+        ticketStatus.isGetTicketFromServerSuccess = val;
     }
 
     function getIsGetTicketFromServerSuccess() {
-        return TicketStatus.isGetTicketFromServerSuccess;
+        return ticketStatus.isGetTicketFromServerSuccess;
     }
 
-	Object.defineProperty(TicketStatus, "isGetTicketFromServerLengthGreaterThanZero", {
+	Object.defineProperty(ticketStatus, "isGetTicketFromServerLengthGreaterThanZero", {
         get() {
             return _isGetTicketFromServerLengthGreaterThanZero;
         },
@@ -66,15 +66,15 @@ var  _isFetchingTicket = false,
     });
 
     function setGetTicketFromServerSuccess(val) {
-        TicketStatus.isGetTicketFromServerLengthGreaterThanZero = val;
+        ticketStatus.isGetTicketFromServerLengthGreaterThanZero = val;
     }
 
     function getGetTicketFromServerSuccess() {
-        return TicketStatus.isGetTicketFromServerLengthGreaterThanZero;
+        return ticketStatus.isGetTicketFromServerLengthGreaterThanZero;
     }
 	
 	 //loadingCurrentTicket
-    Object.defineProperty(TicketStatus, "currentSelectTicket", {
+    Object.defineProperty(ticketStatus, "currentSelectTicket", {
         get() {
             return _currentSelectTicket;
         },
@@ -84,15 +84,15 @@ var  _isFetchingTicket = false,
     });
 
     function setCurrentSelectTicket(val) {
-        TicketStatus.currentSelectTicket = val;
+        ticketStatus.currentSelectTicket = val;
     }
 
     function getCurrentSelectTicket() {
-        return TicketStatus.currentSelectTicket;
+        return ticketStatus.currentSelectTicket;
     }
 	
 	  //loading data isUploadingDataTicket
-    Object.defineProperty(TicketStatus, "isUploadingDataTicket", {
+    Object.defineProperty(ticketStatus, "isUploadingDataTicket", {
         get() {
             return _isUploadingDataTicket;
         },
@@ -103,14 +103,14 @@ var  _isFetchingTicket = false,
     });
 
     function setLoadingDataTicket(val) {
-        TicketStatus.isUploadingDataTicket = val;
+        ticketStatus.isUploadingDataTicket = val;
     }
 
     function getLoadingDataTicket() {
-        return TicketStatus.isUploadingDataTicket;
+        return ticketStatus.isUploadingDataTicket;
     }
 	
-	Object.defineProperty(TicketStatus, "currentTicket", {
+	Object.defineProperty(ticketStatus, "currentTicket", {
         get() {
             return _currentTicket;
         },
@@ -155,11 +155,11 @@ var  _isFetchingTicket = false,
     });
 
     function setCurrentTicket(val) {
-        TicketStatus.currentTicket = val;
+        ticketStatus.currentTicket = val;
     }
 
     function getCurrentTicket() {
-        return TicketStatus.currentTicket;
+        return ticketStatus.currentTicket;
     }
 	
 </script>

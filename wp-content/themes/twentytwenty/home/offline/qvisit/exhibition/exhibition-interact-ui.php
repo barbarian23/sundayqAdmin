@@ -78,7 +78,7 @@ let parentPaging = document.getElementById("pagingListExhibition");
 parentPaging.innerHTML="";
 let maxPage = result.total;
 let maxPerList = dictionaryKey.limitRequestRegister;
-let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
 console.log(totalPage);
 for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
     let tempDivPaging = document.createElement("span");
@@ -104,7 +104,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
         if(!listVisitedExhibition.includes(pagingIndex)){//load cái mới	
            setCurrentExhibition(pagingIndex);
         } else {//load lại cái cũ
-            console.log("load lại cái cũ");
+            console.log("load lại cái cũ",pagingIndex);
             loadOldPageExhibition(pagingIndex);
         }
     });
@@ -115,9 +115,9 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 
 	function loadOldPageExhibition(number){
 		let startIndex = number*dictionaryKey.limitRequestRegister;
-		let endIndex = dictionaryKey.limitRequestRegister;
+		let endIndex = (number+1)*dictionaryKey.limitRequestRegister;
 		let arrayOldPage = listExhibition.slice(startIndex, endIndex);
-		
+		console.log(startIndex, endIndex,arrayOldPage);
 		let parent = document.getElementById("tableListExhibition");
 		parent.innerHTML="";
 	let tbody = document.createElement("tbody");

@@ -1,3 +1,7 @@
+<?php
+include get_theme_file_path("home/admin/account/account-status.php");
+include get_theme_file_path("home/admin/account/account-interact-ui.php");
+?>
 <script>
 	 var listAccount = [], listVisitedAccount = [];
 		

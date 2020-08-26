@@ -1,4 +1,6 @@
 <?php
+include get_theme_file_path("home/offline/teacher/teacher-status.php");
+include get_theme_file_path("home/offline/teacher/teacher-interact-ui.php");
 ?>
 <form class="manage-teacher-contain">
     <div class="manage-contain-teacher-loading" id="teacher-page-loading">

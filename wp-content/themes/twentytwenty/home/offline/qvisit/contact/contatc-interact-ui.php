@@ -52,7 +52,7 @@ function selectContactIndex(item){
 }
 	
 function emptyTableListContact(){
-	document.getElementById("tableListContact").innerHTML = "";
+	document.getElementById("tableContact").innerHTML = "";
 	//listRollGroup.length = 0;
 }
 	
@@ -97,7 +97,8 @@ function createListContact(result,isPush) {
 				parentPaging.innerHTML="";
 				let maxPage = result.total;
 				let maxPerList = dictionaryKey.limitRequestRegister;
-				let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+				//paging
+				let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
 				console.log(totalPage);
 				for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 					let tempDivPaging = document.createElement("span");
@@ -146,7 +147,7 @@ function createListContact(result,isPush) {
 	
 	function loadOldPageContact(number){
 		let startIndex = number*dictionaryKey.limitRequestRegister;
-		let endIndex = dictionaryKey.limitRequestRegister;
+		let endIndex = (number+1)*dictionaryKey.limitRequestRegister;
 		let arrayOldPage = listContact.slice(startIndex, endIndex);
 		console.log("arrayOldPage",arrayOldPage,listContact,startIndex,endIndex);
 		
@@ -220,7 +221,7 @@ function createListContact(result,isPush) {
 				seFetchingContact(true);
                    requestToSever(
 						sunQRequestType.put,
-						getFeedback(listContact["id"]),
+						getFeedback(listContact[number]["id"]),
 						dataUpdateContact,
 						getData(dictionary.MSEC),
                         function(res) {

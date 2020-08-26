@@ -1,6 +1,7 @@
 <?php
+include get_theme_file_path("home/offline/lecture/lecture-status.php");
+include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
 ?>
-
 <form class="manage-contain">
     <div class="manage-contain-loading" id="lecture-page-loading">
         <span id="lecture-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>

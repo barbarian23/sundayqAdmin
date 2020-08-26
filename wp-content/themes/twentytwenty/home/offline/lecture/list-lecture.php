@@ -1,5 +1,6 @@
 <?php
-
+include get_theme_file_path("home/offline/lecture/lecture-status.php");
+include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
 ?>
 <script>
 	var listRegister = [],listVisited=[],listLecture=[],listVisitedLecture=[];

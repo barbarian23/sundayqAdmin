@@ -40,7 +40,6 @@ var listTicket = [], listVisitedTicket  = [];
         </div>
 		
 		<div class="manage-section-helpdesk" id="tableListTicket">
-			
 			<div class="manage-section-helpdesk-table">
 				<table class="manage-section-helpdesk-real-table" id="tableTicket">
 
@@ -50,7 +49,7 @@ var listTicket = [], listVisitedTicket  = [];
 		<!-- paging -->
 		<span class="manage-list-lecture-list-register-paging-span-title" id="span-title-ticket"><?php echo $GLOBALS["LECTURE_LIST_REGISTER_NUMBER_TITLE"]; ?></span>
 		<div class="manage-list-lecture-list-register-paging" id="pagingListTicket">
-			
+		
 		</div>
 	</div>
 </div>

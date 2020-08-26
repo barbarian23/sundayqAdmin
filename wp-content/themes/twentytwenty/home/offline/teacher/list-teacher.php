@@ -1,5 +1,6 @@
 <?php
-
+include get_theme_file_path("home/offline/teacher/teacher-status.php");
+include get_theme_file_path("home/offline/teacher/teacher-interact-ui.php");
 ?>
 <script>
 	let listVisitedTeacher=[];

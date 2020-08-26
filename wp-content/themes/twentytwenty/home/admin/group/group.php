@@ -1,4 +1,6 @@
 <?php
+include get_theme_file_path("home/admin/group/group-status.php");
+include get_theme_file_path("home/admin/group/group-interact-ui.php");
 ?>
 <form class="manage-teacher-contain">
     <div class="manage-contain-teacher-loading" id="group-page-loading">

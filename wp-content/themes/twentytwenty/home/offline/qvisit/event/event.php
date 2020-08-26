@@ -267,6 +267,26 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
         );
     }
 	
+	document.getElementById('uploadShortDescriptionImg').addEventListener("change", (evt) => {
+        var tgt = evt.target || window.event.srcElement,
+            files = tgt.files;
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function() {
+                document.getElementById("shortDescriptionImg").src = fr.result;
+                upLoadImage(files[0]);
+            }
+            fr.readAsDataURL(files[0]);
+        }
+
+        // Not supported
+        else {
+            // fallback -- perhaps submit the input to an iframe and temporarily store
+            // them on the server until the user's session ends.
+        }
+    });
+	
 	 document.getElementById("idTitleEvent").addEventListener("input", function(e) {
 		let tttValue = e.target.value;
         myCurrentEvent.title = tttValue.escape();

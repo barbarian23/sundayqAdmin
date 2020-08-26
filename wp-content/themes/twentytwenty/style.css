@@ -8891,6 +8891,12 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	margin:10px auto;
 }
 
+#shortDescriptionImg{
+	max-width:95%;
+	height:569px;
+	margin:10px auto;
+}
+
 .manage-teacher-contain-right{
 	width:100%;
 	display:flex;

@@ -133,7 +133,9 @@ var  _isFetchingExhibition = false,
                     seFetchingExhibition(false);
                     if (res.code === networkCode.success) {
                         if (res.data == null || res.data.length == 0) {
-                            setGetExhibitionFromServerLengthGreaterThanZero(false);
+							
+                            	setGetExhibitionFromServerSuccess(false);
+							
                         } else {
                             emptyTableListExhibition();
                             listExhibition = listExhibition.concat(res.data);

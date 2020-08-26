@@ -10,6 +10,10 @@ if (isset($_GET["name"])) {
     //echo "<script>alert(\"".$currentAddition."\")</script>";
 }
 ?>
+<?php
+include get_theme_file_path("home/admin/account/account-status.php");
+include get_theme_file_path("home/admin/account/account-interact-ui.php");
+?>
 <form class="manage-teacher-contain">
     <div class="manage-contain-teacher-loading" id="account-page-loading">
         <span id="account-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>

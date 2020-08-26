@@ -52,7 +52,7 @@ function selectTicketIndex(item){
 }
 	
 function emptyTableListTicket(){
-	document.getElementById("tableListTicket").innerHTML = "";
+	document.getElementById("tableTicket").innerHTML = "";
 	//listRollGroup.length = 0;
 }
 	
@@ -81,7 +81,7 @@ function createListTicket(result,isPush) {
                 let parent = document.getElementById("tableTicket");
 				parent.innerHTML ="";
                 let trFirst = document.createElement("tr");
-                tableRegisterTitle.forEach((item, index) => {
+                tableTicketTitle.forEach((item, index) => {
                     let thFirst = document.createElement("th");
                     thFirst.className = item;
 					thFirst.innerHTML = tableRegisterTitleHEADER[index];
@@ -91,18 +91,19 @@ function createListTicket(result,isPush) {
 				if (isPush){
         				listTicket = listTicket.concat(data);
 					}
-				loadTableTicket(parent,tableTicketTitleTDPropeties,tableTicketTitle,data,getCurrenTicket());
+				loadTableTicket(parent,tableTicketTitleTDPropeties,tableTicketTitle,data,getCurrentTicket());
+				//paging
 				document.getElementById("span-title-ticket").style.display = "flex";
 				let parentPaging = document.getElementById("pagingListTicket");
 				parentPaging.innerHTML="";
 				let maxPage = result.total;
 				let maxPerList = dictionaryKey.limitRequestRegister;
-				let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+				let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
 				console.log(totalPage);
 				for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 					let tempDivPaging = document.createElement("span");
 					tempDivPaging.className="manage-list-lecture-list-register-paging-index";
-					if(pagingIndex == getCurrenTicket()){
+					if(pagingIndex == getCurrentTicket()){
 					   tempDivPaging.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
 					   }
 					
@@ -184,7 +185,7 @@ function createListTicket(result,isPush) {
 						if (indexProp == 0){
 						   tdInside.innerHTML = number * dictionaryKey.limitRequestRegister + index + 1;
 						} else if(indexProp == 1){//title
-						   tdInside.innerHTML = item["course"]["name"];
+						   tdInside.innerHTML = item["name"];
 						} else if(indexProp == 5){//admin note
 							let valueAdminNote = item["adminNote"] != null ? item["adminNote"] : "";
 							 tdInside.innerHTML = "<textarea type=\"text\" style=\"resize: none;height:80px;padding:1px;\" id=\"text-area-" + 
@@ -214,18 +215,19 @@ function createListTicket(result,isPush) {
                 if (result.value) {
 					let tttValue = document.getElementById("text-area-"+number).value;
 					let dataUpdateTicket = {
-						isGotAdvice:true,
+						isReplied:true,
+						isPaid:true,
 						adminNote: tttValue.escape()
 					};
-				setLoadingCurrentView(true);
+				seFetchingTicket(true);
                    requestToSever(
 						sunQRequestType.put,
-						getURLTicket()+"/"+listTicket[number]["id"],
+						getTicket(listTicket[number]["id"]),
 						dataUpdateTicket,
 						getData(dictionary.MSEC),
                         function(res) {
                             //console.log(res);
-                            setLoadingDataTicket(false);
+                            seFetchingTicket(false);
                             if (res.code === networkCode.success) {
                                 SunQAlert()
                                     .position('center')
@@ -237,12 +239,14 @@ function createListTicket(result,isPush) {
                                        //createListRegister(getCurrentView(),false);
                                     })
                                     .show();
-                            } else if (res.code === networkCode.sessionTimeOut) {
+                            } else if (res.code === networkCode.accessDenied){
+									   makeAlertPermisionDenial();
+									   } else if (res.code === networkCode.sessionTimeOut) {
                                 makeAlertRedirect();
                             }
                         },
                         function(err) {
-                            setLoadingDataTicket(false);
+                            seFetchingTicket(false);
                             SunQAlert()
                                 .position('center')
                                 .title(dictionaryKey.REGISTER_EDIT_FAILED)

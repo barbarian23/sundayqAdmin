@@ -78,7 +78,7 @@ let parentPaging = document.getElementById("pagingListEvent");
 parentPaging.innerHTML="";
 let maxPage = result.total;
 let maxPerList = dictionaryKey.limitRequestRegister;
-let totalPage = maxPage < maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
 console.log(totalPage);
 for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
     let tempDivPaging = document.createElement("span");
@@ -115,7 +115,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 
 	function loadOldPageEvent(number){
 		let startIndex = number*dictionaryKey.limitRequestRegister;
-		let endIndex = dictionaryKey.limitRequestRegister;
+		let endIndex = (number+1)*dictionaryKey.limitRequestRegister;
 		let arrayOldPage = listEvent.slice(startIndex, endIndex);
 		
 		let parent = document.getElementById("tableListEvent");

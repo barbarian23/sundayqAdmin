@@ -1,3 +1,7 @@
+<?php
+include get_theme_file_path("home/admin/group/group-status.php");
+include get_theme_file_path("home/admin/group/group-interact-ui.php");
+?>
 <script>
   var listRollGroup = [], listVisitedRollGroup = [];
   var listPermisionOnGroup ;

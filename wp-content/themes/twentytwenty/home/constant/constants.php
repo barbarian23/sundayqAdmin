@@ -287,8 +287,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["CONTACT_NEED_SUPPORT_5"] = "Lời nhắn";
 	$GLOBALS["CONTACT_NEED_SUPPORT_6"] = "Ghi chú admin";
 
-	$GLOBALS["TICKET_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký liên hệ";
-	$GLOBALS["TICKET_NEED_SUPPORT_EMPTY"] = "Hiện chưa có khách hàng đăng ký liên hệ";
+	$GLOBALS["TICKET_NEED_SUPPORT"] = "Danh sách khách hàng đăng ký vé";
+	$GLOBALS["TICKET_NEED_SUPPORT_EMPTY"] = "Hiện chưa có khách hàng đăng ký vé";
 	$GLOBALS["TICKET_NEED_SUPPORT_1"] = "Số thứ tự";
 	$GLOBALS["TICKET_NEED_SUPPORT_2"] = "Họ và tên";
 	$GLOBALS["TICKET_NEED_SUPPORT_3"] = "Email";
@@ -772,7 +772,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	}
 	//get list ticket
 	function getListTicket(){
-		return mainURL + ticketUrl;
+		return mainURL + listTicketUrl;
 	}
 	//post feedback with ticket
 	function postTicket(service){
