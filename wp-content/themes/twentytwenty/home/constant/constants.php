@@ -7,13 +7,13 @@
 	$GLOBALS["ADMIN_ONLINE"] = "Học Online";
 
 	//offline
-	$GLOBALS["ADMIN_OFFLINE"] = "Học Offline";
+	$GLOBALS["ADMIN_OFFLINE"] = "Giới thiệu trung tâm SundayQ";
 	$GLOBALS["ADMIN_Q_ACADEMY"] = "Q-Academy";
 	$GLOBALS["ADMIN_Q_VISIT"] = "Q-Visit";
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"] = "Quản lý khóa học";
 	$GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"] = "Quản lý giảng viên";
 	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EXHIBITION"] = "Quản lý triển lãm";
-	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"] = "Quản lý sư kiện";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"] = "Quản lý sự kiện";
 	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"] = "Quản lý liên hệ";
 	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"] = "Quản lý vé";
 
@@ -164,7 +164,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	$GLOBALS["ACCOUNT_LIST_COL_5_CONTENT_ENABLED"] = "Đang hoạt động";
 
 	//event
-	$GLOBALS["EVENT_SHORT_DESCRIPTION_IMG"] = "Ảnh khóa học";
+	$GLOBALS["EVENT_SHORT_DESCRIPTION_IMG"] = "Ảnh sự kiện";
 	$GLOBALS["EVENT_NAME_INPUT"] = "Tên sự kiện:";
 	$GLOBALS["EVENT_NAME_INPUT_PLACEHOLDER"] = "Nhập tên sự kiện";
 	$GLOBALS["EVENT_START_AT"] = "Ngày bắt đầu";

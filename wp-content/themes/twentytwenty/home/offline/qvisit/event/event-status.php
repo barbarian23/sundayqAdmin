@@ -65,11 +65,11 @@ var  _isFetchingEvent = false,
         }
     });
 
-    function setGetEventFromServerSuccess(val) {
+    function setGetEventFromServerLengthGreaterThanZero(val) {
         eventStatus.isGetEventFromServerLengthGreaterThanZero = val;
     }
 
-    function getGetEventFromServerSuccess() {
+    function getGetEventFromServerLengthGreaterThanZero() {
         return eventStatus.isGetEventFromServerLengthGreaterThanZero;
     }
 	
@@ -118,6 +118,7 @@ var  _isFetchingEvent = false,
             _currentEvent = val;
 
             let dataCurrentViewEvent = {
+				service: service.qvisit,
                 page: val,
                 limit: dictionaryKey.limitRequestRegister,
             };

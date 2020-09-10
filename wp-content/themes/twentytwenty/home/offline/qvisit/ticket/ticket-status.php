@@ -133,7 +133,7 @@ var  _isFetchingTicket = false,
                     seFetchingTicket(false);
                     if (res.code === networkCode.success) {
                         if (res.data == null || res.data.length == 0) {
-                            setGetTicketFromServerLengthGreaterThanZero(false);
+                            setGetTicketFromServerSuccess(false);
                         } else {
                             emptyTableListTicket();
                             listTicket = listTicket.concat(res.data);

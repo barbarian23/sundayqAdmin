@@ -66,7 +66,8 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
         <input type="submit" name='eventSubmit' value='<?php echo $GLOBALS["EVENT_SUBMIT_ADD"]; ?>' id="eventSubmit">
     </div>
 </form>
-<script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script>
+<!-- <script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script> -->
+<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/decoupled-document/ckeditor.js"></script>
 <script>
 	let myCurrentEvent = {};
 	let eventDescription = "";

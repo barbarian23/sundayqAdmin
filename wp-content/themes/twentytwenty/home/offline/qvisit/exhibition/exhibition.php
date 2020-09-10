@@ -67,7 +67,8 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
         <input type="submit" name='exhibitionSubmit' value='<?php echo $GLOBALS["EXHIBITON_SUBMIT_ADD"]; ?>' id="exhibitionSubmit">
     </div>
 </form>
-<script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script>
+<!-- <script src="wp-content/themes/twentytwenty/assets/js/ckeditor5.js"></script> -->
+<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/decoupled-document/ckeditor.js"></script>
 <script>
     var exhibitionDescription = "";
     window.onload = function() {

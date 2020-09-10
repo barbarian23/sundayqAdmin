@@ -81,7 +81,7 @@ function createListContact(result,isPush) {
                 let parent = document.getElementById("tableContact");
 				parent.innerHTML ="";
                 let trFirst = document.createElement("tr");
-                tableRegisterTitle.forEach((item, index) => {
+                tableContactTitle.forEach((item, index) => {
                     let thFirst = document.createElement("th");
                     thFirst.className = item;
 					thFirst.innerHTML = tableRegisterTitleHEADER[index];
@@ -91,7 +91,7 @@ function createListContact(result,isPush) {
 				if (isPush){
         				listContact = listContact.concat(data);
 					}
-				loadTableContact(parent,tableContactTitleTDPropeties,tableContactTitle,data,getCurrenContact());
+				loadTableContact(parent,tableContactTitleTDPropeties,tableContactTitle,data,getCurrentContact());
 				document.getElementById("span-title-contact").style.display = "flex";
 				let parentPaging = document.getElementById("pagingListContact");
 				parentPaging.innerHTML="";
@@ -103,7 +103,7 @@ function createListContact(result,isPush) {
 				for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 					let tempDivPaging = document.createElement("span");
 					tempDivPaging.className="manage-list-lecture-list-register-paging-index";
-					if(pagingIndex == getCurrenContact()){
+					if(pagingIndex == getCurrentContact()){
 					   tempDivPaging.className="manage-list-lecture-list-register-paging-index manage-list-lecture-list-register-paging-index-selected";
 					   }
 					
