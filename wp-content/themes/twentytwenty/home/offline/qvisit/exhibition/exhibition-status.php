@@ -1,12 +1,12 @@
 <?php ?>
 <script>
 var exhibitionStatus = {
-		isFetchingExhibition: false, //đang load danh sách liên lạc
+		isFetchingExhibition: false, //đang load api
         isGetExhibitionFromServerSuccess: false,
         isGetExhibitionFromServerLengthGreaterThanZero: false,
         currentSelectExhibition: false,
         isUploadingDataExhibition: false,
-        currentExhibition: 0, //trang load danh sách người đăng ký 
+        currentExhibition: 0, //trang load danh sách liên hệ 
 }
 
 var  _isFetchingExhibition = false,

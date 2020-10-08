@@ -897,6 +897,7 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
         let excel = excelToJSON();
         let files = evt.target.files;
         document.getElementById("fileSelected").style.display = "block";
+		//reset lại input
         document.getElementById("fileSelected").innerHTML = evt.target.value.split('\\').pop();
         document.getElementById("fileSelectedAbsolutePath").style.display = "block";
         document.getElementById("fileSelectedAbsolutePath").innerHTML = evt.target.value.split('\\');

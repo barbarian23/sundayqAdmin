@@ -56,19 +56,6 @@
 
     //end
 
-    //open choose select main teacher
-    Object.defineProperty(sunqStatus, "isChoosingSelectTeacherMain", {
-        get() {
-            return _isChoosingSelectTeacherMain;
-        },
-        set(val) {
-            _isChoosingSelectTeacherMain = val;
-            val ? document.getElementById("listMainTeacher").style.display = "flex" : document.getElementById("listMainTeacher").style.display = "none";
-        }
-    });
-
-
-
     //current action 
     Object.defineProperty(sunqStatus, "currentACtion", {
         get() {

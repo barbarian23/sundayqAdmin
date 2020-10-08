@@ -9,11 +9,13 @@
         isUploadingDataLecture: false,
         isChoosingMultiTeacher: false,
 		isFetchingTeacherLecture: false,
+		isChoosingSelectTeacherMain: false,
 		isGetLectureTeacherFromServerSuccess:false,
         currentLecture: 0, //trang load danh sách khóa học
         currentView: 0, //trang load danh sách người đăng ký 
 	}
 	var _isFetchingLecture = false,
+		_isChoosingSelectTeacherMain = false,
 		_isGetLectureFromServerSuccess = false,
         _isGetLectureFromServerLengthGreaterThanZero = false,
 		_isLEctureGetTeacherGreaterThanZero = false,
@@ -183,6 +185,17 @@
     function getIsGetLectureTeacherFromServerSuccess() {
         return lectureStatus.isGetLectureTeacherFromServerSuccess;
     }
+	
+	 //open choose select main teacher
+    Object.defineProperty(sunqStatus, "isChoosingSelectTeacherMain", {
+        get() {
+            return _isChoosingSelectTeacherMain;
+        },
+        set(val) {
+            _isChoosingSelectTeacherMain = val;
+            val ? document.getElementById("listMainTeacher").style.display = "flex" : document.getElementById("listMainTeacher").style.display = "none";
+        }
+    });
 	
     //choosemultiowner
     Object.defineProperty(lectureStatus, "isChoosingMultiTeacher", {

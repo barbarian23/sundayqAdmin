@@ -5,6 +5,8 @@
 
 	//online
 	$GLOBALS["ADMIN_ONLINE"] = "Học Online";
+	$GLOBALS["ADMIN_ONLINE_UPLOAD_VIDEO"] = "Tải lên video";
+	$GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"] = "Tải lên tệp PDF";
 
 	//offline
 	$GLOBALS["ADMIN_OFFLINE"] = "Giới thiệu trung tâm SundayQ";
@@ -30,6 +32,58 @@
 	$GLOBALS["LOGIN_BUTTON_SUBMIT"] = "Đăng nhập";
 	$GLOBALS["LOGIN_WRONG_USERNAME_PASWORD"] = "Sai tên đăng nhập hoặc mật khẩu";
 
+	//online
+	//list-video
+	$GLOBALS["VIDEO_LIST_TITLE"] = "Danh sách các video";
+	$GLOBALS["VIDEO_NO_LIST"] = "Danh sách các video trống";
+	$GLOBALS["VIDEO_LIST_BUTTON_EDIT_TITLE"] = "Chỉnh sửa tên video";
+	$GLOBALS["VIDEO_LIST_BUTTON_EDIT_VIDEO"] = "Tải lại video";
+	$GLOBALS["VIDEO_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa video";
+	$GLOBALS["VIDEO_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới video";
+	$GLOBALS["VIDEO_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["VIDEO_LIST_COL_2"] = "Tiêu đề video";
+	$GLOBALS["VIDEO_LIST_COL_3"] = "Mô tả video";
+	$GLOBALS["VIDEO_LIST_COL_4"] = "Chỉnh sửa";
+
+	//video
+	$GLOBALS["VIDEO_TITLE"] = "Tên video";
+	$GLOBALS["VIDEO_TITLE_PLACEHOLDER"] = "Thêm tên video ...";
+	$GLOBALS["VIDEO_DESCRIPTION"] = "Mô tả";
+	$GLOBALS["VIDEO_DESCRIPTION_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["VIDEO_UPLOAD_VIDEO"] = "Tải lên video";
+	$GLOBALS["VIDEO_NOT_YET_UPLOAD_VIDEO"] = "Hiện chưa có video";
+	$GLOBALS["VIDEO_WATCH_VIDEO"] = "Xem video";
+	$GLOBALS["VIDEO_MAIN_IMAGE"] = "Hình ảnh chính";	
+	$GLOBALS["VIDEO_SUBMIT_INIT"] = "Tạo video";	
+	$GLOBALS["VIDEO_SUBMIT_ADD"] = "Tải lên video";	
+	$GLOBALS["VIDEO_SUBMIT_EDIT"] = "Chỉnh sửa";
+
+	//list-pdf
+	$GLOBALS["PDF_LIST_TITLE"] = "Danh sách các tệp pdf";
+	$GLOBALS["PDF_NO_LIST"] = "Danh sách các tệp pdf trống";
+	$GLOBALS["PDF_LIST_BUTTON_EDIT_TITLE"] = "Chỉnh sửa tên tệp pdf";
+	$GLOBALS["PDF_LIST_BUTTON_EDIT_VIDEO"] = "Tải lại tệp pdf";
+	$GLOBALS["PDF_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa tệp pdf";
+	$GLOBALS["PDF_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới tệp pdf";
+	$GLOBALS["PDF_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["PDF_LIST_COL_2"] = "Tiêu đề tệp pdf";
+	$GLOBALS["PDF_LIST_COL_3"] = "Mô tả tệp pdf";
+	$GLOBALS["PDF_LIST_COL_4"] = "Chỉnh sửa";
+
+	//pdf
+	$GLOBALS["PDF_TITLE"] = "Tên tệp pdf";
+	$GLOBALS["PDF_TITLE_PLACEHOLDER"] = "Thêm tên tệp pdf ...";
+	$GLOBALS["PDF_DESCRIPTION"] = "Mô tả";
+	$GLOBALS["PDF_DESCRIPTION_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["PDF_UPLOAD_PDF"] = "Tải lên tẹp pdf";
+	$GLOBALS["PDF_NOT_YET_UPLOAD_PDF"] = "Hiện chưa có tệp pdf";
+	$GLOBALS["PDF_WATCH_PDF"] = "Mở tệp pdf";
+	$GLOBALS["PDF_MAIN_IMAGE"] = "Hình ảnh chính";	
+	$GLOBALS["PDF_SUBMIT_INIT"] = "Tạo tệp pdf";	
+	$GLOBALS["PDF_SUBMIT_ADD"] = "Tải lên tệp pdf";	
+	$GLOBALS["PDF_SUBMIT_EDIT"] = "Chỉnh sửa";
+
+	//offline
 	//lecture
 	$GLOBALS["LECTURE_NAME_INPUT"] = "Tên khóa học:";
 	$GLOBALS["LECTURE_NAME_INPUT_PLACEHOLDER"] = "Nhập tên khóa học";
@@ -398,6 +452,20 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		UPLOAD_IMAGE_SUCCESS:"Tải ảnh lên thành công",
 		UPLOAD_IMAGE_FAILED: "Tải ảnh lên không thành công",
 		
+		UPLOAD_VIDEO_SUCCESS:"Tải video lên thành công",
+		UPLOAD_VIDEO_FAILED: "Tải video lên không thành công",
+		EDIT_VIDEO_SUCCESS:"Chỉnh sửa video thành công",
+		EDIT_VIDEO_FAILED: "Chỉnh sửa video không thành công",
+		INIT_VIDEO_SUCCESS:"Tạo video thành công",
+		INIT_VIDEO_FAILED: "Tạo video không thành công",
+		
+		UPLOAD_PDF_SUCCESS:"Tải tệp pdf lên thành công",
+		UPLOAD_PDF_FAILED: "Tải tệp pdf lên không thành công",
+		EDIT_PDF_SUCCESS:"Chỉnh sửa tệp video thành công",
+		EDITPDF_FAILED: "Chỉnh sửa tệp pdf không thành công",
+		INIT_PDF_SUCCESS:"Tạo tệp pdf thành công",
+		INIT_PDF_FAILED: "Tạo tệp pdf không thành công",
+		
 		LECTURE_EDIT_SUCCESS: "Chỉnh sửa thành công",
 		LECTURE_ADD_SUCCESS:"Thêm mới thành công",
 		LECTURE_EDIT_FAILED: "Chỉnh sửa không thành công",
@@ -411,6 +479,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		REGISTER_EDIT_SUCCESS:"Chỉnh sửa chú thích thành công",
 		REGISTER_EDIT_FAILED: "Chỉnh sửa chú thích  không thành công",
 		
+		REQUEST_TITLE: "Bạn có muốn tạo mới?",
 		REQUEST_ADD: "Bạn có muốn thêm?",
 		REQUEST_EDIT: "Bạn có muốn sửa đổi?",
 		REQUEST_CHANGE_PASWORD: "Bạn có muốn thay đổi mật khẩu?",
@@ -422,6 +491,8 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		TEACHER_NAME:" giáo viên này",
 		EXHIBITION_NAME:" triển lãm này",
 		EVENT_NAME:" sự kiện này",
+		VIDEO_NAME:" video này",
+		PDF_NAME:" tệp pdf này",
 		
 		SERVER_INFO: "Server thông báo ",
 	
@@ -455,20 +526,31 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		WRONG_IMG_EVENT: "Bạn chưa tải ảnh triển lãm lên",
 		WRONG_OWNER:"Bạn chưa chọn giáo viên chủ nhiệm?",
 		
+		//sự kiện
 		WRONG_EVENT_TITLE:"Bạn chưa nhập tiêu đề của sự kiện",
 		WRONG_EVENT_DESCRIPTION:"Bạn chưa nhập mô tả của sự kiện",
 		WRONG_EVENT_START_AT:"Bạn chưa nhập ngày bắt đầu của sự kiện",
 		WRONG_EVENT_FINISH_AT:"Bạn chưa nhập ngày kết thúc của sự kiện",
 		
+		//triển lãm
 		WRONG_EXHIBITION_TITLE:"Bạn chưa nhập tiêu đề của triển lãm",
 		WRONG_EXHIBITION_MINTARGETAGE:"Bạn chưa nhập giới hạn độ tuổi nhỏ nhất của triển lãm",
 		WRONG_EXHIBITION_MAXTARGETAGE:"Bạn chưa nhập giới hạn độ tuổi lớn nhất của triển lãm",
 		WRONG_EXHIBITION_DESCRIPTION:"Bạn chưa nhập mô tả của triển lãm",
 		
+		//video
+		WRONG_VIDEO_TITLE:"Bạn chưa nhập tiêu đề của video",
+		WRONG_VIDEO_DESCRIPTION:"Bạn chưa nhập mô tả của video",
+		
+		//pdf
+		WRONG_PDF_TITLE:"Bạn chưa nhập tiêu đề của tệp PDF",
+		WRONG_PDF_DESCRIPTION:"Bạn chưa nhập mô tả của tệp PDF",
+		
 		WRONG_PHONE: "Số điện thoại không đúng, vui lòng nhập lại",
 		WRONG_BLANK_PHONE: "Bạn chưa nhập số điện thoại",
 		WRONG_EMAIL: "Email không đúng, vui lòng nhập lại",
 		WRONG_NAME: "Bạn chưa nhập tên",
+		//lecture
 		WRONG_TITLE_LECTURE: "Bạn chưa nhập tên khóa học",
 		WRONG_DESCRIPTION_LECTURE: "Bạn chưa nhập chi tiết khóa học",
 		WRONG_COURSE_TYPE_LECTURE: "Bạn chưa nhập loại hình giảng dạy",
@@ -499,9 +581,10 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		timeoutReLogin: 1000,
 		
 		limitRequestRegister:10,
-		currentAction:"", //add - edit,
+		currentAction:"", //add - edit - title(cho upload video và pdf),
 		addStatus:"add",
 		editStatus:"edit",
+		titleStatus:"title",
 		
 		DIRECTORY_IMAGE:"../../../../../home/lanit/release/sunq-server/private/image/",
 	}
@@ -598,7 +681,10 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 			exhibition:"exhibition"
 		},
 		online:{
-			
+			listUploadVideo:"list-video",
+			uploadVideo:"video",
+			listUploadPDF:"list-pdf",
+			uploadPDF:"pdf",
 		},account:{
 			account:"account",
 			listAccount:"list-account",
@@ -660,10 +746,28 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	//==>
 	var tokenCheckUrl  = accountPartURL + tokenPartURL;
 	
+	//online
+	//upload video
+	var uploadVideoMainUrl = "resource/video";	
+	var uploadListVideoUrl = "resource/videos";	
+	var uploadVideoUploadUrl = "/upload";
+	var uploadVideoDeleteUrl = "resource/removevideo/";	
+	
+	
+	//upload file
+	var fileType = {
+		image:"image",
+		audio:"audio",
+		document:"document",
+		powerpoint:"powerpoint"	
+	};
+	var uploadFileMainUrl = "resource/";
+	
 	//upload image
 	var uploadImagePartUrl = "resource/image";	
 	var uploadImageEditorUrl = "resource/ckediter/image";	
 	
+	//offline
 	//teacher
 	var listTeacherUrl  = "teachers";
 	var teacherUrl  = "teacher";
@@ -711,6 +815,32 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	function getLoginURL(){//redirect
 		return urlWebsiteLogin;
 	}
+	//online
+	//video
+	function getListVideo(){
+		return mainURL + uploadListVideoUrl;
+	}
+	function postInitVideo(){
+		return mainURL+uploadVideoPartUrl;
+	}
+	function putTitleDescriptionVideo(vId){
+		return mainURL+uploadVideoPartUrl + "/" + vId;
+	}
+	function putUploadVideo(vId){
+		return mainURL+uploadVideoPartUrl + "/" + uploadVideoUploadUrl  + "/" + vId;
+	}
+	function deleteVideo(vName){
+		return mainURL+uploadVideoDeleteUrl + vName;
+	}
+	//uploadfile
+	function postFile(fileType){
+		return mainURL+uploadFileMainUrl+fileType;
+	}
+	function getFile(fileType,fileName){
+		return mainURL+uploadFileMainUrl+fileType+"/"+fileName;
+	}
+	
+	//offline
 	//login
 	function getURLLogin(){//api
 		return mainURL+adminLoginUrl;

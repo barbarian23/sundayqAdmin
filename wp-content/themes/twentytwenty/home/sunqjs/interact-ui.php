@@ -1,6 +1,28 @@
 <?php
 ?>
 <script>
+	//online
+function showOnLineMode(){
+	if(window.innerWidth > 480){
+	   let onlineOpen = document.getElementById("homeMenuOnline");
+		onlineOpen && function(){onlineOpen.style.display = "block"}();
+	} else {
+	   let onlineOpen = document.getElementById("smallHomeMenuOnline");
+		onlineOpen && function(){onlineOpen.style.display = "block"}();
+	   }
+	
+}
+
+function hideOnLineMode(){
+	if(window.innerWidth > 480){
+	   	let onlineOpen = document.getElementById("homeMenuOnline");
+	onlineOpen && function(){onlineOpen.style.display = "none"}();
+	} else {
+	   let onlineOpen = document.getElementById("smallHomeMenuOnline");
+	onlineOpen && function(){onlineOpen.style.display = "none"}();
+	   }
+
+}
 //offline
 function showOffLineMode(){
 // 	let offlineOpen = document.getElementById("homeMenuOffline");
@@ -69,28 +91,6 @@ function hideQVisit(){
 	   }
 }
 	
-//online
-function showOnLineMode(){
-	if(window.innerWidth > 480){
-	   let onlineOpen = document.getElementById("homeMenuOnline");
-		onlineOpen && function(){onlineOpen.style.display = "block"}();
-	} else {
-	   let onlineOpen = document.getElementById("smallHomeMenuOnline");
-		onlineOpen && function(){onlineOpen.style.display = "block"}();
-	   }
-	
-}
-
-function hideOnLineMode(){
-	if(window.innerWidth > 480){
-	   	let onlineOpen = document.getElementById("homeMenuOnline");
-	onlineOpen && function(){onlineOpen.style.display = "none"}();
-	} else {
-	   let onlineOpen = document.getElementById("smallHomeMenuOnline");
-	onlineOpen && function(){onlineOpen.style.display = "none"}();
-	   }
-
-}
 //account
 function showAccountMode(){
 	if(window.innerWidth > 480){

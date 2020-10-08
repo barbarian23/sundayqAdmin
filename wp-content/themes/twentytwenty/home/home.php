@@ -28,8 +28,22 @@
 							<span><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
 						</div>
 					</div>
-					<div class="home-middle-left-menu-content" id="homeMenuOline">
+					<div class="home-middle-left-menu-content" id="homeMenuOnline">
+						<!-- video -->
+						<div class="home-middle-left-menu" id="homeMenuOnlineListVideo">
+							<a href="?mode=online&page=list-video"><i class="fa fa-calendar"></i><span id="title-manage-video" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_VIDEO"]; ?></span></a>
+							<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_VIDEO"]; ?></span>
+							</div>
+						</div>
 
+							<!-- pdf -->
+						<div class="home-middle-left-menu" id="homeMenuOnlineListPDF">
+							<a href="?mode=online&page=list-pdf"><i class="fa fa-newspaper-o"></i><span id="title-manage-pdf" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"]; ?></span></a>
+							<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"]; ?></span>
+							</div>
+						</div>
 					</div>
 				</div>
 					
@@ -194,18 +208,9 @@
 			<div class="home-middle-right-contain">
 				<?php
 					if(isset($_GET["mode"])){
-						if($_GET["mode"] == "online"){
-							if(isset($_GET["page"])){
-
-							}
-						} else if($_GET["mode"] == "offline" || $_GET["mode"] == "sa"){
- 							//$arrForModeOfline = array($_GET["mode"]);
-							echo "<script>setMode('" . $_GET["mode"] . "')</script>";
- 							//SunQHelper::callFunction("setMode",$arrForModeOfline);
- 							//$temp ='123';
-							//SunQHelper::consoleLogPHP($temp);
-							if(isset($_GET["page"])){
-								echo "<script>setPage('" . $_GET["page"] . "')</script>";
+						echo "<script>setMode('" . $_GET["mode"] . "')</script>";
+						if(isset($_GET["page"])){
+							echo "<script>setPage('" . $_GET["page"] . "')</script>";
 								echo "<script>setHightLightText('" . $_GET["page"] . "')</script>";
 								echo "<script>setBlueBackground('" . $_GET["page"] . "')</script>";
  								if(isset($_GET["action"])){
@@ -216,8 +221,35 @@
  									echo "<script>setCurrentEdit('" . $_GET["id"] . "')</script>";
  									//echo "<script>console.log('" . $_GET["action"] . "')</script>";
  								}
-								
+						}
+						if($_GET["mode"] == "online"){
+							if(isset($_GET["page"])){
 								switch($_GET["page"]){
+									//QOnline
+									case "list-video":
+										include get_theme_file_path( "home/online/upload-video/list-upload-video.php" );
+										break;
+									case "video":
+										include get_theme_file_path( "home/online/upload-video/upload-video.php" );
+										break;	
+									case "list-pdf":
+										include get_theme_file_path( "home/online/upload-pdf/list-upload-pdf.php" );
+										break;	
+									case "pdf":
+										include get_theme_file_path( "home/online/upload-pdf/upload-pdf.php" );
+										break;		
+									default:
+										break;
+								}
+							}
+						} else if($_GET["mode"] == "offline" || $_GET["mode"] == "sa"){
+ 							//$arrForModeOfline = array($_GET["mode"]);
+ 							//SunQHelper::callFunction("setMode",$arrForModeOfline);
+ 							//$temp ='123';
+							//SunQHelper::consoleLogPHP($temp);
+							if(isset($_GET["page"])){
+								switch($_GET["page"]){
+									//Quản lý admin
 									case "account":
 										include get_theme_file_path( "home/admin/account/account.php" );
 										break;
@@ -230,6 +262,8 @@
 									case "list-group":
 										include get_theme_file_path( "home/admin/group/list-group.php" );
 										break;
+										//Offline
+										//QAcademy
 									case "list-lecture":
 										echo "<script>setMode('qacademy')</script>";
 										include get_theme_file_path( "home/offline/lecture/list-lecture.php" );
@@ -246,6 +280,7 @@
 										echo "<script>setMode('qacademy')</script>";
 										include get_theme_file_path( "home/offline/teacher/teacher.php" );
 										break;
+										//QVisit
 									case "list-contact":
 										echo "<script>setMode('qvisit')</script>";
 										include get_theme_file_path( "home/offline/qvisit/contact/list-contact.php" );
@@ -350,6 +385,19 @@
 // 	}
 // });
 	//large screen
+	//online
+	let sunqModeOnlineDiv = document.getElementById("divShowOnline");
+	sunqModeOnlineDiv && sunqModeOnlineDiv.addEventListener("click",function(){
+				//console.log("divShowOffline");
+				if(getMode() == sunQMode.online){
+				   		hideOnLineMode();
+						setMode("none");
+				   }else {
+						setMode(sunQMode.online);
+				   }
+			});
+	
+	//offline
 	let sunqModeOfflineDiv = document.getElementById("divShowOffline");
 	sunqModeOfflineDiv && sunqModeOfflineDiv.addEventListener("click",function(){
 				//console.log("divShowOffline");
@@ -383,17 +431,6 @@
 				   }
 			});
 
-	let sunqModeOnlineDiv = document.getElementById("divShowOnline");
-	sunqModeOnlineDiv && sunqModeOnlineDiv.addEventListener("click",function(){
-				if(getMode() == sunQMode.online){
-				   		hideOnLineMode();
-						setMode("none");
-				   }else {
-						setMode(sunQMode.online);
-				   }
-				//setMode(sunQMode.online);
-			});
-	
 	let sunQModeAccount = document.getElementById("divShowAccount");
 	sunQModeAccount && sunQModeAccount.addEventListener("click",function(){
 		if(getMode() == sunQMode.sa){

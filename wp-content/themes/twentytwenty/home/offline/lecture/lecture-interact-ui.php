@@ -185,7 +185,7 @@ function loadOldPageLecture(number){
 		let br1 = document.createElement("p");
 		
 		let span2 = document.createElement("span");
-		span2.className="manage-section-detail-left-item-span-teacher-info";
+		span2.className="manage-section-detail-left-item-span-teacher-id-info";
 		span2.innerHTML = item.shortId;
 		
 		div1.appendChild(span1);

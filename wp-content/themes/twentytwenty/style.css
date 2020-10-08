@@ -7417,6 +7417,13 @@ a.to-the-top > * {
     color: #321A05;
 }
 
+.manage-section-detail-left-item-span-teacher-id-info {
+	font-size: 23px;
+    font-weight: 600;
+    color: #321A05;
+/* 	font-style:italic; */
+}
+
 .manage-section-detail-left-item:hover{
 	background:#fafafa;
 }
@@ -9227,6 +9234,14 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 		display: flex; 
 	}
 	#divShowQAcademy:hover .home-middle-left-menu-tooltip{
+		display: flex; 
+	}
+	/*online*/
+	#homeMenuOnlineListVideo:hover .home-middle-left-menu-tooltip{
+		display: flex; 
+	}
+	/*pdf*/
+	#homeMenuOnlineListPDF:hover .home-middle-left-menu-tooltip{
 		display: flex; 
 	}
 	#divShowQVisit:hover .home-middle-left-menu-tooltip{
