@@ -1,21 +1,18 @@
-<?php 
-	include get_theme_file_path("home/online/upload-video/status-upload-video.php");
-	include get_theme_file_path("home/online/upload-video/interact-ui-upload-video.php" ); 
+<?php
+include get_theme_file_path("home/online/freeq/freelesson3/freelessontemplate/status-freelessontemplate3.php");
+include get_theme_file_path("home/online/freeq/freelesson3/freelessontemplate/interact-ui-freelessontemplate3.php");
 ?>
-
 <script>
-var listVisitedUploadVideo = [],listUploadVideo = [];
+var listVisitedFreeLessonTemplate3 = [],listFreeLessonTemplate3 = [];
 window.onload = function() {
 		
 		//get list ticket
-		listVisitedUploadVideo.push(0);
-		setCurrentUploadVideo(0);
-
-		
+		listVisitedFreeLessonTemplate3.push(0);
+		setCurrentFreeLessonTemplate3(0);
     }
 
-function deleteUploadVideo(mId){
-	 console.log("delete", listUploadVideo[mId]);
+function deleteFreeLessonTemplate3(mId){
+	 console.log("delete", listFreeLessonTemplate3[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -28,15 +25,15 @@ function deleteUploadVideo(mId){
             .cancelButtonText(dictionaryKey.CANCEL)
             .callback((result) => {
                 if (result.value) {
-                    seFetchingUploadVideo(true);
+                    seFetchingFreeLessonTemplate3(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getUploadVideo(listUploadVideo[mId].id),
+                        getURLFreeLesson(listFreeLessonTemplate3[mId].id),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {
                             //console.log(res);
-                            seFetchingUploadVideo(false);
+                            seFetchingFreeLessonTemplate3(false);
                             if (res.code === networkCode.success) {
                                 SunQAlert()
                                     .position('center')
@@ -65,8 +62,8 @@ function deleteUploadVideo(mId){
 							}
                         },
                         function(err) {
-                            seFetchingUploadVideo(false);
-                            setIsGetUploadVideoFromServerSuccess(false);
+                            seFetchingFreeLessonTemplate3(false);
+                            setIsGetFreeLessonTemplate3FromServerSuccess(false);
                             SunQAlert()
                                 .position('center')
                                 .title(dictionaryKey.LECTURE_DELETE_FAILED)
@@ -89,45 +86,47 @@ function deleteUploadVideo(mId){
             })
             .show();
 }
+
 </script>
 <div class="manage-list-lecture">
 	<div class="manage-list-lecture-title-list-contain">
 		<div class="manage-list-lecture-title">
-			<span><?php echo $GLOBALS["VIDEO_LIST_TITLE"]; ?></span>
+			<span><?php echo $GLOBALS["FREELESSON_TEMPLATE_LIST_TITLE"] . $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_3_TAILER"]; ?></span>
 		</div>
 
 		<div class="manage-list-lecture-table">
-			<div class="sunq-process-contain" id="fetchListUploadVideoProgress">
+			<div class="sunq-process-contain" id="fetchListFreeLessonTemplate3Progress">
 				<div class="sunq-process-contain-running">
 
 				</div>
 			</div>
-			<table class="manage-list-lecture-table-detail" id="tableListUploadVideo">
+			<table class="manage-list-lecture-table-detail" id="tableListFreeLessonTemplate3">
 
 			</table>
-			<div class="manage-list-lecture-table-detail-no-list" id="listUploadVideoEmpty">
+			<div class="manage-list-lecture-table-detail-no-list" id="listFreeLessonTemplate3Empty">
 				<img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
-				<span><?php echo $GLOBALS["VIDEO_NO_LIST"]; ?></span>
+				<span><?php echo $GLOBALS["FREELESSON_TEMPLATE_NO_LIST"]; ?></span>
 			</div>
 
-			<div class="manage-list-lecture-table-detail-no-list" id="listUploadVideoError">
+			<div class="manage-list-lecture-table-detail-no-list" id="listFreeLessonTemplate3Error">
 				<img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
 				<span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
 			</div>
 		</div>
 
 		<!-- paging -->
-		<span class="manage-list-lecture-list-register-paging-span-title" id="span-title-uploadVideo"><?php echo $GLOBALS["LECTURE_LIST_REGISTER_NUMBER_TITLE"]; ?></span>
-		<div class="manage-list-lecture-list-register-paging" id="pagingListUploadVideo">
+		<span class="manage-list-lecture-list-register-paging-span-title" id="span-title-FreeLessonTemplate3"><?php echo $GLOBALS["LECTURE_LIST_REGISTER_NUMBER_TITLE"]; ?></span>
+		<div class="manage-list-lecture-list-register-paging" id="pagingListFreeLessonTemplate3">
 			
 		</div>
 		
 		<div class="manage-list-lecture-add-new">
-			<a href="?mode=online&page=video&action=title">
+			<a href="?mode=online&page=freelessontemplate3&action=add">
 				<button>
-					<span><?php echo $GLOBALS["VIDEO_LIST_BUTTON_ADD_ACCOUNT"]; ?></span>
+					<span><?php echo $GLOBALS["FREELESSON_TEMPLATE_LIST_BUTTON_ADD_KIT"]; ?></span>
 				</button>
 			</a>
 		</div>
+	
 	</div>
 </div>

@@ -1080,7 +1080,7 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
 					if (myCurrentLecture.otherImgUrls == null){
 						myCurrentLecture.otherImgUrls = [];
 					}
-					myCurrentLecture.otherImgUrls.push(res.urls[0]);
+					myCurrentLecture.otherImgUrls.push(res.urls);
 					
 					let parent = document.getElementById("listLEctureImg");
                 	//parent.innerHTML = "";
@@ -1091,9 +1091,9 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
                 	let imgTempLEcture  = document.createElement("img");
                 	imgTempLEcture.id = "lecture-img-" + myCurrentLecture.otherImgUrls.length + "" ;
                 	imgTempLEcture.className = "manage-section-infomation-right-item-img";
-                	imgTempLEcture.src = getHomeURL()+res.urls[0];
+                	imgTempLEcture.src = getHomeURL()+res.urls;
                 				//console.log("add",parent.innerHTML);
-//                 let imgTempLEcture = "<img id=\"lecture-img-" +getCurrentACtion() == dictionaryKey.editStatus ? myCurrentLecture.otherImgUrls.length : "" + "\"  class=\"manage-section-infomation-right-item\" src=\"" + res.urls[0] + "\" >";
+//                 let imgTempLEcture = "<img id=\"lecture-img-" +getCurrentACtion() == dictionaryKey.editStatus ? myCurrentLecture.otherImgUrls.length : "" + "\"  class=\"manage-section-infomation-right-item\" src=\"" + res.urls + "\" >";
 //                 				//console.log("imgTempLEcture",imgTempLEcture);
 //                 	let parentImgList = imgTempLEcture + parent.innerHTML;
                 	
@@ -1145,7 +1145,7 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
               if (res.code === networkCode.sessionTimeOut) {
                     makeAlertRedirect();
                 } else {
-					 myCurrentLecture.descriptionImgUrl = res.urls[0];
+					 myCurrentLecture.descriptionImgUrl = res.urls;
 						  //alert("loi"+JSON.stringify(res)); 
 						   }
             },

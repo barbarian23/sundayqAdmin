@@ -31,20 +31,20 @@ function getListUploadVideoEqualToZero(){
 }
 	
 function loadingDataUploadVideoProgress(){
-	document.getElementById("UploadVideo-page-loading").style.display = "flex" ;
-	document.getElementById("UploadVideo-page-loading-progress-error").style.display = "none" ;
-	document.getElementById("UploadVideo-page-loading-progress").style.display = "block" ;
-	document.getElementById("UploadVideo-page-loading-progress-span").style.display = "block" ;
+	document.getElementById("uploadVideo-page-loading").style.display = "flex" ;
+	document.getElementById("uploadVideo-page-loading-progress-error").style.display = "none" ;
+	document.getElementById("uploadVideo-page-loading-progress").style.display = "block" ;
+	document.getElementById("uploadVideo-page-loading-progress-span").style.display = "block" ;
 }
 	
 function loadingDataUploadVideoDone(){
-	document.getElementById("UploadVideo-page-loading").style.display = "none" ;
+	document.getElementById("uploadVideo-page-loading").style.display = "none" ;
 }
 	
 function loadingDataUploadVideoError(){
-	document.getElementById("UploadVideo-page-loading-progress-error").style.display = "flex" ;
-	document.getElementById("UploadVideo-page-loading-progress").style.display = "none" ;
-	document.getElementById("UploadVideo-page-loading-progress-span").style.display = "none" ;
+	document.getElementById("uploadVideo-page-loading-progress-error").style.display = "flex" ;
+	document.getElementById("uploadVideo-page-loading-progress").style.display = "none" ;
+	document.getElementById("uploadVideo-page-loading-progress-span").style.display = "none" ;
 }
 	
 function selectUploadVideoIndex(item){
@@ -67,7 +67,7 @@ function createListUploadVideo(result){
 				parent.innerHTML ="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["VIDEO_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_4"]; ?>'+"</th>";
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["VIDEO_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_5"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	createTableUploadVideo(tbody,list,getCurrentUploadVideo());
 	parent.appendChild(tbody);
@@ -76,10 +76,10 @@ function createListUploadVideo(result){
 	document.getElementById("span-title-uploadVideo").style.display = "flex";
 let parentPaging = document.getElementById("pagingListUploadVideo");
 parentPaging.innerHTML="";
-let maxPage = result.total;
+let maxPage = list.length;//result.total
 let maxPerList = dictionaryKey.limitRequestRegister;
 let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
-console.log(totalPage);
+console.log("totalPage",totalPage);
 for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
     let tempDivPaging = document.createElement("span");
     tempDivPaging.className="manage-list-lecture-list-register-paging-index";
@@ -122,7 +122,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		parent.innerHTML="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["VIDEO_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_4"]; ?>'+"</th>";
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["VIDEO_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["VIDEO_LIST_COL_5"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	createTableUploadVideo(tbody,arrayOldPage,number);
 	parent.appendChild(tbody);
@@ -136,9 +136,17 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		if (index % 2 != 0){
 			trContent.className = 'manage-list-teacher-table-detail-strong';
 		} 
-		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.online.uploadVideo,dictionaryKey.editStatus,item.id);
-		
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteUploadVideo("+(index-1)+")\">Xóa</div></td>";
+			//edit là tải lại video, title là chỉnh sửa tiêu đề video
+		let editAHref = makeATagRedirect(sunQMode.online,listScreen.online.uploadVideo,dictionaryKey.editStatus,item.id);
+		let titleAHref = makeATagRedirect(sunQMode.online,listScreen.online.uploadVideo,dictionaryKey.titleStatus,item.id);
+
+		let editVideo =	item.status == videoStatus.complete ? 
+			"<a href=\""+titleAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa thông tin video</div></a><a href=\""+editAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Tải lại video</div></a>"
+			: 
+		    "<a href=\""+titleAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa thông tin video</div></a><a href=\""+editAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Tải video lên</div></a>"
+		;
+			let status = item.status == videoStatus.complete ? '<div class="manage-list-video-status-complete"><?php echo $GLOBALS["VIDEO_STATUS_COMPLETE"]; ?></div>' : item.status == videoStatus.uploading ? '<div class="manage-list-video-status-upload"><?php echo $GLOBALS["VIDEO_STATUS_UPLOAD"]; ?></div>' : '<div class="manage-list-video-status-error"><?php echo $GLOBALS["VIDEO_STATUS_ERROR"]; ?></div>' ;
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td>"+status+"</td><td class='manage-list-teacher-table-detail-tr-modified'>" + editVideo + "<div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteUploadVideo("+(index-1)+")\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

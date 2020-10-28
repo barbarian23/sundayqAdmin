@@ -6532,7 +6532,7 @@ a.to-the-top > * {
 
 #dashboardName{
 /* 	margin: 22px auto 26px auto; */
-	font-size:16px;
+	font-size:14px;
 }
 
 #dashboardIcon{
@@ -6552,7 +6552,7 @@ a.to-the-top > * {
     /* color: red; */
     width: 120px;
     flex-direction: column;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     /* height: 30px; */
     background: grey;
@@ -6594,9 +6594,23 @@ a.to-the-top > * {
 }
 
 .home-middle-left-menu:hover {
-	background:#434d56;
+	/*background:#434d56;*/
+	cursor: pointer;
 }
 
+.home-middle-left-menu a span:hover {
+	/*background:#434d56;*/
+	color:#00bfff;
+}
+
+.home-middle-left-menu div span:hover {
+	/*background:#434d56;*/
+	color:#00bfff!important;
+}
+
+.home-middle-left-menu-title span:hover{
+color:#66d9ff;	
+}
 
 .home-middle-left-menu-text{;
 	font-family: Be Vietnam;
@@ -6637,11 +6651,31 @@ a.to-the-top > * {
 	background:#23282d;	
 }
 
-#homeMenuOffline{
+#homeMenuOnline{
 	display:none;
 }
 
-#homeMenuOnline{
+#homeMenuUpload{
+	display:none;
+}
+
+ #homeMenuFreeQ{
+	display:none;
+} 
+
+#homeMenuFreeLesson1{
+	display:none;
+}
+
+#homeMenuFreeLesson2{
+	display:none;
+}
+
+#homeMenuFreeLesson3{
+	display:none;
+}
+
+#homeMenuOffline{
 	display:none;
 }
 
@@ -6657,6 +6691,21 @@ a.to-the-top > * {
 	display:none;
 }
 
+#listUploadVideoEmpty{
+	display:none;
+}
+
+#listUploadVideoError{
+	display:none;
+}
+
+#listKitEmpty{
+	display:none;
+}
+
+#listKitError{
+	display:none;
+}
 
 #dashboardIconTopSmallContent{
 	display:flex;
@@ -6702,6 +6751,94 @@ a.to-the-top > * {
 
 #smallHomeMenuAccount{
 	display:none;
+}
+
+#uploadingVideo{
+	display: none;
+}
+
+#UploadVideoDetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+	resize: none;
+}
+
+#loading-video-content{
+	display:none;
+    margin-bottom: 15px;
+}
+
+#UploadVideoDetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+#UploadVideoSubDetailTextArea{
+	width: 100%;
+    height: 420px;
+    resize: none;
+}
+
+#aRedirectToUploadVideo label{
+	height: 70px;
+    width: 240px;
+    margin-left: -10px;
+	font-size: 20px;
+    font-weight: 600;
+}
+
+#listFreeLessonTemplate1Empty{
+	display:none;
+}
+
+#listFreeLessonTemplate1Error{
+	display:none;
+}
+
+#listFreeLessonTemplate2Empty{
+	display:none;
+}
+
+#listFreeLessonTemplate2Error{
+	display:none;
+}
+
+#listFreeLessonTemplate3Empty{
+	display:none;
+}
+
+#listFreeLessonTemplate3Error{
+	display:none;
+}
+
+#listFreeLessonPlan1Empty{
+	display:none;
+}
+
+#listFreeLessonPlan1Error{
+	display:none;
+}
+
+#listFreeLessonPlan2Empty{
+	display:none;
+}
+
+#listFreeLessonPlan2Error{
+	display:none;
+}
+
+#listFreeLessonPlan3Empty{
+	display:none;
+}
+
+#listFreeLessonPlan3Error{
+	display:none;
+}
+
+.uploading-video-progress-container{
+	border:1px blue solid;
+	width:100%;
+	height:40px;
 }
 
 .home-middle-left-contain{
@@ -6882,6 +7019,266 @@ a.to-the-top > * {
 }
 
 #account-page-loading{
+	display:none;
+}
+
+#FreeLessonTemplate1-page-loading{
+	display:none;
+}
+
+#FreeLessonPlan1-page-loading{
+	display:none;
+}
+
+#FreeLessonTemplate2-page-loading{
+	display:none;
+}
+
+#FreeLessonPlan2-page-loading{
+	display:none;
+}
+
+#FreeLessonTemplate3-page-loading{
+	display:none;
+}
+
+#FreeLessonPlan3-page-loading{
+	display:none;
+}
+
+#managaeKitEmpty{
+	display:none;
+}
+
+#managaeKitError{
+	display:none;
+}
+
+#managaeVideoEmpty{
+	display:none;
+}
+
+#managaeVideoError{
+	display:none;
+}
+
+#listKitClose{
+	left:10px;
+}
+
+#divVideoFreeLessonTemplate1{
+    display: flex;
+}
+
+//kit
+#KitDetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+    resize: none;
+}
+
+#KitDetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+#KitSubDetailTextArea{
+	width: 100%;
+    height: 420px;
+    resize: none;
+}
+
+#KitDetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+    resize: none;
+}
+
+#KitDetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+#listVideo{
+	width: 80%;
+	height:auto;
+	    top: 13%;
+    left: 50%;
+    transform: translate(-50%, 5px);
+	display:none;
+	overflow-x: scroll;
+    justify-content: flex-start;
+}
+
+#listKit{
+	width: 550px;
+	height:auto;
+	bottom:110%;
+	    left: 19%;
+	display:none;
+	overflow-x: scroll;
+    justify-content: flex-start;
+}
+
+.mbsc-card-sub-description{
+	font-weight: 500!important;
+    font-size: 18px!important;
+}
+
+.mbsc-card-list-img{
+	display: flex;
+    margin: 45px 0px 0px 0px;
+    overflow-x: scroll;
+}
+
+.mbsc-card-list-img img{
+	    margin: 0px 10px;
+}
+
+.popup-kit-video-FreeLessonTemplate1{
+	padding:38px 0px;
+	flex-wrap:wrap;
+}
+
+.popup-kit-video-FreeLessonTemplate2{
+	padding:38px 0px;
+	flex-wrap:wrap;
+}
+
+.popup-kit-video-FreeLessonTemplate3{
+	padding:38px 0px;
+	flex-wrap:wrap;
+}
+
+.tdShortDesscription{
+	white-space:pre-wrap;
+}
+
+//lesson1
+#FreeLessonTemplate1DetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+}
+
+#FreeLessonTemplate1DetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+#FreeLessonTemplate1SubDetailTextArea{
+    width: 100%;
+    height: 520px;
+    resize: none;
+}
+
+#FreeLessonPlan1SubDetailTextArea{
+	width: 100%;
+    height: 420px;
+    resize: none;
+}
+
+#FreeLessonPlan1DetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+    resize: none;
+}
+
+#FreeLessonPlan1DetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+//lesson2
+#FreeLessonTemplate2DetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+}
+
+#FreeLessonTemplate2DetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+#FreeLessonPlan2SubDetailTextArea{
+	width: 100%;
+    height: 420px;
+    resize: none;
+}
+
+#FreeLessonPlan2DetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+    resize: none;
+}
+
+#FreeLessonPlan2DetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+//lesson3
+#FreeLessonTemplate3DetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+    resize: none;
+}
+
+#FreeLessonTemplate3DetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+#FreeLessonPlan3SubDetailTextArea{
+	width: 100%;
+    height: 420px;
+    resize: none;
+}
+
+#FreeLessonPlan3DetailTextArea{
+	max-width: 100%;
+    width: 100%;
+    height: 520px;
+    resize: none;
+}
+
+#FreeLessonPlan3DetailTextArea-toolbar-container{
+	width: 100%;
+}
+
+#FreeLessonTemplate1Submit{
+	    text-align: center;
+	width: 400px;
+}
+
+#FreeLessonTemplate2Submit{
+	    text-align: center;
+	width: 400px;
+}
+
+#FreeLessonTemplate3Submit{
+	text-align: center;
+	width: 400px;
+}
+
+#FreeLessonPlan1Submit{
+	width: 340px;
+}
+
+#FreeLessonPlan2Submit{
+	width: 340px;
+}
+
+#FreeLessonPlan3Submit{
+	width: 340px;
+}
+
+#FreeLessonTemplate1SubDetailTextArea{
+	width: 100%;
+    height: 420px;
+    resize: none;
+}
+
+#Kit-page-loading{
 	display:none;
 }
 
@@ -7400,6 +7797,7 @@ a.to-the-top > * {
 .manage-section-detail-left-item-inside-close{
 	width: 25px;
     height: 25px;
+	line-height: 24px;
     background: #d9d9d9;
     border-radius: 50px;
     display: flex;
@@ -7433,6 +7831,10 @@ a.to-the-top > * {
 }
 
 #listMainTeacher{
+	display:none;
+}
+
+#uploadVideo-page-loading{
 	display:none;
 }
 
@@ -7496,8 +7898,8 @@ a.to-the-top > * {
 }
 
 .manage-section-detail-left-list-empty img{
-	width: 80%px;
-    height: 80%px;
+	width: 80%;
+    height: 80%;
     background-position: 100% 100%;
     background-repeat: no-repeat;
     margin: 30px auto;
@@ -7738,6 +8140,36 @@ font-style:italic;
 	background:#CF5134!important;
 }
 
+.manage-list-video-status-complete {
+	margin: 10px;
+    background: #4caf50;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.manage-list-video-status-upload {
+	margin: 10px;
+    background: #ffeb3b;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.manage-list-video-status-error {
+	margin: 10px;
+    background: #f44336;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
 /* .manage-section-road-map-upload-download *,
 .manage-section-road-map-upload-download *:before,
 .manage-section-road-map-upload-download *:after,{ 
@@ -7888,6 +8320,11 @@ input[type="file"] {
     width: 200px;
     text-align: center;
     vertical-align: middle;
+}
+
+.label-uploading-video{
+	    padding: 10px 13px;
+	width: auto;
 }
 
 .manage-section-helpdesk {
@@ -8061,6 +8498,112 @@ input[type="file"] {
 
 #span-title-regisster{
 	display:none;
+}
+
+#listVideoClose{
+	top:0px;
+	left: 0px;
+}
+
+.chosen-kit-video-FreeLessonTemplate1{
+	padding:10px;    
+	display: flex;
+	flex-wrap:wrap;
+    overflow-x: scroll;       
+	width: 100%;
+}	
+}
+.chosen-kit-video-FreeLessonTemplate1 span{
+	   margin: 5px 10px;
+	color: #002546;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.chosen-kit-video-FreeLessonTemplate2{
+	padding:10px;	
+	display: flex;
+	flex-wrap:wrap;
+    overflow-x: scroll;      
+	width: 100%;
+}
+.chosen-kit-video-FreeLessonTemplate2 span{
+	    margin: 5px 10px;
+	color: #002546;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+}
+.chosen-kit-video-FreeLessonTemplate3{
+	padding:10px;	
+	display: flex;
+	flex-wrap:wrap;
+    overflow-x: scroll;   
+	    width: 100%;
+}
+.chosen-kit-video-FreeLessonTemplate3 span{
+    margin: 5px 10px;
+	color: #002546;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+}
+.mbsc-card-list{
+	position: relative;
+	    display: flex;
+    flex-direction: column;
+    padding: 37px 0px 0px 0px;
+	border: thin solid #ccc;
+	cursor: pointer;
+	width:320px;
+	    height: 100%;
+	    background: #90caf9;
+	margin:15px 5px;
+}
+
+.mbsc-card img{
+	width: 100%;
+    height: 200px;
+}
+
+.mbsc-card{
+	border: thin solid #ccc;
+	cursor: pointer;
+	width:320px;
+	    height: 100%;
+	    background: #e6e6e6;
+	}
+.mbsc-card:hover{
+	background:#90caf9;
+}
+
+.md-card-bg .md-card-subtitle,
+.md-card-bg .md-card-title {
+	position: absolute;
+	top: 50%;
+	color: #fff;
+	width: 100%;
+}
+
+.md-card-bg .md-card-title {
+	margin-top: -30px;
+}
+
+.md-card-bg .md-card-subtitle {
+	margin-top: 10px;
+}
+
+.popup-kit-video-freelessontemplate{
+	width: 300px;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.chosen-kit-video-freelessontemplate{
+	width: 100%;
+    height: 500px;
+    overflow-x: scroll;
 }
 
 .manage-list-lecture-list-register-paging{
@@ -8866,10 +9409,17 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 
 .manage-teacher-contain-left-upload{
 	width:100%;
+	cursor:pointer;
 }
 
 #uploadAvatarTeacher{
 	display:none;
+}
+
+.upload-video-page-title{
+	color: #002546;
+    font-weight: 600;
+    font-size: 32px;
 }
 
 .manage-teacher-contain-left span {

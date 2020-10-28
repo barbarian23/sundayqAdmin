@@ -11,6 +11,7 @@
         currentEdit: "",
         logining: false,
         isloginfailed: false,
+		month: 0
     }
     var _mode = "none",
 		_page = "none",
@@ -19,7 +20,8 @@
         _currentACtion = "",
         _currentEdit = "",
         _logining = false,
-        _isloginfailed = false
+        _isloginfailed = false,
+		_month = 0
        ;
 
     //mode setting
@@ -155,6 +157,14 @@
         return sunqStatus.mode;
     }
 
+	function getMonth() {
+        return sunqStatus.month;
+    }
+
+	function setMonth(val) {
+        sunqStatus.month = val;
+    }
+	
 	function setPage(val) {
         sunqStatus.page = val;
     }
@@ -175,6 +185,39 @@
                 hideOffLineMode();
                 hideAccountMode();
                 break;
+			case sunQMode.upload:
+				showUpload();
+                showOnLineMode();
+                hideOffLineMode();
+                hideAccountMode();
+                break;	
+			case sunQMode.freeq://kit
+				showFreeQ();
+                showOnLineMode();
+                hideOffLineMode();
+                hideAccountMode();
+                break;
+				//lesson1
+			case sunQMode.freeqlesson1:
+				showFreeQLesson1();
+                showOnLineMode();
+                hideOffLineMode();
+                hideAccountMode();
+                break
+				//lesson2
+			case sunQMode.freeqlesson2:
+				showFreeQLesson2();
+                showOnLineMode();
+                hideOffLineMode();
+                hideAccountMode();
+                break
+				//lesson3
+			case sunQMode.freeqlesson3:
+				showFreeQLesson3();
+                showOnLineMode();
+                hideOffLineMode();
+                hideAccountMode();
+                break
             case sunQMode.offline:
                 hideOnLineMode();
                 showOffLineMode();

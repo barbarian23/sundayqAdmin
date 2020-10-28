@@ -14,6 +14,8 @@ function showOnLineMode(){
 }
 
 function hideOnLineMode(){
+	hideUpload();
+	hideFreeQ();
 	if(window.innerWidth > 480){
 	   	let onlineOpen = document.getElementById("homeMenuOnline");
 	onlineOpen && function(){onlineOpen.style.display = "none"}();
@@ -23,6 +25,115 @@ function hideOnLineMode(){
 	   }
 
 }
+
+//freeQ
+function showFreeQ(){
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeQ");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeQ");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+}
+
+function hideFreeQ(){
+	hideFreeQLesson1();
+	hideFreeQLesson2();
+	hideFreeQLesson3();
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeQ");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeQ");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	   }
+}
+
+//freeQ Lesson1
+function showFreeQLesson1(){
+	showFreeQ();
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeLesson1");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeLesson1");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+}
+
+function hideFreeQLesson1(){
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeLesson1");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeLesson1");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	   }
+}
+//freeQ lesson2
+function showFreeQLesson2(){
+	showFreeQ();
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeLesson2");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeLesson2");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+}
+
+function hideFreeQLesson2(){
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeLesson2");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeLesson2");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	   }
+}
+//freeQ lesson3
+	function showFreeQLesson3(){
+		showFreeQ();
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeLesson3");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeLesson3");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+}
+
+function hideFreeQLesson3(){
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuFreeLesson3");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuFreeLesson3");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	   }
+}
+//upload
+function showUpload(){
+	if(window.innerWidth > 480){
+	   let onlineUpload = document.getElementById("homeMenuUpload");
+		onlineUpload && function(){onlineUpload.style.display = "block"}();
+	} else {
+	    let onlineUpload = document.getElementById("smallhomeMenuUpload");
+		onlineUpload && function(){onlineUpload.style.display = "block"}();
+	   }
+}
+	
+function hideUpload(){
+	if(window.innerWidth > 480){
+	   let onlineUpload = document.getElementById("homeMenuUpload");
+		onlineUpload && function(){onlineUpload.style.display = "none"}();
+	} else {
+	    let onlineUpload = document.getElementById("smallhomeMenuUpload");
+		onlineUpload && function(){onlineUpload.style.display = "none"}();
+	   }
+}
+	
 //offline
 function showOffLineMode(){
 // 	let offlineOpen = document.getElementById("homeMenuOffline");
@@ -277,7 +388,7 @@ function chooseSingleOwwner(){
 			
 			if(item["key"] == val){
 				 document.getElementById(item["id"]).classList.add("home-middle-left-menu-title-choosing");
-			   		document.getElementById(item["body"]).style.background = "#32373c";
+			   		document.getElementById(item["body"]).style.background = "#48606a";
 				return true;
 				 //console.log("adddd",document.getElementById(item["id"]).classList);
 			 }

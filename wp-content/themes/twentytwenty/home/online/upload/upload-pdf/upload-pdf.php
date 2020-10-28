@@ -1,6 +1,6 @@
 <?php
-	include get_theme_file_path("home/online/upload-pdf/status-upload-pdf.php");
-	include get_theme_file_path("home/online/upload-pdf/interact-ui-upload-pdf.php" );
+	include get_theme_file_path("home/online/upload/upload-pdf/status-upload-pdf.php");
+	include get_theme_file_path("home/online/upload/upload-pdf/interact-ui-upload-pdf.php" );
 	$currentAction = "add";
 	if (isset($_GET["action"])) {
 		$currentAction = $_GET["action"];

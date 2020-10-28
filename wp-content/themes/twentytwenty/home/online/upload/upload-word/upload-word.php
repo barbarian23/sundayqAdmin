@@ -1,18 +1,24 @@
 <?php
-	include get_theme_file_path("home/online/upload-video/status-upload-video.php");
-	include get_theme_file_path("home/online/upload-video/interact-ui-upload-video.php" );
+	include get_theme_file_path("home/online/upload/upload-word/status-upload-word.php");
+	include get_theme_file_path("home/online/upload/upload-word/interact-ui-upload-word.php" );
 	$currentAction = "add";
+    /**
+	 * <ul>
+	 * 	<li> title là đang ở trạng thái mới tạo xong video, chưa đẩy video lên </li>
+	 *  <li> add là trạng thái đã hoàn thiện video </li>
+	 * </ul>
+	 */
 	if (isset($_GET["action"])) {
 		$currentAction = $_GET["action"];
-	}
+	} 
 ?>
 <form class="manage-contain">
-	 <div class="manage-contain-loading" id="UploadVideo-page-loading">
-        <span id="UploadVideo-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>
-        <div class="login-input-loading" id="UploadVideo-page-loading-progress">
+	 <div class="manage-contain-loading" id="UploadWord-page-loading">
+        <span id="UploadWord-page-loading-progress-span"><?php echo $GLOBALS["LOADING_DATA"]; ?></span>
+        <div class="login-input-loading" id="UploadWord-page-loading-progress">
 
         </div>
-        <div class="manage-contain-loading-err" id="UploadVideo-page-loading-progress-error">
+        <div class="manage-contain-loading-err" id="UploadWord-page-loading-progress-error">
             <img src='<?php echo $GLOBALS["URI_ERROR_CONNECTION"]; ?>'>
             <span><?php echo $GLOBALS["ERROR_CONNECTION"]; ?></span>
         </div>
@@ -25,17 +31,17 @@
         <div class="manage-teacher-contain-right-upper">
             <!-- title -->
             <span><?php echo $GLOBALS["VIDEO_TITLE"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
-            <input id="idTitleUploadVideo" name="UploadVideo_name" type="text" placeholder='<?php echo $GLOBALS["VIDEO_TITLE_PLACEHOLDER"]; ?>' required>
+            <input id="idTitleUploadWord" name="UploadWord_name" type="text" placeholder='<?php echo $GLOBALS["VIDEO_TITLE_PLACEHOLDER"]; ?>' required>
         </div>
         <hr class="manage-teacher-hr-between">
         <!-- mô tả -->
 		<div class="manage-section-common-detail-midlle">
 			<div class="manage-section-detail-midlle-span">
-				<span id="UploadVideoSubDetailTextAreaTitle"><?php echo $GLOBALS["VIDEO_DESCRIPTION"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+				<span id="UploadWordSubDetailTextAreaTitle"><?php echo $GLOBALS["VIDEO_DESCRIPTION"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
 			</div>
 			<div class="manage-section-detail-midlle-item">
 				<!--  <textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["VIDEO_DESCRIPTION_PLACEHOLDER"]; ?>' required></textarea>-->
-<textarea id="UploadVideoDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["VIDEO_DESCRIPTION_PLACEHOLDER"]; ?>' required></textarea>
+<textarea id="UploadWordDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["VIDEO_DESCRIPTION_PLACEHOLDER"]; ?>' required></textarea>
 			</div>
 		</div>
 	<?php
@@ -58,16 +64,16 @@
 <div class="uploading-video-progress-bar" id="uploading-video-progress-bar" style="background:blue;width:0%;height:100%;display:flex;align-items:center;justify-content: center;"><span id="percent-upload"></span></div>
 </div>
             <span><?php echo $GLOBALS["VIDEO_UPLOAD_VIDEO"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
-<!--             <input id="idTitleUploadVideo" name="UploadVideo_name" type="text" placeholder='<?php echo $GLOBALS["VIDEO_UPLOAD_VIDEO"]; ?>' required> -->
-			  <label for="idTitleUploadVideo" class="manage-section-road-map-label-for-upload">
+<!--             <input id="idTitleUploadWord" name="UploadWord_name" type="text" placeholder='<?php echo $GLOBALS["VIDEO_UPLOAD_VIDEO"]; ?>' required> -->
+			  <label for="idTitleUploadWord" class="manage-section-road-map-label-for-upload">
                 <i class="fa fa-cloud-upload"></i> T?i video
             </label>
-			 <input id="idTitleUploadVideo" type=file name="files[]" onclick="this.value=null;" required>
+			 <input id="idTitleUploadWord" type=file name="files[]" onclick="this.value=null;" required>
         </div>
         <hr class="manage-teacher-hr-between">
 		<div class="manage-section-common-detail-midlle">
 			<div class="manage-section-detail-midlle-span">
-				<span id="UploadVideoReview"><?php echo $GLOBALS["VIDEO_WATCH_VIDEO"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+				<span id="UploadWordReview"><?php echo $GLOBALS["VIDEO_WATCH_VIDEO"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
 			</div>
 			<div class="manage-section-detail-midlle-item">
 
@@ -78,45 +84,46 @@
 	?>
 	</div>
 	<div class="manage-teacher-bottom-action">
-        <input type="submit" name='UploadVideoSubmit' value='<?php echo $GLOBALS["VIDEO_SUBMIT_INIT"]; ?>' id="UploadVideoSubmit">
+        <input type="submit" name='UploadWordSubmit' value='<?php echo $GLOBALS["VIDEO_SUBMIT_INIT"]; ?>' id="UploadWordSubmit">
     </div>
 </form>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script>
 <script>
-    var UploadVideoDescription = "";
+    var UploadWordDescription = "";
     window.onload = function() {
-        myCurrentUploadVideo = {};
-		UploadVideoDescription = "";
+        myCurrentUploadWord = {};
+		UploadWordDescription = "";
        
 
         if (getCurrentACtion() == dictionaryKey.addStatus) {
-             document.getElementById("UploadVideoSubmit").value = '<?php echo $GLOBALS["VIDEO_SUBMIT_ADD"] ?>';
+             document.getElementById("UploadWordSubmit").value = '<?php echo $GLOBALS["VIDEO_SUBMIT_ADD"] ?>';
         }
         if (getCurrentACtion() == dictionaryKey.editStatus || getCurrentACtion() == dictionaryKey.titleStatus) {
 			if(getCurrentACtion() == dictionaryKey.titleStatus){
-			   document.getElementById("UploadVideoSubmit").value = '<?php echo $GLOBALS["VIDEO_SUBMIT_INIT"] ?>';
+			   document.getElementById("UploadWordSubmit").value = '<?php echo $GLOBALS["VIDEO_SUBMIT_INIT"] ?>';
 			   } else if(getCurrentACtion() == dictionaryKey.editStatus){
-			    document.getElementById("UploadVideoSubmit").value = '<?php echo $GLOBALS["VIDEO_SUBMIT_EDIT"] ?>';
+			    document.getElementById("UploadWordSubmit").value = '<?php echo $GLOBALS["VIDEO_SUBMIT_EDIT"] ?>';
 			   }
            
 
             //fetch từ server
-            setLoadingDataUploadVideo(true);
+            setLoadingDataUploadWord(true);
             requestToSever(
                 sunQRequestType.get,
-                getUploadVideo(getCurrentEdit()),
+                getUploadWord(getCurrentEdit()),
                 null,
                 getLocalStorage(dictionary.MSEC),
                 function(res) {
-                    setLoadingDataUploadVideo(false);
+                    setLoadingDataUploadWord(false);
                     if (res.code === networkCode.success) {
-                        myCurrentUploadVideo = res.data;
+                        myCurrentUploadWord = res.data;
                         console.log(res.data);
 						
 						if (getCurrentACtion() == dictionaryKey.titleStatus){
-                        document.getElementById("idTitleUploadVideo").value = myCurrentUploadVideo.title == null ? "" : myCurrentUploadVideo.title;
+                        document.getElementById("idTitleUploadWord").value = myCurrentUploadWord.title == null ? "" : myCurrentUploadWord.title;
 						
-						document.getElementById("UploadVideoDetailTextArea").value = myCurrentUploadVideo.minTargetAge == null ? "" : myCurrentUploadVideo.minTargetAge;
+						document.getElementById("UploadWordDetailTextArea").value = myCurrentUploadWord.minTargetAge == null ? "" : myCurrentUploadWord.minTargetAge;
 						}
 						
 						if(getCurrentACtion() == dictionaryKey.editStatus){
@@ -128,7 +135,7 @@
                 },
                 function(err) {
 					//alert(err);
-                    setLoadingDataUploadVideo(dictionaryKey.ERR);
+                    setLoadingDataUploadWord(dictionaryKey.ERR);
                     console.log(dictionaryKey.ERR_INFO, err);
                     SunQAlert()
                         .position('center')
@@ -147,22 +154,22 @@
     }
 
 	//on input
-	 document.getElementById("idTitleUploadVideo").addEventListener("input", function(e) {
+	 document.getElementById("idTitleUploadWord").addEventListener("input", function(e) {
 		let tttValue = e.target.value;
-        myCurrentUploadVideo.title = tttValue.escape();
+        myCurrentUploadWord.title = tttValue.escape();
     });
 
-	document.getElementById("UploadVideoDetailTextArea").addEventListener("input", function(e) {
+	document.getElementById("UploadWordDetailTextArea").addEventListener("input", function(e) {
 		   let tttValue = e.target.value;
-        myCurrentUploadVideo.shortDescription = tttValue.escape();
+        myCurrentUploadWord.shortDescription = tttValue.escape();
     });
 	
-document.getElementById('idTitleUploadVideo').addEventListener('change', uploadVideo);
-function uploadVideo(evt) {
+document.getElementById('idTitleUploadWord').addEventListener('change', UploadWord);
+function UploadWord(evt) {
         let files = evt.target.files;
 		let dataVideo = new FormData();
         dataVideo.append('video', files[0]);
-        axios.put(putUploadVideo(getCurrentEdit()t), dataVideo, {
+        axios.put(putUploadWord(getCurrentEdit()t), dataVideo, {
                     headers: {
 						'Content-Type': 'multipart/form-data'
                     },
@@ -196,10 +203,10 @@ function uploadVideo(evt) {
     }
 	
     //submit form
-    document.getElementById("UploadVideoSubmit").addEventListener("click", function(e) {
+    document.getElementById("UploadWordSubmit").addEventListener("click", function(e) {
         e.preventDefault();
         /*
-        if (myCurrentUploadVideo.descriptionImgUrl == "" || myCurrentUploadVideo.descriptionImgUrl == null) {
+        if (myCurrentUploadWord.descriptionImgUrl == "" || myCurrentUploadWord.descriptionImgUrl == null) {
             SunQAlert()
                 .position('center')
                 .title(dictionaryKey.WRONG_IMG_EVENT)
@@ -212,7 +219,7 @@ function uploadVideo(evt) {
                 .show();
         }
 		*/
-        if (getCurrentACtion() == dictionaryKey.titleStatus && (myCurrentUploadVideo.title == "" || myCurrentUploadVideo.title == null)) {
+        if (getCurrentACtion() == dictionaryKey.titleStatus && (myCurrentUploadWord.title == "" || myCurrentUploadWord.title == null)) {
             SunQAlert()
                 .position('center')
                 .title(dictionaryKey.WRONG_VIDEO_TITLE)
@@ -224,7 +231,7 @@ function uploadVideo(evt) {
                 })
                 .show();
         }
-        if (myCurrentUploadVideo.description == "" || myCurrentUploadVideo.description == null) {
+        if (myCurrentUploadWord.description == "" || myCurrentUploadWord.description == null) {
             SunQAlert()
                 .position('center')
                 .title(dictionaryKey.WRONG_VIDEO_DESCRIPTION)
@@ -237,12 +244,12 @@ function uploadVideo(evt) {
                 .show();
         }
       else {
-            let titlleRequestUploadVideo = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : getCurrentACtion() == dictionaryKey.titleStatus ?  REQUEST_TITLE : dictionaryKey.REQUEST_ADD + dictionaryKey.VIDEO_NAME;
-            console.log("data lên " + JSON.stringify(myCurrentUploadVideo));
-            //alert("data lên " + JSON.stringify(myCurrentUploadVideo));
+            let titlleRequestUploadWord = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : getCurrentACtion() == dictionaryKey.titleStatus ?  REQUEST_TITLE : dictionaryKey.REQUEST_ADD + dictionaryKey.VIDEO_NAME;
+            console.log("data lên " + JSON.stringify(myCurrentUploadWord));
+            //alert("data lên " + JSON.stringify(myCurrentUploadWord));
             SunQAlert()
                 .position('center')
-                .title(titlleRequestUploadVideo)
+                .title(titlleRequestUploadWord)
                 .type('success')
                 .confirmButtonColor("#3B4EDC")
                 .cancelButtonColor("#a8b1f5")
@@ -251,23 +258,23 @@ function uploadVideo(evt) {
                 .callback((result) => {
                     if (result.value) {
                         window.scrollTo(0, 0);
-                        let tempmyCurrentUploadVideo = myCurrentUploadVideo;
+                        let tempmyCurrentUploadWord = myCurrentUploadWord;
                         if (getCurrentACtion() == dictionaryKey.editStatus) {
 
                         }
 
-                        delete tempmyCurrentUploadVideo.createAt;
-                        delete tempmyCurrentUploadVideo.updateAt;
-                        delete tempmyCurrentUploadVideo.id;
+                        delete tempmyCurrentUploadWord.createAt;
+                        delete tempmyCurrentUploadWord.updateAt;
+                        delete tempmyCurrentUploadWord.id;
 						
-                        setLoadingDataUploadVideo(true);
+                        setLoadingDataUploadWord(true);
                         requestToSever(
                             getCurrentACtion() == dictionaryKey.editStatus ? sunQRequestType.put : sunQRequestType.post,
-                            getCurrentACtion() == dictionaryKey.editStatus ? getUploadVideo(getCurrentEdit()) : postUploadVideo(),
-                            tempmyCurrentUploadVideo,
+                            getCurrentACtion() == dictionaryKey.editStatus ? getUploadWord(getCurrentEdit()) : postUploadWord(),
+                            tempmyCurrentUploadWord,
                             getLocalStorage(dictionary.MSEC),
                             function(res) {
-                                setLoadingDataUploadVideo(false);
+                                setLoadingDataUploadWord(false);
 								//edit - title - add
                                 let sunqalertsuccess = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.UPLOAD_VIDEO_SUCCESS : getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.INIT_VIDEO_SUCCESS : dictionaryKey.EDIT_VIDEO_SUCCESS;
                                 if (res.code === networkCode.success) {
@@ -279,7 +286,7 @@ function uploadVideo(evt) {
                                         .confirmButtonColor("#3B4EDC")
                                         .confirmButtonText(dictionaryKey.AGREE)
                                         .callback((result) => {
-                                            webpageRedirect(getAdminHomeURL() + "?mode=offline&page=list-UploadVideo");
+                                            webpageRedirect(getAdminHomeURL() + "?mode=offline&page=list-UploadWord");
                                         })
                                         .show();
                                 } else if (res.code === networkCode.accessDenied) {
@@ -299,7 +306,7 @@ function uploadVideo(evt) {
                                 }
                             },
                             function(err) {alert(err);
-                                setLoadingDataUploadVideo(dictionaryKey.ERR);
+                                setLoadingDataUploadWord(dictionaryKey.ERR);
                                 let sunqalertfailed =  getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.UPLOAD_VIDEO_FAILED : getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.INIT_VIDEO_FAILED : dictionaryKey.EDIT_VIDEO_FAILED;
                                 SunQAlert()
                                     .position('center')
@@ -321,3 +328,29 @@ function uploadVideo(evt) {
         }
     });
 </script>
+<!--
+<script>
+        console.log("abc abc");
+        if (Hls.isSupported()) {
+            console.log("Hls support");
+            var video = document.getElementById('video');
+            // var hls = new Hls({
+            //     xhrSetup: xhr => {
+            //         xhr.setRequestHeader('Authorization', "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3MjYzMDNhNzlkMGRiMjdjYmJhOTZlNzI3YmVhMjFiMTU5NjQ0MDU2NDg5NCIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTYwMDE1NDIxOCwiZXhwIjoxNjAwMTk3NDE4fQ.1aJDfoajKhDQAbrsUwzzdjNNLXd0dm2UWu7TA6kvA0w")
+            //     }
+            // });
+            var hls = new Hls();
+            hls.loadSource('http://107.113.194.132:3000/resource/video/506b3d40b137f2447d86a99ddd019f86-1602668717027_720.m3u8');
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play();
+            });
+        }
+        // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+        // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
+        // This is using the built-in support of the plain video element, without using hls.js.
+        else {
+            console.log("Hls is not support");
+        }
+    </script>
+-->

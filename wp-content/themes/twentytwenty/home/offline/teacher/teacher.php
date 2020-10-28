@@ -268,10 +268,11 @@ include get_theme_file_path("home/offline/teacher/teacher-interact-ui.php");
 //                     myCurrentTeacher.imgUrl = res.data.urls[0];
 //                     //myCurrentTeacher.imgUrl
 //                 } else 
+console.log(res);                 
 					if (res.code === networkCode.sessionTimeOut) {
                     makeAlertRedirect();
                 } else {
-					 myCurrentTeacher.imgUrl = res.urls[0];
+					 myCurrentTeacher.imgUrl = res.urls;
 					//alert("loi cmn 123 " + JSON.stringify(res) +" "+res.code+" "+res.message);
 				}
             },

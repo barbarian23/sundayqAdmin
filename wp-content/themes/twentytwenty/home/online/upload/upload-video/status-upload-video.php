@@ -8,6 +8,7 @@ var uploadVideoStatus = {
         isUploadingDataUploadVideo: false,
         currentUploadVideo: 0, //trang load danh sách người đăng ký 
 		stepUploadingVideo: 0,// 0 upload tên hoặc sửa tên, 1 upload video hoặc sửa tên video
+	    currentStatusUploadVideo:0, //0 là đang ở trạng thái mới tạo video - 1 là trạng thái đã tạo xong video nhưng chưa upload - 2 là trạng thái đã hoàn thiện video
 }
 
 var  _isFetchingUploadVideo = false,
@@ -16,7 +17,8 @@ var  _isFetchingUploadVideo = false,
      _currentSelectUploadVideo = false,
      _isUploadingDataUploadVideo = false,
      _currentUploadVideo = 0,
-	_stepUploadingVideo = 0;
+	_stepUploadingVideo = 0,
+	_currentStatusUploadVideo = 0;;
 	
 	//fetching Upload video
     Object.defineProperty(uploadVideoStatus, "isFetchingUploadVideo", {
@@ -127,20 +129,20 @@ var  _isFetchingUploadVideo = false,
             seFetchingUploadVideo(true);
             requestToSever(
                 sunQRequestType.get,
-                prepareUrlForGetThatContainsBody(getListUploadVideo(), dataCurrentViewUploadVideo),
+                prepareUrlForGetThatContainsBody(getListVideo(), dataCurrentViewUploadVideo),
                 null,
                 getData(dictionary.MSEC),
                 function(res) {
-                    console.log(res);
+                    console.log("res",res);
                     seFetchingUploadVideo(false);
                     if (res.code === networkCode.success) {
                         if (res.data == null || res.data.length == 0) {
-							
+							console.log("no video");
                             	setGetUploadVideoFromServerSuccess(false);
 							
                         } else {
                             emptyTableListUploadVideo();
-                            listUploadVideo = listUploadVideo.concat(res.data);
+                            listUploadVideo = listUploadVideo.concat(res.data.videos);
                             createListUploadVideo(res);
                         }
                     } else if (res.code === networkCode.accessDenied){
@@ -183,6 +185,23 @@ var  _isFetchingUploadVideo = false,
 
     function getStepUploadingVideo() {
         return uploadVideoStatus.stepUploadingVideo;
+    }
+	
+	Object.defineProperty(uploadVideoStatus, "currentStatusUploadVideo", {
+        get() {
+            return _currentStatusUploadVideo;
+        },
+        set(val) {
+            _currentStatusUploadVideo = val;
+        }
+    });
+
+    function setCurrentStatusUploadVideo(val) {
+        uploadVideoStatus.currentStatusUploadVideo = val;
+    }
+
+    function getCurrentStatusUploadVideo() {
+        return uploadVideoStatus.currentStatusUploadVideo;
     }
 	
 </script>

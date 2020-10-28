@@ -5,8 +5,32 @@
 
 	//online
 	$GLOBALS["ADMIN_ONLINE"] = "Học Online";
+    //upload
+	$GLOBALS["ADMIN_ONLINE_UPLOAD_MANAGE"] = "Quản lý tài nguyên";
 	$GLOBALS["ADMIN_ONLINE_UPLOAD_VIDEO"] = "Tải lên video";
 	$GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"] = "Tải lên tệp PDF";
+	$GLOBALS["ADMIN_ONLINE_UPLOAD_WORD"] = "Tải lên word";
+	$GLOBALS["ADMIN_ONLINE_UPLOAD_MP3"] = "Tải lên tệp mp3";
+    //freeq
+	$GLOBALS["ADMIN_ONLINE_FREEQ"] = "FreeQ";
+	
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_1"] = "Trẻ từ 0 - 1 tuổi";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_1"] = "Bài giảng mẫu";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_PLAN_1"] = "Kế hoạch bài giảng";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_1_TAILER"] = " cho trẻ từ 0 - 1 tuổi";
+
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_2"] = "Trẻ từ 1 - 2 tuổi";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_2"] = "Bài giảng mẫu";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_PLAN_2"] = "Kế hoạch bài giảng";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_2_TAILER"] = " cho trẻ từ 1 - 2 tuổi";
+
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_3"] = "Trẻ từ 2 - 3 tuổi";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_3"] = "Bài giảng mẫu";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_PLAN_3"] = "Kế hoạch bài giảng";
+	$GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_3_TAILER"] = " cho trẻ từ 2 - 3 tuổi";
+
+
+	$GLOBALS["ADMIN_ONLINE_FREEQ_KIT"] = "Bộ KIT";
 
 	//offline
 	$GLOBALS["ADMIN_OFFLINE"] = "Giới thiệu trung tâm SundayQ";
@@ -33,6 +57,97 @@
 	$GLOBALS["LOGIN_WRONG_USERNAME_PASWORD"] = "Sai tên đăng nhập hoặc mật khẩu";
 
 	//online
+	//list freelesson
+	//list freelessontemplate
+	$GLOBALS["FREELESSON_TEMPLATE_REAL_TITLE"] = "Bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_TITLE"] = "Danh sách bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_NO_LIST"] = "Danh sách bài giảng mẫu trống";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_COL_2"] = "Tên bộ bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_COL_3"] = "Tháng";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_COL_4"] = "Mô tả ngắn gọn";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_COL_5"] = "Chỉnh sửa";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_BUTTON_EDIT_KIT"] = "Chỉnh sửa";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_BUTTON_DELETE_KIT"] = "Xóa";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_BUTTON_ADD_KIT"] = "Thêm mới bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_VIDEO"] = "Danh sách video";
+	$GLOBALS["FREELESSON_TEMPLATE_LIST_KIT"] = "Bộ KIT";
+
+	//list freelessonplan
+	$GLOBALS["FREELESSON_PLAN_REAL_TITLE"] = "Kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_LIST_TITLE"] = "Danh sách các kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_NO_LIST"] = "Danh sách các kế hoạch bài giảng trống";
+	$GLOBALS["FREELESSON_PLAN_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["FREELESSON_PLAN_LIST_COL_2"] = "Tên kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_LIST_COL_3"] = "Tháng";
+	$GLOBALS["FREELESSON_PLAN_LIST_COL_4"] = "Mô tả ngắn gọn";
+	$GLOBALS["FREELESSON_PLAN_LIST_BUTTON_EDIT_KIT"] = "Chỉnh sửa";
+	$GLOBALS["FREELESSON_PLAN_LIST_BUTTON_DELETE_KIT"] = "Xóa";
+	$GLOBALS["FREELESSON_PLAN_LIST_BUTTON_ADD_KIT"] = "Thêm mới kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_LIST_NO_NEED_TO_CHANGE_MONTH"] = "Không được thay đổi tháng bài giảng";
+
+	//freelessontemplate
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_NAME"] = "Tên bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_NAME_PLACEHOLDER"] = "Nhập tên bài giảng mẫu";
+    $GLOBALS["FREELESSON_TEMPLATE_INPUT_MONTH"] = "Tháng bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_MONTH_PLACEHOLDER"] = "Nhập tháng bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_KIT"] = "Bộ KIT của bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_KIT_PLACEHOLDER"] = "Chọn bộ KIT của bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_RESOURCE"] = "Video của bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_RESOURCE_PLACEHOLDER"] = "Chọn video của bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_DETAIL"] = "Thông tin về bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_SUB_DETAIL"] = "Thông tin ngắn gọn về bộ bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_INPUT_SUB_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin ngắn gọn về bài giảng mẫu";
+	$GLOBALS["FREELESSON_TEMPLATE_SUBMIT_ADD"] = "Thêm mới bộ bài giảng mẫu";	
+	$GLOBALS["FREELESSON_TEMPLATE_SUBMIT_EDIT"] = "Chỉnh sửa";
+
+    //freelessonplan
+	$GLOBALS["FREELESSON_PLAN_INPUT_NAME"] = "Tên kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_NAME_PLACEHOLDER"] = "Nhập tên kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_IMAGE"] = "Ảnh kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_NAME_PLACEHOLDER"] = "Nhập ảnh kế hoạch bài giảng";
+    $GLOBALS["FREELESSON_PLAN_INPUT_MONTH"] = "Tháng bài giảng mẫu";
+	$GLOBALS["FREELESSON_PLAN_INPUT_MONTH_PLACEHOLDER"] = "Nhập tháng bài giảng mẫu";
+	$GLOBALS["FREELESSON_PLAN_INPUT_DETAIL"] = "Thông tin về bài giảng mẫu";
+	$GLOBALS["FREELESSON_PLAN_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin bài giảng mẫu";
+	$GLOBALS["FREELESSON_PLAN_INPUT_SUB_DETAIL"] = "Thông tin ngắn gọn về bộ bài giảng mẫu";
+	$GLOBALS["FREELESSON_PLAN_INPUT_SUB_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin ngắn gọn về bài giảng mẫu";
+	$GLOBALS["FREELESSON_PLAN_SUBMIT_ADD"] = "Thêm bộ bài giảng mẫu";	
+	$GLOBALS["FREELESSON_PLAN_SUBMIT_EDIT"] = "Chỉnh sửa";
+	$GLOBALS["FREELESSON_PLAN_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm ảnh";
+	$GLOBALS["FREELESSON_PLAN_ADD_IMAGE"] = "Thêm ảnh";
+
+    //KIT
+    $GLOBALS["KIT_AVATAR"] = "Ảnh bộ KIT";
+    $GLOBALS["KIT_NO_AVATAR"] = "Chưa có ảnh bộ KIT";
+	$GLOBALS["KIT_INPUT_NAME"] = "Tên bộ KIT";
+	$GLOBALS["KIT_INPUT_NAME_PLACEHOLDER"] = "Nhập tên bộ KIT";
+	$GLOBALS["KIT_INPUT_PRICE"] = "Giá bộ KIT";
+	$GLOBALS["KIT_INPUT_PRICE_PLACEHOLDER"] = "Nhập giá bộ KIT";
+	$GLOBALS["KIT_INPUT_DETAIL"] = "Thông tin về bộ KIT";
+	$GLOBALS["KIT_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin bộ KIT";
+	$GLOBALS["KIT_INPUT_SUB_DETAIL"] = "Thông tin ngắn gọn về bộ KIT";
+	$GLOBALS["KIT_INPUT_SUB_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin ngắn gọn về bộ KIT";
+	$GLOBALS["KIT_SUBMIT_ADD"] = "Thêm bộ KIT";	
+	$GLOBALS["KIT_SUBMIT_EDIT"] = "Chỉnh sửa";
+	$GLOBALS["KIT_ADD_IMAGE"] = "Thêm ảnh";
+	
+	//list KIT
+	$GLOBALS["KIT_LIST_TITLE"] = "Danh sách các bộ KIT";
+	$GLOBALS["KIT_NO_LIST"] = "Danh sách các bộ KIT trống";
+	$GLOBALS["KIT_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["KIT_LIST_COL_2"] = "Tên bộ KIT";
+	$GLOBALS["KIT_LIST_COL_3"] = "Mô tả ngắn gọn";
+	$GLOBALS["KIT_LIST_COL_4"] = "Chỉnh sửa";
+	$GLOBALS["KIT_LIST_BUTTON_EDIT_KIT"] = "Chỉnh sửa bộ KIT";
+	$GLOBALS["KIT_LIST_BUTTON_DELETE_KIT"] = "Xóa giảng bộ KIT";
+	$GLOBALS["KIT_LIST_BUTTON_ADD_KIT"] = "Thêm mới bộ KIT";	
+	$GLOBALS["KIT_LESSION_PREFIX"] = "Buổi ";
+	$GLOBALS["KIT_LESSION_SPECIALIST"] = "Chuyên khoa: ";
+	$GLOBALS["KIT_LESSION_EXP"] = "Kinh nghiệm giảng dạy: ";
+	$GLOBALS["KIT_LESSION_DEGREE"] = "Chức danh đối với học viên: ";
+	
 	//list-video
 	$GLOBALS["VIDEO_LIST_TITLE"] = "Danh sách các video";
 	$GLOBALS["VIDEO_NO_LIST"] = "Danh sách các video trống";
@@ -43,20 +158,34 @@
 	$GLOBALS["VIDEO_LIST_COL_1"] = "Số thứ tự";
 	$GLOBALS["VIDEO_LIST_COL_2"] = "Tiêu đề video";
 	$GLOBALS["VIDEO_LIST_COL_3"] = "Mô tả video";
-	$GLOBALS["VIDEO_LIST_COL_4"] = "Chỉnh sửa";
+	$GLOBALS["VIDEO_LIST_COL_4"] = "Trạng thái";
+	$GLOBALS["VIDEO_LIST_COL_5"] = "Chỉnh sửa";
+	$GLOBALS["VIDEO_STATUS_COMPLETE"] = "Hoàn thành";
+	$GLOBALS["VIDEO_STATUS_UPLOAD"] = "Cần upload video";
+	$GLOBALS["VIDEO_STATUS_ERROR"] = "Lỗi khi tải lên";
+	$GLOBALS["VIDEO_VIDEO_UPLOAD"] = "Chỉnh sửa nội dung video";
+	$GLOBALS["VIDEO_TITLE_UPLOAD"] = "Chỉnh sửa tiêu đề video";
+	$GLOBALS["VIDEO_TITLE_ADD_NEW"] = "Tạo video";
 
 	//video
-	$GLOBALS["VIDEO_TITLE"] = "Tên video";
-	$GLOBALS["VIDEO_TITLE_PLACEHOLDER"] = "Thêm tên video ...";
+	$GLOBALS["VIDEO_AVATAR"] = "Ảnh video";
+	$GLOBALS["VIDEO_TITLE"] = "Tiêu đề video";
+	$GLOBALS["VIDEO_TITLE_PLACEHOLDER"] = "Thêm tiêu đề video ...";
 	$GLOBALS["VIDEO_DESCRIPTION"] = "Mô tả";
 	$GLOBALS["VIDEO_DESCRIPTION_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["VIDEO_SHORT_DESCRIPTION"] = "Mô tả ngắn gọn";
+	$GLOBALS["VIDEO_SHORT_DESCRIPTION_PLACEHOLDER"] = "Thêm mô tả ngắn gọn...";
 	$GLOBALS["VIDEO_UPLOAD_VIDEO"] = "Tải lên video";
 	$GLOBALS["VIDEO_NOT_YET_UPLOAD_VIDEO"] = "Hiện chưa có video";
 	$GLOBALS["VIDEO_WATCH_VIDEO"] = "Xem video";
 	$GLOBALS["VIDEO_MAIN_IMAGE"] = "Hình ảnh chính";	
 	$GLOBALS["VIDEO_SUBMIT_INIT"] = "Tạo video";	
-	$GLOBALS["VIDEO_SUBMIT_ADD"] = "Tải lên video";	
-	$GLOBALS["VIDEO_SUBMIT_EDIT"] = "Chỉnh sửa";
+	$GLOBALS["VIDEO_SUBMIT_ADD"] = "Chưa có video, bấm để tải lên video";	
+	$GLOBALS["VIDEO_SUBMIT_REUP"] = "Tải lại video khác";	
+	$GLOBALS["VIDEO_SUBMIT_EDIT"] = "Chỉnh sửa";	
+	$GLOBALS["VIDEO_SUBMIT_SWITCH_TO_LIST"] = "Hoàn thành";
+	$GLOBALS["VIDEO_SWITCH_TO_UPLOAD"] = "Tải lên video";
+	$GLOBALS["VIDEO_STATUS"] = "Trạng thái";
 
 	//list-pdf
 	$GLOBALS["PDF_LIST_TITLE"] = "Danh sách các tệp pdf";
@@ -82,6 +211,56 @@
 	$GLOBALS["PDF_SUBMIT_INIT"] = "Tạo tệp pdf";	
 	$GLOBALS["PDF_SUBMIT_ADD"] = "Tải lên tệp pdf";	
 	$GLOBALS["PDF_SUBMIT_EDIT"] = "Chỉnh sửa";
+
+	//list-mp3
+	$GLOBALS["MP3_LIST_TITLE"] = "Danh sách các tệp mp3";
+	$GLOBALS["MP3_NO_LIST"] = "Danh sách các tệp word trống";
+	$GLOBALS["MP3_LIST_BUTTON_EDIT_TITLE"] = "Chỉnh sửa tên tệp mp3";
+	$GLOBALS["MP3_LIST_BUTTON_EDIT_VIDEO"] = "Tải lại tệp mp3";
+	$GLOBALS["MP3_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa tệp mp3";
+	$GLOBALS["MP3_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới tệp mp3";
+	$GLOBALS["MP3_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["MP3_LIST_COL_2"] = "Tiêu đề tệp mp3";
+	$GLOBALS["MP3_LIST_COL_3"] = "Mô tả tệp mp3";
+	$GLOBALS["MP3_LIST_COL_4"] = "Chỉnh sửa";
+
+	//mp3
+	$GLOBALS["MP3_TITLE"] = "Tên tệp mp3";
+	$GLOBALS["MP3_TITLE_PLACEHOLDER"] = "Thêm tên tệp mp3 ...";
+	$GLOBALS["MP3_DESCRIPTION"] = "Mô tả";
+	$GLOBALS["MP3_DESCRIPTION_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["MP3_UPLOAD_MP3"] = "Tải lên têp mp3";
+	$GLOBALS["MP3_NOT_YET_UPLOAD_MP3"] = "Hiện chưa có tệp mp3";
+	$GLOBALS["MP3_WATCH_WORD"] = "Mở tệp mp3";
+	$GLOBALS["MP3_MAIN_IMAGE"] = "Hình ảnh chính";	
+	$GLOBALS["MP3_SUBMIT_INIT"] = "Tạo tệp mp3";	
+	$GLOBALS["MP3_SUBMIT_ADD"] = "Tải lên tệp mp3";	
+	$GLOBALS["MP3_SUBMIT_EDIT"] = "Chỉnh sửa";
+
+	//list-word
+	$GLOBALS["WORD_LIST_TITLE"] = "Danh sách các tệp word";
+	$GLOBALS["WORD_NO_LIST"] = "Danh sách các tệp word trống";
+	$GLOBALS["WORD_LIST_BUTTON_EDIT_TITLE"] = "Chỉnh sửa tên tệp word";
+	$GLOBALS["WORD_LIST_BUTTON_EDIT_VIDEO"] = "Tải lại tệp word";
+	$GLOBALS["WORD_LIST_BUTTON_DELETE_ACCOUNT"] = "Xóa tệp word";
+	$GLOBALS["WORD_LIST_BUTTON_ADD_ACCOUNT"] = "Thêm mới tệp word";
+	$GLOBALS["WORD_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["WORD_LIST_COL_2"] = "Tiêu đề tệp word";
+	$GLOBALS["WORD_LIST_COL_3"] = "Mô tả tệp word";
+	$GLOBALS["WORD_LIST_COL_4"] = "Chỉnh sửa";
+
+	//word
+	$GLOBALS["WORD_TITLE"] = "Tên tệp word";
+	$GLOBALS["WORD_TITLE_PLACEHOLDER"] = "Thêm tên tệp word ...";
+	$GLOBALS["WORD_DESCRIPTION"] = "Mô tả";
+	$GLOBALS["WORD_DESCRIPTION_PLACEHOLDER"] = "Thêm mô tả ...";
+	$GLOBALS["WORD_UPLOAD_WORD"] = "Tải lên têp word";
+	$GLOBALS["WORD_NOT_YET_UPLOAD_WORD"] = "Hiện chưa có tệp word";
+	$GLOBALS["WORD_WATCH_WORD"] = "Mở tệp word";
+	$GLOBALS["WORD_MAIN_IMAGE"] = "Hình ảnh chính";	
+	$GLOBALS["WORD_SUBMIT_INIT"] = "Tạo tệp word";	
+	$GLOBALS["WORD_SUBMIT_ADD"] = "Tải lên tệp word";	
+	$GLOBALS["WORD_SUBMIT_EDIT"] = "Chỉnh sửa";
 
 	//offline
 	//lecture
@@ -131,7 +310,7 @@
 	$GLOBALS["LECTURE_EDIT_DES_IMG"] = "Đổi ảnh chi tiết khóa học";
 	$GLOBALS["LECTURE_ADD_DES_IMG"] = "Thêm ảnh chi tiết khóa học";
 
-$GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm ảnh";
+	$GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm ảnh";
 
 	//teacher
 	$GLOBALS["TEACHER_AVATAR"] = "Ảnh đại diện";
@@ -434,6 +613,28 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		IMAGE_LOADED_FAILED:"Tải ảnh thất bại",
 		
+		//online
+		//freeq
+		//freelessontemplate
+		FREELESSON_TEMPLATE_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		FREELESSON_TEMPLATE_ADD_SUCCESS:"Thêm mới thành công",
+		FREELESSON_TEMPLATE_EDIT_FAILED: "Chỉnh sửa không thành công",
+		FREELESSON_TEMPLATE_ADD_FAILED:"Thêm mới không thành công",
+	    FREELESSON_TEMPLATE_VIDEO_ALREADY_ADDED : "Video đã được thêm vào",
+		
+		//freelessonplan
+		FREELESSON_PLAN_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		FREELESSON_PLAN_ADD_SUCCESS:"Thêm mới thành công",
+		FREELESSON_PLAN_EDIT_FAILED: "Chỉnh sửa không thành công",
+		FREELESSON_PLAN_ADD_FAILED:"Thêm mới không thành công",
+		
+		//kit
+		KIT_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		KIT_ADD_SUCCESS:"Thêm mới thành công",
+		KIT_EDIT_FAILED: "Chỉnh sửa không thành công",
+		KIT_ADD_FAILED:"Thêm mới không thành công",
+		
+		//offline
 		TEACHER_EDIT_SUCCESS: "Chỉnh sửa thành công",
 		TEACHER_ADD_SUCCESS:"Thêm mới thành công",
 		TEACHER_EDIT_FAILED: "Chỉnh sửa không thành công",
@@ -498,6 +699,23 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 		NOT_AVAILABLE:"Chưa có",
 		
+		//online
+		//freeq
+		//freelessontempate
+		FREELESSON_TEMPLATE_KIT_TITLE:"Bạn chưa nhập tiêu đề của bài giảng mẫu",
+		FREELESSON_TEMPLATE_KIT_IMAGE:"Bạn chưa tải ảnh lên của bài giảng mẫu",
+		FREELESSON_TEMPLATE_KIT_DESCRIPTION:"Bạn chưa nhập mô tả của bài giảng mẫu",
+		FREELESSON_TEMPLATE_KIT_VIDEO:"Bạn chưa tải lên danh sách video",
+		FREELESSON_TEMPLATE_KIT_KIT:"Bạn chưa nhập bộ KIT của bài giảng mẫu",
+		//freelessonplan
+		FREELESSON_PLAN_KIT_TITLE:"Bạn chưa nhập tiêu đề của kế hoạch bài giảng",
+		FREELESSON_PLAN_KIT_IMAGE:"Bạn chưa tải ảnh lên của kế hoạch bài giảng",
+		FREELESSON_PLAN_KIT_DESCRIPTION:"Bạn chưa nhập mô tả của kế hoạch bài giảng",
+		//kit
+		WRONG_KIT_TITLE:"Bạn chưa nhập tiêu đề của KIT",
+		WRONG_KIT_IMAGE:"Bạn chưa tải ảnh lên của bộ KIT",
+		WRONG_KIT_PRICE:"Bạn chưa nhập giá của KIT",
+		WRONG_KIT_DESCRIPTION:"Bạn chưa nhập mô tả của KIT",
 		
 		LECTURE_COURSE_PLAN_NULL: "Nội dung khóa học không được để trống.Tại khóa học thứ ",
 		
@@ -573,6 +791,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		CANCEL:"Hủy bỏ",
 		TRY_AGAIN:"Thử lại",
 		UPDATE:"Cập nhật",
+	    FREELESSON_PLAN_LIST_NO_NEED_TO_CHANGE_MONTH: "Không được thay đổi tháng bài giảng",
 		
 		SESSION_TOKEN:"STKEN",
 		ERR_INFO:"Có lỗi: ",
@@ -582,6 +801,10 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		
 		limitRequestRegister:10,
 		currentAction:"", //add - edit - title(cho upload video và pdf),
+		/**
+		 * add và edit là cho action thông thường
+		 * đối với upload video, add là giai đoạn tạo ra tiêu đề video, title là giai đoạn sửa tiêu đề video, edit là tải lên lại video
+		 */
 		addStatus:"add",
 		editStatus:"edit",
 		titleStatus:"title",
@@ -617,11 +840,24 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	}
 	
 	var sunQMode = {
+		//offline
 		offline:"offline",
 		qacademy:"qacademy",
 		qvisit:"qvisit",
+		//online
 		online:"online",
-		sa:"sa",
+		//upload
+		upload:"upload",
+		//freeq
+		freeq:"freeq",
+		//freeqlesson1
+		freeqlesson1:"freeqlesson1",
+		//freeqlesson1
+		freeqlesson2:"freeqlesson2",
+		//freeqlesson1
+		freeqlesson3:"freeqlesson3",
+		
+		sa:"sa",//super admin
 		account:"account",
 		group:"group"
 	}
@@ -634,6 +870,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	};
 	
 	var arrayHightlightTitle = [
+		//offline
 		{key:"lecture",id:"title-manage-lecture"},
 		{key:"list-lecture",id:"title-manage-lecture"},
 		{key:"teacher",id:"title-manage-teacher"},
@@ -644,6 +881,36 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		{key:"list-event",id:"title-manage-event"},
 		{key:"list-contact",id:"title-manage-contact"},
 		{key:"list-ticket",id:"title-manage-ticket"},
+		//online
+		//freeq
+		//lesson 1
+		{key:"freelessontemplate1",id:"title-manage-template-lesson-1"},
+		{key:"list-freelessontemplate1",id:"title-manage-template-lesson-1"},
+		{key:"freelessonplan1",id:"title-manage-plan-lesson-1"},
+		{key:"list-freelessonplan1",id:"title-manage-plan-lesson-1"},
+		//lesson 2
+		{key:"freelessontemplate2",id:"title-manage-template-lesson-2"},
+		{key:"list-freelessontemplate2",id:"title-manage-template-lesson-2"},
+		{key:"freelessonplan2",id:"title-manage-plan-lesson-2"},
+		{key:"list-freelessonplan2",id:"title-manage-plan-lesson-2"},
+		//lesson 3
+		{key:"freelessontemplate3",id:"title-manage-template-lesson-3"},
+		{key:"list-freelessontemplate3",id:"title-manage-template-lesson-3"},
+		{key:"freelessonplan3",id:"title-manage-plan-lesson-3"},
+		{key:"list-freelessonplan3",id:"title-manage-plan-lesson-3"},
+		
+		{key:"kit",id:"title-manage-kit"},
+		{key:"list-kit",id:"title-manage-kit"},
+		//upload
+		{key:"video",id:"title-manage-video"},
+		{key:"list-video",id:"title-manage-video"},
+		{key:"mp3",id:"title-manage-mp3"},
+		{key:"list-mp3",id:"title-manage-mp3"},
+		{key:"word",id:"title-manage-word"},
+		{key:"list-word",id:"title-manage-word"},
+		{key:"pdf",id:"title-manage-pdf"},
+		{key:"list-pdf",id:"title-manage-pdf"},
+		//account
 		{key:"account",id:"title-manage-account"},
 		{key:"list-account",id:"title-manage-account"},
 		{key:"group",id:"title-manage-group"},
@@ -651,6 +918,38 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	];
 	
 	var arrayBlueBackground = [
+		//online
+		//freeq
+		//lesson1
+		{key:"freelessontemplate1",id:"divShowFreeQ",body:"homeMenuFreeLesson1"},
+		{key:"list-freelessontemplate1",id:"divShowFreeQ",body:"homeMenuFreeLesson1"},
+		{key:"freelessonplan1",id:"divShowFreeQ",body:"homeMenuFreeLesson1"},
+		{key:"list-freelessonplan1",id:"divShowFreeQ",body:"homeMenuFreeLesson1"},
+		
+		//lesson2
+		{key:"freelessontemplate2",id:"divShowFreeQ",body:"homeMenuFreeLesson2"},
+		{key:"list-freelessontemplate2",id:"divShowFreeQ",body:"homeMenuFreeLesson2"},
+		{key:"freelessonplan2",id:"divShowFreeQ",body:"homeMenuFreeLesson2"},
+		{key:"list-freelessonplan2",id:"divShowFreeQ",body:"homeMenuFreeLesson2"},
+		
+		//lesson3
+		{key:"freelessontemplate3",id:"divShowFreeQ",body:"homeMenuFreeLesson3"},
+		{key:"list-freelessontemplate3",id:"divShowFreeQ",body:"homeMenuFreeLesson3"},
+		{key:"freelessonplan3",id:"divShowFreeQ",body:"homeMenuFreeLesson3"},
+		{key:"list-freelessonplan3",id:"divShowFreeQ",body:"homeMenuFreeLesson3"},
+		
+		{key:"kit",id:"divShowFreeQ",body:"homeMenuFreeQ"},
+		{key:"list-kit",id:"divShowFreeQ",body:"homeMenuFreeQ"},
+		//upload
+		{key:"video",id:"divShowUpload",body:"homeMenuUpload"},
+		{key:"list-video",id:"divShowUpload",body:"homeMenuUpload"},
+		{key:"mp3",id:"divShowUpload",body:"homeMenuUpload"},
+		{key:"list-mp3",id:"divShowUpload",body:"homeMenuUpload"},
+		{key:"pdf",id:"divShowUpload",body:"homeMenuUpload"},
+		{key:"list-pdf",id:"divShowUpload",body:"homeMenuUpload"},
+		{key:"word",id:"divShowUpload",body:"homeMenuUpload"},
+		{key:"list-word",id:"divShowUpload",body:"homeMenuUpload"},
+		//offline
 		{key:"lecture",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
 		{key:"list-lecture",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
 		{key:"teacher",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
@@ -661,6 +960,7 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		{key:"list-event",id:"divShowQVisit",body:"homeMenuQVisit"},
 		{key:"list-contact",id:"divShowQVisit",body:"homeMenuQVisit"},
 		{key:"list-ticket",id:"divShowQVisit",body:"homeMenuQVisit"},
+		//account
 		{key:"account",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
 		{key:"list-account",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
 		{key:"group",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
@@ -681,10 +981,34 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 			exhibition:"exhibition"
 		},
 		online:{
+			//upload
 			listUploadVideo:"list-video",
 			uploadVideo:"video",
 			listUploadPDF:"list-pdf",
 			uploadPDF:"pdf",
+			listUploadMP3:"list-mp3",
+			uploadMP3:"mp3",
+			listUploadWord:"list-word",
+			uploadWord:"word",
+			//freeq
+			//lesson1
+			listfreelessontemplate1:"list-freelessontemplate1",
+			freelessontemplate1:"freelessontemplate1",
+			listfreelessonplan1:"list-freelessonplan1",
+			freelessonplan1:"freelessonplan1",
+			//lesson2
+			listfreelessontemplate2:"list-freelessontemplate2",
+			freelessontemplate2:"freelessontemplate2",
+			listfreelessonplan2:"list-freelessonplan2",
+			freelessonplan2:"freelessonplan2",
+			//lesson3
+			listfreelessontemplate3:"list-freelessontemplate3",
+			freelessontemplate3:"freelessontemplate3",
+			listfreelessonplan3:"list-freelessonplan3",
+			freelessonplan3:"freelessonplan3",
+			
+			listKit:"list-kit",
+			kit:"kit",
 		},account:{
 			account:"account",
 			listAccount:"list-account",
@@ -693,8 +1017,34 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		}
 	}
 	
+	var parentName = {
+		age:"age",
+		kit:"kit"
+	};
+	
+	var ageID = {
+		freelesson1:{
+			id:"9fe83974155293a705e69c05e601796b1602992300428",
+			type: 1,
+		},
+		freelesson2:{
+			id:"c7f8f4a7f78efd394f798a38f3123a131602992311051",
+			type: 2,
+		},
+		freelesson3:{
+			id:"d054e3161d00ffdb997e10348ddc12351602992327393",
+			type:3
+		}
+	};
+	
 	var service = {
 		qvisit:"q-visit"
+	}
+	
+	var videoStatus = {
+		complete:"complete",
+		uploading:"uploading",
+		error:"error"
 	}
 	
 	var adminAccountType = ["admin"];
@@ -713,6 +1063,12 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		success:200
 	};
 
+	var videoQuaility = {
+		 firstQuality:360, 
+		 secondQuality:480, 
+		 thirdQuality:720
+	}
+	
 	var indexCurrentTeacher = -1;
 	
 	var secret = "sunqcryptomessthisisimportantsoimportantheheheeee";
@@ -721,9 +1077,10 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	var adminURL = "http://admin.sundayq.com/";
 	var urlWebsiteLogin = adminURL+"adminlogin";
+	var urlWebsiteChat = adminURL+"chat";
 	
 	//server url
-	var mainURL= "http://103.146.22.168:3000/";
+	var mainURL= "http://103.153.68.12:3000/";
 	
 	//account login
 	var accountPartURL = "account/";
@@ -748,11 +1105,26 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 	
 	//online
 	//upload video
-	var uploadVideoMainUrl = "resource/video";	
+	var uploadVideoMainUrl = "resource/video";
+	var dealVideoMainUrl = "resource/video";		
+	var uploadInfoVideoMainUrl = "resource/video/info";	
 	var uploadListVideoUrl = "resource/videos";	
 	var uploadVideoUploadUrl = "/upload";
 	var uploadVideoDeleteUrl = "resource/removevideo/";	
 	
+	//upload mp3 - upload pdf - upload word
+	var uploadResource = "resource";
+	
+	//free lesson template
+	var listFreeLessonUrl  = "lessons";
+	var freeLessonUrl  = "lesson";
+	//free lesson plan
+	var listFreeLessonPlanUrl  = "age-plan";
+	var freeLessonPlanUrl  = "age-plan/month";
+	
+	//kit
+	var listKitUrl  = "kits";
+	var kitUrl  = "kit";	
 	
 	//upload file
 	var fileType = {
@@ -816,25 +1188,61 @@ $GLOBALS["LECTURE_LECTURE_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm 
 		return urlWebsiteLogin;
 	}
 	//online
+	//freelesson plan
+	function getURLFreeLessonPlan(ageType,month){
+		return mainURL + freeLessonPlanUrl + "/" + ageType + "/" + month;
+	}
+	function getURLListFreeLessonPlan(ageType){
+		return mainURL + listFreeLessonPlanUrl + "/" + ageType;
+	}
+	//freelesson template
+	function getURLFreeLessonFromAgeMonth(ageType,month){
+		return mainURL + listFreeLessonUrl + "/" + ageType + "/" + month;
+	}
+	//chỉnh sửa, tạo mới
+	function getURLFreeLesson(lId){
+		return mainURL + freeLessonUrl + "/" + lId;
+	}
+	function getURLListFreeLesson(parrentName, parrentId){
+		return mainURL + listFreeLessonUrl + "/" + parrentName + "/" + parrentId;
+	}
+	//kit
+	function getURLKit(kitId){
+		return kitId == null ? mainURL + kitUrl : mainURL + kitUrl + "/" + kitId;
+	}
+	function getURLListKit(){
+		return mainURL + listKitUrl;
+	}
+	
 	//video
 	function getListVideo(){
 		return mainURL + uploadListVideoUrl;
 	}
+	function getUploadVideo(vId){
+		return mainURL + uploadVideoMainUrl + "/" + vId;
+	}
+	function watchVideo(vId,option){
+		//console.log(mainURL , dealVideoMainUrl,mainURL + dealVideoMainUrl + "/" + vId);
+		return option == null ? mainURL + vId : mainURL + vId + "?" + option;
+	}
+	function getInfoVideo(vId){
+		return mainURL + uploadInfoVideoMainUrl + "/" + vId;
+	}
 	function postInitVideo(){
-		return mainURL+uploadVideoPartUrl;
+		return mainURL+uploadVideoMainUrl;
 	}
 	function putTitleDescriptionVideo(vId){
-		return mainURL+uploadVideoPartUrl + "/" + vId;
+		return mainURL+uploadVideoMainUrl + "/" + vId;
 	}
 	function putUploadVideo(vId){
-		return mainURL+uploadVideoPartUrl + "/" + uploadVideoUploadUrl  + "/" + vId;
+		return mainURL+uploadVideoMainUrl + uploadVideoUploadUrl + "/" + vId;
 	}
 	function deleteVideo(vName){
 		return mainURL+uploadVideoDeleteUrl + vName;
 	}
 	//uploadfile
 	function postFile(fileType){
-		return mainURL+uploadFileMainUrl+fileType;
+		return mainURL + uploadFileMainUrl + fileType;
 	}
 	function getFile(fileType,fileName){
 		return mainURL+uploadFileMainUrl+fileType+"/"+fileName;
