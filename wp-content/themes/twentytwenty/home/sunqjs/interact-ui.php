@@ -2,7 +2,7 @@
 ?>
 <script>
 	//online
-function showOnLineMode(){
+var showOnLineMode = function(){
 	if(window.innerWidth > 480){
 	   let onlineOpen = document.getElementById("homeMenuOnline");
 		onlineOpen && function(){onlineOpen.style.display = "block"}();
@@ -13,9 +13,10 @@ function showOnLineMode(){
 	
 }
 
-function hideOnLineMode(){
+var hideOnLineMode = function(){
 	hideUpload();
 	hideFreeQ();
+	hideManageAccount();
 	if(window.innerWidth > 480){
 	   	let onlineOpen = document.getElementById("homeMenuOnline");
 	onlineOpen && function(){onlineOpen.style.display = "none"}();
@@ -26,6 +27,71 @@ function hideOnLineMode(){
 
 }
 
+//Manage Account
+function showManageAccount(){
+	if(window.innerWidth > 480){
+	   let sUserAccount = document.getElementById("homeMenuManageAccount");
+		sUserAccount && function(){sUserAccount.style.display = "block"}();
+	} else {
+	    let sUserAccount = document.getElementById("smallhomeMenuManageAccount");
+		sUserAccount && function(){sUserAccount.style.display = "block"}();
+	   }
+}
+
+function hideManageAccount(){
+	hideAccountUser();
+	hideConfirmBanking();
+	if(window.innerWidth > 480){
+	   let sUserAccount = document.getElementById("homeMenuManageAccount");
+		sUserAccount && function(){sUserAccount.style.display = "none"}();
+	} else {
+	    let sUserAccount = document.getElementById("smallhomeMenuManageAccount");
+		sUserAccount && function(){sUserAccount.style.display = "none"}();
+	   }
+}
+//consifrm banking
+function showConfirmBanking(){
+	showManageAccount();
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuConfirmBanking");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuConfirmBanking");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+}
+
+function hideConfirmBanking(){
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuConfirmBanking");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuConfirmBanking");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	   }
+}
+//list user account
+function showAccountUser(){
+	showManageAccount();
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuUserAccount");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuUserAccount");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+}
+
+function hideAccountUser(){
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuUserAccount");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuUserAccount");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	   }
+}
+	
 //freeQ
 function showFreeQ(){
 	if(window.innerWidth > 480){
@@ -135,7 +201,7 @@ function hideUpload(){
 }
 	
 //offline
-function showOffLineMode(){
+var showOffLineMode = function(){
 // 	let offlineOpen = document.getElementById("homeMenuOffline");
 // 	offlineOpen.style.display == "" || offlineOpen.style.display == undefined || offlineOpen.style.display == "none" ? function(){offlineOpen.style.display = "block"}() : function(){offlineOpen.style.display = "none"}();
 	if(window.innerWidth > 480){
@@ -147,7 +213,7 @@ function showOffLineMode(){
 	   }
 }
 	
-function hideOffLineMode(){
+var hideOffLineMode = function(){
 	hideQAcademy();
 	hideQVisit();
 	if(window.innerWidth > 480){
@@ -203,7 +269,7 @@ function hideQVisit(){
 }
 	
 //account
-function showAccountMode(){
+var showAccountMode = function(){
 	if(window.innerWidth > 480){
 	   let adminOpen = document.getElementById("homeMenuAccount");
 		adminOpen && function(){adminOpen.style.display = "block"}();
@@ -214,13 +280,32 @@ function showAccountMode(){
 	
 }
 
-function hideAccountMode(){
+var hideAccountMode = function(){
 	if(window.innerWidth > 480){
 	   let adminOpen = document.getElementById("homeMenuAccount");
 		adminOpen && function(){adminOpen.style.display = "none"}();
 	} else {
 	     let adminOpen = document.getElementById("smallHomeMenuAccount");
 		adminOpen && function(){adminOpen.style.display = "none"}();
+	   }
+	
+}
+	
+	//chat
+var showChatMode = function(){
+	if(window.innerWidth > 480){
+	 
+	} else {
+	   
+	 }
+	
+}
+
+var hideChatMode = function(){
+	if(window.innerWidth > 480){
+	  
+	} else {
+	     
 	   }
 	
 }

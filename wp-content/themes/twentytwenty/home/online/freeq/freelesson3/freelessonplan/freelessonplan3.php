@@ -184,7 +184,7 @@ include get_theme_file_path("home/online/freeq/freelesson3/freelessonplan/intera
                 function(res) {
                     setLoadingDataFreeLessonPlan3(false);
                     if (res.code === networkCode.success) {
-                        myCurrentFreeLessonPlan3 = res.data;
+                        myCurrentFreeLessonPlan3 = res.data.agePlan;
                         //month
                         let tempDatee = new Date();
                         tempDatee.setMonth(myCurrentFreeLessonPlan3.month - 1);
@@ -198,7 +198,11 @@ include get_theme_file_path("home/online/freeq/freelesson3/freelessonplan/intera
                             timeFormat: 'H:ii',
                             display: 'bubble',
                         });
-                        document.getElementById("idFreeLessonPlan3Month").value = myCurrentFreeLessonPlan3.month;
+						let tempDate = new Date();
+			tempDate.setMonth(myCurrentFreeLessonPlan3.month);
+			let monthTemp = ["Tháng 0", "Tháng một", "Tháng hai", "Tháng ba", "Tháng tư", "Tháng năm", "Tháng sáu", "Tháng bảy", "Tháng tám", "Tháng chín", "Tháng mười", "Tháng mười một", "Tháng mười hai"];
+			let monthmonth = monthTemp[tempDate.getMonth()] + ",năm " + tempDate.getFullYear();
+                        document.getElementById("idFreeLessonPlan3Month").value = monthmonth;
                         //title
                         document.getElementById("idTitleFreeLessonPlan3").value = myCurrentFreeLessonPlan3.title == null ? "" : myCurrentFreeLessonPlan3.title;
 
@@ -417,6 +421,8 @@ include get_theme_file_path("home/online/freeq/freelesson3/freelessonplan/intera
                         delete tempmyCurrentFreeLessonPlan3.id;
                         delete tempmyCurrentFreeLessonPlan3.serviceId;
                         delete tempmyCurrentFreeLessonPlan3.month;
+                        delete tempmyCurrentFreeLessonPlan3.ageId;
+                        delete tempmyCurrentFreeLessonPlan3.thumbnail;
 
 
                         setLoadingDataFreeLessonPlan3(true);

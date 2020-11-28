@@ -5,6 +5,10 @@
 
 	//online
 	$GLOBALS["ADMIN_ONLINE"] = "Học Online";
+    //manage account
+    $GLOBALS["ADMIN_ONLINE_MANAGE_ACCOUNT"] = "Quản lý người dùng";
+	$GLOBALS["ADMIN_ONLINE_CONFIRM_BANKING"] = "Danh sách đơn hàng";
+	$GLOBALS["ADMIN_ONLINE_ACCOUNT_USER"] = "Danh sách người dùng";
     //upload
 	$GLOBALS["ADMIN_ONLINE_UPLOAD_MANAGE"] = "Quản lý tài nguyên";
 	$GLOBALS["ADMIN_ONLINE_UPLOAD_VIDEO"] = "Tải lên video";
@@ -47,6 +51,7 @@
 	$GLOBALS["ADMIN_SUPER"] = "Quyền quản trị";
 	$GLOBALS["ADMIN_SUPER_ACCOUNT"] = "Quản lý tài khoản";
 	$GLOBALS["ADMIN_SUPER_GROUP"] = "Quản lý nhóm quyền";
+	$GLOBALS["ADMIN_CHAT"] = "Tư vấn trực tuyến";
 
 	//login
 	$GLOBALS["LOGIN_USERNAME_LABEL"] = "Tên đăng nhập";
@@ -57,7 +62,62 @@
 	$GLOBALS["LOGIN_WRONG_USERNAME_PASWORD"] = "Sai tên đăng nhập hoặc mật khẩu";
 
 	//online
-	//list freelesson
+	//confirmmbanking
+	$GLOBALS["CONFIRM_BANKING_REAL_TITLE"] = "Chi tiết đơn hàng";
+	$GLOBALS["CONFIRM_BANKING_LIST_TITLE"] = "Danh sách các đơn hàng";
+	$GLOBALS["CONFIRM_BANKING_NO_LIST"] = "Danh sách các đơn hàng trống";
+	$GLOBALS["CONFIRM_BANKING_LIST_TITLE_PENDING"] = "Danh sách các đơn hàng đang chờ xác nhận";
+	$GLOBALS["CONFIRM_BANKING_NO_LIST_TITLE_PENDING"] = "Danh sách cáct đơn hàng đang chờ xác nhận trống";
+	$GLOBALS["CONFIRM_BANKING_LIST_TITLE_PAID"] = "Danh sách các đơn hàng đã đang chờ phê duyệt";
+	$GLOBALS["CONFIRM_BANKING_NO_LIST_TITLE_PAID"] = "Danh sách các đơn hàng đã đang chờ phê duyệt trống";
+	$GLOBALS["CONFIRM_BANKING_LIST_TITLE_COMPLETE"] = "Danh sách các đơn hàng đã hoàn thành";
+	$GLOBALS["CONFIRM_BANKING_NO_LIST_TITLE_COMPLETE"] = "Danh sách các đơn hàng đã hoàn thành trống";
+	$GLOBALS["CONFIRM_BANKING_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["CONFIRM_BANKING_LIST_COL_2"] = "Số điện thoại khách hàng";
+	$GLOBALS["CONFIRM_BANKING_LIST_COL_3"] = "Trạng thái";
+	$GLOBALS["CONFIRM_BANKING_LIST_COL_4"] = "Chỉnh sửa";
+	$GLOBALS["CONFIRM_BANKING_PROVE_TRANSACTION"] = "Phê duyệt";
+	$GLOBALS["CONFIRM_BANKING_PROVE_COMPLETE"] = "Hoàn thành";
+	$GLOBALS["CONFIRM_BANKING_COMPLETE"] = "Hoàn thành";
+	$GLOBALS["CONFIRM_BANKING_PENDING"] = "Cần phê duyệt";
+	$GLOBALS["CONFIRM_BANKING_PAID"] = "Đã thanh toán";
+	$GLOBALS["CONFIRM_BANKING_CANCEL"] = "Đã hủy bỏ";
+	$GLOBALS["CONFIRM_BANKING_ERROR"] = "Có lỗi giao dịch";
+	$GLOBALS["CONFIRM_BANKING_APRROVE"] = "Phê duyệt";
+	$GLOBALS["CONFIRM_BANKING_REJECT"] = "Từ chối";
+	$GLOBALS["CONFIRM_BANKING_GO_COMPLETE"] = "Hoàn thành";
+	$GLOBALS["CONFIRM_BANKING_TRANSACTION_NO_INFO"] = "Không có thông tin chuyển khoản";
+
+	$GLOBALS["CONFIRM_BANKING_AVATAR"] = "Ảnh đơn hàng";
+	$GLOBALS["CONFIRM_BANKING_PHONE"] = "Số điện thoại khách hàng";
+	$GLOBALS["CONFIRM_BANKING_STATUS"] = "Trạng thái";
+	$GLOBALS["CONFIRM_BANKING_KIT"] = "Bộ KIT";
+	$GLOBALS["CONFIRM_BANKING_KIT_AVATAR"] = "Ảnh bộ KIT";
+	$GLOBALS["CONFIRM_BANKING_KIT_NAME"] = "Tên bộ KIT";
+	$GLOBALS["CONFIRM_BANKING_KIT_PRICE"] = "Giá bộ KIT";
+	$GLOBALS["CONFIRM_BANKING_KIT_SUB_DETAIL"] = "Thông tin ngắn gọn về bộ KIT";
+	$GLOBALS["CONFIRM_BANKING_KIT_GO_TO_KIT"] = "Xem chi tiết bộ KIT";
+	$GLOBALS["CONFIRM_BANKING_KIT_PRICE_DATE"] = "Ngày giao dịch";
+	$GLOBALS["CONFIRM_BANKING_KIT_PRICE_BANKING"] = "Số tiền đã giao dịch";
+	$GLOBALS["CONFIRM_BANKING_KIT_PRICE_NOTE"] = "Lời nhắn khi giao dịch";
+	$GLOBALS["CONFIRM_BANKING_KIT_TRANSSACTIONS"] = "Giao dịch";
+	$GLOBALS["CONFIRM_BANKING_KIT_TYPE_TRANSACITON_METHOD"] = "Phương thức thanh toán";
+	$GLOBALS["CONFIRM_BANKING_KIT_TYPE_PAY_ONLINE"] = "Thanh toán trực tuyến";
+	$GLOBALS["CONFIRM_BANKING_KIT_TYPE_TRANSFER_ONLINE"] = "Chuyển khoản";
+	$GLOBALS["CONFIRM_BANKING_KIT_TYPE_TRANSFER_ORDER"] = "Giao dịch ";
+	$GLOBALS["CONFIRM_BANKING_TITLE"] = "Chi tiết đơn hàng";
+
+    //list user account
+	$GLOBALS["ACCOUNT_USER_REAL_TITLE"] = "Chi tiết tài khoản người dùng";
+	$GLOBALS["ACCOUNT_USER_LIST_TITLE"] = "Danh sách người dùng";
+	$GLOBALS["ACCOUNT_USER_NO_LIST"] = "Danh sách người dùng trống";
+	$GLOBALS["ACCOUNT_USER_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["ACCOUNT_USER_LIST_COL_2"] = "Số điện thoại";
+	$GLOBALS["ACCOUNT_USER_LIST_COL_3"] = "Email";
+	$GLOBALS["ACCOUNT_USER_LIST_COL_4"] = "Ngày tạo";
+	$GLOBALS["ACCOUNT_USER_LIST_COL_5"] = "Chỉnh sửa";
+
+    //list freelesson
 	//list freelessontemplate
 	$GLOBALS["FREELESSON_TEMPLATE_REAL_TITLE"] = "Bài giảng mẫu";
 	$GLOBALS["FREELESSON_TEMPLATE_LIST_TITLE"] = "Danh sách bài giảng mẫu";
@@ -81,6 +141,7 @@
 	$GLOBALS["FREELESSON_PLAN_LIST_COL_2"] = "Tên kế hoạch bài giảng";
 	$GLOBALS["FREELESSON_PLAN_LIST_COL_3"] = "Tháng";
 	$GLOBALS["FREELESSON_PLAN_LIST_COL_4"] = "Mô tả ngắn gọn";
+	$GLOBALS["FREELESSON_PLAN_LIST_COL_5"] = "Chỉnh sửa";
 	$GLOBALS["FREELESSON_PLAN_LIST_BUTTON_EDIT_KIT"] = "Chỉnh sửa";
 	$GLOBALS["FREELESSON_PLAN_LIST_BUTTON_DELETE_KIT"] = "Xóa";
 	$GLOBALS["FREELESSON_PLAN_LIST_BUTTON_ADD_KIT"] = "Thêm mới kế hoạch bài giảng";
@@ -106,7 +167,7 @@
 	$GLOBALS["FREELESSON_PLAN_INPUT_NAME"] = "Tên kế hoạch bài giảng";
 	$GLOBALS["FREELESSON_PLAN_INPUT_NAME_PLACEHOLDER"] = "Nhập tên kế hoạch bài giảng";
 	$GLOBALS["FREELESSON_PLAN_INPUT_IMAGE"] = "Ảnh kế hoạch bài giảng";
-	$GLOBALS["FREELESSON_PLAN_INPUT_NAME_PLACEHOLDER"] = "Nhập ảnh kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_IMAGE_PLACEHOLDER"] = "Nhập ảnh kế hoạch bài giảng";
     $GLOBALS["FREELESSON_PLAN_INPUT_MONTH"] = "Tháng bài giảng mẫu";
 	$GLOBALS["FREELESSON_PLAN_INPUT_MONTH_PLACEHOLDER"] = "Nhập tháng bài giảng mẫu";
 	$GLOBALS["FREELESSON_PLAN_INPUT_DETAIL"] = "Thông tin về bài giảng mẫu";
@@ -162,6 +223,7 @@
 	$GLOBALS["VIDEO_LIST_COL_5"] = "Chỉnh sửa";
 	$GLOBALS["VIDEO_STATUS_COMPLETE"] = "Hoàn thành";
 	$GLOBALS["VIDEO_STATUS_UPLOAD"] = "Cần upload video";
+	$GLOBALS["VIDEO_STATUS_CREATE"] = "Chưa có video";
 	$GLOBALS["VIDEO_STATUS_ERROR"] = "Lỗi khi tải lên";
 	$GLOBALS["VIDEO_VIDEO_UPLOAD"] = "Chỉnh sửa nội dung video";
 	$GLOBALS["VIDEO_TITLE_UPLOAD"] = "Chỉnh sửa tiêu đề video";
@@ -614,6 +676,11 @@
 		IMAGE_LOADED_FAILED:"Tải ảnh thất bại",
 		
 		//online
+		//confirm banking
+		CONFIRM_BANKING_APPROVE_SUCCESS:"Phê duyệt đơn thành công",
+		CONFIRM_BANKING_APPROVE_FAILED: "Phê duyệt đơn không thành công",
+		CONFIRM_BANKING_REJECT_SUCCESS:"Hủy bỏ đơn thành công",
+		CONFIRM_BANKING_REJECT_FAILED: "Hủy bỏ đơn không thành công",
 		//freeq
 		//freelessontemplate
 		FREELESSON_TEMPLATE_EDIT_SUCCESS: "Chỉnh sửa thành công",
@@ -680,6 +747,8 @@
 		REGISTER_EDIT_SUCCESS:"Chỉnh sửa chú thích thành công",
 		REGISTER_EDIT_FAILED: "Chỉnh sửa chú thích  không thành công",
 		
+		REQUEST_PROVE: "Bạn có muốn phê duyệt hóa đơn này?",
+		REQUEST_REJECT: "Bạn có muốn từ chối hóa đơn này?",
 		REQUEST_TITLE: "Bạn có muốn tạo mới?",
 		REQUEST_ADD: "Bạn có muốn thêm?",
 		REQUEST_EDIT: "Bạn có muốn sửa đổi?",
@@ -719,6 +788,7 @@
 		
 		LECTURE_COURSE_PLAN_NULL: "Nội dung khóa học không được để trống.Tại khóa học thứ ",
 		
+		REQUEST_PASSWORD_CHANGE:"Bạn có muốn đổi mật khẩu không?",
 		REQUEST_DELETE:"Bạn có muốn xóa không?",
 		REQUEST_ACTIVE:"Bạn có muốn kích hoạt tài khoản này?",
 		REQUEST_DEACTIVE:"Bạn có muốn tạm thời vô hiệu hóa tài khoản này?",
@@ -791,6 +861,7 @@
 		CANCEL:"Hủy bỏ",
 		TRY_AGAIN:"Thử lại",
 		UPDATE:"Cập nhật",
+		UPLOAD_TRANSFER:"Tải lên video",
 	    FREELESSON_PLAN_LIST_NO_NEED_TO_CHANGE_MONTH: "Không được thay đổi tháng bài giảng",
 		
 		SESSION_TOKEN:"STKEN",
@@ -846,6 +917,10 @@
 		qvisit:"qvisit",
 		//online
 		online:"online",
+		//useraccount
+		manageaccount:"manageaccount",
+		useraccount:"useraccount",
+		confirmbanking:"managebanking",
 		//upload
 		upload:"upload",
 		//freeq
@@ -859,7 +934,8 @@
 		
 		sa:"sa",//super admin
 		account:"account",
-		group:"group"
+		group:"group",
+		chat:"chat"
 	}
 	
 	var sunQRequestType = {
@@ -882,6 +958,10 @@
 		{key:"list-contact",id:"title-manage-contact"},
 		{key:"list-ticket",id:"title-manage-ticket"},
 		//online
+		//user account
+		{key:"list-confirmbanking",id:"title-manage-confirmbanking"},
+		{key:"confirmbanking",id:"title-manage-confirmbanking"},
+		{key:"list-useraccount",id:"title-manage-useraccount"},
 		//freeq
 		//lesson 1
 		{key:"freelessontemplate1",id:"title-manage-template-lesson-1"},
@@ -914,11 +994,18 @@
 		{key:"account",id:"title-manage-account"},
 		{key:"list-account",id:"title-manage-account"},
 		{key:"group",id:"title-manage-group"},
-		{key:"list-group",id:"title-manage-group"}
+		{key:"list-group",id:"title-manage-group"},
+		//admin
+		{key:"admin",id:"homeMenuManageChat"}
 	];
 	
 	var arrayBlueBackground = [
 		//online
+		//user account
+		{key:"list-confirmbanking",id:"divShowManageAccount",body:"homeMenuManageAccount"},
+		{key:"confirmbanking",id:"divShowManageAccount",body:"homeMenuManageAccount"},
+		{key:"list-useraccount",id:"divShowManageAccount",body:"homeMenuManageAccount"},
+		
 		//freeq
 		//lesson1
 		{key:"freelessontemplate1",id:"divShowFreeQ",body:"homeMenuFreeLesson1"},
@@ -964,7 +1051,9 @@
 		{key:"account",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
 		{key:"list-account",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
 		{key:"group",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
-		{key:"list-group",id:"homeMenuManageAdmin",body:"homeMenuAccount"}
+		{key:"list-group",id:"homeMenuManageAdmin",body:"homeMenuAccount"},
+		//admin
+		{key:"admin",id:"homeMenuManageChat",body:"homeMenuChat"}
 	];
 	
 	var listScreen = {
@@ -981,6 +1070,10 @@
 			exhibition:"exhibition"
 		},
 		online:{
+			//useraccount
+			listConfirmBanking:"list-confirmbanking",
+			confirmBanking:"confirmbanking",
+			useraccount:"list-useraccount",
 			//upload
 			listUploadVideo:"list-video",
 			uploadVideo:"video",
@@ -1014,6 +1107,8 @@
 			listAccount:"list-account",
 			group:"group",
 			listGroup:"list-group",
+		},chat:{
+			admin:"admin"
 		}
 	}
 	
@@ -1041,10 +1136,21 @@
 		qvisit:"q-visit"
 	}
 	
+	var confirmStatus = {
+		pending:"pending",
+		paid:"paid",
+		complete:"complete"
+	}
+	
 	var videoStatus = {
 		complete:"complete",
 		uploading:"uploading",
+		create:"create",
 		error:"error"
+	}
+	
+	var moneyType = {
+		payonline : "pay_online",
 	}
 	
 	var adminAccountType = ["admin"];
@@ -1069,6 +1175,12 @@
 		 thirdQuality:720
 	}
 	
+	var accuntSunQType = {
+		member:"member",
+		teacher:"teacher",
+		admin:"admin"
+	}
+	
 	var indexCurrentTeacher = -1;
 	
 	var secret = "sunqcryptomessthisisimportantsoimportantheheheeee";
@@ -1085,6 +1197,7 @@
 	//account login
 	var accountPartURL = "account/";
 	var listAccountURL = "accounts/";
+	var accountPasswordChangeUrl = "/account/password/reset"
 	
 	//login
 	var adminLoginPartURL = "admin/login";
@@ -1104,6 +1217,17 @@
 	var tokenCheckUrl  = accountPartURL + tokenPartURL;
 	
 	//online
+	//order
+	var orderUrl = "order";
+	var listOrderUrl = "orders";
+	var listOrderStatusUrl = "orders/status";
+	var completeOrderUrl = "order/complete";
+	//verify transsaction
+	var orderVerifyOrderUrl = "transaction/verify/transferMoney";
+	
+	//user account
+	var listUserAccountUrl = "accounts";
+	
 	//upload video
 	var uploadVideoMainUrl = "resource/video";
 	var dealVideoMainUrl = "resource/video";		
@@ -1188,6 +1312,29 @@
 		return urlWebsiteLogin;
 	}
 	//online
+	//order
+	function getURLOrder(orderId){
+		return mainURL + orderUrl + "/" + orderId;
+	}
+	function putURLCompleteOrder(orderId){
+		return mainURL + completeOrderUrl + "/" + orderId;
+	}
+	function verifyTransferMoney(transferId){
+		return mainURL + orderVerifyOrderUrl + "/" + transferId;
+	}
+	function getListURLOrder(){
+		return mainURL + listOrderUrl;
+	}
+	function getListURLOrderStatus(status){
+		return mainURL + listOrderStatusUrl + "/" + status;
+	}
+	//user
+	function getListURLUserAccount(){
+		return mainURL + listUserAccountUrl;
+	}
+	function getPasswordChange(){
+		return mainURL + accountPasswordChangeUrl;
+	}
 	//freelesson plan
 	function getURLFreeLessonPlan(ageType,month){
 		return mainURL + freeLessonPlanUrl + "/" + ageType + "/" + month;

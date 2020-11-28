@@ -138,7 +138,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		} 
 		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.offline.event,dictionaryKey.editStatus,item.id);
 		
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td>"+getDateString(new Date(item.startAt))+"</td><td>"+getDateString(new Date(item.finishAt))+"</td><td>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteEvent("+(index-1)+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td class='tdEventTitle'><div class='divEventTitle'>"+item.title+"</div></td><td>"+getDateString(new Date(item.startAt))+"</td><td>"+getDateString(new Date(item.finishAt))+"</td><td class='tdEventDescription'><div class='divEventDescription'>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</div></td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteEvent("+(index-1)+")\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

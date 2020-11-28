@@ -67,7 +67,7 @@ function createListFreeLessonPlan1(result){
 				parent.innerHTML ="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_4"]; ?>'+"</th>";
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_5"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	createTableFreeLessonPlan1(tbody,list,getCurrentFreeLessonPlan1());
 	parent.appendChild(tbody);
@@ -122,7 +122,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		parent.innerHTML="";
 	let tbody = document.createElement("tbody");
 	let trFirst = document.createElement("tr");
-	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_4"]; ?>'+"</th>";
+	trFirst.innerHTML = "<th>" + '<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_1"]; ?>' +"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_2"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_3"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_4"]; ?>'+"</th><th>"+'<?php echo $GLOBALS["FREELESSON_PLAN_LIST_COL_5"]; ?>'+"</th>";
 	tbody.appendChild(trFirst);
 	createTableFreeLessonPlan1(tbody,arrayOldPage,number);
 	parent.appendChild(tbody);
@@ -136,8 +136,12 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		if (index % 2 != 0){
 			trContent.className = 'manage-list-teacher-table-detail-strong';
 		} 
+			let tempDate = new Date();
+			tempDate.setMonth(item.month);
+			let monthTemp = ["Tháng 0", "Tháng một", "Tháng hai", "Tháng ba", "Tháng tư", "Tháng năm", "Tháng sáu", "Tháng bảy", "Tháng tám", "Tháng chín", "Tháng mười", "Tháng mười một", "Tháng mười hai"];
+			let monthmonth = monthTemp[tempDate.getMonth()] + ",năm " + tempDate.getFullYear();
 		let tempAHref = makeATagRedirect(sunQMode.online,listScreen.online.freelessonplan1,dictionaryKey.editStatus,item.id);
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td class=\"tdShortDesscription\">"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><div class='manage-list-teacher-table-detail-div-edit'><a href=\"" + tempAHref + "&month="+item.month+"\">Chỉnh sửa</a></div><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteFreeLessonPlan1("+(index-1)+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td>"+monthmonth+"</td><td class=\"tdShortDesscription\">"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><div class='manage-list-teacher-table-detail-div-edit'><a href=\"" + tempAHref + "&month="+item.month+"\">Chỉnh sửa</a></div><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteFreeLessonPlan1("+(index-1)+")\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

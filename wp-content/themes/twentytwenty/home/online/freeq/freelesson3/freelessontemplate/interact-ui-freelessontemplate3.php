@@ -315,10 +315,9 @@
                                
                                 var hls = new Hls({
                                     xhrSetup: xhr => {
-                                        xhr.setRequestHeader(getLocalStorage(dictionary.MSEC))
+                                        xhr.setRequestHeader('Authorization', "Bearer " + getLocalStorage(dictionary.MSEC))
                                     }
                                 });
-                                var hls = new Hls();
                                 hls.loadSource(getHomeURL() + index.fileUrl);
                                 hls.attachMedia(video);
                                 hls.on(Hls.Events.MANIFEST_PARSED, function() {

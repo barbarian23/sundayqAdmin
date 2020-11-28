@@ -141,7 +141,7 @@
 	
 		function makeAlertPermisionDenial(){
 					let timerIntervalListTeacher;
-					let textRedirectTitle = dictionary.ACCESS_DENIED_SERVER_TITLE;
+					let textRedirectTitle = dictionary.ACCESS_DENIED_SERVER_TITLE ? dictionary.ACCESS_DENIED_SERVER_TITLE : "Bạn không có quyền này";
 					SunQAlert()
                     .position('center')
                     .title(textRedirectTitle)
@@ -192,6 +192,10 @@
 		}
 		return "?mode="+mode+"&page="+page+"&action="+action;
 	}
+	
+	function handleNumber(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 	
 	function checkMobileIOS() {
         const toMatch = [
@@ -343,6 +347,18 @@
             return new MyUploadAdapter(loader);
         };
     }
+	
+	function fromDateToString(strDate){
+		 let monthTempDate = ["tháng một", "tháng hai", "tháng ba", "tháng tư", "tháng năm", "tháng sáu", "tháng bảy", "tháng tám", "tháng chín", "tháng mười", "tháng mười một", "tháng mười hai"];
+		let temppDate = new Date(strDate);
+		return "Ngày "+temppDate.getDate()+" " + monthTempDate[temppDate.getMonth()] + " năm " + temppDate.getFullYear();
+	}
+	
+	function fromDateTimeToString(strDate){
+		 let monthTempDate = ["tháng một", "tháng hai", "tháng ba", "tháng tư", "tháng năm", "tháng sáu", "tháng bảy", "tháng tám", "tháng chín", "tháng mười", "tháng mười một", "tháng mười hai"];
+		let temppDate = new Date(strDate);
+		return temppDate.getHours()+" giờ "+temppDate.getMinutes()+" phút,ngày "+temppDate.getDate()+" " + monthTempDate[temppDate.getMonth()] + " năm " + temppDate.getFullYear();
+	}
 	
 	function setInputFilter(textbox, inputFilter) {
 		  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {

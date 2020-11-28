@@ -116,7 +116,7 @@
     }
 
     //loading data isUploadingDataTeacher
-    Object.defineProperty(sunqStatus, "isUploadingDataTeacher", {
+    Object.defineProperty(teacherStatus, "isUploadingDataTeacher", {
         get() {
             return _isUploadingDataTeacher;
         },

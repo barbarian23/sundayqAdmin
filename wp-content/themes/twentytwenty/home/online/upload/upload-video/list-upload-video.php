@@ -15,7 +15,7 @@ window.onload = function() {
     }
 
 function deleteUploadVideo(mId){
-	 console.log("delete", listUploadVideo[mId]);
+	 console.log("delete", listUploadVideo[mId]);//alert("delete"+listTeacher[mId].fileName);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -31,7 +31,7 @@ function deleteUploadVideo(mId){
                     seFetchingUploadVideo(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getUploadVideo(listUploadVideo[mId].id),
+                        deleteVideo(listUploadVideo[mId].id),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {
@@ -53,10 +53,9 @@ function deleteUploadVideo(mId){
 									   } else if (res.code === networkCode.sessionTimeOut) {
                                 makeAlertRedirect();
                             } else {
-								//alert("");
 								SunQAlert()
 										.position('center')
-										.title(dictionaryKey.SERVER_INFO + res.message + " xóa " +listTeacher[mId].id + " vị trí "+ mId)
+										.title(dictionaryKey.LECTURE_DELETE_FAILED)
 										.type('error')
 										.confirmButtonColor("#3B4EDC")
 										.confirmButtonText(dictionaryKey.TRY_AGAIN)

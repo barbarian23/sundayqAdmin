@@ -53,7 +53,7 @@ function deleteFreeLessonTemplate1(mId){
 								//alert("");
 								SunQAlert()
 										.position('center')
-										.title(dictionaryKey.SERVER_INFO + res.message + " xóa " +listTeacher[mId].id + " vị trí "+ mId)
+										.title(dictionaryKey.LECTURE_DELETE_FAILED)
 										.type('error')
 										.confirmButtonColor("#3B4EDC")
 										.confirmButtonText(dictionaryKey.TRY_AGAIN)

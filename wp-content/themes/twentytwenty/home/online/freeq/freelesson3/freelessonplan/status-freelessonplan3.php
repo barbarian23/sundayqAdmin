@@ -136,7 +136,7 @@ var  _isFetchingFreeLessonPlan3 = false,
                     console.log(res);
                     seFetchingFreeLessonPlan3(false);
                     if (res.code === networkCode.success) {
-                        if (res.data.videos == null || res.data.videos.length == 0) {
+                        if (res.data.agePlans == null || res.data.agePlans.length == 0) {
 							console.log("no video");
                             	setGetFreeLessonPlan3FromServerSuccess(false);
 							

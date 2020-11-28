@@ -29,6 +29,32 @@
                         </div>
                     </div>
                     <div class="home-middle-left-menu-content" id="homeMenuOnline">
+						
+						<!-- Quản lý account -->
+                        <div class="" id="divShowManageAccount">
+                            <i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_MANAGE_ACCOUNT"]; ?></span>
+                            <div class="home-middle-left-menu-tooltip">
+                                <span><?php echo $GLOBALS["ADMIN_ONLINE_MANAGE_ACCOUNT"]; ?></span>
+                            </div>
+                        </div>
+                        <div class="home-middle-left-menu-content" id="homeMenuManageAccount">
+                            <!-- confirm banking -->
+                            <div class="home-middle-left-menu" id="homeMenuConfirmBanking">
+                                <a href="?mode=online&page=list-confirmbanking"><i class="fa fa-calendar"></i><span id="title-manage-confirmbanking" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_CONFIRM_BANKING"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_ONLINE_CONFIRM_BANKING"]; ?></span>
+                                </div>
+                            </div>
+
+                            <!-- user account -->
+                            <div class="home-middle-left-menu" id="homeMenuUserAccount">
+                                <a href="?mode=online&page=list-useraccount"><i class="fa fa-calendar"></i><span id="title-manage-useraccount" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_ACCOUNT_USER"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_ONLINE_ACCOUNT_USER"]; ?></span>
+                                </div>
+                            </div>
+                        </div>
+						
                         <!-- upload -->
                         <div class="" id="divShowUpload">
                             <i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_MANAGE"]; ?></span>
@@ -47,7 +73,7 @@
 
                             <!-- pdf -->
                             <div class="home-middle-left-menu" id="homeMenuUploadPDF">
-                                <a href="?mode=online&page=list-pdf"><i class="fa fa-newspaper-o"></i><span id="title-manage-pdf" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"]; ?></span></a>
+                                <a href="?mode=online&page=list-pdf"><i class="fa fa-calendar"></i><span id="title-manage-pdf" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"]; ?></span>
                                 </div>
@@ -55,7 +81,7 @@
 
                             <!-- mp3 -->
                             <div class="home-middle-left-menu" id="homeMenuUploadMP3">
-                                <a href="?mode=online&page=list-mp3"><i class="fa fa-newspaper-o"></i><span id="title-manage-mp3" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_MP3"]; ?></span></a>
+                                <a href="?mode=online&page=list-mp3"><i class="fa fa-calendar"></i><span id="title-manage-mp3" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_MP3"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_MP3"]; ?></span>
                                 </div>
@@ -63,7 +89,7 @@
 
                             <!-- word -->
                             <div class="home-middle-left-menu" id="homeMenuUploadWord">
-                                <a href="?mode=online&page=list-word"><i class="fa fa-newspaper-o"></i><span id="title-manage-word" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_WORD"]; ?></span></a>
+                                <a href="?mode=online&page=list-word"><i class="fa fa-calendar"></i><span id="title-manage-word" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_WORD"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_WORD"]; ?></span>
                                 </div>
@@ -79,7 +105,7 @@
                         <div class="home-middle-left-menu-content" id="homeMenuFreeQ">
                             <!-- 0 -2 -->
                             <div class="" id="divShowFreeLesson1">
-                                <i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_1"]; ?></span>
+                                <i class="fa fa-calendar"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_1"]; ?></span>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_1"]; ?></span>
                                 </div>
@@ -87,7 +113,7 @@
                             <div class="home-middle-left-menu-content" id="homeMenuFreeLesson1">
                                 <!-- bài giảng mẫu -->
                                 <div class="home-middle-left-menu" id="homeMenuFreeLessonTemplate1">
-                                    <a href="?mode=online&page=list-freelessontemplate1"><i class="fa fa-calendar"></i><span id="title-manage-template-lesson-1" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_1"]; ?></span></a>
+                                    <a href="?mode=online&page=list-freelessontemplate1"><i class="fa fa-newspaper-o"></i><span id="title-manage-template-lesson-1" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_1"]; ?></span></a>
                                     <div class="home-middle-left-menu-tooltip">
                                         <span><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_1"]; ?></span>
                                     </div>
@@ -103,7 +129,7 @@
                             </div>
                             <!-- 2 - 7 -->
                             <div class="" id="divShowFreeLesson2">
-                                <i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_2"]; ?></span>
+                                <i class="fa fa-calendar"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_2"]; ?></span>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_2"]; ?></span>
                                 </div>
@@ -111,7 +137,7 @@
                             <div class="home-middle-left-menu-content" id="homeMenuFreeLesson2">
                                 <!-- bài giảng mẫu -->
                                 <div class="home-middle-left-menu" id="homeMenuFreeLessonTemplate2">
-                                    <a href="?mode=online&page=list-freelessontemplate2"><i class="fa fa-calendar"></i><span id="title-manage-template-lesson-2" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_2"]; ?></span></a>
+                                    <a href="?mode=online&page=list-freelessontemplate2"><i class="fa fa-newspaper-o"></i><span id="title-manage-template-lesson-2" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_2"]; ?></span></a>
                                     <div class="home-middle-left-menu-tooltip">
                                         <span><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_2"]; ?></span>
                                     </div>
@@ -128,7 +154,7 @@
 
                             <!-- 7 - 12 -->
                             <div class="" id="divShowFreeLesson3">
-                                <i class="fa fa-vcard"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_3"]; ?></span>
+                                <i class="fa fa-calendar"></i><span class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_3"]; ?></span>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_3"]; ?></span>
                                 </div>
@@ -136,7 +162,7 @@
                             <div class="home-middle-left-menu-content" id="homeMenuFreeLesson3">
                                 <!-- bài giảng mẫu -->
                                 <div class="home-middle-left-menu" id="homeMenuFreeLessonTemplate3">
-                                    <a href="?mode=online&page=list-freelessontemplate3"><i class="fa fa-calendar"></i><span id="title-manage-template-lesson-3" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_3"]; ?></span></a>
+                                    <a href="?mode=online&page=list-freelessontemplate3"><i class="fa fa-newspaper-o"></i><span id="title-manage-template-lesson-3" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_3"]; ?></span></a>
                                     <div class="home-middle-left-menu-tooltip">
                                         <span><?php echo $GLOBALS["ADMIN_ONLINE_FREEQ_FREELESSON_TEMPLATE_LESSON_3"]; ?></span>
                                     </div>
@@ -164,7 +190,7 @@
                 <!-- Học offline -->
                 <div class="home-middle-left-menu" id="divShowOffline">
                     <div class="home-middle-left-menu-title">
-                        <i class="fa fa-vcard"></i><span class="home-middle-left-menu-text home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
+                        <i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
                         <div class="home-middle-left-menu-tooltip">
                             <span><?php echo $GLOBALS["ADMIN_OFFLINE"]; ?></span>
                         </div>
@@ -188,7 +214,7 @@
 
                             <!-- giảng viên -->
                             <div class="home-middle-left-menu" id="homeMenuOfflinListTeacher">
-                                <a href="?mode=offline&page=list-teacher"><i class="fa fa-newspaper-o"></i><span id="title-manage-teacher" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span></a>
+                                <a href="?mode=offline&page=list-teacher"><i class="fa fa-calendar"></i><span id="title-manage-teacher" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_TEACHER"]; ?></span>
                                 </div>
@@ -212,7 +238,7 @@
 
                             <!-- sự kiện đang diễn ra -->
                             <div class="home-middle-left-menu" id="homeMenuQVisitListEvent">
-                                <a href="?mode=offline&page=list-event"><i class="fa fa-newspaper-o"></i><span id="title-manage-event" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"]; ?></span></a>
+                                <a href="?mode=offline&page=list-event"><i class="fa fa-calendar"></i><span id="title-manage-event" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"]; ?></span>
                                 </div>
@@ -220,7 +246,7 @@
 
                             <!-- liên hệ q-visit -->
                             <div class="home-middle-left-menu" id="homeMenuQVisitListContact">
-                                <a href="?mode=offline&page=list-contact"><i class="fa fa-newspaper-o"></i><span id="title-manage-contact" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"]; ?></span></a>
+                                <a href="?mode=offline&page=list-contact"><i class="fa fa-calendar"></i><span id="title-manage-contact" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"]; ?></span>
                                 </div>
@@ -228,7 +254,7 @@
 
                             <!-- ticket -->
                             <div class="home-middle-left-menu" id="homeMenuQVisitListTicket">
-                                <a href="?mode=offline&page=list-ticket"><i class="fa fa-newspaper-o"></i><span id="title-manage-ticket" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"]; ?></span></a>
+                                <a href="?mode=offline&page=list-ticket"><i class="fa fa-calendar"></i><span id="title-manage-ticket" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"]; ?></span>
                                 </div>
@@ -240,7 +266,7 @@
                 <!-- admin -->
                 <div class="home-middle-left-menu" id="divShowAccount">
                     <div class="home-middle-left-menu-title" id="homeMenuManageAdmin">
-                        <i class="	fa fa-address-book"></i><span class="home-middle-left-menu-text home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
+                        <i class="	fa fa-mortar-board"></i><span class="home-middle-left-menu-text home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
                         <div class="home-middle-left-menu-tooltip">
                             <span><?php echo $GLOBALS["ADMIN_SUPER"]; ?></span>
                         </div>
@@ -254,7 +280,7 @@
                         </div>
 
                         <div class="home-middle-left-menu" id="homeMenuAccountGroup">
-                            <a href="?mode=sa&page=list-group"><i class="fa fa-code-fork"></i><span id="title-manage-group" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
+                            <a href="?mode=sa&page=list-group"><i class="fa fa-address-card-o"></i><span id="title-manage-group" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span></a>
                             <div class="home-middle-left-menu-tooltip">
                                 <span><?php echo $GLOBALS["ADMIN_SUPER_GROUP"]; ?></span>
                             </div>
@@ -262,6 +288,21 @@
                     </div>
                 </div>
 
+				<!-- chat -->
+				<div class="home-middle-left-menu" id="divShowChat">
+                    <div class="home-middle-left-menu-title" id="homeMenuManageChat">
+						<a href="?mode=chat&page=admin">
+							<i class="	fa fa-mortar-board"></i><span class="home-middle-left-menu-text home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_CHAT"]; ?></span>
+						</a>
+                        <div class="home-middle-left-menu-tooltip">
+                            <span><?php echo $GLOBALS["ADMIN_CHAT"]; ?></span>
+                        </div>
+                    </div>
+                    <div class="home-middle-left-menu-content" id="homeMenuChat">
+                        
+                    </div>
+                </div>
+				
             </div>
         </div>
 
@@ -340,7 +381,20 @@
                         if (isset($_GET["page"])) {
                             switch ($_GET["page"]) {
                                     //QOnline
-                                    //upload
+                                    //manageaccount
+                                case "list-confirmbanking":
+                                    echo "<script>setMode('useraccount')</script>";
+                                    include get_theme_file_path("home/online/user/confirmbanking/list-confirmbanking.php");
+                                    break;
+                                case "confirmbanking":
+                                    echo "<script>setMode('useraccount')</script>";
+                                    include get_theme_file_path("home/online/user/confirmbanking/confirmbanking.php");
+                                    break;
+                                case "list-useraccount":
+                                    echo "<script>setMode('useraccount')</script>";
+                                    include get_theme_file_path("home/online/user/account/list-account.php");
+                                    break;
+									//upload
                                 case "list-video":
                                     echo "<script>setMode('upload')</script>";
                                     include get_theme_file_path("home/online/upload/upload-video/list-upload-video.php");
@@ -513,7 +567,18 @@
                                     break;
                             }
                         }
-                    }
+                    } else if($_GET["mode"] == "chat"){
+						if (isset($_GET["page"])) {
+                            switch ($_GET["page"]) {
+								 case "admin":
+                                    echo "<script>setMode('chat')</script>";
+                                    include get_theme_file_path("home/chat/chat.php");
+                                    break;
+                                default:
+                                    break;	
+							}
+						}
+					}
                 } else {
                 ?>
                     <div style="width: 100%;
@@ -590,7 +655,7 @@
     // });
     //large screen
     //online
-    let sunqModeOnlineDiv = document.getElementById("divShowOnline");
+	let sunqModeOnlineDiv = document.getElementById("divShowOnline");
     sunqModeOnlineDiv && sunqModeOnlineDiv.addEventListener("click", function() {
         //console.log("divShowOffline");
         if (getMode() == sunQMode.online) {
@@ -600,7 +665,18 @@
             setMode(sunQMode.online);
         }
     });
-    //freeq
+	//user account
+    let sunqModeManageAccount = document.getElementById("divShowManageAccount");
+	sunqModeManageAccount && sunqModeManageAccount.addEventListener("click", function() {
+        //console.log("divShowFreeQ");
+        if (document.getElementById("homeMenuManageAccount").style.display != "none" && document.getElementById("homeMenuManageAccount").style.display != "") {
+            hideManageAccount();
+            setMode("none");
+        } else {
+            setMode(sunQMode.manageaccount);
+        }
+    });
+	//freeq
     let sunqModeFreeQDiv = document.getElementById("divShowFreeQ");
     sunqModeFreeQDiv && sunqModeFreeQDiv.addEventListener("click", function() {
         //console.log("divShowFreeQ");
@@ -701,8 +777,19 @@
             setMode(sunQMode.sa);
         }
         //setMode(sunQMode.account);
-    });
+    });divShowChat
 
+	let sunQModeChat = document.getElementById("divShowChat");
+    sunQModeChat && sunQModeChat.addEventListener("click", function() {
+        if (getMode() == sunQMode.chat) {
+            hideAccountMode();
+            setMode("none");
+        } else {
+            setMode(sunQMode.chat);
+        }
+        //setMode(sunQMode.account);
+    });
+	
     let mainmenuOffline = document.getElementById("mainmenuOffline");
     if (mainmenuOffline != null) {
         document.getElementById("mainmenuOffline").addEventListener("click", function() {

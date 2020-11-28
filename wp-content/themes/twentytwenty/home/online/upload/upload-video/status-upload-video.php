@@ -142,7 +142,7 @@ var  _isFetchingUploadVideo = false,
 							
                         } else {
                             emptyTableListUploadVideo();
-                            listUploadVideo = listUploadVideo.concat(res.data.videos);
+                            listUploadVideo = listUploadVideo.concat(res.data);
                             createListUploadVideo(res);
                         }
                     } else if (res.code === networkCode.accessDenied){

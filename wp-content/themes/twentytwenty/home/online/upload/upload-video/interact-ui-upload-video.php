@@ -76,7 +76,7 @@ function createListUploadVideo(result){
 	document.getElementById("span-title-uploadVideo").style.display = "flex";
 let parentPaging = document.getElementById("pagingListUploadVideo");
 parentPaging.innerHTML="";
-let maxPage = list.length;//result.total
+let maxPage = result.total;
 let maxPerList = dictionaryKey.limitRequestRegister;
 let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
 console.log("totalPage",totalPage);
@@ -141,12 +141,12 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		let titleAHref = makeATagRedirect(sunQMode.online,listScreen.online.uploadVideo,dictionaryKey.titleStatus,item.id);
 
 		let editVideo =	item.status == videoStatus.complete ? 
-			"<a href=\""+titleAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa thông tin video</div></a><a href=\""+editAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Tải lại video</div></a>"
+			"<a class='manage-list-teacher-table-detail-tr-modified-a-video' href=\""+titleAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa thông tin video</div></a><a class='manage-list-teacher-table-detail-tr-modified-a-video' href=\""+editAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Tải lại video</div></a>"
 			: 
-		    "<a href=\""+titleAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa thông tin video</div></a><a href=\""+editAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Tải video lên</div></a>"
+		    "<a class='manage-list-teacher-table-detail-tr-modified-a-video' href=\""+titleAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa thông tin video</div></a><a class='manage-list-teacher-table-detail-tr-modified-a-video' href=\""+editAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Tải video lên</div></a>"
 		;
-			let status = item.status == videoStatus.complete ? '<div class="manage-list-video-status-complete"><?php echo $GLOBALS["VIDEO_STATUS_COMPLETE"]; ?></div>' : item.status == videoStatus.uploading ? '<div class="manage-list-video-status-upload"><?php echo $GLOBALS["VIDEO_STATUS_UPLOAD"]; ?></div>' : '<div class="manage-list-video-status-error"><?php echo $GLOBALS["VIDEO_STATUS_ERROR"]; ?></div>' ;
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td>"+status+"</td><td class='manage-list-teacher-table-detail-tr-modified'>" + editVideo + "<div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteUploadVideo("+(index-1)+")\">Xóa</div></td>";
+			let status = item.status == videoStatus.complete ? '<div class="manage-list-video-status-complete"><?php echo $GLOBALS["VIDEO_STATUS_COMPLETE"]; ?></div>' : item.status == videoStatus.uploading ? '<div class="manage-list-video-status-upload"><?php echo $GLOBALS["VIDEO_STATUS_UPLOAD"]; ?></div>' : item.status == videoStatus.create ? '<div class="manage-list-video-status-error"><?php echo $GLOBALS["VIDEO_STATUS_CREATE"]; ?></div>' : '<div class="manage-list-video-status-error"><?php echo $GLOBALS["VIDEO_STATUS_ERROR"]; ?></div>' ;
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td class=\"tdShortDesscription\"><div class=\"divShortDesscription\">"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</div></td><td class=\"tdVideoStatus\">"+status+"</td><td class='manage-list-teacher-table-detail-tr-modified'>" + editVideo + "<div class='manage-list-teacher-table-detail-div-delete manage-list-teacher-table-detail-div-delete-video' onclick=\"deleteUploadVideo("+(index-1)+")\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

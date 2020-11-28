@@ -124,7 +124,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		} 
 		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.offline.teacher,dictionaryKey.editStatus,item.id);
 		
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td>"+(item.specialist != null ? item.specialist : "Thiếu")+"</td><td>"+(item.university != null ? item.university : "Thiếu") +"</td>"
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+(item.name != null ? item.name : "Thiếu") +"</td><td class='tdTeacherSpecialist'><div class='divTeacherSpecialist'>"+(item.specialist != null ? item.specialist : "Thiếu")+"</div></td><td class='tdTeacherUniversity'><div class='divTeacherUniversity'>"+(item.university != null ? item.university : "Thiếu") +"</div></td>"
 		+"<td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteTeacher("+(index-1)+")\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);

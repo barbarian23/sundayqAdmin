@@ -181,7 +181,7 @@ include get_theme_file_path("home/online/freeq/freelesson2/freelessonplan/intera
                 function(res) {
                     setLoadingDataFreeLessonPlan2(false);
                     if (res.code === networkCode.success) {
-                        myCurrentFreeLessonPlan2 = res.data;
+                        myCurrentFreeLessonPlan2 = res.data.agePlan;
                         //month
                         let tempDatee = new Date();
                         tempDatee.setMonth(myCurrentFreeLessonPlan2.month - 1);
@@ -195,7 +195,11 @@ include get_theme_file_path("home/online/freeq/freelesson2/freelessonplan/intera
                             timeFormat: 'H:ii',
                             display: 'bubble',
                         });
-                        document.getElementById("idFreeLessonPlan2Month").value = myCurrentFreeLessonPlan2.month;
+						let tempDate = new Date();
+			tempDate.setMonth(myCurrentFreeLessonPlan2.month);
+			let monthTemp = ["Tháng 0", "Tháng một", "Tháng hai", "Tháng ba", "Tháng tư", "Tháng năm", "Tháng sáu", "Tháng bảy", "Tháng tám", "Tháng chín", "Tháng mười", "Tháng mười một", "Tháng mười hai"];
+			let monthmonth = monthTemp[tempDate.getMonth()] + ",năm " + tempDate.getFullYear();
+                        document.getElementById("idFreeLessonPlan2Month").value = monthmonth;
                         //title
                         document.getElementById("idTitleFreeLessonPlan2").value = myCurrentFreeLessonPlan2.title == null ? "" : myCurrentFreeLessonPlan2.title;
 
@@ -412,6 +416,8 @@ include get_theme_file_path("home/online/freeq/freelesson2/freelessonplan/intera
                         delete tempmyCurrentFreeLessonPlan2.id;
                         delete tempmyCurrentFreeLessonPlan2.serviceId;
                         delete tempmyCurrentFreeLessonPlan2.month;
+                        delete tempmyCurrentFreeLessonPlan2.ageId;
+                        delete tempmyCurrentFreeLessonPlan2.thumbnail;
 
 
                         setLoadingDataFreeLessonPlan2(true);

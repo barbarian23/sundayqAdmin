@@ -177,68 +177,99 @@
 		
 	}
 	
+	var functionOnOff = [
+		{
+		    token:"online",
+			on: showOnLineMode,
+			off: hideOnLineMode
+		},
+        {
+		    token:"offline",
+		    on: showOffLineMode,
+			off: hideOffLineMode
+		},
+        {
+		    token:"sa",
+		    on: showAccountMode,
+			off: hideAccountMode
+		},
+        {
+		    token:"chat",
+		    on: showChatMode,
+			off: hideChatMode
+		}
+	]
+	
+	function showThenHideMode(mode){
+		functionOnOff.map(item => {
+				console.log("showThenHideMode",item.token);
+			if(item.token == mode){
+				console.log(typeof item.on);
+				item.on();
+				return true;
+			}else{
+				item.off();
+			}
+		});
+	}
+	
     function handleChooseMode(val) {
         console.log("handleChooseMode", val);
         switch (val) {
             case sunQMode.online:
-                showOnLineMode();
-                hideOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.online);
                 break;
+			case sunQMode.manageaccount:
+				showManageAccount();
+				showThenHideMode(sunQMode.online);
+				break;
+			case sunQMode.confirmbanking:
+				showConfirmBanking();
+				showThenHideMode(sunQMode.online);
+				break;
+			case sunQMode.useraccount:
+				showAccountUser();
+				showThenHideMode(sunQMode.online); 
+				break;
 			case sunQMode.upload:
 				showUpload();
-                showOnLineMode();
-                hideOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.online);
                 break;	
 			case sunQMode.freeq://kit
 				showFreeQ();
-                showOnLineMode();
-                hideOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.online);
                 break;
 				//lesson1
 			case sunQMode.freeqlesson1:
 				showFreeQLesson1();
-                showOnLineMode();
-                hideOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.online);
                 break
 				//lesson2
 			case sunQMode.freeqlesson2:
 				showFreeQLesson2();
-                showOnLineMode();
-                hideOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.online);
                 break
 				//lesson3
 			case sunQMode.freeqlesson3:
 				showFreeQLesson3();
-                showOnLineMode();
-                hideOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.online);
                 break
             case sunQMode.offline:
-                hideOnLineMode();
-                showOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.offline);
                 break;
 			case sunQMode.qacademy:
 				showQAcademy();
-                hideOnLineMode();
-                showOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.offline);
                 break;
 			case sunQMode.qvisit:
 				showQVisit();
-                hideOnLineMode();
-                showOffLineMode();
-                hideAccountMode();
+				showThenHideMode(sunQMode.offline);
                 break;
             case sunQMode.sa:
-                hideOnLineMode();
-                hideOffLineMode();
-                showAccountMode();
+                showThenHideMode(sunQMode.sa);
+				break;
+            case sunQMode.chat:
+                showThenHideMode(sunQMode.chat);
                 break;
             default:
                 break;

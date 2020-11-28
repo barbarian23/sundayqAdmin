@@ -147,7 +147,7 @@ if (isset($_GET["action"])) {
             <div class="manage-teacher-contain-right-upper">
                 <!-- upload video -->
                 <div class="uploading-video-progress-container" id="loading-video-content">
-                    <div class="uploading-video-progress-bar" id="uploading-video-progress-bar" style="background:blue;width:0%;height:100%;display:flex;align-items:center;justify-content: center;"><span id="percent-upload"></span></div>
+                    <div class="uploading-video-progress-bar" id="uploading-video-progress-bar" style="background:#CF5134;width:0%;height:100%;display:flex;align-items:center;justify-content: center;"><span id="percent-upload"></span></div>
                 </div>
                 <span><?php echo $GLOBALS["VIDEO_UPLOAD_VIDEO"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
                 <!--             <input id="idTitleUploadVideo" name="UploadVideo_name" type="text" placeholder='<?php echo $GLOBALS["VIDEO_UPLOAD_VIDEO"]; ?>' required> -->
@@ -233,22 +233,19 @@ if (isset($_GET["action"])) {
 
                         //status
 if(document.getElementById("idStatusUploadVideo")){
-                        document.getElementById("idStatusUploadVideo").value = myCurrentUploadVideo.status == videoStatus.complete ? '<?php echo $GLOBALS["VIDEO_STATUS_COMPLETE"]; ?>' : myCurrentUploadVideo.status == videoStatus.uploading ? '<?php echo $GLOBALS["VIDEO_STATUS_UPLOAD"]; ?>' : '<?php echo $GLOBALS["VIDEO_STATUS_ERROR"]; ?>';
+                        document.getElementById("idStatusUploadVideo").value = myCurrentUploadVideo.status == videoStatus.complete ? '<?php echo $GLOBALS["VIDEO_STATUS_COMPLETE"]; ?>' : myCurrentUploadVideo.status == videoStatus.uploading ? '<?php echo $GLOBALS["VIDEO_STATUS_UPLOAD"]; ?>' : myCurrentUploadVideo.status == videoStatus.create ? '<?php echo $GLOBALS["VIDEO_STATUS_CREATE"]; ?>' : '<?php echo $GLOBALS["VIDEO_STATUS_ERROR"]; ?>';
 					}
-
                         if (getCurrentACtion() == dictionaryKey.editStatus) { //tải lên lại video
-                            if (myCurrentUploadVideo.status == videoStatus.complete) {
-                                document.getElementById("spanStatusUploadVideo").innerHTML = '<?php echo $GLOBALS["VIDEO_SUBMIT_REUP"]; ?>';
-                                if (Hls.isSupported()) {
+							if(myCurrentUploadVideo.status == videoStatus.complete || myCurrentUploadVideo.status == videoStatus.uploading){
+							if (Hls.isSupported()) {
 									let watchingURL = watchVideo(myCurrentUploadVideo.fileUrl);
                                     //console.log("Hls support",watchingURL,myCurrentUploadVideo.fileUrl);
                                     var video = document.getElementById('video');
                                     var hls = new Hls({
                                         xhrSetup: xhr => {
-                                            xhr.setRequestHeader(getLocalStorage(dictionary.MSEC))
+                                            xhr.setRequestHeader('Authorization',"Bearer "+getLocalStorage(dictionary.MSEC))
                                         }
                                     });
-                                    var hls = new Hls();
                                     hls.loadSource(watchingURL);
                                     hls.attachMedia(video);
                                     hls.on(Hls.Events.MANIFEST_PARSED, function() {
@@ -261,6 +258,10 @@ if(document.getElementById("idStatusUploadVideo")){
                                 else {
                                     console.log("Hls is not support");
                                 }
+						}
+                            if (myCurrentUploadVideo.status == videoStatus.complete) {
+                                document.getElementById("spanStatusUploadVideo").innerHTML = '<?php echo $GLOBALS["VIDEO_SUBMIT_REUP"]; ?>';
+                                
                             } else {
                                 document.getElementById("spanStatusUploadVideo").innerHTML = '<?php echo $GLOBALS["VIDEO_SUBMIT_ADD"]; ?>';
                             }
@@ -331,7 +332,8 @@ if(document.getElementById("idStatusUploadVideo")){
         dataVideo.append('video', files[0]);
         axios.put(putUploadVideo(getCurrentEdit()), dataVideo, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+					'Authorization': 'Bearer ' + getLocalStorage(dictionary.MSEC)
                 },
                 onUploadProgress: (progressEvent) => {
                     const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
@@ -357,7 +359,7 @@ if(document.getElementById("idStatusUploadVideo")){
             .then(res => {
                 console.log("res", res);
 				document.getElementById("loading-video-content").style.display = "none";
-                if (res.code === networkCode.success) {
+                if (res.data.code === networkCode.success) {
                     //myCurrentUploadVideo = res.data;
                     
                     document.getElementById("percent-upload").innerHTML = "Hoàn thành";
@@ -369,19 +371,22 @@ if(document.getElementById("idStatusUploadVideo")){
                         .confirmButtonText(dictionaryKey.AGREE)
                         .callback((result) => {
                             //webpageRedirect(getAdminHomeURL() + "?mode=online&page=list-video");
+                            //webpageRedirect(getAdminHomeURL() + "?mode=online&page=video&action=edit&id="+myCurrentUploadVideo.id);
                         })
                         .show();
                     document.getElementById("spanStatusUploadVideo").innerHTML = '<?php echo $GLOBALS["VIDEO_SUBMIT_REUP"]; ?>';
+                    document.getElementById("idStatusUploadVideo").value = '<?php echo $GLOBALS["VIDEO_STATUS_COMPLETE"]; ?>';
                     if (Hls.isSupported()) {
                         console.log("Hls support");
                         var video = document.getElementById('video');
                         var hls = new Hls({
                             xhrSetup: xhr => {
-                                xhr.setRequestHeader(getLocalStorage(dictionary.MSEC))
+                                xhr.setRequestHeader('Authorization', "Bearer " + getLocalStorage(dictionary.MSEC))
                             }
                         });
-                        var hls = new Hls();
-                        hls.loadSource(getHomeURL() + myCurrentUploadVideo.fileUrl);
+						myCurrentUploadVideo.fileUrl = res.data.data.url;
+						let urlVideoComplete = watchVideo(res.data.data.url);
+                        hls.loadSource(urlVideoComplete);
                         hls.attachMedia(video);
                         hls.on(Hls.Events.MANIFEST_PARSED, function() {
                             video.play();
@@ -399,6 +404,7 @@ if(document.getElementById("idStatusUploadVideo")){
 
                     document.getElementById("percent-upload").innerHTML = "Bị lỗi";
 					document.getElementById("loading-video-content").style.display = "none";
+                    document.getElementById("idStatusUploadVideo").innerHTML = '<?php echo $GLOBALS["VIDEO_STATUS_ERROR"]; ?>';
                 document.getElementById("idStatusUploadVideo").value = '<?php echo $GLOBALS["VIDEO_STATUS_ERROR"]; ?>';
                 SunQAlert()
                     .position('center')
@@ -507,7 +513,7 @@ if(document.getElementById("idStatusUploadVideo")){
                     })
                     .show();
             } else {
-                let titlleRequestUploadVideo = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : getCurrentACtion() == dictionaryKey.titleStatus ? dictionaryKey.REQUEST_TITLE : dictionaryKey.REQUEST_ADD + dictionaryKey.VIDEO_NAME;
+                let titlleRequestUploadVideo = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : getCurrentACtion() == dictionaryKey.titleStatus ? dictionaryKey.REQUEST_EDIT : dictionaryKey.REQUEST_ADD + dictionaryKey.VIDEO_NAME;
                 console.log("data lên " + JSON.stringify(myCurrentUploadVideo));
                 //alert("data lên " + JSON.stringify(myCurrentUploadVideo));
                 SunQAlert()
@@ -522,6 +528,7 @@ if(document.getElementById("idStatusUploadVideo")){
                         if (result.value) {
                             window.scrollTo(0, 0);
                             let tempmyCurrentUploadVideo = myCurrentUploadVideo;
+							//let curentId = tempmyCurrentUploadVideo.id;
                             if (getCurrentACtion() == dictionaryKey.editStatus) {
 
                             } else if (getCurrentACtion() == dictionaryKey.titleStatus) {
@@ -544,7 +551,8 @@ if(document.getElementById("idStatusUploadVideo")){
                                 function(res) {
                                     setLoadingDataUploadVideo(false);
                                     //edit - title - add
-                                    let sunqalertsuccess = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.UPLOAD_VIDEO_SUCCESS : getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.INIT_VIDEO_SUCCESS : dictionaryKey.EDIT_VIDEO_SUCCESS;
+                                    let sunqalertsuccess = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.UPLOAD_VIDEO_SUCCESS : getCurrentACtion() == dictionaryKey.addStatus ? dictionaryKey.INIT_VIDEO_SUCCESS : dictionaryKey.EDIT_VIDEO_SUCCESS;
+											   let alertSussceess = getCurrentACtion() == dictionaryKey.addStatus ? dictionaryKey.UPLOAD_TRANSFER : dictionaryKey.AGREE;
                                     if (res.code === networkCode.success) {
                                         //myCurrentUploadVideo = res.data;
                                         SunQAlert()
@@ -552,9 +560,15 @@ if(document.getElementById("idStatusUploadVideo")){
                                             .title(sunqalertsuccess)
                                             .type('success')
                                             .confirmButtonColor("#3B4EDC")
-                                            .confirmButtonText(dictionaryKey.AGREE)
+                                            .confirmButtonText(alertSussceess)
                                             .callback((result) => {
+												if(getCurrentACtion() == dictionaryKey.addStatus){
+                                                 webpageRedirect(getAdminHomeURL() + "?mode=online&page=video&action=edit&id="+res.data.video.id);
+													// webpageRedirect(getAdminHomeURL() + "?mode=online&page=list-video");
+											   }else {
+												   
                                                 webpageRedirect(getAdminHomeURL() + "?mode=online&page=list-video");
+												   }
                                             })
                                             .show();
                                     } else if (res.code === networkCode.accessDenied) {
