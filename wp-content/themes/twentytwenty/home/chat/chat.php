@@ -59,13 +59,13 @@
 		
 		function authentication() {
 			var firebaseConfig = {
-				apiKey: "AIzaSyBBvX9WUNXbzqZA3NTq6ZdlUvtwrSb1Ss8",
-				authDomain: "sample-chat-617da.firebaseapp.com",
-				databaseURL: "https://sample-chat-617da.firebaseio.com",
-				projectId: "sample-chat-617da",
-				storageBucket: "sample-chat-617da.appspot.com",
-				messagingSenderId: "40110625737",
-				appId: "1:40110625737:web:1329f7605b4f102ed40e18"
+				apiKey: "AIzaSyBa6uKjy-usshEanycZZBOBil4mOs_rEss",
+				authDomain: "samplechat-a28cf.firebaseapp.com",
+				databaseURL: "https://samplechat-a28cf.firebaseio.com",
+				projectId: "samplechat-a28cf",
+				storageBucket: "samplechat-a28cf.appspot.com",
+				messagingSenderId: "265596094510",
+				appId: "1:265596094510:web:72b5c60ddd13ef4ecc77bf"
 			};
 			// Initialize Firebase
 			firebase.initializeApp(firebaseConfig);
@@ -197,11 +197,11 @@
 								if (isExist) {
 
 								} else {
-									//console.log("s table message oce add", snapshot.val()[elem].name);
+									console.log("s table message oce add", snapshot.val()[elem].name);
 									let itemAccount = snapshot.val()[elem].name;
 									let objectPush = {
 										email: itemAccount,
-										name: itemAccount.substring(0, itemAccount.indexOf("@")),
+										name: itemAccount.includes("@") ? itemAccount.substring(0, itemAccount.indexOf("@")) : itemAccount,
 										onlineCount: 0,
 										unreadCount: 0
 									};
@@ -437,7 +437,7 @@
 								}
 							}
 							if (snapshot.val().message) {
-								let chatDiv = snapshot.val().isAdmin ? createDivChatAdmin(messageReceiver, snapshot.val().time) : createDivChatClient(messageReceiver);
+								let chatDiv = snapshot.val().isAdmin ? createDivChatAdmin(messageReceiver, snapshot.val().time) : createDivChatClient(messageReceiver,snapshot.val().time);
 								chatDiv && parent.appendChild(chatDiv);
 							}
 							snapshot.val().isAdmin && unSeen();
@@ -553,7 +553,7 @@
 									console.log("keyseenAdmin", keyseenAdmin);
 									listenForMeChange(name, index);
 									if (snapshot.val()[elem].isAdminRead == false) {
-										swapToReadFirst(index);
+										swapToReadFirst(name, index);
 										setUnreadForClient(name);
 									} else {
 										setReadForClient(name);
@@ -595,7 +595,7 @@
 								//}
 								console.log("keyseenAdmin", keyseenAdmin);
 								if (snapshot.val().isAdminRead == false) {
-									swapToReadFirst(index);
+									swapToReadFirst(name,index);
 									setUnreadForClient(name);
 								} else {
 									setReadForClient(name);
@@ -630,7 +630,7 @@
 				if (snapshot) {
 					//console.log("listen for me seen client", name, snapshot, snapshot.val());
 					if (snapshot.val() == false) {
-						swapToReadFirst(index);
+						swapToReadFirst(name,index);
 						setUnreadForClient(name);
 					} else {
 						setReadForClient(name);
@@ -709,7 +709,7 @@
 				readClient.style.display = "none";
 			}
 			countUnread > 0 && countUnread--;
-			//console.log("read", name, countUnread);
+			console.log("read", name, countUnread);
 			if (countUnread == 0) {
 				pageTitleNotification.Off();
 			}
@@ -719,12 +719,15 @@
 		function setUnreadMessSmall(name,mess) {
 			if (countUnread > 0) {
 				let readClient = document.getElementById("recentchat_" + name);
-				readClient.innerHTML = mess != null ? "Tin nhắn: " + mess : "Tin nhắn chưa đọc";
+				if(readClient){
+				//readClient.innerHTML = mess != null ? "Tin nhắn: " + mess : "Tin nhắn chưa đọc";
+				readClient.innerHTML = mess != null ? "Tin nhắn chưa đọc" : "Tin nhắn chưa đọc";
+				   }
 			}
 		}
 
 		function setUnreadForClient(name) {
-			//console.log("setUnreadForClient", name, currentMess);
+			console.log("setUnreadForClient", name,"countread", countUnread);
 			countUnread++;
 			// if(unReadTimeout != null){
 			// 	clearTimeout(unReadTimeout);
@@ -767,7 +770,41 @@
 
 		}
 
-		function createDivChatClient(data) {
+		function prepareTime(time){
+			let tempTime = new Date(time);
+			let currentTime = new Date();
+			let month = [0,"Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"];
+			let dayInWeek = ["Thứ hai","Thứ ba","Thứ tư","Thứ năm","Thứ sáu","Thứ bảy","Chủ nhật"];
+			if(isSameDay(tempTime,currentTime)){
+			   	return addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes());
+			   } else if(isSameWeek(tempTime,currentTime)){
+						 return dayInWeek(tempTime.getDay()) + ", " + addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes()) + " " + tempTime.getDate();
+						 } else if(isSameYear(tempTime,currentTime)){
+								   return addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes()) + " " + tempTime.getDate() + " " + month[tempTime.getMonth() + 1];
+								   }else{
+							 return addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes()) + " " + tempTime.getDate() + " " + month[tempTime.getMonth() + 1] + " " + tempTime.getFullYear();
+						 }
+			
+		}
+		
+		function addZeroIfSmallerThanZeroo(number){
+			return number < 10 ? "0"+number : number;
+		}
+		
+		function isSameDay(first,second){
+				   return first.getDate() == second.getDate() && first.getMonth() == second.getMonth() && first.getFullYear() == second.getFullYear();
+			   }
+			
+			function isSameWeek(first,second){
+				let weekTime = 7*24*60*60*1000;
+				   return second.getTime() - first.getTime() <= weekTime;
+			   }
+			
+			function isSameYear(first,second){
+				   return first.getFullYear() == second.getFullYear();
+			   }
+			
+		function createDivChatClient(data,time) {
 			//console.log("sinh ra div", data);
 			let divOutSide = document.createElement("div");
 			divOutSide.className = "divAdmin";
@@ -789,6 +826,11 @@
 			let divInSide = document.createElement("div");
 			divInSide.className = "detailAdmin";
 
+			let divTime = document.createElement("div");
+			divTime.className = "detailAdminTime";
+			let tTime = prepareTime(time);
+			divTime.innerHTML = tTime == null ? "" : tTime;
+			
 			// let icon = document.createElement("i");
 			// icon.className = "fa fa-address-book-o";
 			// icon["aria-hidden"] = "true";
@@ -797,6 +839,7 @@
 			content.innerHTML = data;
 
 			divInSide.appendChild(content);
+			divInSide.appendChild(divTime);
 			divAdminRightDetail.appendChild(divAdminRightDetailNameUser);
 			divAdminRightDetail.appendChild(divInSide);
 			divOutSide.appendChild(divAvatar);
@@ -857,8 +900,8 @@
 		}
 		}
 
-		function swapToReadFirst(index) {
-			//console.log("swapToReadFirst", index, id);
+		function swapToReadFirst(name,index) {
+			console.log("swapToReadFirst", name,"index",index);
 			// let firstItem = listUser[index];
 
 			// let indexRemove = 0;
@@ -877,18 +920,17 @@
 
 
 			let indexRemove = 0;
-			listUser.some((item, index) => {
-				if (item.name == id) {
-					indexRemove = index;
+			listUser.some((item, indexi) => {
+				if (item.name == name) {
+					indexRemove = indexi;
 					return true;
 				}
 			});
 
-			let firstItem = listUser[index];
-
-			//console.log("index remove", indexRemove);
+			let firstItem = listUser[indexRemove];
+			//console.log("index remove", indexRemove,"is",firstItem);
 			listUser.splice(indexRemove, 1);
-			//console.log(index, "firstItem", firstItem);
+			//console.log("index remove",index, "is", firstItem);
 			//console.log("after shift", listUser);
 			listUser.unshift(firstItem);
 			//console.log("listUser", listUser);
@@ -904,7 +946,7 @@
 
 		function prepareListUser() {
 			let parent = document.getElementById("divListUser");
-			parent.innerHTML = "";
+			parent.innerHTML = "";console.log("prepareListUser",listUser);
 			listUser.forEach((item, index) => {
 				let insideUser = createUserItem(item, index);
 				parent.appendChild(insideUser);
@@ -1027,10 +1069,10 @@
 		}
 
 		function chatwithClient(data, index) {
-			//console.log(data, "client_" + data, document.getElementById("client_sampleclient"));
+			console.log("chatwithClient",data);
 			userCurrent = data;
 			document.getElementById("usercurrent").innerHTML = "Tin nhắn với user " + data;
-			id = data;
+			id = data.includes("@") ? data.substring(0, data.indexOf("@")) : data;
 			currentIndex = index;
 			let tempId = "client_" + data;
 			//console.log(document.getElementById(tempId));

@@ -10263,6 +10263,13 @@ body{
     top: 16.32px;
     border-color: transparent #dcedc8;
 }
+.detailAdminTime{
+	position: absolute;
+    bottom: -2px;
+    right: -36px;
+	color: #757575;
+    font-size: 13px;
+}
 .divAdminImage{
     height: 50px;
     width: 50px;
@@ -10278,6 +10285,7 @@ body{
     border-radius: 50px;
 }
 .divAdminRightDetail{
+	max-width: 50%;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -10297,6 +10305,16 @@ body{
     align-items: center;
     /* background: #ab5ce6; */
     border: 1px solid #ab5ce6;
+	position:relative;
+}
+.detailUserTime{
+	position: absolute;
+    width: 30px;
+    /* bottom: 50%; */
+    right: 0px;
+    transform: translate(-20%, -1%);
+    color: #757575;
+    font-size: 11px;
 }
 .detailUserAvatar{
     height: 50px;
@@ -10321,6 +10339,7 @@ body{
 .detailUserRecentChat{
     margin: 8px 5px 0px 0px;
     font-weight: 700;
+	font-size: 13px;
 }
 .detailUser i{
     margin: 10px 9px 9px 0px;
@@ -10364,7 +10383,7 @@ body{
     position: absolute;
     background: red;
     top: 8px;
-    right: 3px;
+    right: 9px;
 }
 
 .divStatusClient{
@@ -10418,7 +10437,7 @@ body{
     border-left: 1px solid #ccc;
     overflow-y: scroll;
     height: 100%;
-    width: 290px;
+    min-width: 310px;
 }
 
 #divListUser::-webkit-scrollbar {
