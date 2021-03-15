@@ -10266,9 +10266,11 @@ body{
 .detailAdminTime{
 	position: absolute;
     bottom: -2px;
-    right: -36px;
+/*     right: -36px; */
 	color: #757575;
     font-size: 13px;
+	margin-left: 94%;
+	min-width: 100px;
 }
 .divAdminImage{
     height: 50px;

@@ -309,7 +309,52 @@ var hideChatMode = function(){
 	   }
 	
 }
+
+//steamq
+function showSteamQ(){
+	if(window.innerWidth > 480){
+	   let onlineSteamQ = document.getElementById("homeMenuSteamQ");
+		onlineSteamQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineSteamQ = document.getElementById("smallhomeMenuSteamQ");
+		onlineSteamQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+}
+
+function hideSteamQ(){
+	hideAllSteamQPart();
+	if(window.innerWidth > 480){
+	   let onlineSteamQ = document.getElementById("homeMenuSteamQ");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuSteamQ");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+	   }
+}
 	
+var showSteamQPart = function(part){
+	showSteamQ();
+	if(window.innerWidth > 480){
+	   let adminOpen = document.getElementById("homeMenuSteamQ"+part);
+		adminOpen && function(){adminOpen.style.display = "block"}();
+	} else {
+	     let adminOpen = document.getElementById("smallHomeMenuSteamQ"+part);
+		adminOpen && function(){adminOpen.style.display = "block"}();
+	 }
+	
+}
+
+var hideSteamQPart = function(part){
+	if(window.innerWidth > 480){
+	   let adminOpen = document.getElementById("homeMenuSteamQ"+part);
+		adminOpen && function(){adminOpen.style.display = "none"}();
+	} else {
+	     let adminOpen = document.getElementById("smallHomeMenuSteamQ"+part);
+		adminOpen && function(){adminOpen.style.display = "none"}();
+	   }
+	
+}
+
 	//select giáo viên chủ nhiệm - owner
 function selectTeacherIndex(index){
 	let parent = document.getElementById("currentListsOwner");

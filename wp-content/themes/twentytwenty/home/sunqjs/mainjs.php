@@ -104,7 +104,7 @@
 	function corectDateForOnlyDate(date){
 		let tempDate = date.split("/");
 		//năm - tháng - ngày
-		return tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0] + "T00:00:00Z" ;
+		return inputNumberSmallerThanTen(tempDate[2]) + "-" + inputNumberSmallerThanTen(tempDate[1]) + "-" + inputNumberSmallerThanTen(tempDate[0]) + "T00:00:00Z" ;
 	}
 		function makeAlertRedirect(){
 					let timerIntervalListTeacher;
@@ -210,6 +210,8 @@
     }
 	
 	function inputNumberSmallerThanTen(input){
+		//console.log("inputNumberSmallerThanTen",input < 10,input < 10 ? "0" + input : input);
+		input = Number.parseInt(input);
 		return input < 10 ? "0" + input : input;
 	}
 	

@@ -36,6 +36,9 @@
 
 	$GLOBALS["ADMIN_ONLINE_FREEQ_KIT"] = "Bộ KIT";
 
+	 //freeq
+	$GLOBALS["ADMIN_ONLINE_STEAMQ"] = "SteamQ";
+	$GLOBALS["ADMIN_ONLINE_STEAMQ_KIT"] = "Bộ KIT";
 	//offline
 	$GLOBALS["ADMIN_OFFLINE"] = "Giới thiệu trung tâm SundayQ";
 	$GLOBALS["ADMIN_Q_ACADEMY"] = "Q-Academy";
@@ -194,7 +197,7 @@
 	$GLOBALS["KIT_SUBMIT_EDIT"] = "Chỉnh sửa";
 	$GLOBALS["KIT_ADD_IMAGE"] = "Thêm ảnh";
 	
-	//list KIT
+	//list KIT - FreeLesson
 	$GLOBALS["KIT_LIST_TITLE"] = "Danh sách các bộ KIT";
 	$GLOBALS["KIT_NO_LIST"] = "Danh sách các bộ KIT trống";
 	$GLOBALS["KIT_LIST_COL_1"] = "Số thứ tự";
@@ -209,6 +212,10 @@
 	$GLOBALS["KIT_LESSION_EXP"] = "Kinh nghiệm giảng dạy: ";
 	$GLOBALS["KIT_LESSION_DEGREE"] = "Chức danh đối với học viên: ";
 	
+	//SteamQ
+	$GLOBALS["STEAM_Q_PART"] = array("S"=>"Science","T"=>"Technology","E"=>"Engineering","A"=>"Art","M"=>"Math");
+	$GLOBALS["STEAM_Q_CLASS"] = array("Dưới lớp 1","Lớp 1","Lớp 2","Lớp 3","Lớp 4","Lớp 5","Lớp 6","Lớp 7");
+
 	//list-video
 	$GLOBALS["VIDEO_LIST_TITLE"] = "Danh sách các video";
 	$GLOBALS["VIDEO_NO_LIST"] = "Danh sách các video trống";
@@ -931,7 +938,9 @@
 		freeqlesson2:"freeqlesson2",
 		//freeqlesson1
 		freeqlesson3:"freeqlesson3",
-		
+		//steamq
+		steamq:"steamq",
+		steamqpart:"steamqpart",
 		sa:"sa",//super admin
 		account:"account",
 		group:"group",
@@ -1027,6 +1036,9 @@
 		
 		{key:"kit",id:"divShowFreeQ",body:"homeMenuFreeQ"},
 		{key:"list-kit",id:"divShowFreeQ",body:"homeMenuFreeQ"},
+		
+		//steamq
+		
 		//upload
 		{key:"video",id:"divShowUpload",body:"homeMenuUpload"},
 		{key:"list-video",id:"divShowUpload",body:"homeMenuUpload"},
@@ -1116,6 +1128,64 @@
 		age:"age",
 		kit:"kit"
 	};
+	
+	var STEAM_PART = {
+		S:{
+			id:"Science",
+			name:"Science",
+		},
+		T:{
+			id:"Technology",
+			name:"Technology",
+		},
+		E:{
+			id:"Engineering",
+			name:"Engineering",
+		},
+		A:{
+			id:"Art",
+			name:"Art",
+		},
+		M:{
+			id:"Math",
+			name:"Math",
+		},
+	};
+	
+	var STEAM_CLASS = [
+		{
+			id:0,
+			name:"Dưới lớp một",
+		},
+		{
+			id:1,
+			name:"Lớp 1",
+		},
+		{
+			id:2,
+			name:"Lớp 2",
+		},
+		{
+			id:3,
+			name:"Lớp 3",
+		},
+		{
+			id:4,
+			name:"Lớp 4",
+		},
+		{
+			id:5,
+			name:"Lớp 5",
+		},
+		{
+			id:6,
+			name:"Lớp 6",
+		},
+		{
+			id:7,
+			name:"Lớp 7",
+		},
+	];
 	
 	var ageID = {
 		freelesson1:{

@@ -43,7 +43,7 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
         <!-- mô tả -->
 		<div class="manage-section-common-detail-midlle">
 			<div class="manage-section-detail-midlle-span">
-				<span id="exhibitionSubDetailTextAreaTitle"><?php echo $GLOBALS["EVENT_DETAIL"]; ?></span>><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
+				<span id="exhibitionSubDetailTextAreaTitle"><?php echo $GLOBALS["EVENT_DETAIL"]; ?></span><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span>
 			</div>
 			<div class="manage-section-detail-midlle-item">
 				<!--  <textarea id="teacherDetailTextArea" cols="80" placeholder='<?php echo $GLOBALS["EVENT_DETAIL_PLACEHOLDER"]; ?>' required></textarea>-->
@@ -93,7 +93,7 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
                 theme: 'ios',
                 themeVariant: 'light',
                 layout: 'fixed',
-				min: new Date(),
+				//min: new Date(),
                    dateFormat: 'd/mm/yy',
 				//dateFormat:'d/mm/yyyy', 
 				timeFormat:'H:ii',
@@ -104,7 +104,7 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
                 theme: 'ios',
                 themeVariant: 'light',
                 layout: 'fixed',
-				min: new Date(),
+				//min: new Date(),
                  dateFormat: 'd/mm/yy',
 				//dateFormat:'d/mm/yyyy', 
 				timeFormat:'H:ii', 
@@ -137,7 +137,8 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
 								theme: 'ios',
 								themeVariant: 'light',
 								layout: 'fixed',
-								minDate: new Date(myCurrentEvent.startAt),
+								value:new Date(myCurrentEvent.startAt),
+								//minDate: new Date(myCurrentEvent.startAt),
 								   dateFormat: 'd/mm/yy',
 								//dateFormat:'d/mm/yyyy', 
 								timeFormat:'H:ii',
@@ -151,7 +152,8 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
 							theme: 'ios',
 							themeVariant: 'light',
 							layout: 'fixed',
-							minDate: new Date(myCurrentEvent.finishAt),
+								value:new Date(myCurrentEvent.finishAt),
+							//minDate: new Date(myCurrentEvent.finishAt),
 							 dateFormat: 'd/mm/yy',
 							//dateFormat:'d/mm/yyyy', 
 							timeFormat:'H:ii', 

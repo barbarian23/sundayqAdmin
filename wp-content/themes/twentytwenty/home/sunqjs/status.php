@@ -11,7 +11,9 @@
         currentEdit: "",
         logining: false,
         isloginfailed: false,
-		month: 0
+		month: 0,
+		steamqpart:"",
+		steamqclass:"",
     }
     var _mode = "none",
 		_page = "none",
@@ -21,7 +23,9 @@
         _currentEdit = "",
         _logining = false,
         _isloginfailed = false,
-		_month = 0
+		_month = 0,
+		_steamqpart = "",
+		_steamqclass = ""
        ;
 
     //mode setting
@@ -100,6 +104,43 @@
         }
     });
 
+	//steamq part
+    Object.defineProperty(sunqStatus, "steamqpart", {
+        get() {
+            return _steamqpart;
+        },
+        set(val) {
+            _steamqpart = val;
+        }
+    });
+	
+	//steamq class
+    Object.defineProperty(sunqStatus, "steamqclass", {
+        get() {
+            return _steamqclass;
+        },
+        set(val) {
+            _steamqclass = val;
+        }
+    });
+	
+	function setSteamqpart(val) {
+        sunqStatus.steamqpart = val;
+    }
+
+    function getSteamqpart() {
+        return sunqStatus.steamqpart;
+    }
+	
+	
+	function setSteamqclass(val) {
+        sunqStatus.steamqclass = val;
+    }
+
+    function getSteamqclass() {
+        return sunqStatus.steamqclass;
+    }
+	
     function setLogInFailed(val, iText) {
         sunqStatus.isloginfailed = val;
         val ? logginFailed(iText) : loginSuccess();
@@ -200,6 +241,55 @@
 		}
 	]
 	
+	var steamQPartOnOff = [
+		{
+		    token:"S",
+			on: () => showSteamQPart("S"),
+			off: () => hideSteamQPart("S")
+		},
+        {
+		    token:"T",
+		    on: () => showSteamQPart("T"),
+			off: () => hideSteamQPart("T")
+		},
+        {
+		    token:"E",
+		    on: () => showSteamQPart("E"),
+			off:  () => hideSteamQPart("E")
+		},
+        {
+		    token:"A",
+		    on: () => showSteamQPart("A"),
+			off:  () => hideSteamQPart("A")
+		},
+        {
+		    token:"M",
+		    on: () => showSteamQPart("M"),
+			off:  () => hideSteamQPart("M")
+		}
+	]
+	
+	function showSteamQPart(part){
+		steamQPartOnOff.map(item => {
+				console.log("showSteamQPart",item.token);
+			if(item.token == part){
+				console.log(typeof item.on);
+				item.on();
+				return true;
+			}else{
+				item.off();
+			}
+		});
+	}
+	
+		function hideAllSteamQPart(){
+		steamQPartOnOff.map(item => {
+			
+				item.off();
+			
+		});
+	}
+	
 	function showThenHideMode(mode){
 		functionOnOff.map(item => {
 				console.log("showThenHideMode",item.token);
@@ -254,6 +344,16 @@
 				showFreeQLesson3();
 				showThenHideMode(sunQMode.online);
                 break
+			//steamq
+			case sunQMode.steamq:
+				showSteamQ();
+				showThenHideMode(sunQMode.online);
+                break
+			case sunQMode.steamqpart:
+				showSteamQPart(getSteamqpart());
+				showThenHideMode(sunQMode.online);
+                break
+			//offline
             case sunQMode.offline:
 				showThenHideMode(sunQMode.offline);
                 break;
