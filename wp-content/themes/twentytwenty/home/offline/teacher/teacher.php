@@ -268,11 +268,14 @@ include get_theme_file_path("home/offline/teacher/teacher-interact-ui.php");
 //                     myCurrentTeacher.imgUrl = res.data.urls[0];
 //                     //myCurrentTeacher.imgUrl
 //                 } else 
-console.log(res);                 
+console.log("url",res.url);      
+				myCurrentTeacher.imgUrl = res.url;
+				
+console.log("myCurrentTeacher",myCurrentTeacher.imgUrl, myCurrentTeacher.imgUrl == null,myCurrentTeacher);      
 					if (res.code === networkCode.sessionTimeOut) {
                     makeAlertRedirect();
                 } else {
-					 myCurrentTeacher.imgUrl = res.urls;
+					 //myCurrentTeacher.imgUrl = res.urls;
 					//alert("loi cmn 123 " + JSON.stringify(res) +" "+res.code+" "+res.message);
 				}
             },
@@ -391,7 +394,7 @@ console.log(res);
     //submit form
     document.getElementById("teacherSubmit").addEventListener("click", function(e) {
         e.preventDefault();
-        //console.log("email", myCurrentTeacher.email);
+        console.log("myCurrentTeacher", myCurrentTeacher);
         if (myCurrentTeacher.imgUrl == "" || myCurrentTeacher.imgUrl == null ){
 			SunQAlert()
                 .position('center')
@@ -404,19 +407,20 @@ console.log(res);
                 })
                 .show();
 		}
-        else if (!checkEmail(myCurrentTeacher.email)) {
-            SunQAlert()
-                .position('center')
-                .title(dictionaryKey.WRONG_EMAIL)
-                .type('error')
-                .confirmButtonColor("#3B4EDC")
-                .confirmButtonText(dictionaryKey.TRY_AGAIN)
-                .callback((result) => {
-                    document.getElementById("inputTeacherEmail").focus();
-					document.getElementById("inputTeacherMajor").scrollIntoView();
-                })
-                .show();
-        } else if(!checkPhone(myCurrentTeacher.phone)){
+//         else if (!checkEmail(myCurrentTeacher.email)) {
+//             SunQAlert()
+//                 .position('center')
+//                 .title(dictionaryKey.WRONG_EMAIL)
+//                 .type('error')
+//                 .confirmButtonColor("#3B4EDC")
+//                 .confirmButtonText(dictionaryKey.TRY_AGAIN)
+//                 .callback((result) => {
+//                     document.getElementById("inputTeacherEmail").focus();
+// 					document.getElementById("inputTeacherMajor").scrollIntoView();
+//                 })
+//                 .show();
+//         } 
+         else if(!checkPhone(myCurrentTeacher.phone)){
 				SunQAlert()
                 .position('center')
                 .title(dictionaryKey.WRONG_PHONE)
@@ -429,7 +433,7 @@ console.log(res);
                 })
                 .show();  
 		} else {
-            let titlleRequestTeacher = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT: dictionaryKey.REQUEST_ADD + dictionaryKey.LECTURE_NAME;
+            let titlleRequestTeacher = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : dictionaryKey.REQUEST_ADD;
 			console.log("data lên " + JSON.stringify(myCurrentTeacher));
 			//alert("data lên " + myCurrentTeacher.practiceAt);
             SunQAlert()
@@ -455,6 +459,7 @@ console.log(res);
 //                         }
                         delete tempmyCurrentTeacher.createAt;
                         delete tempmyCurrentTeacher.updateAt;
+                        delete tempmyCurrentTeacher.id;
                         delete tempmyCurrentTeacher.id;
 						myCurrentTeacher.description = teacherDesciption.getData();
                         //delete tempmyCurrentTeacher.shortId;

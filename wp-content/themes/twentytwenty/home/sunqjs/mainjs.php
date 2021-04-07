@@ -12,6 +12,21 @@
 			
 		}
 		
+		function testApiForSession(){
+			requestToSever(
+                sunQRequestType.get,
+                getURLListClass(),
+                null,
+                getLocalStorage(dictionary.MSEC),
+                function(res) {
+                    webpageRedirect("http://admin.sundayq.com");
+                },
+                function(err) {
+                    	webpageRedirect("http://admin.sundayq.com");
+                }
+            );
+		}
+		
 		function saveData(key,data){
 					localStorage.saveItem(key,data);
 				}
@@ -247,6 +262,10 @@
 	function checkPhone(value){
     	var re = /[0-9]{8,}/;
 		return re.test(value);
+	}
+	
+	function cutNHeadString(str,n){
+		return str.substring(n,str.length-1);;
 	}
 	
 	String.prototype.escape = function() {

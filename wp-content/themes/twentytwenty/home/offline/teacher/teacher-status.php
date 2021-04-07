@@ -59,13 +59,13 @@
     }
 
     //get teacher from server success
-    Object.defineProperty(teacherStatus, "isGetTeacherFromServerLengthGreaterThanZero ", {
+    Object.defineProperty(teacherStatus, "isGetTeacherFromServerLengthGreaterThanZero", {
         get() {
             return _isGetTeacherFromServerLengthGreaterThanZero;
         },
         set(val) {
             _isGetTeacherFromServerLengthGreaterThanZero = val;
-            val ? getListLectureGreaterThanZero() : getListLectureEqualToZero();
+            val ? getListTeacherGreaterThanZero() : getListTeacherEqualToZero();
         }
     });
 
@@ -155,11 +155,11 @@
                 null,
                 getData(dictionary.MSEC),
                 function(res) {
-                    //console.log(res);
+                    console.log(res);
                     setFetchingTeacher(false);
                     if (res.code === networkCode.success) {
                         if (res.data == null || res.data.length == 0) {
-                            setGetTeacherFromServerSuccess(false);
+                            setGetTeacherFromServerLengthGreaterThanZero(false);
                         } else {
                             emptyTableListTeacher();
                             listTeacher = listTeacher.concat(res.data);

@@ -59,13 +59,13 @@
     }
 
     //get ConfirmBanking from server success
-    Object.defineProperty(confirmBankingStatus, "isGetConfirmBankingFromServerLengthGreaterThanZero ", {
+    Object.defineProperty(confirmBankingStatus, "isGetConfirmBankingFromServerLengthGreaterThanZero", {
         get() {
             return _isGetConfirmBankingFromServerLengthGreaterThanZero;
         },
         set(val) {
             _isGetConfirmBankingFromServerLengthGreaterThanZero = val;
-            val ? getListLectureGreaterThanZero() : getListLectureEqualToZero();
+            val ? getListConfirmBankingGreaterThanZero() : getListConfirmBankingEqualToZero();
         }
     });
 
@@ -159,7 +159,7 @@
                     setFetchingConfirmBanking(false);
                     if (res.code === networkCode.success) {
                         if (res.data == null || res.data.length == 0) {
-                            setGetConfirmBankingFromServerSuccess(false);
+                            setGetConfirmBankingFromServerLengthGreaterThanZero(false);
                         } else {
                             emptyTableListConfirmBanking();
                             listConfirmBanking = listConfirmBanking.concat(res.data);

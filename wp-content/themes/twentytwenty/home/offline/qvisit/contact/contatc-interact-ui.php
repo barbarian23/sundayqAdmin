@@ -98,7 +98,8 @@ function createListContact(result,isPush) {
 				let maxPage = result.total;
 				let maxPerList = dictionaryKey.limitRequestRegister;
 				//paging
-				let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+				//let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+				let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage % maxPerList) <= 0 ? Number.parseInt(maxPage / maxPerList) : Number.parseInt(maxPage / maxPerList) + 1;
 				console.log(totalPage);
 				for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 					let tempDivPaging = document.createElement("span");

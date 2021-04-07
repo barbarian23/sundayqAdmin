@@ -14,6 +14,9 @@
 		month: 0,
 		steamqpart:"",
 		steamqclass:"",
+		steamqClassFetching:"", // -1-failed,0-fetching,1-success
+		steamqclassid:"",
+		steamqParentid:""
     }
     var _mode = "none",
 		_page = "none",
@@ -25,7 +28,10 @@
         _isloginfailed = false,
 		_month = 0,
 		_steamqpart = "",
-		_steamqclass = ""
+		_steamqclass = "",
+		_steamqClassFetching = 0,
+		_steamqclassid = "",
+		_steamqParentid = ""
        ;
 
     //mode setting
@@ -124,6 +130,52 @@
         }
     });
 	
+	//steamq class id
+    Object.defineProperty(sunqStatus, "steamqclassid", {
+        get() {
+            return _steamqclassid;
+        },
+        set(val) {
+            _steamqclassid = val;
+        }
+    });
+	
+	//steamq fetching
+    Object.defineProperty(sunqStatus, "steamqClassFetching", {
+        get() {
+            return _steamqClassFetching;
+        },
+        set(val) {
+            _steamqClassFetching = val;
+        }
+    });
+	
+	//steamq parent id
+    Object.defineProperty(sunqStatus, "steamqParentid", {
+        get() {
+            return _steamqParentid;
+        },
+        set(val) {
+            _steamqParentid = val;
+        }
+    });
+	
+	function setSteamqParentId(val) {
+        sunqStatus.steamqParentid = val;
+    }
+
+    function getSteamqParentId() {
+        return sunqStatus.steamqParentid;
+    }
+	
+	function setSteamqClassFetching(val) {
+        sunqStatus.steamqClassFetching = val;
+    }
+
+    function getSteamqClassFetching() {
+        return sunqStatus.steamqClassFetching;
+    }
+	
 	function setSteamqpart(val) {
         sunqStatus.steamqpart = val;
     }
@@ -132,13 +184,20 @@
         return sunqStatus.steamqpart;
     }
 	
-	
 	function setSteamqclass(val) {
         sunqStatus.steamqclass = val;
     }
 
     function getSteamqclass() {
         return sunqStatus.steamqclass;
+    }
+	
+	function setSteamqclassid(val) {console.log("");
+        sunqStatus.steamqclassid = val;
+    }
+
+    function getSteamqclassid() {
+        return sunqStatus.steamqclassid;
     }
 	
     function setLogInFailed(val, iText) {
@@ -244,28 +303,28 @@
 	var steamQPartOnOff = [
 		{
 		    token:"S",
-			on: () => showSteamQPart("S"),
-			off: () => hideSteamQPart("S")
+			on: () => showSteamQPartDetail("S"),
+			off: () => hideSteamQPartDetail("S")
 		},
         {
 		    token:"T",
-		    on: () => showSteamQPart("T"),
-			off: () => hideSteamQPart("T")
+		    on: () => showSteamQPartDetail("T"),
+			off: () => hideSteamQPartDetail("T")
 		},
         {
 		    token:"E",
-		    on: () => showSteamQPart("E"),
-			off:  () => hideSteamQPart("E")
+		    on: () => showSteamQPartDetail("E"),
+			off:  () => hideSteamQPartDetail("E")
 		},
         {
 		    token:"A",
-		    on: () => showSteamQPart("A"),
-			off:  () => hideSteamQPart("A")
+		    on: () => showSteamQPartDetail("A"),
+			off:  () => hideSteamQPartDetail("A")
 		},
         {
 		    token:"M",
-		    on: () => showSteamQPart("M"),
-			off:  () => hideSteamQPart("M")
+		    on: () => showSteamQPartDetail("M"),
+			off:  () => hideSteamQPartDetail("M")
 		}
 	]
 	
@@ -273,14 +332,20 @@
 		steamQPartOnOff.map(item => {
 				console.log("showSteamQPart",item.token);
 			if(item.token == part){
-				console.log(typeof item.on);
+				//console.log(typeof item.on);
+				if(document.getElementById("homeMenuSteamQ"+part).style.display != "none" && document.getElementById("homeMenuSteamQ"+part).style.display != ""){
+				item.off();
+				   
+				   } else {
 				item.on();
+				   
+				   }
 				return true;
 			}else{
 				item.off();
 			}
 		});
-	}
+ 	}
 	
 		function hideAllSteamQPart(){
 		steamQPartOnOff.map(item => {
@@ -292,9 +357,9 @@
 	
 	function showThenHideMode(mode){
 		functionOnOff.map(item => {
-				console.log("showThenHideMode",item.token);
+				//console.log("showThenHideMode",item.token);
 			if(item.token == mode){
-				console.log(typeof item.on);
+				console.log(typeof item.on,item.token);
 				item.on();
 				return true;
 			}else{
@@ -350,6 +415,7 @@
 				showThenHideMode(sunQMode.online);
                 break
 			case sunQMode.steamqpart:
+				console.log("steamq");
 				showSteamQPart(getSteamqpart());
 				showThenHideMode(sunQMode.online);
                 break

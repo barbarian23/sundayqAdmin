@@ -286,8 +286,8 @@ include get_theme_file_path("home/online/freeq/freelesson1/freelessonplan/intera
 
     document.getElementById("idFreeLessonPlan1Month").addEventListener("change", function(e) {
 		//e.target.value.split("/")[1] + "/" + e.target.value.split("/")[0] + "/" + e.target.value.split("/")[2]
-		let tempDate = new Date();
-		tempDate.setMonth(Number.parseInt(e.target.value.split("/")[1])-1);
+		let tempDate = new Date(e.target.value.split("/")[1]+"/"+e.target.value.split("/")[0]+"/"+e.target.value.split("/")[2]);
+		//tempDate.setMonth(Number.parseInt(e.target.value.split("/")[1])-1);
         let monthTemp = ["Tháng 0", "Tháng một", "Tháng hai", "Tháng ba", "Tháng tư", "Tháng năm", "Tháng sáu", "Tháng bảy", "Tháng tám", "Tháng chín", "Tháng mười", "Tháng mười một", "Tháng mười hai"];
 		if (getCurrentACtion() == dictionaryKey.editStatus){
 		

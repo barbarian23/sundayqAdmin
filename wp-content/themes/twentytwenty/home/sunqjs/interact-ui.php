@@ -13,9 +13,10 @@ var showOnLineMode = function(){
 	
 }
 
-var hideOnLineMode = function(){
+var hideOnLineMode = function(){console.log("hidddd");
 	hideUpload();
 	hideFreeQ();
+	hideSteamQ();
 	hideManageAccount();
 	if(window.innerWidth > 480){
 	   	let onlineOpen = document.getElementById("homeMenuOnline");
@@ -35,6 +36,20 @@ function showManageAccount(){
 	} else {
 	    let sUserAccount = document.getElementById("smallhomeMenuManageAccount");
 		sUserAccount && function(){sUserAccount.style.display = "block"}();
+	   }
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuConfirmBanking");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuConfirmBanking");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	   }
+	if(window.innerWidth > 480){
+	   let onlineFreeQ = document.getElementById("homeMenuUserAccount");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
+	} else {
+	    let onlineFreeQ = document.getElementById("smallhomeMenuUserAccount");
+		onlineFreeQ && function(){onlineFreeQ.style.display = "block"}();
 	   }
 }
 
@@ -314,10 +329,10 @@ var hideChatMode = function(){
 function showSteamQ(){
 	if(window.innerWidth > 480){
 	   let onlineSteamQ = document.getElementById("homeMenuSteamQ");
-		onlineSteamQ && function(){onlineFreeQ.style.display = "block"}();
+		onlineSteamQ && function(){onlineSteamQ.style.display = "block"}();
 	} else {
 	    let onlineSteamQ = document.getElementById("smallhomeMenuSteamQ");
-		onlineSteamQ && function(){onlineFreeQ.style.display = "block"}();
+		onlineSteamQ && function(){onlineSteamQ.style.display = "block"}();
 	   }
 }
 
@@ -325,15 +340,16 @@ function hideSteamQ(){
 	hideAllSteamQPart();
 	if(window.innerWidth > 480){
 	   let onlineSteamQ = document.getElementById("homeMenuSteamQ");
-		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
+		onlineSteamQ && function(){onlineSteamQ.style.display = "none"}();
 	} else {
 	    let onlineFreeQ = document.getElementById("smallhomeMenuSteamQ");
 		onlineFreeQ && function(){onlineFreeQ.style.display = "none"}();
 	   }
 }
 	
-var showSteamQPart = function(part){
+var showSteamQPartDetail = function(part){console.log("showSteamQPart ",part);
 	showSteamQ();
+	//setMode(sunQMode.steamqpart);
 	if(window.innerWidth > 480){
 	   let adminOpen = document.getElementById("homeMenuSteamQ"+part);
 		adminOpen && function(){adminOpen.style.display = "block"}();
@@ -344,7 +360,8 @@ var showSteamQPart = function(part){
 	
 }
 
-var hideSteamQPart = function(part){
+var hideSteamQPartDetail = function(part){
+	setMode("none");
 	if(window.innerWidth > 480){
 	   let adminOpen = document.getElementById("homeMenuSteamQ"+part);
 		adminOpen && function(){adminOpen.style.display = "none"}();
@@ -487,6 +504,83 @@ function loadingDataRegisterError(){
 	document.getElementById("fetchListRegisterProgress").style.display = "none" ;
 }
 		
+function fetchingSteamqClass(){
+	setSteamqClassFetching(0);
+	requestToSever(
+                sunQRequestType.get,
+                getURLListClass(),
+                null,
+                getLocalStorage(dictionary.MSEC),
+                function(res) {
+                    if (res.code === networkCode.success) {
+                    	setSteamqClassFetching(1);
+						let cdata = res.data.classes;
+// 						let parent = document.getElementById("homeMenuSteamQ");
+// 						let childPartent2 = parent.innerHTML;
+						//parent.innerHTML = "";
+						cdata.forEach((item,index)=>{
+							arrayHightlightTitle.push({key:"steamq-kit-class-" + index,id:"title-manage-steamq-add-class-" + index});
+							arrayBlueBackground.push({key:"steamq-kit-class-" + index,id:"divShowSteamQ",body:"homeMenuSteamQ"});
+							
+							arrayHightlightTitle.push({key:"steamq-kit-add-lesson-" + index,id:"title-manage-steamq-add-class-" + index});
+							arrayBlueBackground.push({key:"steamq-kit-add-lesson-" + index,id:"divShowSteamQ",body:"homeMenuSteamQ"});
+							//console.log(item);
+							STEAMQ_CLASS.push(item);
+							//console.log(STEAMQ_CLASS.length);
+							//console.log(STEAMQ_CLASS[0])
+							let parent = document.getElementById("homeMenuSteamQClass");
+							let divOuter = document.createElement("div");
+							divOuter.id = "homeMenuSteamQClass"+index;
+							divOuter.className = "home-middle-left-menu";
+							
+							let diva = document.createElement("a");
+							diva.href = '?mode=online&page=steamq-kit-class-' + index + '&sclass=' + index + '&id=' + item.id + '&category=science';
+							let divai = document.createElement("i");
+							divai.className = "fa fa-calendar";
+							let divaispan = document.createElement("span");
+							divaispan.id = "title-manage-steamq-add-class-"+index;
+							divaispan.className = "home-middle-left-menu-text";
+							divaispan.innerHTML = item.description
+
+							diva.appendChild(divai);
+							diva.appendChild(divaispan);
+							divOuter.appendChild(diva);
+
+
+							let divTooltip = document.createElement("div");
+							let spanTooltip = document.createElement("span");
+							spanTooltip,innerHTML = '<?php echo $GLOBALS["ADMIN_ONLINE_STEAMQ_ADD_CLASS"]; ?>';
+							divTooltip.appendChild(spanTooltip);
+
+							parent.appendChild(divOuter);
+							parent.appendChild(divTooltip);
+							});
+							setHightLightText(getPage());
+                            setBlueBackground(getPage());
+// 							let childPartent1 = parent.innerHTML;
+// 							parent.innerHTML = "";
+// 							parent.innerHTML = childPartent1 + "" + childPartent2;
+                    } else if (res.code === networkCode.sessionTimeOut) {
+                        makeAlertRedirect();
+                    }
+                },
+                function(err) {
+                    	setSteamqClassFetching(-1);
+					
+                    SunQAlert()
+                        .position('center')
+                        .title(dictionaryKey.ERROR_API_MESSAGE)
+                        .type('error')
+                        .confirmButtonColor("#3B4EDC")
+                        .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                        .callback((result) => {
+                           //webpageRedirect(window.location.href);
+                        })
+                        .show();
+                }
+            );
+}
+	
 function chooseMultiOwwner(){
 	
 }
@@ -496,14 +590,18 @@ function chooseSingleOwwner(){
 }
 	
 	function setHightLightText(val){
-		arrayHightlightTitle.forEach(function(item,index) {
+		arrayHightlightTitle.forEach(function(item,index) {//console.log(item["id"]);
+			if(document.getElementById(item["id"])){
 			document.getElementById(item["id"]).style.color = "rgba(240,245,250,.7)";
 			   document.getElementById(item["id"]).style.fontWeight = "500";
+		}
 		});
 		arrayHightlightTitle.some(function(item,index) {
 			if(item["key"] == val){
+				if(document.getElementById(item["id"])){
 				 document.getElementById(item["id"]).style.color = "#fafafa";
 			   document.getElementById(item["id"]).style.fontWeight = "800";
+				}
 				return true;
 			 }
 		});

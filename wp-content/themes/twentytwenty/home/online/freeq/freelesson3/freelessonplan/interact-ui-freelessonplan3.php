@@ -78,7 +78,8 @@ let parentPaging = document.getElementById("pagingListFreeLessonPlan3");
 parentPaging.innerHTML="";
 let maxPage = list.length;//result.total
 let maxPerList = dictionaryKey.limitRequestRegister;
-let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+//let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage/maxPerList) < 0 ? Number.parseInt(maxPage/maxPerList) : Number.parseInt(maxPage/maxPerList) + 1;
+	let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage % maxPerList) <= 0 ? Number.parseInt(maxPage / maxPerList) : Number.parseInt(maxPage / maxPerList) + 1;
 console.log("totalPage",totalPage);
 for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
     let tempDivPaging = document.createElement("span");

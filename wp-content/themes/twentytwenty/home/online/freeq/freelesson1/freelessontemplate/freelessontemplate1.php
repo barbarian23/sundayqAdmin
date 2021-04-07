@@ -303,7 +303,7 @@ include get_theme_file_path("home/online/freeq/freelesson1/freelessontemplate/in
 	function progressLoadCurrentLesson(){
 		if (getCurrentACtion() == dictionaryKey.editStatus) {
             document.getElementById("FreeLessonTemplate1Submit").value = '<?php echo $GLOBALS["FREELESSON_TEMPLATE_SUBMIT_EDIT"] ?>';
-
+			
             //fetch từ server
             setLoadingDataFreeLessonTemplate1(true);
             requestToSever(

@@ -255,12 +255,23 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
     </div>
 
 </form>
+<!--  đọc -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/jszip.js" integrity="sha512-3KyePOt/FK314qOCZhMfzt01WMTSxxKRfdPsUTyu+tu64MuZQTFOZ51Rf4a+8y616yZolMzH24FTckng9cd7Yg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
 
-<script src="wp-content/themes/twentytwenty/assets/js/jszip.js"></script>
-<script src="wp-content/themes/twentytwenty/assets/js/xlsx.js"></script>
+<!-- tạo file -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.core.min.js" integrity="sha512-qcjxCpal2fC5XTlJBB6yc/T2g7Xuxd0uHz+syZZEByojMPnKXroczpN3vrxL3ifHx4RVy4Jj8jVkXseQ5irtWA==" crossorigin="anonymous"></script>
 
-<script src="wp-content/themes/twentytwenty/assets/js/alasql.min.js"></script>
-<script src="wp-content/themes/twentytwenty/assets/js/xlsx.core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alasql/0.6.2/alasql.min.js" integrity="sha512-2avn8of9zz17ejnalEodjUd2blM2VEwSixFrGc0BNDXBlkGBNof9w8/ajoDquplOw/RrExjv4kXQ709719C2Ng==" crossorigin="anonymous"></script>
+
+<!-- <script src="wp-content/themes/twentytwenty/assets/js/jszip.js"></script>
+<script src="wp-content/themes/twentytwenty/assets/js/xlsx.js"></script> -->
+<!-- 
+<script src="wp-content/themes/twentytwenty/assets/js/alasql.min.js"></script> -->
+<!-- <script src="wp-content/themes/twentytwenty/assets/js/xlsx.core.min.js"></script> -->
+
+
+
 <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/decoupled-document/ckeditor.js"></script>
 <script>
     //load from data teacher
@@ -1002,17 +1013,23 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
 	
 	document.getElementById("btnDownloadExcel").addEventListener("click",function(e){
 		e.preventDefault();
-		
-        let opts = [{
-            sheetid: 'Sheet One',
-            header: true
-        }, {
-            sheetid: 'Sheet Two',
-            header: false
-        }];
+		console.log("teacher",sheet_1_data);
+//         let opts = [{
+//             sheetid: 'Sheet One',
+//             header: true
+//         }, {
+//             sheetid: 'Sheet Two',
+//             header: false
+//         }];
            //         [opts, [sheet_1_data, sheet_2_data]]);
-		 let result = alasql('SELECT * INTO XLSX( "' + getDictionaryText("LECTURE_FILE_SAMPLE_NAME") + '.xlsx",?) FROM ?',
-            [opts, [sheet_1_data]]);
+// 		 let result = alasql('SELECT * INTO XLSX( "' + getDictionaryText("LECTURE_FILE_SAMPLE_NAME") + '.xlsx",?) FROM ?',
+//             [opts, [sheet_1_data]]);
+		
+		   //var sheet_1_data = [{ Col_One: 1, Col_Two: 11 }, { Col_One: 2, Col_Two: 22 }];
+        var sheet_2_data = [{ Col_One: 10, Col_Two: 110 }, { Col_One: 20, Col_Two: 220 }];
+        var opts = [{ sheetid: 'Sheet One', header: true }, { sheetid: 'Sheet Two', header: false }];
+        var result = alasql('SELECT * INTO XLSX("sample_file.xlsx",?) FROM ?',
+            [opts, [sheet_1_data, sheet_2_data]]);
 	});
 	
 	function downloadExxcel(e){	

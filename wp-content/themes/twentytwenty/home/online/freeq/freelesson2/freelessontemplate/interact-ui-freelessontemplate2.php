@@ -158,11 +158,30 @@
             div1.appendChild(divContent);
             div1.addEventListener("click", function() {
                 let duppp = false;
-                //console.log("check", item);
-                currentKit = item.id;
-                selectKitIndex(currentKit);
+				if(currentKit){
+				   if(currentKit == item.id){
+					   SunQAlert()
+                                    .position('center')
+                                    .title(dictionaryKey.FREELESSON_TEMPLATE_KIT_ALREADY_ADDED)
+                                    .type('error')
+                                    .confirmButtonColor("#3B4EDC")
+                                    .confirmButtonText(dictionaryKey.AGREE)
+                                    .callback((result) => {
+                                        // webpageRedirect(window.location.href);
+										setChoosingKitFreeLessonTemplate2(false);
+                                    })
+                                    .show();
+					    duppp = true;
+				   }
+				   }
+				
+                if (duppp == false) {
+                    //console.log("check", item);
+					currentKit = item.id;
+					selectKitIndex(currentKit);
 					//close cửa sổ
 					setChoosingKitFreeLessonTemplate2(false);
+                }
             });
             parent.appendChild(div1);
         });
@@ -374,7 +393,8 @@
         parentPaging.innerHTML = "";
         let maxPage = result.total;
         let maxPerList = dictionaryKey.limitRequestRegister;
-        let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage / maxPerList) < 0 ? Number.parseInt(maxPage / maxPerList) : Number.parseInt(maxPage / maxPerList) + 1;
+        //let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage / maxPerList) < 0 ? Number.parseInt(maxPage / maxPerList) : Number.parseInt(maxPage / maxPerList) + 1;
+		let totalPage = maxPage <= maxPerList ? 1 : Number.parseInt(maxPage % maxPerList) <= 0 ? Number.parseInt(maxPage / maxPerList) : Number.parseInt(maxPage / maxPerList) + 1;
         console.log(totalPage);
         for (let pagingIndex = 0; pagingIndex < totalPage; pagingIndex++) {
             let tempDivPaging = document.createElement("span");

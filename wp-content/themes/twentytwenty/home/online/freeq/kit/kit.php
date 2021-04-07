@@ -357,6 +357,7 @@ include get_theme_file_path("home/online/freeq/kit/interact-ui-kit.php");
                         delete tempmyCurrentKit.createAt;
                         delete tempmyCurrentKit.updateAt;
                         delete tempmyCurrentKit.id;
+                        delete tempmyCurrentKit.thumbnails;
 						myCurrentKit.price = Number.parseInt(myCurrentKit.price);
                         setLoadingDataKit(true);
                         requestToSever(

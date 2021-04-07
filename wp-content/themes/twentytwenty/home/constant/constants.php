@@ -39,6 +39,8 @@
 	 //freeq
 	$GLOBALS["ADMIN_ONLINE_STEAMQ"] = "SteamQ";
 	$GLOBALS["ADMIN_ONLINE_STEAMQ_KIT"] = "Bộ KIT";
+	$GLOBALS["ADMIN_ONLINE_STEAMQ_QUESTION"] = "Câu hỏi trắc nghiệm";
+
 	//offline
 	$GLOBALS["ADMIN_OFFLINE"] = "Giới thiệu trung tâm SundayQ";
 	$GLOBALS["ADMIN_Q_ACADEMY"] = "Q-Academy";
@@ -171,13 +173,13 @@
 	$GLOBALS["FREELESSON_PLAN_INPUT_NAME_PLACEHOLDER"] = "Nhập tên kế hoạch bài giảng";
 	$GLOBALS["FREELESSON_PLAN_INPUT_IMAGE"] = "Ảnh kế hoạch bài giảng";
 	$GLOBALS["FREELESSON_PLAN_INPUT_IMAGE_PLACEHOLDER"] = "Nhập ảnh kế hoạch bài giảng";
-    $GLOBALS["FREELESSON_PLAN_INPUT_MONTH"] = "Tháng bài giảng mẫu";
-	$GLOBALS["FREELESSON_PLAN_INPUT_MONTH_PLACEHOLDER"] = "Nhập tháng bài giảng mẫu";
-	$GLOBALS["FREELESSON_PLAN_INPUT_DETAIL"] = "Thông tin về bài giảng mẫu";
-	$GLOBALS["FREELESSON_PLAN_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin bài giảng mẫu";
-	$GLOBALS["FREELESSON_PLAN_INPUT_SUB_DETAIL"] = "Thông tin ngắn gọn về bộ bài giảng mẫu";
-	$GLOBALS["FREELESSON_PLAN_INPUT_SUB_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin ngắn gọn về bài giảng mẫu";
-	$GLOBALS["FREELESSON_PLAN_SUBMIT_ADD"] = "Thêm bộ bài giảng mẫu";	
+    $GLOBALS["FREELESSON_PLAN_INPUT_MONTH"] = "Tháng kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_MONTH_PLACEHOLDER"] = "Nhập tháng kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_DETAIL"] = "Thông tin về kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_SUB_DETAIL"] = "Thông tin ngắn gọn về kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_INPUT_SUB_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin ngắn gọn về kế hoạch bài giảng";
+	$GLOBALS["FREELESSON_PLAN_SUBMIT_ADD"] = "Thêm kế hoạch bài giảng";	
 	$GLOBALS["FREELESSON_PLAN_SUBMIT_EDIT"] = "Chỉnh sửa";
 	$GLOBALS["FREELESSON_PLAN_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm ảnh";
 	$GLOBALS["FREELESSON_PLAN_ADD_IMAGE"] = "Thêm ảnh";
@@ -212,10 +214,7 @@
 	$GLOBALS["KIT_LESSION_EXP"] = "Kinh nghiệm giảng dạy: ";
 	$GLOBALS["KIT_LESSION_DEGREE"] = "Chức danh đối với học viên: ";
 	
-	//SteamQ
-	$GLOBALS["STEAM_Q_PART"] = array("S"=>"Science","T"=>"Technology","E"=>"Engineering","A"=>"Art","M"=>"Math");
-	$GLOBALS["STEAM_Q_CLASS"] = array("Dưới lớp 1","Lớp 1","Lớp 2","Lớp 3","Lớp 4","Lớp 5","Lớp 6","Lớp 7");
-
+	
 	//list-video
 	$GLOBALS["VIDEO_LIST_TITLE"] = "Danh sách các video";
 	$GLOBALS["VIDEO_NO_LIST"] = "Danh sách các video trống";
@@ -255,6 +254,105 @@
 	$GLOBALS["VIDEO_SUBMIT_SWITCH_TO_LIST"] = "Hoàn thành";
 	$GLOBALS["VIDEO_SWITCH_TO_UPLOAD"] = "Tải lên video";
 	$GLOBALS["VIDEO_STATUS"] = "Trạng thái";
+
+	//steamq
+	//list freelessonplan
+	$GLOBALS["STEAMQ_REAL_TITLE"] = "Kế hoạch bài giảng dành cho học sinh lớp ";
+	$GLOBALS["STEAMQ_LIST_TITLE"] = "Danh sách các bài giảng";
+	$GLOBALS["STEAMQ_PLAN_NO_LIST"] = "Danh sách các bài giảng trống";
+	$GLOBALS["STEAMQ_PLAN_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["STEAMQ_PLAN_LIST_COL_2"] = "Tên bài giảng";
+	$GLOBALS["STEAMQ_PLAN_LIST_COL_3"] = "Tháng";
+	$GLOBALS["STEAMQ_PLAN_LIST_COL_4"] = "Mô tả ngắn gọn";
+	$GLOBALS["STEAMQ_PLAN_LIST_COL_5"] = "Chỉnh sửa";
+	$GLOBALS["STEAMQ_PLAN_LIST_BUTTON_EDIT_KIT"] = "Chỉnh sửa";
+	$GLOBALS["STEAMQ_PLAN_LIST_BUTTON_DELETE_KIT"] = "Xóa";
+	$GLOBALS["STEAMQ_PLAN_LIST_BUTTON_ADD_KIT"] = "Thêm mới bài giảng";
+	$GLOBALS["STEAMQ_PLAN_LIST_NO_NEED_TO_CHANGE_MONTH"] = "Không được thay đổi tháng bài giảng";
+
+    //STEAMQplan
+	$GLOBALS["STEAMQ_PLAN_INPUT_NAME"] = "Tiêu đề bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_NAME_PLACEHOLDER"] = "Nhập tiêu đề bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_IMAGE"] = "Ảnh bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_IMAGE_PLACEHOLDER"] = "Nhập ảnh bài giảng";
+    $GLOBALS["STEAMQ_PLAN_INPUT_MONTH"] = "Tháng bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_MONTH_PLACEHOLDER"] = "Nhập tháng bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_DETAIL"] = "Thông tin về bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_SUB_DETAIL"] = "Thông tin ngắn gọn về bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_SUB_DETAIL_PLACEHOLDER"] = "Nhập vào thông tin ngắn gọn về bài giảng";
+	$GLOBALS["STEAMQ_PLAN_SUBMIT_ADD"] = "Thêm bài giảng";	
+	$GLOBALS["STEAMQ_PLAN_SUBMIT_EDIT"] = "Chỉnh sửa";
+	$GLOBALS["STEAMQ_PLAN_NO_IMAGE"] = "Không có ảnh.Bấm vào để thêm ảnh";
+	$GLOBALS["STEAMQ_PLAN_ADD_IMAGE"] = "Thêm ảnh";
+	$GLOBALS["STEAMQ_PLAN_INPUT_RESOURCE"] = "Video của bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_RESOURCE_PLACEHOLDER"] = "Chọn video của bài giảng";
+	$GLOBALS["STEAMQ_PLAN_INPUT_LIST_VIDEO"] = "Danh sách video";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION"] = "Câu hỏi trắc nghiệm";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_TIMES"] = "Câu ";
+	$GLOBALS["STEAMQ_PLAN_INPUT_ADD_QUESTION"] = "Thêm câu hỏi";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_TITLE"] = "Nội dung câu hỏi";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_TITLE_PLACEHOLDER"] = "Nhập nội dung câu hỏi";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_ANSWER_LIST"] = "Câu trả lời";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_ANSWER"] = "Lời giải";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_ANSWER_PLACEHOLDER"] = "Nhập lời giải";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_CORRECT_ANSWER_IS"] = "Đáp án đúng là";
+	$GLOBALS["STEAMQ_PLAN_INPUT_QUESTION_OPTION_PLACEHOLDER"] = "Nhập nội dung";
+	$GLOBALS["STEAMQ_PLAN_TEMPLATE_INPUT_KIT"] = "Danh sách bộ kit";
+	$GLOBALS["STEAMQ_PLAN_TEMPLATE_INPUT_SEARCH_NAME"] = "Nhập tên câu hỏi để tìm kiếm";
+	$GLOBALS["STEAMQ_PLAN_QUESTION_ADD"] = "Đã thêm câu hỏi";
+	$GLOBALS["STEAMQ_PLAN_QUESTION_DELETE"] = "Đã xóa câu hỏi";
+	$GLOBALS["STEAMQ_PLAN_QUESTION_KIT"] = "Danh sách câu hỏi";
+
+	//steamqclass
+	$GLOBALS["STEAMQ_CLASS_ADD_TILE"] = "Thêm lớp học";
+	$GLOBALS["STEAMQ_CLASS_EDIT_TILE"] = "Sửa tên lớp học";
+	$GLOBALS["STEAMQ_CLASS_DELETE_CLASS"] = "Xóa lớp học";
+	$GLOBALS["STEAMQ_CLASS_DESCRIPTION"] = "Tên lớp";
+	$GLOBALS["STEAMQ_CLASS_DESCRIPTION_PLACEHOLDER"] = "Nhập vào tên lớp";
+	$GLOBALS["STEAMQ_CLASS_CREATE"] = "Thêm mới";
+	$GLOBALS["STEAMQ_CLASS_UPDATE"] = "Cập nhật";
+
+	//SteamQ
+	$GLOBALS["STEAM_Q_PART"] = array("S"=>"Science","T"=>"Technology","E"=>"Engineering","A"=>"Art","M"=>"Math");
+	$GLOBALS["STEAM_Q_CLASS"] = array("Dưới lớp 1","Lớp 1","Lớp 2","Lớp 3","Lớp 4","Lớp 5","Lớp 6","Lớp 7");
+	$GLOBALS["STEAM_Q_PART_RAW"] = array("science","technology","engineering","art","math");
+	$GLOBALS["STEAM_Q_CLASS_RAW"] = array("under-one","one","two","three","four","five","six","seven");
+
+	$GLOBALS["ADMIN_ONLINE_STEAMQ_ADD_CLASS"] = "Thêm lớp học ...";
+
+	//QUESTION
+	//STEAMQ
+	//QUESTION
+	$GLOBALS["QUESTION_INPUT_TITLE"] = "Câu hỏi trắc nghiệm";
+	$GLOBALS["QUESTION_INPUT_TITLE_PLACEHOLDER"] = "Chọn câu hỏi trắc nghiệm";
+	$GLOBALS["QUESTION_INPUT_NAME"] = "Nội dung câu hỏi trắc nghiệm";
+	$GLOBALS["QUESTION_INPUT_NAME_PLACEHOLDER"] = "Nhập nội dung câu hỏi trắc nghiệm";
+	$GLOBALS["QUESTION_INPUT_ANWSER"] = "Câu trả lời";
+	$GLOBALS["QUESTION_INPUT_ANWSER_PLACEHOLDER"] = "Nhập câu trả lời";
+	$GLOBALS["QUESTION_INPUT_RIGHT_AMWSER"] = "Câu trả lời đúng là";
+	$GLOBALS["QUESTION_INPUT_AWNSWER_DETAIL"] = "Lời giải";
+	$GLOBALS["QUESTION_INPUT_AWNSWER_DETAIL_PLACEHOLDER"] = "Nhập nội dung lời giải";
+	$GLOBALS["QUESTION_SUBMIT_ADD"] = "Thêm câu hỏi";	
+	$GLOBALS["QUESTION_SUBMIT_EXCEL_DOWNLOAD"] = "Tải xuống file excel mẫu";	
+	$GLOBALS["QUESTION_SUBMIT_EXCEL_UPLOAD"] = "Chọn từ file excel";	
+	$GLOBALS["QUESTION_SUBMIT_EDIT"] = "Chỉnh sửa";
+	$GLOBALS["QUESTION_NO_LIST"] = "Danh sách các câu hỏi trống";
+	$GLOBALS["QUESTION_UPLOAD"] = "Tải câu hỏi lên";
+	$GLOBALS["QUESTION_QUANTILY"] = "Số lượng câu hỏi trắc nghiệm trong file excel";
+	$GLOBALS["QUESTION_NO_LIST_FOUND"] = "Không tìm thấy câu hỏi";
+	$GLOBALS["QUESTION_NO_ANWSER"] = "Chưa có lời giải";
+	
+	//list QUESTION
+	$GLOBALS["QUESTION_LIST_TITLE"] = "Danh sách các câu hỏi trắc nghiệm";
+	$GLOBALS["QUESTION_NO_LIST"] = "Danh sách các bộ QUESTION trống";
+	$GLOBALS["QUESTION_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["QUESTION_LIST_COL_2"] = "Nội dung câu hỏi";
+	$GLOBALS["QUESTION_LIST_COL_3"] = "Chỉnh sửa";
+	$GLOBALS["QUESTION_LIST_BUTTON_EDIT_QUESTION"] = "Chỉnh sửa câu hỏi";
+	$GLOBALS["QUESTION_LIST_BUTTON_DELETE_QUESTION"] = "Xóa câu hỏi";
+	$GLOBALS["QUESTION_LIST_BUTTON_ADD_QUESTION"] = "Thêm câu hỏi chắc nghiệm";
+	
 
 	//list-pdf
 	$GLOBALS["PDF_LIST_TITLE"] = "Danh sách các tệp pdf";
@@ -526,7 +624,7 @@
 	$GLOBALS["ACCOUNT_INPUT_EMAIL"] = "Email";
 	$GLOBALS["ACCOUNT_INPUT_EMAIL_PLACEHOLDER"] = "Nhập vào Email";
 	$GLOBALS["ACCOUNT_INPUT_PHONE"] = "Số điện thoại";
-	$GLOBALS["ACCOUNT_INPUT_PHONE_PLACEHOLDER"] = "Nhập vào mật khẩu số điện thoại";
+	$GLOBALS["ACCOUNT_INPUT_PHONE_PLACEHOLDER"] = "Nhập vào số điện thoại";
 	$GLOBALS["ACCOUNT_INPUT_PASSWORD"] = "Mật khẩu";
 	$GLOBALS["ACCOUNT_INPUT_PASSWORD_PLACEHOLDER"] = "Nhập vào mật khẩu";
 	$GLOBALS["ACCOUNT_INPUT_PERMISSION"] = "Quyền tài khoản";	
@@ -573,6 +671,7 @@
 	$GLOBALS["FIELD_REQUIRE"] = "*";
 
 	//misc
+	$GLOBALS['LOG_OUT'] = "Đăng xuất";
 	$GLOBALS["AGREE"] = "Đồng ý";
 	$GLOBALS["CANCEL"] = "Hủy bỏ";
 	$GLOBALS["CLOSE"] = "Đóng";
@@ -695,6 +794,8 @@
 		FREELESSON_TEMPLATE_EDIT_FAILED: "Chỉnh sửa không thành công",
 		FREELESSON_TEMPLATE_ADD_FAILED:"Thêm mới không thành công",
 	    FREELESSON_TEMPLATE_VIDEO_ALREADY_ADDED : "Video đã được thêm vào",
+	    FREELESSON_TEMPLATE_KIT_ALREADY_ADDED : "Bộ kit đã được thêm vào",
+	    FREELESSON_TEMPLATE_QUESTION_ALREADY_ADDED : "Câu hỏi đã được thêm vào",
 		
 		//freelessonplan
 		FREELESSON_PLAN_EDIT_SUCCESS: "Chỉnh sửa thành công",
@@ -702,11 +803,27 @@
 		FREELESSON_PLAN_EDIT_FAILED: "Chỉnh sửa không thành công",
 		FREELESSON_PLAN_ADD_FAILED:"Thêm mới không thành công",
 		
+		//steamq
+		STEAMQ_CLASS_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		STEAMQ_CLASS_ADD_SUCCESS:"Thêm mới thành công",
+		STEAMQ_CLASS_EDIT_FAILED: "Chỉnh sửa không thành công",
+		STEAMQ_CLASS_ADD_FAILED:"Thêm mới không thành công",
+		
+		STEAMQ_LESSON_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		STEAMQ_LESSON_ADD_SUCCESS:"Thêm mới thành công",
+		STEAMQ_LESSON_EDIT_FAILED: "Chỉnh sửa không thành công",
+		STEAMQ_LESSON_ADD_FAILED:"Thêm mới không thành công",
+		
 		//kit
 		KIT_EDIT_SUCCESS: "Chỉnh sửa thành công",
 		KIT_ADD_SUCCESS:"Thêm mới thành công",
 		KIT_EDIT_FAILED: "Chỉnh sửa không thành công",
 		KIT_ADD_FAILED:"Thêm mới không thành công",
+		
+		QUESTION_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		QUESTION_ADD_SUCCESS:"Thêm mới thành công",
+		QUESTION_EDIT_FAILED: "Chỉnh sửa không thành công",
+		QUESTION_ADD_FAILED:"Thêm mới không thành công",
 		
 		//offline
 		TEACHER_EDIT_SUCCESS: "Chỉnh sửa thành công",
@@ -745,6 +862,8 @@
 		LECTURE_ADD_SUCCESS:"Thêm mới thành công",
 		LECTURE_EDIT_FAILED: "Chỉnh sửa không thành công",
 		LECTURE_ADD_FAILED:"Thêm mới không thành công",
+		
+		QUESTION_UPLOAD_QUANLITY:"Đang tải lên câu hỏi thứ",
 		
 		MISS_FIELD:"Bạn đã nhập thiếu thông tin!Vui lòng nhập lại",
 		
@@ -787,6 +906,19 @@
 		FREELESSON_PLAN_KIT_TITLE:"Bạn chưa nhập tiêu đề của kế hoạch bài giảng",
 		FREELESSON_PLAN_KIT_IMAGE:"Bạn chưa tải ảnh lên của kế hoạch bài giảng",
 		FREELESSON_PLAN_KIT_DESCRIPTION:"Bạn chưa nhập mô tả của kế hoạch bài giảng",
+		//steamq,
+		STEAMQ_CLASS_TITLE:"Bạn chưa nhập tên của lớp học",
+		STEAMQ_CLASS_DELETE_SUCCESS:"Xóa thành công",
+		STEAMQ_CLASS_DELETE_FAILED:"Xóa không thành công",
+		
+		
+		QUESTION_UPLOAD_QUESTION_FAILED: "Không tải được file lên, vui lòng thử tải lại",
+		QUESTION_DELETE_FAILED: "Xóa không thành công",
+		QUESTION_DELETE_SUCCESS:"Xóa thành công",
+		QUESTION_QUANTITY:"Số lượng câu hỏi trắc nghiệm trong file excel:",
+		//kit
+		WRONG_QUESTION_TITLE:"Bạn chưa nhập nội dung câu hỏi",
+		
 		//kit
 		WRONG_KIT_TITLE:"Bạn chưa nhập tiêu đề của KIT",
 		WRONG_KIT_IMAGE:"Bạn chưa tải ảnh lên của bộ KIT",
@@ -796,6 +928,7 @@
 		LECTURE_COURSE_PLAN_NULL: "Nội dung khóa học không được để trống.Tại khóa học thứ ",
 		
 		REQUEST_PASSWORD_CHANGE:"Bạn có muốn đổi mật khẩu không?",
+		REQUEST_DELETE_CLASS:"Bạn có muốn xóa lớp học không?Các bài giảng cũng sẽ bị xóa theo!",
 		REQUEST_DELETE:"Bạn có muốn xóa không?",
 		REQUEST_ACTIVE:"Bạn có muốn kích hoạt tài khoản này?",
 		REQUEST_DEACTIVE:"Bạn có muốn tạm thời vô hiệu hóa tài khoản này?",
@@ -941,6 +1074,12 @@
 		//steamq
 		steamq:"steamq",
 		steamqpart:"steamqpart",
+		steamqpartS:"steamqpartS",
+		steamqpartT:"steamqpartT",
+		steamqpartE:"steamqpartE",
+		steamqpartA:"steamqpartA",
+		steamqpartM:"steamqpartM",
+		question:"question",
 		sa:"sa",//super admin
 		account:"account",
 		group:"group",
@@ -990,6 +1129,143 @@
 		
 		{key:"kit",id:"title-manage-kit"},
 		{key:"list-kit",id:"title-manage-kit"},
+		//steamq
+		//SPart
+// 		{key:"list-steam-science-under-one",id:"title-manage-steamq-science-under-one"},
+// 		{key:"steam-science-under-one",id:"title-manage-steamq-science-under-one"},
+		
+// 		{key:"list-steam-science-one",id:"title-manage-steamq-science-one"},
+// 		{key:"steam-science-one",id:"title-manage-steamq-science-one"},
+		
+// 		{key:"list-steam-science-two",id:"title-manage-steamq-science-two"},
+// 		{key:"steam-science-two",id:"title-manage-steamq-science-two"},
+		
+// 		{key:"list-steam-science-three",id:"title-manage-steamq-science-three"},
+// 		{key:"steam-science-three",id:"title-manage-steamq-science-three"},
+		
+// 		{key:"list-steam-science-four",id:"title-manage-steamq-science-four"},
+// 		{key:"steam-science-four",id:"title-manage-steamq-science-four"},
+		
+// 		{key:"list-steam-science-five",id:"title-manage-steamq-science-five"},
+// 		{key:"steam-science-five",id:"title-manage-steamq-science-five"},
+		
+// 		{key:"list-steam-science-six",id:"title-manage-steamq-science-six"},
+// 		{key:"steam-science-six",id:"title-manage-steamq-science-six"},
+		
+// 		{key:"list-steam-science-seven",id:"title-manage-steamq-science-seven"},
+// 		{key:"steam-science-seven",id:"title-manage-steamq-science-seven"},
+		
+// 		//TPart
+// 		{key:"list-steam-technology-under-one",id:"title-manage-steamq-technology-under-one"},
+// 		{key:"steam-technology-under-one",id:"title-manage-steamq-technology-under-one"},
+		
+// 		{key:"list-steam-technology-one",id:"title-manage-steamq-technology-one"},
+// 		{key:"steam-technology-one",id:"title-manage-steamq-technology-one"},
+		
+// 		{key:"list-steam-technology-two",id:"title-manage-steamq-technology-two"},
+// 		{key:"steam-technology-two",id:"title-manage-steamq-technology-two"},
+		
+// 		{key:"list-steam-technology-three",id:"title-manage-steamq-technology-three"},
+// 		{key:"steam-technology-three",id:"title-manage-steamq-technology-three"},
+		
+// 		{key:"list-steam-technology-four",id:"title-manage-steamq-technology-four"},
+// 		{key:"steam-technology-four",id:"title-manage-steamq-technology-four"},
+		
+// 		{key:"list-steam-technology-five",id:"title-manage-steamq-technology-five"},
+// 		{key:"steam-technology-five",id:"title-manage-steamq-technology-five"},
+		
+// 		{key:"list-steam-technology-six",id:"title-manage-steamq-technology-six"},
+// 		{key:"steam-technology-six",id:"title-manage-steamq-technology-six"},
+		
+// 		{key:"list-steam-technology-seven",id:"title-manage-steamq-technology-seven"},
+// 		{key:"steam-technology-seven",id:"title-manage-steamq-technology-seven"},
+		
+// 		//EPart
+// 		{key:"list-steam-engineering-under-one",id:"title-manage-steamq-engineering-under-one"},
+// 		{key:"steam-engineering-under-one",id:"title-manage-steamq-engineering-under-one"},
+		
+// 		{key:"list-steam-engineering-one",id:"title-manage-steamq-engineering-one"},
+// 		{key:"steam-engineering-one",id:"title-manage-steamq-engineering-one"},
+		
+// 		{key:"list-steam-engineering-two",id:"title-manage-steamq-engineering-two"},
+// 		{key:"steam-engineering-two",id:"title-manage-steamq-engineering-two"},
+		
+// 		{key:"list-steam-engineering-three",id:"title-manage-steamq-engineering-three"},
+// 		{key:"steam-engineering-three",id:"title-manage-steamq-engineering-three"},
+		
+// 		{key:"list-steam-engineering-four",id:"title-manage-steamq-engineering-four"},
+// 		{key:"steam-engineering-four",id:"title-manage-steamq-engineering-four"},
+		
+// 		{key:"list-steam-engineering-five",id:"title-manage-steamq-engineering-five"},
+// 		{key:"steam-engineering-five",id:"title-manage-steamq-engineering-five"},
+		
+// 		{key:"list-steam-engineering-six",id:"title-manage-steamq-engineering-six"},
+// 		{key:"steam-engineering-six",id:"title-manage-steamq-engineering-six"},
+		
+// 		{key:"list-steam-engineering-seven",id:"title-manage-steamq-engineering-seven"},
+// 		{key:"steam-engineering-seven",id:"title-manage-steamq-engineering-seven"},
+		
+// 		//APart
+// 		{key:"list-steam-art-under-one",id:"title-manage-steamq-art-under-one"},
+// 		{key:"steam-art-under-one",id:"title-manage-steamq-art-under-one"},
+		
+// 		{key:"list-steam-art-one",id:"title-manage-steamq-art-one"},
+// 		{key:"steam-art-one",id:"title-manage-steamq-art-one"},
+		
+// 		{key:"list-steam-art-two",id:"title-manage-steamq-art-two"},
+// 		{key:"steam-art-two",id:"title-manage-steamq-art-two"},
+		
+// 		{key:"list-steam-art-three",id:"title-manage-steamq-art-three"},
+// 		{key:"steam-art-three",id:"title-manage-steamq-art-three"},
+		
+// 		{key:"list-steam-art-four",id:"title-manage-steamq-art-four"},
+// 		{key:"steam-art-four",id:"title-manage-steamq-art-four"},
+		
+// 		{key:"list-steam-art-five",id:"title-manage-steamq-art-five"},
+// 		{key:"steam-art-five",id:"title-manage-steamq-art-five"},
+		
+// 		{key:"list-steam-art-six",id:"title-manage-steamq-art-six"},
+// 		{key:"steam-art-six",id:"title-manage-steamq-art-six"},
+		
+// 		{key:"list-steam-art-seven",id:"title-manage-steamq-art-seven"},
+// 		{key:"steam-art-seven",id:"title-manage-steamq-art-seven"},
+		
+// 		//MPart
+// 		{key:"list-steam-math-under-one",id:"title-manage-steamq-math-under-one"},
+// 		{key:"steam-math-under-one",id:"title-manage-steamq-math-under-one"},
+		
+// 		{key:"list-steam-math-one",id:"title-manage-steamq-math-one"},
+// 		{key:"steam-math-one",id:"title-manage-steamq-math-one"},
+		
+// 		{key:"list-steam-math-two",id:"title-manage-steamq-math-two"},
+// 		{key:"steam-math-two",id:"title-manage-steamq-math-two"},
+		
+// 		{key:"list-steam-math-three",id:"title-manage-steamq-math-three"},
+// 		{key:"steam-math-three",id:"title-manage-steamq-math-three"},
+		
+// 		{key:"list-steam-math-four",id:"title-manage-steamq-math-four"},
+// 		{key:"steam-math-four",id:"title-manage-steamq-math-four"},
+		
+// 		{key:"list-steam-math-five",id:"title-manage-steamq-math-five"},
+// 		{key:"steam-math-five",id:"title-manage-steamq-math-five"},
+		
+// 		{key:"list-steam-math-six",id:"title-manage-steamq-math-six"},
+// 		{key:"steam-math-six",id:"title-manage-steamq-math-six"},
+		
+// 		{key:"list-steam-math-seven",id:"title-manage-steamq-math-seven"},
+// 		{key:"steam-math-seven",id:"title-manage-steamq-math-seven"},
+		
+		//steam add class
+ 		{key:"steamq-kit-add-class",id:"title-manage-steamq-add-class"},
+		
+		//Kit
+ 		{key:"list-steamq-kit",id:"title-manage-steamq-kit"},
+ 		{key:"steamq-kit",id:"title-manage-steamq-kit"},
+		
+		//Question
+		{key:"list-steamq-question",id:"title-manage-question"},
+		{key:"steamq-question",id:"title-manage-question"},
+		
 		//upload
 		{key:"video",id:"title-manage-video"},
 		{key:"list-video",id:"title-manage-video"},
@@ -1038,6 +1314,142 @@
 		{key:"list-kit",id:"divShowFreeQ",body:"homeMenuFreeQ"},
 		
 		//steamq
+		//SPart
+		{key:"list-steam-science-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-science-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-science-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-science-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-science-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-science-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-science-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-science-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-science-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		//TPart
+		{key:"list-steam-technology-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-technology-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-technology-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-technology-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-technology-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-technology-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-technology-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-technology-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-technology-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		//EPart
+		{key:"list-steam-engineering-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-engineering-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-engineering-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-engineering-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-engineering-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-engineering-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-engineering-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-engineering-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-engineering-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		//APart
+		{key:"list-steam-art-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-art-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-art-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-art-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-art-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-art-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-art-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-art-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-art-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		//MPart
+		{key:"list-steam-math-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-under-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-math-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-one",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-math-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-two",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-math-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-three",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-math-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-four",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-math-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-five",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-math-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-six",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		{key:"list-steam-math-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steam-math-seven",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		
+		//steam add class
+ 		{key:"steamq-kit-add-class",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		//Kit
+		{key:"list-steamq-kit",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steamq-kit",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		
+		//Question
+		{key:"list-steamq-question",id:"divShowSteamQ",body:"homeMenuSteamQ"},
+		{key:"steamq-question",id:"divShowSteamQ",body:"homeMenuSteamQ"},
 		
 		//upload
 		{key:"video",id:"divShowUpload",body:"homeMenuUpload"},
@@ -1111,9 +1523,13 @@
 			freelessontemplate3:"freelessontemplate3",
 			listfreelessonplan3:"list-freelessonplan3",
 			freelessonplan3:"freelessonplan3",
-			
+			//steamq
 			listKit:"list-kit",
+			kitsteamQ:"steamq-kit",
+			addLesson:"steamq-kit-add-lesson-",
 			kit:"kit",
+			listQuestion:"list-steamq-question",
+			question:"steamq-question",
 		},account:{
 			account:"account",
 			listAccount:"list-account",
@@ -1133,24 +1549,31 @@
 		S:{
 			id:"Science",
 			name:"Science",
+			raw:"science"
 		},
 		T:{
 			id:"Technology",
 			name:"Technology",
+			raw:"technology"
 		},
 		E:{
 			id:"Engineering",
 			name:"Engineering",
+			raw:"engineering"
 		},
 		A:{
 			id:"Art",
 			name:"Art",
+			raw:"art"
 		},
 		M:{
 			id:"Math",
 			name:"Math",
+			raw:"math"
 		},
 	};
+	
+	var STEAMQ_CLASS = [];
 	
 	var STEAM_CLASS = [
 		{
@@ -1223,6 +1646,14 @@
 		payonline : "pay_online",
 	}
 	
+	var steamqCategory = {
+		science:"science",
+		technology:"technology",
+		engineering:"engineering",
+		art:"art",
+		math:"math"
+	}
+	
 	var adminAccountType = ["admin"];
 	
 	var listLecture = [];
@@ -1232,6 +1663,11 @@
 	var listImage = [];
 	
 	var imageDetail = "";
+	
+	var sunqOnlineType = {
+		freeq:1,
+		steamq:2,
+	}
 	
 	var networkCode = {
 	  	sessionTimeOut: 401,
@@ -1262,7 +1698,8 @@
 	var urlWebsiteChat = adminURL+"chat";
 	
 	//server url
-	var mainURL= "http://103.153.68.12:3000/";
+	var mainURL= "http://103.15.50.6:3200/";
+	var secondURL= "http://103.15.50.6:3200/";
 	
 	//account login
 	var accountPartURL = "account/";
@@ -1319,6 +1756,16 @@
 	//kit
 	var listKitUrl  = "kits";
 	var kitUrl  = "kit";	
+	
+	//steamq
+	var classUrl = "class";
+	var listClassUrl = "classesByServiceCode";
+	
+	var lessonUrl = 'lesson';
+	var listLessonUrl = 'lessons';
+	
+	var questionUrl = 'question';
+	var listQuestionUrl = 'questions';
 	
 	//upload file
 	var fileType = {
@@ -1430,7 +1877,37 @@
 	function getURLListKit(){
 		return mainURL + listKitUrl;
 	}
-	
+	//steamq
+	//class
+	function getURLListClass(){
+		return secondURL + listClassUrl + "/" + 2;
+	}
+	function getURLClass(parram){
+		return secondURL + classUrl + "/" + parram;
+	}
+	function postURLClass(parram){
+		return secondURL + classUrl + "/class/" + parram;
+	}
+	function getURLListLesson(parentid){
+		return secondURL + listLessonUrl + "/class/"+parentid;
+	}
+	//lesson
+	function getURLLesson(id){
+		return secondURL + lessonUrl + "/" + id;
+	}
+	function postURLLesson(id){
+		return secondURL + lessonUrl + "/class/" + id;
+	}
+	//question
+	function getURLQuestion(id){
+		return secondURL + questionUrl + "/" + id;
+	}
+	function getListURLQuestion(){
+		return secondURL + listQuestionUrl;
+	}
+	function postURLQuestion(){
+		return secondURL + questionUrl;
+	}
 	//video
 	function getListVideo(){
 		return mainURL + uploadListVideoUrl;

@@ -52,7 +52,13 @@ with others.
 
 /*	0. CSS Reset
 /* -------------------------------------------------------------------------- */
-
+.admin-logout{
+	position: absolute;
+    right: 30px;
+    font-size: 20px;
+    color: #fafafa;
+	cursor:pointer;
+}
 
 html,
 body {
@@ -100,6 +106,8 @@ td {
 	padding: 0;
 	text-align: inherit;
 }
+
+
 
 blockquote::before,
 blockquote::after {
@@ -6473,7 +6481,7 @@ a.to-the-top > * {
 }
 
 ::-webkit-scrollbar {
-/*     width: 1px !important; */
+     width: 1px !important; 
 }
 
 .home-parent {
@@ -6547,6 +6555,37 @@ a.to-the-top > * {
 	font-size:16px;
 }
 
+td{
+	white-space: pre-wrap;
+	max-width:42vw!important;
+}
+.class-editor{
+	width: 72%;
+    display: flex;
+    margin-top: 11px;
+}
+.question-util{
+	width: 100%;
+    position: sticky;
+    margin-top: 1%;
+    z-index: 10;
+}
+
+#questionSearch{
+	display:none;
+}
+
+.question-span-not-found{
+	position: absolute;
+    top: -120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.question-search{
+    margin: 10px 0px 10px 0px;
+}
+
 .home-middle-left-menu-content{
 	padding-left:7px;
 }
@@ -6599,6 +6638,7 @@ a.to-the-top > * {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+	width: 100%;
 }
 
 .home-middle-left-menu:hover {
@@ -6687,6 +6727,30 @@ color:#66d9ff;
 	display:none;
 }
 
+#homeMenuSteamQ{
+	display:none;
+}
+
+#homeMenuSteamQS{
+	display:none;
+}
+
+#homeMenuSteamQT{
+	display:none;
+}
+
+#homeMenuSteamQE{
+	display:none;
+}
+
+#homeMenuSteamQA{
+	display:none;
+}
+
+#homeMenuSteamQM{
+	display:none;
+}
+
 #homeMenuOffline{
 	display:none;
 }
@@ -6731,11 +6795,31 @@ color:#66d9ff;
 	display:none;
 }
 
+#liststeamqlessonEmpty{
+	display:none;
+}
+
+#liststeamqlessonEmpty{
+	display:none;
+}
+
+#liststeamqlessonError{
+	display:none;
+}
+
 #listKitEmpty{
 	display:none;
 }
 
 #listKitError{
+	display:none;
+}
+
+#listQuestionEmpty{
+	display:none;
+}
+
+#listQuestionError{
 	display:none;
 }
 
@@ -6875,11 +6959,13 @@ color:#66d9ff;
 
 .home-middle-left-contain{
 	display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 180px;
-    position: fixed;
+    position: sticky;
 	left:0;
+	overflow-y: scroll;
+	max-height: 1000px;
 }
 
 .home-middle-left-menu-small-content{
@@ -7050,6 +7136,18 @@ color:#66d9ff;
 	color:red;
 }
 
+#Question-page-loading{
+	display:none;
+}
+
+#listQuestionEmpty{
+	display:none;
+}
+
+#listQuestionError{
+	display:none;
+}
+
 #account-page-loading{
 	display:none;
 }
@@ -7086,6 +7184,14 @@ color:#66d9ff;
 	display:none;
 }
 
+#managaeQuestionEmpty{
+	display:none;
+}
+
+#managaeQuestionError{
+	display:none;
+}
+
 #managaeVideoEmpty{
 	display:none;
 }
@@ -7098,8 +7204,24 @@ color:#66d9ff;
 	left:10px;
 }
 
+#listQuestionClose{
+	left:10px;
+}
+
 #divVideoFreeLessonTemplate1{
     display: flex;
+}
+
+#steamqlessonDetailTextArea-toolbar-container{
+	width:100%;
+}
+
+#liststeamqEmpty{
+	display:none;
+}
+
+#liststeamqError{
+	display:none;
 }
 
 //kit
@@ -7133,7 +7255,7 @@ color:#66d9ff;
 
 #listVideo{
 	width: 80%;
-	height:auto;
+	height:650px;
 	    top: 13%;
     left: 50%;
     transform: translate(-50%, 5px);
@@ -7143,14 +7265,49 @@ color:#66d9ff;
 }
 
 #listKit{
-	width: 550px;
-	height:auto;
+	width: 375px;
+	height:550px;
 	bottom:110%;
 	    left: 19%;
 	display:none;
 	overflow-x: scroll;
     justify-content: flex-start;
 }
+
+#listQuestion{
+	width: 750px;
+	height:750px;
+	bottom:110%;
+	    left: 19%;
+	display:none;
+	overflow-x: scroll;
+    justify-content: flex-start;
+}
+
+#divKitsteamq{
+	height: 550px;
+    width: 100%;
+}
+
+/*steamq*/
+#steamqclass-page-loading{
+	display:none;
+}
+
+#statusquestionAdded{
+/* 	display:none; */
+	color: green;
+    font-weight: bold;
+    margin-left: 50px;
+    position: absolute;
+    right: 65px;
+    top: 80%;
+    font-size: 20px;
+    z-index: 10;
+	animation: fadeout 1s forwards 1s;
+}
+
+
 
 .mbsc-card-sub-description{
 	font-weight: 500!important;
@@ -7165,6 +7322,83 @@ color:#66d9ff;
 
 .mbsc-card-list-img img{
 	    margin: 0px 10px;
+}
+
+.popup-kit-video-steamq{
+	padding:38px 0px;
+	flex-wrap:wrap;
+	min-width:100%;
+	position:relative;
+}
+
+#divExcelQuestion{
+	width: 98%;
+/*     height: 80px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 5px auto 20px auto;
+}
+
+#uploadExcelQuestion{
+	    width: 250px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding: 0.1em 1.44em;
+    text-align: center;
+}
+
+.quesstion-quesstion{
+	align-items: center!important;
+}
+
+#uploadingq{
+	display:none;
+}
+
+#classQuestion{
+	flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#btnExcelQuestion{
+	font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.0333em;
+}
+
+#divQuestionUploadQuanlity{
+	    display: flex;
+    flex-direction: column;
+}
+
+#fileUploadedName{
+	font-weight: 600;
+    color: #002546;
+    font-size: 20px;
+    text-align: center;
+}
+
+#divQuestionListsteamq{
+	max-height: 550px;
+    overflow-y: scroll;
+}
+
+#questionQuantity{
+	color: #002546;
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .popup-kit-video-FreeLessonTemplate1{
@@ -7718,11 +7952,13 @@ color:#66d9ff;
 }
 
 .manage-section-detail-left-list-close {
-	position: absolute;
+	position: sticky;
+	width: 100%;
 	right: 10px;
 	top: 10px;
 	font-weight: 600;
     cursor: pointer;
+	z-index:10;
 }
 
 .manage-section-detail-left-list div:hover{
@@ -7923,6 +8159,10 @@ color:#66d9ff;
 	display:none;
 }
 
+#steamq-page-loading{
+	display:none;
+}
+
 #uploadVideo-page-loading{
 	display:none;
 }
@@ -8060,6 +8300,22 @@ font-style:italic;
     border-radius: 4px;
 }
 
+.question-option-title{
+	    margin-bottom: 13px!important;
+}
+
+.question-right-answer{
+    border: 0px solid #000!important;
+}
+
+.manage-section-detail-midlle-item textarea{
+	resize:none;
+}
+
+.manage-section-detail-midlle-item textarea::-webkit-scrollbar{
+	    width: -1px !important;
+}
+
 .manage-section-detail-right {
     width: 91%;
 /*     height: 100%; */
@@ -8195,6 +8451,10 @@ font-style:italic;
     width: 25%;
     background: #CF5134;
 	animation: creatingExcel 2.15s linear infinite;
+}
+
+#fetchQuestionsteamq{
+	display:none;
 }
 
 #fetchListLectureProgress{
@@ -8594,6 +8854,18 @@ input[type="file"] {
 	left: 0px;
 }
 
+#currentListQuestion{
+	flex-direction:row;
+	padding:5px;
+	max-height:500px;
+	width:100%
+}
+
+#steamqQuestionTitleUnder{
+	position:sticky;
+	width:100%;
+}
+
 .chosen-kit-video-FreeLessonTemplate1{
 	padding:10px;    
 	display: flex;
@@ -8869,6 +9141,41 @@ input[type="file"] {
 .span-require{
 	color:red!important;
 	margin-left: 0px!important;
+}
+
+.manage-list-steamq-category{
+	display: flex;
+    justify-content: flex-end;    
+	width: 98%;
+    height: 60px;
+}
+
+.manage-list-steamq-category div a{
+	height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 	text-decoration:none;	
+    font-size: 32px;
+    font-weight: 500;
+    color: #002546;
+}
+
+.manage-list-steamq-category-selected{
+	background: #002546;
+    color: #fafafa;
+}
+
+.manage-list-steamq-category div{
+	margin-right: 15px;
+	padding: 5px;
+	align-items: center;
+    display: flex;
+}
+
+.manage-list-steamq-category div :hover{
+	background: #002546;
+    color: #fafafa;
 }
 
 .manage-list-lecture-title{
@@ -9661,7 +9968,7 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	color: #002546;
     font-weight: 600;
     font-size: 20px;
-    margin: 5px 10px;
+    margin: 20px 10px 0px 10px;
 }
 
 #accountButtonShowPerrmission{
@@ -9682,6 +9989,15 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
     font-size: 20px;
     margin: 5px 10px;
 	border-radius:5px;
+}
+
+.manage-teacher-contain-right-upper textarea{
+	color: #002546;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 5px 10px;
+	border-radius:5px;
+	height:280px;
 }
 
 .manage-teacher-contain-right-below{
@@ -9775,6 +10091,188 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 }
 /*check box*/
 
+/*radio button*/
+
+.manage-teacher-contain-right-upper-rcontainer {
+  display: flex;
+  position: relative;
+  padding-left: 38px;
+/*   margin-bottom: 22px; */
+  cursor: pointer;
+  font-size: 18px;
+	justify-content: flex-start;
+/*     align-items: center; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+	width: 100%;
+}
+
+.manage-teacher-contain-right-upper-rcontainer-postfix{
+	margin: 0px 10px;
+/* 	height:100%; */
+}
+
+.manage-teacher-contain-right-upper-rcontainer-prefix{
+	margin-top: 0px;
+/* 	height:100%; */
+}
+
+.manage-teacher-contain-right-upper-rcontainer input[type="text"] {
+  width: 98%;
+  height: 40px;
+}
+
+/* Hide the browser's default radio button */
+.manage-teacher-contain-right-upper-rcontainer input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+	left: -10px;
+    top: 12%;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+}
+
+/* Create a custom radio button */
+.manage-teacher-contain-right-upper-rcheckmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.manage-teacher-contain-right-upper-rcontainer:hover input ~ .manage-teacher-contain-right-upper-rcheckmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.manage-teacher-contain-right-upper-rcontainer input:checked ~ .manage-teacher-contain-right-upper-rcheckmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.manage-teacher-contain-right-upper-rcheckmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.manage-teacher-contain-right-upper-rcontainer input:checked ~ .manage-teacher-contain-right-upper-rcheckmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.manage-teacher-contain-right-upper-rcontainer .manage-teacher-contain-right-upper-rcheckmark:after {
+ 	    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.question-right-answer{
+	font-size:14px!important;
+}
+
+.question-div-detail{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:flex-start;
+	margin:5px 0px;
+	position:relative;
+	border: 0px;
+}
+
+.rcontainer{
+	width: 102%!important;
+}
+.rcontainer-input{
+	width: 95%!important;
+}
+
+.question-div{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:flex-start;
+	margin:5px 0px;
+	position:relative;
+}
+
+.question-div-detail-name{
+	width:98%!important;
+	margin-bottom:10px;
+}
+
+.question-span-not-found{
+	    color: #002546;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+	width:100%;
+	text-align:center;
+}
+
+.question-div input[type="text"]{
+	width:94%;
+}
+
+/*close question*/
+
+.question-close{
+	position:absolute;
+	background:#e8f5e9;
+	height:28px;
+	width:28px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	top:1%;
+	right:9px;
+	padding:10px;
+	border-radius:50px;
+	cursor:pointer;
+	z-index:10;
+}
+
+.question-close span {
+	margin: 3px 0px!important;
+    font-size: 12px!important;
+}
+
+#listVideoClose{
+	z-index:10;
+}
+
+#divVideosteamq{
+	padding: 38px 0px;
+    flex-wrap: wrap;
+}
+
+#listQuestion{
+	height: 700px!important; 
+	width: 700px!important;   
+	flex-direction: row!important;
+	overflow-y:scroll;
+	border: 2px solid #000;
+	padding: 2px 10px;
+}
+
+#listQuestion::-webkit-scrollbar{
+	width:-1px !important;
+}
+
 #teacherDetailTextArea-toolbar-container{
 	width:100%;
 }
@@ -9787,6 +10285,15 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 #teacherSubDetailTextArea{
 	height:420px;
 	margin:0px auto 4px auto;
+}
+
+#steamqlessonDetailTextArea{
+	height: 560px;
+    width: 100%;
+}
+
+#steamqlessonSubDetailTextArea{
+	height:260px;
 }
 
 .manage-teacher-contain-right-below span{
@@ -9835,17 +10342,18 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
     margin: 10px auto;
 }
 
-.manage-teacher-bottom-action button,input[type="submit"]{
-	width:240px;
+.manage-teacher-bottom-action button,input[type="button"],input[type="submit"]{
+/* 	width:240px; */
 	height:70px;
 	background:#cf5134!important;
     color: white;
 	text-decoration:none;
 	font-size:20px;
 	font-weight:600;
+	margin-top:12px;
 }
 
-.manage-teacher-bottom-action button,input[type="submit"]:hover{
+.manage-teacher-bottom-action button,input[type="button"],input[type="submit"]:hover{
 	background:#e7a698!important;
 	text-decoration:underline;
 }
@@ -9942,7 +10450,8 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 }
 	
 	.home-middle-left{
- 		min-width:43px; 
+ 		width: 63px;
+    min-width: 0px;
 	}
 	
 	#dashboardName:hover .home-middle-left-menu-tooltip{ 
@@ -9969,6 +10478,14 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	#divShowQAcademy:hover .home-middle-left-menu-tooltip{
 		display: flex; 
 	}
+	/*freeq*/
+	#divShowFreeQ:hover .home-middle-left-menu-tooltip{
+		display: flex; 
+	}
+	/*steamq*/
+	#divShowSteamQ:hover .home-middle-left-menu-tooltip{
+		display: flex; 
+	}
 	/*online*/
 	#homeMenuOnlineListVideo:hover .home-middle-left-menu-tooltip{
 		display: flex; 
@@ -9987,7 +10504,7 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 		display: flex; 
 	}
 	.home-middle-left-menu{
-		width:33px;
+		width:45px;
 	}
 	
 	.home-middle-right{
@@ -10006,6 +10523,7 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	.home-middle-left-contain{
 		z-index:2;
 		color:black;
+    	flex-direction: column;
 	}
 	
 	/*teacher*/
@@ -10045,9 +10563,15 @@ input:checked + .manage-list-lecture-table-detail-slider:before {
 	
 }
 
+
 @keyframes bottomUp {
   0%   {margin-top: -30px;opacity:0.5;}
   100% {margin-top: 0px;opacity:1;}
+}
+
+@keyframes fadeout {
+  0%   {opacity: 0.9;}
+  100% {opacity: 0;}
 }
 
 @keyframes fadeinfadeout {
@@ -10269,7 +10793,7 @@ body{
 /*     right: -36px; */
 	color: #757575;
     font-size: 13px;
-	margin-left: 94%;
+	margin-left: 98%;
 	min-width: 100px;
 }
 .divAdminImage{

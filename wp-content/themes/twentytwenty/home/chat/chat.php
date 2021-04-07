@@ -305,7 +305,7 @@
 
 		}
 
-		function isOnlineStatus(isTrue, callback, createOrNot) {
+		function isOnlineStatus(isTrue, callback, createOrNot) {console.log("isOnline",isOnline);
 			try {
 				//keyIsOnline = localStorage.getItem("IsOnline"); console.log("adminCount", adminCount, "isTrue", isTrue);
 				let status = {};
@@ -355,7 +355,7 @@
 			try {
 				database.ref(isOnline).once('value', function (snapshot) {
 					if (snapshot) {
-						//console.log("admin count online before ", snapshot.val());
+						console.log("admin count online before ", snapshot.val());
 						if (snapshot.val()) {
 							//console.log("admin count online is ", snapshot.val());
 							for (let elem in snapshot.val()) {
@@ -778,7 +778,7 @@
 			if(isSameDay(tempTime,currentTime)){
 			   	return addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes());
 			   } else if(isSameWeek(tempTime,currentTime)){
-						 return dayInWeek(tempTime.getDay()) + ", " + addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes()) + " " + tempTime.getDate();
+						 return dayInWeek[tempTime.getDay()] + ", " + addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes()) + " " + tempTime.getDate();
 						 } else if(isSameYear(tempTime,currentTime)){
 								   return addZeroIfSmallerThanZeroo(tempTime.getHours()) + ":" + addZeroIfSmallerThanZeroo(tempTime.getMinutes()) + " " + tempTime.getDate() + " " + month[tempTime.getMonth() + 1];
 								   }else{

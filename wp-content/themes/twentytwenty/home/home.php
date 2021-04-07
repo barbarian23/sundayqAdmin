@@ -5,6 +5,7 @@
     <!-- home header -->
     <div class="home-header">
         <a href="/"><img class="home-header-img" src='<?php echo $GLOBALS['URI_HEADER_ICON']; ?>'></a>
+		<span id="logout" class="admin-logout"><?php echo $GLOBALS['LOG_OUT']; ?></span>
     </div>
 
     <!-- home middle -->
@@ -72,28 +73,28 @@
                             </div>
 
                             <!-- pdf -->
-                            <div class="home-middle-left-menu" id="homeMenuUploadPDF">
+<!--                             <div class="home-middle-left-menu" id="homeMenuUploadPDF">
                                 <a href="?mode=online&page=list-pdf"><i class="fa fa-calendar"></i><span id="title-manage-pdf" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_PDF"]; ?></span>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- mp3 -->
-                            <div class="home-middle-left-menu" id="homeMenuUploadMP3">
+<!--                             <div class="home-middle-left-menu" id="homeMenuUploadMP3">
                                 <a href="?mode=online&page=list-mp3"><i class="fa fa-calendar"></i><span id="title-manage-mp3" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_MP3"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_MP3"]; ?></span>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- word -->
-                            <div class="home-middle-left-menu" id="homeMenuUploadWord">
+<!--                             <div class="home-middle-left-menu" id="homeMenuUploadWord">
                                 <a href="?mode=online&page=list-word"><i class="fa fa-calendar"></i><span id="title-manage-word" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_WORD"]; ?></span></a>
                                 <div class="home-middle-left-menu-tooltip">
                                     <span><?php echo $GLOBALS["ADMIN_ONLINE_UPLOAD_WORD"]; ?></span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- FreeQ -->
                         <div class="" id="divShowFreeQ">
@@ -192,25 +193,63 @@
                             </div>
                         </div>
 						<div class="home-middle-left-menu-content" id="homeMenuSteamQ">
+							<div id="homeMenuSteamQClass"></div>
 							<?php
+							/*fetch from sever*/
+								echo "<script>fetchingSteamqClass()</script>";
+							    /*
+								$countSteamQPart = 0;
 								foreach($GLOBALS["STEAM_Q_PART"] as $key => $value){
 									//echo $key;
- 									//echo "<div class=\"\" id=\"divshowSteamQ" .$key . "\" onclick =\"showSteamQPart('" . $key . "')\">";
-// 									echo "<i class=\"fa fa-calendar\"></i><span class=\"home-middle-left-menu-text\">" . $value . "</span>";
-// 									echo "<div class=\"home-middle-left-menu-tooltip\">";
-// 									echo "<span>" . $value ."</span>";
-// 									echo "</div>";
- 									//echo "</div>";
-// 									echo "<div class=\"home-middle-left-menu-content\" id=\"homeMenuSteamQ\"".$key.">";
-// 									foreach($GLOBALS["STEAM_Q_CLASS"] as $keyClass){
-// 										echo " <div class=\"home-middle-left-menu\" id=\"homeMenuSteamQ\"" . $key  .">";
-// 										echo "<div class=\"home-middle-left-menu-tooltip\">";
-// 										echo "<span>" . $keyClass . "</span>";
-// 										echo "<\div>";
-// 									}
-									//echo "</div>";
+ 									echo "<div class=\"\" id=\"divshowSteamQ" .$key . "\" onclick =\"showSteamQPart('" . $key . "')\">";
+ 									echo "<i class=\"fa fa-calendar\"></i><span class=\"home-middle-left-menu-text\">" . $value . "</span>";
+ 									echo "<div class=\"home-middle-left-menu-tooltip\">";
+ 									echo "<span>" . $value ."</span>";
+ 									echo "</div>";
+ 									echo "</div>";
+ 									echo "<div class=\"home-middle-left-menu-content steamQClass\" id=\"homeMenuSteamQ".$key."\">";
+									foreach($GLOBALS["STEAM_Q_CLASS"] as $keyClass=>$valueClass){
+										//echo $keyClass . " _ " . $valueClass . "\n";
+										//echo "<div class=\"home-middle-left-menu\" id=\"homeMenuSteamQ\"" . $key  .">";
+										echo "<div  class=\"home-middle-left-menu-content\" id=\"homeMenuSteamQClass". $keyClass ."\">";
+										echo "<a href=\"?mode=online&page=list-steam-" . $GLOBALS["STEAM_Q_PART_RAW"][$countSteamQPart] . "-" . $GLOBALS["STEAM_Q_CLASS_RAW"][$keyClass] . "\">";
+										echo "<i class=\"fa fa-chain\"></i><span id=\"title-manage-steamq-" . $GLOBALS["STEAM_Q_PART_RAW"][$countSteamQPart] . "-" . $GLOBALS["STEAM_Q_CLASS_RAW"][$keyClass] . "\" class=\"home-middle-left-menu-text home-menu-steamq-class \">" . $valueClass ."</span>";
+										echo "</a>";
+										echo "</div>";
+										echo "<div class=\"home-middle-left-menu-tooltip\">";
+										echo "<span>" . $value . " - " .$valueClass . "</span>";
+										echo "</div>";
+										//echo "<\div>";
+									}
+									echo "</div>";
+									$countSteamQPart++;
+									
 								}
+							*/
 							?>
+							<!-- Thêm lớp học -->
+							<div class="home-middle-left-menu" id="homeMenuSteamQAddClass">
+                                <a href="?mode=online&page=steamq-kit-add-class"><i class="fa fa-calendar"></i><span id="title-manage-steamq-add-class" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_STEAMQ_ADD_CLASS"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_ONLINE_STEAMQ_ADD_CLASS"]; ?></span>
+                                </div>
+                            </div>
+							
+							<!-- steamq kit -->
+                            <div class="home-middle-left-menu" id="homeMenuSteamQQuestion">
+                                <a href="?mode=online&page=list-steamq-kit"><i class="fa fa-calendar"></i><span id="title-manage-steamq-kit" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_STEAMQ_KIT"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_ONLINE_STEAMQ_KIT"]; ?></span>
+                                </div>
+                            </div>
+							
+							<!-- steamq question -->
+                            <div class="home-middle-left-menu" id="homeMenuSteamQKit">
+                                <a href="?mode=online&page=list-steamq-question"><i class="fa fa-calendar"></i><span id="title-manage-question" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_ONLINE_STEAMQ_QUESTION"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_ONLINE_STEAMQ_QUESTION"]; ?></span>
+                                </div>
+                            </div>
 						</div>
 						<!-- S Part -->
 						
@@ -410,6 +449,7 @@
                             //echo "<script>console.log('" . $_GET["action"] . "')</script>";
                         }
                         if (isset($_GET["id"])) {
+							$currentEdit=$_GET["id"];
                             echo "<script>setCurrentEdit('" . $_GET["id"] . "')</script>";
                             //echo "<script>console.log('" . $_GET["action"] . "')</script>";
                         }
@@ -534,18 +574,23 @@
                                     include get_theme_file_path("home/online/freeq/kit/kit.php");
                                     break;
 								//steamq
+								/*
 								//SPart
 								//--under-one
 								case "list-steam-science-under-one":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-under-one":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--one
@@ -553,12 +598,16 @@
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-one":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--two
@@ -566,12 +615,16 @@
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-two":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--three
@@ -579,12 +632,16 @@
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-three":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--four
@@ -592,12 +649,16 @@
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-four":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--five
@@ -605,12 +666,16 @@
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-five":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--six
@@ -618,12 +683,16 @@
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-six":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;	
 								//--seven
@@ -631,12 +700,16 @@
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-science-seven":
                                     echo "<script>setSteamqpart('S')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='S';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//TPart
@@ -645,12 +718,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-under-one":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--one
@@ -658,12 +735,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-one":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--two
@@ -671,12 +752,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-two":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--three
@@ -684,12 +769,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-three":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--four
@@ -697,12 +786,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-four":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--five
@@ -710,12 +803,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-five":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--six
@@ -723,12 +820,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-six":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('ststeamqparteamq')</script>";
+									$steamQPart='T';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;	
 								//--seven
@@ -736,12 +837,16 @@
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-technology-seven":
                                     echo "<script>setSteamqpart('T')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='T';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//EPart
@@ -750,12 +855,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-under-one":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--one
@@ -763,12 +872,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-one":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--two
@@ -776,12 +889,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-two":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--three
@@ -789,12 +906,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-three":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--four
@@ -802,12 +923,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-four":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--five
@@ -815,12 +940,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-five":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--six
@@ -828,12 +957,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-six":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;	
 								//--seven
@@ -841,12 +974,16 @@
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-engineering-seven":
                                     echo "<script>setSteamqpart('E')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='E';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;	
 									//APart
@@ -855,12 +992,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-under-one":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--one
@@ -868,12 +1009,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-one":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--two
@@ -881,12 +1026,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-two":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--three
@@ -894,12 +1043,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-three":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--four
@@ -907,12 +1060,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-four":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--five
@@ -920,12 +1077,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-five":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--six
@@ -933,12 +1094,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-six":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;	
 								//--seven
@@ -946,12 +1111,16 @@
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-art-seven":
                                     echo "<script>setSteamqpart('A')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='A';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 									//MPart
@@ -960,12 +1129,16 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-under-one":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(0)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=0;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--one
@@ -973,12 +1146,16 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-one":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(1)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=1;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--two
@@ -986,12 +1163,16 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-two":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(2)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=2;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--three
@@ -999,12 +1180,16 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-three":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(3)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=3;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--four
@@ -1012,12 +1197,16 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-four":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(4)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=4;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--five
@@ -1025,12 +1214,16 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-five":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(5)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=5;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
 								//--six
@@ -1038,12 +1231,16 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-six":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(6)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=6;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;	
 								//--seven
@@ -1051,14 +1248,42 @@
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/list-APart.php");
                                     break;
                                 case "steam-math-seven":
                                     echo "<script>setSteamqpart('M')</script>";
                                     echo "<script>setSteamqclass(7)</script>";
                                     echo "<script>setMode('steamqpart')</script>";
+									$steamQPart='M';
+									$steamQClass=7;
                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
                                     break;
+									*/
+// 								case "steamq-kit-class":
+//                                     echo "<script>setMode('steamq')</script>";
+// 									if (isset($_GET["sclass"])){
+// 										$steamQClass = $_GET["sclass"];
+// 									}
+// 									if (isset($_GET["idclass"])){
+// 										$steamQClassID = $_GET["idclass"];
+// 									}
+//                                     include get_theme_file_path("home/online/steamq/APart/APart.php");
+//                                     break;
+								//add-class
+								case "steamq-kit-add-class":
+                                    echo "<script>setMode('steamq')</script>";
+											if (isset($_GET["sclass"])){
+												echo "<script>setSteamqclass('" . $_GET["sclass"] . "')</script>";
+												$steamQClass = $_GET["sclass"];
+											}
+											if (isset($_GET["category"])){
+												echo "<script>setSteamqpart('" . $_GET["category"] . "')</script>";
+												$steamQCategory = $_GET["category"];
+											}
+                                    include get_theme_file_path("home/online/steamq/SPart/SPart.php");
+									break;
 								//kit
 								case "list-steamq-kit":
                                     echo "<script>setMode('steamq')</script>";
@@ -1068,8 +1293,77 @@
                                     echo "<script>setMode('steamq')</script>";
                                     include get_theme_file_path("home/online/steamq/kit/kit.php");
                                     break;
+									//question
+								case "list-steamq-question":
+                                    echo "<script>setMode('steamq')</script>";
+									if (isset($_GET["category"])){
+												echo "<script>setSteamqpart('" . $_GET["category"] . "')</script>";
+												$steamQCategory = $_GET["category"];
+									}
+									if (isset($_GET["idclass"])){
+													echo "<script>setSteamqclassid('" . $_GET["idclass"] . "')</script>";
+													$steamQClassId = $_GET["idclass"];
+											}
+                                    include get_theme_file_path("home/online/steamq/EPart/list-EPart.php");
+                                    break;
+								case "steamq-question":
+                                    echo "<script>setMode('steamq')</script>";
+                                    include get_theme_file_path("home/online/steamq/EPart/EPart.php");
+									if (isset($_GET["category"])){
+												echo "<script>setSteamqpart('" . $_GET["category"] . "')</script>";
+												$steamQCategory = $_GET["category"];
+									}
+									if (isset($_GET["idclass"])){
+													echo "<script>setSteamqclassid('" . $_GET["idclass"] . "')</script>";
+													$steamQClassId = $_GET["idclass"];
+											}
+                                    break;
 								//englishq
                                 default:
+									$ppagelist = strpos($_GET["page"],"steamq-kit-class");
+									$ppage2one = strpos($_GET["page"],"steamq-kit-add-lesson");
+									 if($ppagelist === 0){ 
+										 echo "<script>setMode('steamq')</script>";
+											if (isset($_GET["id"])){
+													echo "<script>setSteamqclassid('" . $_GET["id"] . "')</script>";
+													$steamQClassId = $_GET["idclass"];
+											}
+										    if (isset($_GET["nameclass"])){
+													$steamQClassname = $_GET["nameclass"];
+											}
+											if (isset($_GET["sclass"])){
+												echo "<script>setSteamqclass('" . $_GET["sclass"] . "')</script>";
+												$steamQClass = $_GET["sclass"];
+											}
+											if (isset($_GET["category"])){
+												echo "<script>setSteamqpart('" . $_GET["category"] . "')</script>";
+												$steamQCategory = $_GET["category"];
+											}
+										 include get_theme_file_path("home/online/steamq/APart/list-APart.php");
+									 } else if($ppage2one === 0){
+										 echo "<script>setMode('steamq')</script>";
+										 if (isset($_GET["idclass"])){
+													echo "<script>setSteamqclassid('" . $_GET["idclass"] . "')</script>";
+													$steamQClassId = $_GET["idclass"];
+											}
+										    if (isset($_GET["nameclass"])){
+													$steamQClassname = $_GET["nameclass"];
+											}
+											if (isset($_GET["sclass"])){
+												echo "<script>setSteamqclass('" . $_GET["sclass"] . "')</script>";
+												$steamQClass = $_GET["sclass"];
+											}
+											if (isset($_GET["category"])){
+												echo "<script>setSteamqpart('" . $_GET["category"] . "')</script>";
+												$steamQCategory = $_GET["category"];
+											}
+											if (isset($_GET["parentId"])){
+												echo "<script>setSteamqParentId('" . $_GET["parentId"] . "')</script>";
+												echo "<script>setSteamqclassid('" . $_GET["parentId"] . "')</script>";
+												$steamQParentId = $_GET["parentId"];
+											}
+										 include get_theme_file_path("home/online/steamq/APart/APart.php");
+									 }
                                     break;
                             }
                         }
@@ -1226,6 +1520,10 @@
     // 		}
     // 	}
     // });
+    document.getElementById("logout").addEventListener("click",function(){
+		localStorage.setItem(dictionary.MSEC, "");
+		testApiForSession();
+	});
     //large screen
     //online
 	let sunqModeOnlineDiv = document.getElementById("divShowOnline");
@@ -1263,12 +1561,12 @@
 	//steamq
 	let sunqModeSteamQDiv = document.getElementById("divShowSteamQ");
     sunqModeSteamQDiv && sunqModeSteamQDiv.addEventListener("click", function() {
-        //console.log("divShowFreeQ");
-        if (document.getElementById("divShowSteamQ").style.display != "none" && document.getElementById("divShowSteamQ").style.display != "") {
-            hideFreeQ();
+        console.log("divShowFreeQ");
+        if (document.getElementById("homeMenuSteamQ").style.display != "none" && document.getElementById("homeMenuSteamQ").style.display != "") {
+            hideSteamQ();
             setMode("none");
         } else {
-            setMode(sunQMode.steamQ);
+            setMode(sunQMode.steamq);
         }
     });
 	//steamq-part
@@ -1363,7 +1661,7 @@
             setMode(sunQMode.sa);
         }
         //setMode(sunQMode.account);
-    });divShowChat
+    });
 
 	let sunQModeChat = document.getElementById("divShowChat");
     sunQModeChat && sunQModeChat.addEventListener("click", function() {
