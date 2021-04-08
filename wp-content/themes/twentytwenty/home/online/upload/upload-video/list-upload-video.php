@@ -15,7 +15,7 @@ window.onload = function() {
     }
 
 function deleteUploadVideo(mId){
-	 console.log("delete", listUploadVideo[mId]);//alert("delete"+listTeacher[mId].fileName);
+	 //console.log("delete", listUploadVideo[mId]);//alert("delete"+listTeacher[mId].fileName);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -31,7 +31,7 @@ function deleteUploadVideo(mId){
                     seFetchingUploadVideo(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        deleteVideo(listUploadVideo[mId].id),
+                        deleteVideo(mId),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

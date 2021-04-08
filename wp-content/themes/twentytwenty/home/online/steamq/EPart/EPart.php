@@ -274,7 +274,7 @@ include get_theme_file_path("home/online/steamq/EPart/status-EPart.php");
                         setLoadingDataQuestion(true);
                         requestToSever(
                             getCurrentACtion() == dictionaryKey.editStatus ? sunQRequestType.put : sunQRequestType.post,
-                            getCurrentACtion() == dictionaryKey.editStatus ? getURLQuestion(getCurrentEdit()) : postURLQuestion(),
+                            getCurrentACtion() == dictionaryKey.editStatus ? getURLQuestion(getCurrentEdit()) : postURLQuestion() +"?classId="+getSteamqclassid()+"&category="+getSteamqpart(),
                             tempmyCurrentQuestion,
                             getLocalStorage(dictionary.MSEC),
                             function(res) {

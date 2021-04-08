@@ -13,7 +13,7 @@ include get_theme_file_path("home/offline/teacher/teacher-interact-ui.php");
     }
 
     function deleteTeacher(mId) {
-        console.log("delete", listTeacher[mId]);
+        //console.log("delete", listTeacher[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -29,7 +29,7 @@ include get_theme_file_path("home/offline/teacher/teacher-interact-ui.php");
                     setFetchingTeacher(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getURLTeacher() + "/" + listTeacher[mId].id,
+                        getURLTeacher() + "/" + mId,
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

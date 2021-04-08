@@ -169,7 +169,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 			trContent.className = 'manage-list-teacher-table-detail-strong';
 		} 
 		let tempAHref = makeATagRedirect(sunQMode.online,listScreen.online.question,dictionaryKey.editStatus,item.id) + "&idclass=" + getSteamqclassid() + "&category="+getSteamqpart();
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.content+"</td><td class='manage-list-teacher-table-detail-tr-modified'><div class='manage-list-teacher-table-detail-div-edit'><a href=\"" + tempAHref + "\">Chỉnh sửa</a></div><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteQuestion("+(index-1)+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.content+"</td><td class='manage-list-teacher-table-detail-tr-modified'><div class='manage-list-teacher-table-detail-div-edit'><a href=\"" + tempAHref + "\">Chỉnh sửa</a></div><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteQuestion('"+item.id+"')\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

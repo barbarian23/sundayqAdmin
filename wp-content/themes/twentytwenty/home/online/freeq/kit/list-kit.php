@@ -15,7 +15,7 @@ window.onload = function() {
     }
 
 function deleteKit(mId){
-	 console.log("delete", listKit[mId]);
+	 //console.log("delete", listKit[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -31,7 +31,7 @@ function deleteKit(mId){
                     seFetchingKit(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getURLKit(listKit[mId].id),
+                        getURLKit(mId),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

@@ -46,6 +46,7 @@
 				if(res.code === networkCode.success){
 					setLogInFailed(false,'');
 					localStorage.setItem(dictionary.MSEC,res.data.token);
+					localStorage.setItem("ididid",res.data.id);
 					webpageRedirect(getAdminHomeURL());
 				}else{
 					setLogInFailed(true,'<?php echo $GLOBALS["LOGIN_WRONG_USERNAME_PASWORD"]; ?>');

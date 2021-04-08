@@ -17,7 +17,7 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
     }
 
     function deleteLecture(mId) {
-        console.log("delete", listLecture[mId]);
+        //console.log("delete", listLecture[mId]);
 		//alert("lecture "+mId+" "+listLecture[mId].title);
         SunQAlert()
             .position('center')
@@ -32,7 +32,7 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
                     setFetchingLecture(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getURLecture() + "/" + listLecture[mId].id,
+                        getURLecture() + "/" + mId,
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

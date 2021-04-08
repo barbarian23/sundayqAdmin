@@ -206,6 +206,10 @@ include get_theme_file_path("home/online/freeq/freelesson3/freelessonplan/intera
                         //title
                         document.getElementById("idTitleFreeLessonPlan3").value = myCurrentFreeLessonPlan3.title == null ? "" : myCurrentFreeLessonPlan3.title;
 
+						if(myCurrentFreeLessonPlan3.thumbnailUrl){
+						   document.getElementById("shortDescriptionImg").src = getHomeURL() + myCurrentFreeLessonPlan3.thumbnailUrl;
+						   }
+						
                         //description
                         FreeLessonPlan3Description.setData(myCurrentFreeLessonPlan3.description != null ? myCurrentFreeLessonPlan3.description : "");
 

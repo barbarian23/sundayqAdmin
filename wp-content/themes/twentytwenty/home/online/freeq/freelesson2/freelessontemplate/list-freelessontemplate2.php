@@ -12,7 +12,7 @@ window.onload = function() {
     }
 
 function deleteFreeLessonTemplate2(mId){
-	 console.log("delete", listFreeLessonTemplate2[mId]);
+	 //console.log("delete", listFreeLessonTemplate2[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -28,7 +28,7 @@ function deleteFreeLessonTemplate2(mId){
                     seFetchingFreeLessonTemplate2(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getURLFreeLesson(listFreeLessonTemplate2[mId].id),
+                        getURLFreeLesson(mId),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

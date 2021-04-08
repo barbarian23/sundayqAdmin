@@ -120,7 +120,7 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
                         },
                         function(err) {alert("err");
                             setFetchingAccount(false);
-                            setGetAccountFromServerSuccess(false);
+                            setIsGetAccountFromServerSuccess(false);
 							 SunQAlert()
                                     .position('center')
                                     .title(currentstate == "active" ? dictionaryKey.REQUEST_ACTIVE_FAILED : dictionaryKey.REQUEST_DEACTIVE_FAILED)

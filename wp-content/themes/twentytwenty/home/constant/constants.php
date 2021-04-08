@@ -627,6 +627,8 @@
 	$GLOBALS["ACCOUNT_INPUT_PHONE_PLACEHOLDER"] = "Nhập vào số điện thoại";
 	$GLOBALS["ACCOUNT_INPUT_PASSWORD"] = "Mật khẩu";
 	$GLOBALS["ACCOUNT_INPUT_PASSWORD_PLACEHOLDER"] = "Nhập vào mật khẩu";
+	$GLOBALS["ACCOUNT_INPUT_OLD_PASSWORD"] = "Mật khẩu hiện tại";
+	$GLOBALS["ACCOUNT_INPUT_OLD_PASSWORD_PLACEHOLDER"] = "Nhập vào mật khẩu hiện tại";
 	$GLOBALS["ACCOUNT_INPUT_PERMISSION"] = "Quyền tài khoản";	
 	$GLOBALS["ACCOUNT_INPUT_PERMISSION_PLACEHOLDER"] = "Nhập vào quyền tài khoản";	
 	$GLOBALS["ACCOUNT_SUBMIT_ADD"] = "Thêm mới";	
@@ -672,6 +674,7 @@
 
 	//misc
 	$GLOBALS['LOG_OUT'] = "Đăng xuất";
+	$GLOBALS['CHANGE_PASSWORD'] = "Đổi mật khẩu";
 	$GLOBALS["AGREE"] = "Đồng ý";
 	$GLOBALS["CANCEL"] = "Hủy bỏ";
 	$GLOBALS["CLOSE"] = "Đóng";
@@ -989,6 +992,10 @@
 		ACCESS_DENIED_SERVER_TITLE: "ACCESS_DENIED_SERVER_TITLE",
 		
 		ERROR_API_MESSAGE:"Tải dữ liệu không thành công",
+		
+		WRONG_OLD_PASSWORD:"Vui lòng kiểm tra mật khẩu cũ",
+		WRONG_NEW_PASSWORD:"Vui lòng kiểm tra mật khẩu mới",
+		WRONG_OLD_PASSWORD_LENGTH:"Mật khẩu chưa đủ độ dài",
 		
 		WRONG_PASSWORD:"Bạn chưa nhập mật khẩu",
 		WRONG_PASSWORD_LENGTH:"Mật khẩu chưa đủ độ dài",
@@ -1853,6 +1860,9 @@
 		return mainURL + accountPasswordChangeUrl;
 	}
 	//freelesson plan
+	function postURLFreeLessonPlan(id){
+		return mainURL + freeLessonUrl + "/age/" + id;
+	}
 	function getURLFreeLessonPlan(ageType,month){
 		return mainURL + freeLessonPlanUrl + "/" + ageType + "/" + month;
 	}
@@ -2066,6 +2076,9 @@
 	
 	//<account managed by admin>
 	//change password
+	function maybechangepass(aid){
+		return mainURL + accountPartURL + aid + "/password";
+	}
 	function putAccountPassword(aid){//reset password
 		return mainURL + accountPartURL + adid + "/password";
 	}

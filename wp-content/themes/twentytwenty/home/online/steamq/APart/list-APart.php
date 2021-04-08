@@ -153,7 +153,7 @@ function deleteClass(){
 }
 
 function deletesteamq(mId){
-	 console.log("delete", liststeamq[mId]);
+	 //console.log("delete", liststeamq[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -169,7 +169,7 @@ function deletesteamq(mId){
                     seFetchingsteamq(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getURLLesson(liststeamq[mId].id),
+                        getURLLesson(mId),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

@@ -25,7 +25,7 @@ include get_theme_file_path("home/admin/group/group-interact-ui.php");
                    setFetchingGroup(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        postRollGroup() + "/" + listRollGroup[mId].id,
+                        postRollGroup() + "/" + mId,
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

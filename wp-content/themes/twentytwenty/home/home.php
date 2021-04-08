@@ -6,6 +6,7 @@
     <div class="home-header">
         <a href="/"><img class="home-header-img" src='<?php echo $GLOBALS['URI_HEADER_ICON']; ?>'></a>
 		<span id="logout" class="admin-logout"><?php echo $GLOBALS['LOG_OUT']; ?></span>
+		<span id="changePassword" class="admin-logout"><?php echo $GLOBALS['CHANGE_PASSWORD']; ?></span>
     </div>
 
     <!-- home middle -->
@@ -1524,6 +1525,113 @@
 		localStorage.setItem(dictionary.MSEC, "");
 		testApiForSession();
 	});
+	document.getElementById("changePassword").addEventListener("click",function(){
+		 
+Swal.mixin({
+  input: 'text',
+  confirmButtonText: 'Tiếp theo',
+  showCancelButton: true,
+  progressSteps: ['1', '2']
+}).queue([
+  {
+    title: 'Mật khẩu cũ',
+    text: 'Nhập mật khẩu cũ'
+  },
+  {
+    title: 'Mật khẩu mới',
+    text: 'Nhập mật khẩu mới'
+  },
+
+]).then((result) => {
+  if (result.value) {
+    const answers = result.value;
+	let tempmyCurrentAccount = {
+		oldPassword: answers[0],
+		newPassword: answers[1]
+	};
+	  if(answers[0] == null || answers[0] == ""){
+		  SunQAlert()
+                        .position('center')
+                        .title(dictionaryKey.WRONG_OLD_PASSWORD)
+                        .type('error')
+                        .confirmButtonColor("#3B4EDC")
+                        .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                        .callback((result) => {
+                            //window.scrollTo(0,0);
+                        })
+                        .show();
+		 }
+	  if(answers[1] == null || answers[1] == ""){
+		  SunQAlert()
+                        .position('center')
+                        .title(dictionaryKey.WRONG_NEW_PASSWORD)
+                        .type('error')
+                        .confirmButtonColor("#3B4EDC")
+                        .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                        .callback((result) => {
+                            //window.scrollTo(0,0);
+                        })
+                        .show();
+		 }
+	  
+	  requestToSever(
+                                sunQRequestType.put,
+                                maybechangepass(localStorage.getItem("ididid")),
+                                tempmyCurrentAccount,
+                                getLocalStorage(dictionary.MSEC),
+                                function(res) {
+                                    //setLoadingDataAccount(false);
+                                    if (res.code === networkCode.success) {
+                                        // console.log("myCurrentLecture", myCurrentLecture);
+                                        let sunqalertfailed = dictionaryKey.REQUEST_CHANGE_PASWORD_SUCCESS;
+                                        SunQAlert()
+                                            .position('center')
+                                            .title(sunqalertfailed)
+                                            .type('success')
+                                            .confirmButtonColor("#3B4EDC")
+                                            .confirmButtonText(dictionaryKey.AGREE)
+                                            .callback((result) => {
+//                                                 webpageRedirhttp://admin.sundayq.com/?mode=sa&page=list-accountect(getRedirectUrl(getMode(), "list-group"));
+												//webpageRedirect("http://admin.sundayq.com/?mode=sa&page=list-account");
+												localStorage.setItem(dictionary.MSEC, "");
+												testApiForSession();
+                                            })
+                                            .show();
+  }else if (res.code === networkCode.sessionTimeOut) {
+                                        makeAlertRedirect();
+                                    } else if (res.code === networkCode.accessDenied) {
+                                        makeAlertPermisionDenial();
+                                    } else {
+                                        SunQAlert()
+                                            .position('center')
+                                            .title(dictionaryKey.MISS_FIELD + " " + JSON.stringify(res))
+                                            .type('error')
+                                            .confirmButtonColor("#3B4EDC")
+                                            .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                            .callback((result) => {
+
+                                            })
+                                            .show();
+                                    }
+},function(err) {
+                                    //setLoadingDataAccount(dictionaryKey.ERR);
+                                    console.log(dictionaryKey.ERR_INFO, err);
+                                    let sunqalertfailed = dictionaryKey.REQUEST_CHANGE_PASWORD_FAILED;
+                                    SunQAlert()
+                                        .position('center')
+                                        .title(sunqalertfailed)
+                                        .type('error')
+                                        .confirmButtonColor("#3B4EDC")
+                                        .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                                        .callback((result) => {
+                                            //webpageRedirect(window.location.href);
+                                        })
+                                        .show();
+                                });
+	  
+	}
+	});
+		});
     //large screen
     //online
 	let sunqModeOnlineDiv = document.getElementById("divShowOnline");

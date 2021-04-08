@@ -63,7 +63,7 @@
 		</div>
 		
 		<div class="manage-list-lecture-add-new">
-			<a href="?mode=online&page=steamq-question&action=add">
+			<a id="questionadd" href="?mode=online&page=steamq-question&action=add">
 				<button>
 					<span><?php echo $GLOBALS["QUESTION_SUBMIT_ADD"]; ?></span>
 				</button>
@@ -165,6 +165,8 @@ function createListClass(){
 	document.getElementById("arta").href = "?mode=online&page=list-steamq-question&idclass=" +currentClass  + "&category=art";
 	document.getElementById("matha").href = "?mode=online&page=list-steamq-question&idclass=" +currentClass  + "&category=math";
 	
+	document.getElementById("questionadd").href = "?mode=online&page=steamq-question&action=add&idclass=" + currentClass + "&category=" + currentCategory;
+	document.getElementById("questionadd").style.display = "flex";
 	//get list ticket
 		listVisitedQuestion.push(0);
 		setCurrentQuestion(0);
@@ -310,7 +312,7 @@ function makeExcel(){
 }
 	
 function deleteQuestion(mId){
-	 console.log("delete", listQuestion[mId]);
+	 //console.log("delete", listQuestion[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -326,7 +328,7 @@ function deleteQuestion(mId){
                     seFetchingQuestion(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getURLQuestion(listQuestion[mId].id),
+                        getURLQuestion(mId),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

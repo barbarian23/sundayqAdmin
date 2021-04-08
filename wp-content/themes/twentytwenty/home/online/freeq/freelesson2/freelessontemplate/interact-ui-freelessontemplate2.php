@@ -457,9 +457,10 @@
 			let tempDate = new Date();
 			tempDate.setMonth(item.month);
 			let monthTemp = ["Tháng 0", "Tháng một", "Tháng hai", "Tháng ba", "Tháng tư", "Tháng năm", "Tháng sáu", "Tháng bảy", "Tháng tám", "Tháng chín", "Tháng mười", "Tháng mười một", "Tháng mười hai"];
-			let monthmonth = monthTemp[tempDate.getMonth()] + ",năm " + tempDate.getFullYear();
+			let montht = item.month == 12 ? monthTemp[item.month] : monthTemp[tempDate.getMonth()];
+			let monthmonth = montht + ",năm " + tempDate.getFullYear();
 			
-            trContent.innerHTML = "<td>" + (index) + "</td><td>" + item.title + "</td><td>" + monthmonth + "</td><td class=\"tdShortDesscription\">" + (item.shortDescription != null ? item.shortDescription : "Thiếu") + "</td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?" + tempAHref + "\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteFreeLessonTemplate2(" + (index - 1) + ")\">Xóa</div></td>";
+            trContent.innerHTML = "<td>" + (index) + "</td><td>" + item.title + "</td><td>" + monthmonth + "</td><td class=\"tdShortDesscription\">" + (item.shortDescription != null ? item.shortDescription : "Thiếu") + "</td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?" + tempAHref + "\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteFreeLessonTemplate2('" + item.id + "')\">Xóa</div></td>";
 
             tboby.appendChild(trContent);
         });

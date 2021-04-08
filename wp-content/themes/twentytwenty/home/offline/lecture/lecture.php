@@ -1093,11 +1093,11 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
                     makeAlertRedirect();
                 } else {
 					//alert("réult"+myCurrentLecture.otherImgUrls);
-					
+					console.log(res);
 					if (myCurrentLecture.otherImgUrls == null){
 						myCurrentLecture.otherImgUrls = [];
 					}
-					myCurrentLecture.otherImgUrls.push(res.urls);
+					myCurrentLecture.otherImgUrls.push(res.url);
 					
 					let parent = document.getElementById("listLEctureImg");
                 	//parent.innerHTML = "";
@@ -1107,17 +1107,20 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
 					
                 	let imgTempLEcture  = document.createElement("img");
                 	imgTempLEcture.id = "lecture-img-" + myCurrentLecture.otherImgUrls.length + "" ;
+					let index = myCurrentLecture.otherImgUrls.length;
                 	imgTempLEcture.className = "manage-section-infomation-right-item-img";
-                	imgTempLEcture.src = getHomeURL()+res.urls;
+                	imgTempLEcture.src = getHomeURL()+res.url;
                 				//console.log("add",parent.innerHTML);
 //                 let imgTempLEcture = "<img id=\"lecture-img-" +getCurrentACtion() == dictionaryKey.editStatus ? myCurrentLecture.otherImgUrls.length : "" + "\"  class=\"manage-section-infomation-right-item\" src=\"" + res.urls + "\" >";
 //                 				//console.log("imgTempLEcture",imgTempLEcture);
 //                 	let parentImgList = imgTempLEcture + parent.innerHTML;
                 	
 					let imgLEctureClose = document.createElement("div");
+					imgLEctureClose.id=myCurrentLecture.otherImgUrls.length;
 								imgLEctureClose.className = "manage-section-infomation-right-list-image-drop";
 								imgLEctureClose.innerHTML = "x";
-								imgLEctureClose.addEventListener("click",function(){
+								imgLEctureClose.addEventListener("click",function(){alert(index);
+								    imgLEctureParrent.remove();
 									imgTempLEcture.remove();
 									imgLEctureClose.remove();
 									myCurrentLecture.otherImgUrls.splice(index,1);
@@ -1162,7 +1165,8 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
               if (res.code === networkCode.sessionTimeOut) {
                     makeAlertRedirect();
                 } else {
-					 myCurrentLecture.descriptionImgUrl = res.urls;
+					console.log(res.url);
+					 myCurrentLecture.descriptionImgUrl = res.url;
 						  //alert("loi"+JSON.stringify(res)); 
 						   }
             },
@@ -1281,7 +1285,7 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
 								}
 						   }
 		
-        let titlleRequestLecture = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_ADD : dictionaryKey.REQUEST_EDIT + dictionaryKey.TEACHER_NAME;
+        let titlleRequestLecture = getCurrentACtion() == dictionaryKey.editStatus ? dictionaryKey.REQUEST_EDIT : dictionaryKey.REQUEST_ADD;
 		myCurrentLecture.ownerIds = currentOwners;
 		myCurrentLecture.description = lectureDescription.getData();
 		

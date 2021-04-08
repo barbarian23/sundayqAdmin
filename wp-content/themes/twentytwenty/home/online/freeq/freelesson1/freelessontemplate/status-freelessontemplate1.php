@@ -138,7 +138,7 @@ var  _isFetchingFreeLessonTemplate1 = false,
             _currentFreeLessonTemplate1 = val;
 
             let dataCurrentViewFreeLessonTemplate1 = {
-				service: service.qvisit,
+				isSampleLesson: true,
                 page: val,
                 limit: dictionaryKey.limitRequestRegister,
             };

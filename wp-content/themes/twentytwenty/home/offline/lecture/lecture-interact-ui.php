@@ -164,7 +164,7 @@ function loadOldPageLecture(number){
 		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.offline.lecture,dictionaryKey.editStatus,item.id);
 		
 		trContent.innerHTML = "<td>"+dictionary.LECTURE_ROADMAP_COURSE_1+" "+(index)+"</td><td>"+item.title+"</td><td>"+item.courseType+"</td>"
-		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture("+(index-1)+")\">Xóa</div></td>";
+		+"<td class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteLecture('"+item.id+"')\">Xóa</div></td>";
 		tbody.appendChild(trContent);
 	});
 	}

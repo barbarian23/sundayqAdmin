@@ -68,6 +68,10 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
                     <!-- Title -->
                     <span class="manage-teacher-contain-right-upper-title"><?php echo $GLOBALS["ACCOUNT_PASSWORD_CHANGE"]; ?></span>
 
+				<!-- old password -->
+                    <span><?php echo $GLOBALS["ACCOUNT_INPUT_OLD_PASSWORD"]; ?><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span></span>
+                    <input id="inputAccountOldPassword" type="password" placeholder='<?php echo $GLOBALS["ACCOUNT_INPUT_OLD_PASSWORD_PLACEHOLDER"]; ?>' required>
+				
                     <!-- password -->
                     <span><?php echo $GLOBALS["ACCOUNT_INPUT_PASSWORD"]; ?><span class="span-require"><?php echo $GLOBALS["FIELD_REQUIRE"]; ?></span></span>
                     <input id="inputAccountPassword" type="password" placeholder='<?php echo $GLOBALS["ACCOUNT_INPUT_PASSWORD_PLACEHOLDER"]; ?>' required>
@@ -322,18 +326,60 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
     <?php
     } else if ($currentAddition == "password") {
     ?>
+	
+// 		requestToSever(
+//                     sunQRequestType.get,
+//                     postAdmin() + "/" + getCurrentEdit(),
+//                     null,
+//                     getData(dictionary.MSEC),
+//                     function(res) {
+//                         setLoadingDataAccount(false);
+//                         if (res.code === networkCode.success) {
+//                             if (res.data == null || res.data.length == 0) {
+
+//                                 //setLectureGetTeacherThanZero(false);
+//                             } else {
+//                                console.log(res.data);
+// 								uploadDataAccount = res.data;
+								
+//                             }
+//                         } else if (res.code === networkCode.accessDenied) {
+//                             makeAlertPermisionDenial();
+//                         } else if (res.code === networkCode.sessionTimeOut) {
+//                             makeAlertRedirect();
+//                         }
+//                     },
+//                     function(err) {
+//                         setLoadingDataAccount(dictionaryKey.ERR);
+// 						SunQAlert()
+//                                         .position('center')
+//                                         .title("Lỗi mạng")
+//                                         .type('error')
+//                                         .confirmButtonColor("#3B4EDC")
+//                                         .confirmButtonText(dictionaryKey.TRY_AGAIN)
+//                                         .callback((result) => {
+//                                             webpageRedirect(window.location.href);
+//                                         })
+//                                         .show();
+//                         console.log(dictionaryKey.ERR_INFO, err);
+//                     }
+//                 );
+		//uploadDataAccount.oldPassword = "12345678";
         setLoadingDataAccount(false);
         document.getElementById("accountSubmit").value = '<?php echo  $GLOBALS["ACCOUNT_CHANGE_PASSWORD"]; ?>';
         document.getElementById("inputAccountPassword").addEventListener("input", function(e) {
-            uploadDataAccount.password = e.target.value;
+            uploadDataAccount.newPassword = e.target.value;
+        });
+	  document.getElementById("inputAccountOldPassword").addEventListener("input", function(e) {
+            uploadDataAccount.oldPassword = e.target.value;
         });
         document.getElementById("accountSubmit").addEventListener("click", function(e) {
             e.preventDefault();
-            if (getCurrentACtion() == dictionaryKey.addStatus) {
-                if (uploadDataAccount.password == null || uploadDataAccount.password == "") {
+//             if (getCurrentACtion() == dictionaryKey.addStatus) {
+                if (uploadDataAccount.oldPassword == null || uploadDataAccount.oldPassword == "") {
                     SunQAlert()
                         .position('center')
-                        .title(dictionaryKey.WRONG_PASSWORD)
+                        .title(dictionaryKey.WRONG_OLD_PASSWORD)
                         .type('error')
                         .confirmButtonColor("#3B4EDC")
                         .confirmButtonText(dictionaryKey.TRY_AGAIN)
@@ -341,7 +387,7 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
                             //window.scrollTo(0,0);
                         })
                         .show();
-                } else if (uploadDataAccount.password.length < 8) {
+                } else if (uploadDataAccount.oldPassword.length < 8) {
                     SunQAlert()
                         .position('center')
                         .title(dictionaryKey.WRONG_PASSWORD_LENGTH)
@@ -352,8 +398,31 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
                             //window.scrollTo(0,0);
                         })
                         .show();
-                }
-            } else {
+                } else if(uploadDataAccount.newPassword == null || uploadDataAccount.newPassword == ""){
+						   SunQAlert()
+                        .position('center')
+                        .title(dictionaryKey.WRONG_NEW_PASSWORD)
+                        .type('error')
+                        .confirmButtonColor("#3B4EDC")
+                        .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                        .callback((result) => {
+                            //window.scrollTo(0,0);
+                        })
+                        .show();
+						  } else if (uploadDataAccount.newPassword.length < 8){
+					  SunQAlert()
+                        .position('center')
+                        .title(dictionaryKey.WRONG_PASSWORD_LENGTH)
+                        .type('error')
+                        .confirmButtonColor("#3B4EDC")
+                        .confirmButtonText(dictionaryKey.TRY_AGAIN)
+                        .callback((result) => {
+                            //window.scrollTo(0,0);
+                        })
+                        .show();
+				}
+			
+				 else {
                 SunQAlert()
                     .position('center')
                     .title(dictionaryKey.REQUEST_CHANGE_PASWORD)
@@ -366,13 +435,14 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
                         if (result.value) {
                             window.scrollTo(0, 0);
                             let tempmyCurrentAccount = {
-                                password: uploadDataAccount.password,
+                                oldPassword: uploadDataAccount.oldPassword,
+                                newPassword: uploadDataAccount.newPassword,
                             };
                             console.log("push data " + tempmyCurrentAccount);
                             setLoadingDataAccount(true);
                             requestToSever(
                                 sunQRequestType.put,
-                                setAccountPassword(getCurrentEdit()),
+                                maybechangepass(getCurrentEdit()),
                                 tempmyCurrentAccount,
                                 getLocalStorage(dictionary.MSEC),
                                 function(res) {
@@ -387,7 +457,8 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
                                             .confirmButtonColor("#3B4EDC")
                                             .confirmButtonText(dictionaryKey.AGREE)
                                             .callback((result) => {
-                                                webpageRedirect(getRedirectUrl(getMode(), "list-group"));
+//                                                 webpageRedirhttp://admin.sundayq.com/?mode=sa&page=list-accountect(getRedirectUrl(getMode(), "list-group"));
+												webpageRedirect("http://admin.sundayq.com/?mode=sa&page=list-account");
                                             })
                                             .show();
                                     } else if (res.code === networkCode.sessionTimeOut) {
@@ -558,7 +629,8 @@ include get_theme_file_path("home/admin/account/account-interact-ui.php");
                                             .confirmButtonColor("#3B4EDC")
                                             .confirmButtonText(dictionaryKey.AGREE)
                                             .callback((result) => {
-                                                webpageRedirect(getRedirectUrl(getMode(), "list-account"));
+                                                //webpageRedirect(getRedirectUrl(getMode(), "list-account"));
+												webpageRedirect("http://admin.sundayq.com/?mode=sa&page=list-account");
                                             })
                                             .show();
                                     } else if (res.code === networkCode.sessionTimeOut) {

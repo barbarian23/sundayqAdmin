@@ -27,7 +27,7 @@ function getListTicketGreaterThanZero(){
 function getListTicketEqualToZero(){
 	document.getElementById("listTicketEmpty").style.display = "flex" ;
 	document.getElementById("tableListTicket").style.display = "none" ;
-	emptyTableListLecture();
+	//emptyTableListLecture();
 }
 	
 function loadingDataTicketProgress(){

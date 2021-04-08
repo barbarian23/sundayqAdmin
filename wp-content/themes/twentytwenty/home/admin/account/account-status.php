@@ -144,7 +144,7 @@ function createTableAccount(tbody,input,number){
 			: "";
 		
 		let isModifiable = item.accountType == "admin" ? 
-			"<td id=\"tdGroup3Option\" class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"&addition=edit\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><a href=\""+tempAHref+"&addition=password\"><div class='manage-list-lecture-table-detail-div-edit'>Đổi mật khẩu</div></a><a href=\""+tempAHref+"&addition=permission\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa quyền</div></a></td>" 
+			"<td id=\"tdGroup3Option\" class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"&addition=edit\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><a href=\""+tempAHref+"&addition=permission\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa quyền</div></a></td>" 
 			: item.accountType == "teacher" ? "<td id=\"tdGroup3Option\" class='manage-list-lecture-table-detail-tr-modified'><a href=\""+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a></td>" 
 			: "<td></td>";
 	

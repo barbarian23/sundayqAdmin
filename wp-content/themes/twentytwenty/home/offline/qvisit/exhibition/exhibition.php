@@ -249,7 +249,7 @@ include get_theme_file_path("home/offline/qvisit/exhibition/exhibition-interact-
 					if (res.code === networkCode.sessionTimeOut) {
                     makeAlertRedirect();
                 } else {
-					 myCurrentExhibition.descriptionImgUrl = res.urls[0];
+					 myCurrentExhibition.descriptionImgUrl = res.url;
 				}
             },
             function(err) {

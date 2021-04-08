@@ -139,7 +139,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 		} 
 		let tempAHref = makeATagRedirect(sunQMode.offline,listScreen.offline.exhibition,dictionaryKey.editStatus,item.id);
 		
-		trContent.innerHTML = "<td>"+(index)+"</td><td class='tdExhibitionTitle'><div class='divExhibitionTitle'>"+item.title+"</div></td><td class='tdExhibitionDescription'><div class='divExhibitionDescription'>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</div></td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete-video' onclick=\"deleteExhibition("+(index-1)+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td class='tdExhibitionTitle'><div class='divExhibitionTitle'>"+item.title+"</div></td><td class='tdExhibitionDescription'><div class='divExhibitionDescription'>"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</div></td><td class='manage-list-teacher-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-teacher-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteExhibition('"+item.id+"')\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

@@ -15,7 +15,7 @@ window.onload = function() {
     }
 
 function deleteEvent(mId){
-	 console.log("delete", listEvent[mId]);
+	 //console.log("delete", listEvent[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -31,7 +31,7 @@ function deleteEvent(mId){
                     seFetchingEvent(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getEvent(listEvent[mId].id),
+                        getEvent(mId),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

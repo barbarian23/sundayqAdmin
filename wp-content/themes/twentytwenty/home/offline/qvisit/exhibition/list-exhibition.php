@@ -15,7 +15,7 @@ window.onload = function() {
     }
 
 function deleteExhibition(mId){
-	 console.log("delete", listExhibition[mId]);
+	 //console.log("delete", listExhibition[mId]);
 		//alert("teacher "+mId+listTeacher[mId].name);
         //alert hỏi
         SunQAlert()
@@ -31,7 +31,7 @@ function deleteExhibition(mId){
                     seFetchingExhibition(true);
                     requestToSever(
                         sunQRequestType.delete,
-                        getExhibition(listExhibition[mId].id),
+                        getExhibition(mId),
                         null,
                         getData(dictionary.MSEC),
                         function(res) {

@@ -248,7 +248,7 @@ include get_theme_file_path("home/offline/qvisit/event/event-interact-ui.php");
 					if (res.code === networkCode.sessionTimeOut) {
                     makeAlertRedirect();
                 } else {
-					 myCurrentEvent.descriptionImgUrl = res.urls[0];
+					 myCurrentEvent.descriptionImgUrl = res.url;
 				}
             },
             function(err) {

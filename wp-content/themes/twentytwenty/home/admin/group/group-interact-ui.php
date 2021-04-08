@@ -143,7 +143,7 @@ function loadOldPageGroup(number){
 		let dateGroup = new Date(item.updateAt);
 		
 		let tempAHref = makeATagRedirect(sunQMode.sa,listScreen.account.group,dictionaryKey.editStatus,item.id);
-		let modified = item.name == "root" ? "<td></td>" : "<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteGroup("+(index-1)+")\">Xóa</div></td>";
+		let modified = item.name == "root" ? "<td></td>" : "<td class='manage-list-lecture-table-detail-tr-modified'><a href=\"?"+tempAHref+"\"><div class='manage-list-lecture-table-detail-div-edit'>Chỉnh sửa</div></a><div class='manage-list-lecture-table-detail-div-delete' onclick=\"deleteGroup('"+item.id+"')\">Xóa</div></td>";
 		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.name+"</td><td>"+(dateGroup.getDate()+"/"+dateGroup.getMonth()+"/"+dateGroup.getFullYear())+"</td>"
 		+ modified;
 		

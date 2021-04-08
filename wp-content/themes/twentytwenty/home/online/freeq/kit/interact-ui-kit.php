@@ -169,7 +169,7 @@ for (let pagingIndex = 0 ; pagingIndex < totalPage ; pagingIndex++ ){
 			trContent.className = 'manage-list-teacher-table-detail-strong';
 		} 
 		let tempAHref = makeATagRedirect(sunQMode.online,listScreen.online.kit,dictionaryKey.editStatus,item.id);
-		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td class=\"tdShortDesscription\">"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><div class='manage-list-teacher-table-detail-div-edit'><a href=\"" + tempAHref + "\">Chỉnh sửa</a></div><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteKit("+(index-1)+")\">Xóa</div></td>";
+		trContent.innerHTML = "<td>"+(index)+"</td><td>"+item.title+"</td><td class=\"tdShortDesscription\">"+(item.shortDescription != null ? item.shortDescription : "Thiếu")+"</td><td class='manage-list-teacher-table-detail-tr-modified'><div class='manage-list-teacher-table-detail-div-edit'><a href=\"" + tempAHref + "\">Chỉnh sửa</a></div><div class='manage-list-teacher-table-detail-div-delete' onclick=\"deleteKit('"+item.id+"')\">Xóa</div></td>";
 		
 		tboby.appendChild(trContent);
 	});

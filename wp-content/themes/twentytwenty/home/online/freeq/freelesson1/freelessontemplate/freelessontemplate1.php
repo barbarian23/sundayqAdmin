@@ -523,6 +523,7 @@ include get_theme_file_path("home/online/freeq/freelesson1/freelessontemplate/in
                         delete tempmyCurrentFreeLessonTemplate1.id;
                         delete tempmyCurrentFreeLessonTemplate1.serviceId;
                         delete tempmyCurrentFreeLessonTemplate1.ageId;
+						delete tempmyCurrentFreeLessonTemplate1.questions;
                         //delete tempmyCurrentFreeLessonTemplate1.kitId;
                         delete tempmyCurrentFreeLessonTemplate1.kit;
 						if(getCurrentACtion() != dictionaryKey.editStatus){
@@ -533,7 +534,7 @@ include get_theme_file_path("home/online/freeq/freelesson1/freelessontemplate/in
                         setLoadingDataFreeLessonTemplate1(true);
                         requestToSever(
                             getCurrentACtion() == dictionaryKey.editStatus ? sunQRequestType.put : sunQRequestType.post,
-                            getCurrentACtion() == dictionaryKey.editStatus ? getURLFreeLesson(getCurrentEdit()) : getURLFreeLesson(ageID.freelesson1.id),
+                            getCurrentACtion() == dictionaryKey.editStatus ? getURLFreeLesson(getCurrentEdit()) : postURLFreeLessonPlan(ageID.freelesson1.id),
                             tempmyCurrentFreeLessonTemplate1,
                             getLocalStorage(dictionary.MSEC),
                             function(res) {
