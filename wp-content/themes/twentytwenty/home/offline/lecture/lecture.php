@@ -1119,7 +1119,7 @@ include get_theme_file_path("home/offline/lecture/lecture-interact-ui.php");
 					imgLEctureClose.id=myCurrentLecture.otherImgUrls.length;
 								imgLEctureClose.className = "manage-section-infomation-right-list-image-drop";
 								imgLEctureClose.innerHTML = "x";
-								imgLEctureClose.addEventListener("click",function(){alert(index);
+								imgLEctureClose.addEventListener("click",function(){
 								    imgLEctureParrent.remove();
 									imgTempLEcture.remove();
 									imgLEctureClose.remove();

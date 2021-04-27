@@ -173,7 +173,7 @@
                 },
                 function(err) {
                     setFetchingConfirmBanking(false);
-                    setIsGetConfirmBankingFromServerSuccess(false);
+                    setGetConfirmBankingFromServerSuccess(false);
                     //alert(err);
                     console.log(dictionaryKey.ERR_INFO, err);
                 }

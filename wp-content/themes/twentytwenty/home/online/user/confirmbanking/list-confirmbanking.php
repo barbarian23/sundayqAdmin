@@ -23,9 +23,18 @@ include get_theme_file_path("home/online/user/confirmbanking/interact-ui-confirm
 
             </div>
         </div>
-        <table class="manage-list-teacher-table-detail" id="tableListConfirmBanking">
+		
+		<div class="manage-section-helpdesk" id="tableListTicket">
+			<div class="manage-section-helpdesk-table">
+				<table class="manage-section-helpdesk-real-table" id="tableListConfirmBanking">
 
-        </table>
+				</table>
+			</div>
+    	</div> 
+		
+<!--         <table class="manage-list-teacher-table-detail" id="tableListConfirmBanking">
+
+        </table> -->
         <div class="manage-list-teacher-table-no-list" id="listConfirmBankingEmpty">
             <img src='<?php echo $GLOBALS["URI_EMPTY_BOX"]; ?>'>
             <span><?php echo $GLOBALS["CONFIRM_BANKING_NO_LIST"]; ?></span>

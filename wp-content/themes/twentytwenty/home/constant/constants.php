@@ -3,6 +3,9 @@
 	//admin
 	$GLOBALS["ADMIN_TITLE"] = "Trang quản trị";
 
+	//ticket
+	$GLOBALS["TICKET_TITLE"] = "Quản lý giá vé";
+
 	//online
 	$GLOBALS["ADMIN_ONLINE"] = "Học Online";
     //manage account
@@ -51,6 +54,9 @@
 	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EVENT"] = "Quản lý sự kiện";
 	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CONTACT"] = "Quản lý liên hệ";
 	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_TICKET"] = "Quản lý vé";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_ARTICLE"] = "Quản lý bài viết";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_BANNER"] = "Hình ảnh chính";
+	$GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CENTER_INFO"] = "Thông tin hệ thống";
 
 	//super admin
 	$GLOBALS["ADMIN_SUPER"] = "Quyền quản trị";
@@ -80,7 +86,8 @@
 	$GLOBALS["CONFIRM_BANKING_LIST_COL_1"] = "Số thứ tự";
 	$GLOBALS["CONFIRM_BANKING_LIST_COL_2"] = "Số điện thoại khách hàng";
 	$GLOBALS["CONFIRM_BANKING_LIST_COL_3"] = "Trạng thái";
-	$GLOBALS["CONFIRM_BANKING_LIST_COL_4"] = "Chỉnh sửa";
+	$GLOBALS["CONFIRM_BANKING_LIST_COL_4"] = "Ghi chú admin";
+	$GLOBALS["CONFIRM_BANKING_LIST_COL_5"] = "Chỉnh sửa";
 	$GLOBALS["CONFIRM_BANKING_PROVE_TRANSACTION"] = "Phê duyệt";
 	$GLOBALS["CONFIRM_BANKING_PROVE_COMPLETE"] = "Hoàn thành";
 	$GLOBALS["CONFIRM_BANKING_COMPLETE"] = "Hoàn thành";
@@ -105,6 +112,9 @@
 	$GLOBALS["CONFIRM_BANKING_KIT_PRICE_DATE"] = "Ngày giao dịch";
 	$GLOBALS["CONFIRM_BANKING_KIT_PRICE_BANKING"] = "Số tiền đã giao dịch";
 	$GLOBALS["CONFIRM_BANKING_KIT_PRICE_NOTE"] = "Lời nhắn khi giao dịch";
+	$GLOBALS["CONFIRM_BANKING_KIT_ADMIN_NOTE"] = "Ghi chú của admin";
+	$GLOBALS["CONFIRM_BANKING_KIT_ADMIN_NOTE_PLACEHOLDER"] = "Nhập vào ghi chú của admin";
+	$GLOBALS["CONFIRM_BANKING_KIT_ADMIN_SUBMIT"] = "Sửa ghi chú admin";
 	$GLOBALS["CONFIRM_BANKING_KIT_TRANSSACTIONS"] = "Giao dịch";
 	$GLOBALS["CONFIRM_BANKING_KIT_TYPE_TRANSACITON_METHOD"] = "Phương thức thanh toán";
 	$GLOBALS["CONFIRM_BANKING_KIT_TYPE_PAY_ONLINE"] = "Thanh toán trực tuyến";
@@ -121,6 +131,29 @@
 	$GLOBALS["ACCOUNT_USER_LIST_COL_3"] = "Email";
 	$GLOBALS["ACCOUNT_USER_LIST_COL_4"] = "Ngày tạo";
 	$GLOBALS["ACCOUNT_USER_LIST_COL_5"] = "Chỉnh sửa";
+
+	//Parent comment
+	$GLOBALS["PARENT_COMMENT"] = "Nhận xét của phụ huynh";
+	$GLOBALS["PARENT_COMMENT_LIST_TITLE"] = "Danh sách nhận xét của phụ huynh";
+	$GLOBALS["PARENT_COMMENT_NO_LIST"] = "Danh sáchnhận xét của phụ huynh mẫu trống";
+	$GLOBALS["PARENT_COMMENT_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["PARENT_COMMENT_LIST_COL_2"] = "Tên";
+	$GLOBALS["PARENT_COMMENT_LIST_COL_3"] = "Vai trò";
+	$GLOBALS["PARENT_COMMENT_LIST_COL_4"] = "Chỉnh sửa";
+	$GLOBALS["PARENT_COMMENT_LIST_BUTTON_EDIT_KIT"] = "Chỉnh sửa";
+	$GLOBALS["PARENT_COMMENT_LIST_BUTTON_DELETE_KIT"] = "Xóa";
+	$GLOBALS["PARENT_COMMENTE_LIST_BUTTON_ADD_KIT"] = "Thêm mới nhận xét của phụ huynh";
+
+	$GLOBALS["PARENT_COMMENT_TITLE"] = "Nhận xét của phụ huynh";
+	$GLOBALS["PARENT_COMMENT_AVATAR"] = "Ảnh đại diện";
+	$GLOBALS["PARENT_COMMENT_NAME"] = "Tên";
+	$GLOBALS["PARENT_COMMENT_NAME_PLACEHOLDER"] = "Nhập tên";
+	$GLOBALS["PARENT_COMMENT_ROLE"] = "Vai trò";
+	$GLOBALS["PARENT_COMMENT_ROLE_PLACEHOLDER"] = "Nhập vai trò";
+	$GLOBALS["PARENT_COMMENT_COMMENT"] = "Nhận xét";
+	$GLOBALS["PARENT_COMMENT_COMMENT_PLACEHOLDER"] = "Nhập lời nhận xét";
+	$GLOBALS["PARENT_COMMENT_SUBMIT_ADD"] = "Thêm mới";
+	$GLOBALS["PARENT_COMMENT_SUBMIT_EDIT"] = "Chỉnh sửa";
 
     //list freelesson
 	//list freelessontemplate
@@ -519,6 +552,32 @@
 	$GLOBALS["TEACHER_LESSION_EXP"] = "Kinh nghiệm giảng dạy: ";
 	$GLOBALS["TEACHER_LESSION_DEGREE"] = "Chức danh đối với học viên: ";
 
+	//bài viết qvisit
+	$GLOBALS["QVISIT_ARTICLE_LIST_TITLE"] = "Các bài viết của Q-VISIT";
+	$GLOBALS["QVISIT_ARTICLE_NO_LIST"] = "Danh sách bài viết trống";
+	$GLOBALS["QVISIT_ARTICLE_LIST_COL_1"] = "Số thứ tự";
+	$GLOBALS["QVISIT_ARTICLE_LIST_COL_2"] = "Tiêu đề bài viết";
+	$GLOBALS["QVISIT_ARTICLE_LIST_COL_3"] = "Chinh sửa";
+	$GLOBALS["QVISIT_SUBMIT_EDIT"] = "Chinh sửa";
+
+	$GLOBALS["QVISIT_ARTICLE_TITLE"] = "Tiêu đề";
+	$GLOBALS["QVISIT_ARTICLE_TITLE_PLACEHOLDER"] = "Nhập tiêu đề";
+	$GLOBALS["QVISIT_ARTICLE_DES"] = "Mô tả";
+	$GLOBALS["QVISIT_ARTICLE_DES_PLACEHOLDER"] = "Nhập mô tả";
+	$GLOBALS["QVISIT_ARTICLE_AVATAR"] = "Ảnh bài viết";
+
+	$GLOBALS["TICKET_ALL_TITLE"] = "Giá hệ thống";
+	$GLOBALS["TICKET_ALL_PLAN_INPUT_NAME"] = "Loại vé";
+	$GLOBALS["TICKET_ALL_PLAN_INPUT_NAME_PLACEHOLDER"] = "Nhập loại vé";
+	$GLOBALS["TICKET_ALL_PLAN_PRICE"] = "Giá";
+	$GLOBALS["TICKET_ALL_PLAN_PRICE_PLACEHOLDER"] = "Nhập vào giá";
+	$GLOBALS["TICKET_ALL_SUBMIT_ADD"] = "Chỉnh sửa";
+
+	$GLOBALS["QVISIT_ARTICLE_TITLE_PLACEHOLDER"] = "Nhập tiêu đề";
+	$GLOBALS["QVISIT_ARTICLE_DES"] = "Nội dung bài viết";
+	$GLOBALS["QVISIT_ARTICLE_DES_PLACEHOLDER"] = "Nhập nội dung bài viết";
+	$GLOBALS["QVISIT_ARTICLE_AVATAR"] = "Ảnh bài viết";
+	$GLOBALS["QVISIT_ARTICLE_EDIT_SUBMITR"] = "Chỉnh sửa bài viết";
 
 	$GLOBALS["TEACHER_EDIT_SUCCESS"] = "Chính sửa thành công";
 	$GLOBALS["TEACHER_EDIT_SUCCESS"] = "Thêm mới thành công";
@@ -639,6 +698,23 @@
 	$GLOBALS["ACCOUNT_PASSWORD_CHANGE"] = "Chỉnh sửa mật khẩu tài khoản";
 	$GLOBALS["ACCOUNT_PERMISION_CHANGE"] = "Chỉnh sửa quyền tài khoản";
 
+	//banner
+
+	//center info
+	$GLOBALS["CENTER_INFO_TITLE"] = "Thông tin trung tâm";
+	$GLOBALS["CENTER_IMAGE"] = "Hình ảnh trung tâm";
+	$GLOBALS["CENTER_INFO_OPEN_TIME"] = "Giờ mở cửa";
+	$GLOBALS["CENTER_INFO_OPEN_TIME_PLACEHOLDER"] = "Nhập vào giờ mở cửa";
+	$GLOBALS["CENTER_INFO_ADDRESS"] = "Địa chỉ";
+	$GLOBALS["CENTER_INFO_ADDRESS_PLACEHOLDER"] = "Nhập vào địa chỉ";
+	$GLOBALS["CENTER_INFO_PHONESERVICE"] = "Dịch vụ";
+	$GLOBALS["CENTER_INFO_PHONESERVICE_PLACEHOLDER"] = "Nhập vào số điện thoại của dịch vụ";
+	$GLOBALS["CENTER_INFO_PHONEBUSSINES"] = "Kinh doanh";
+	$GLOBALS["CENTER_INFO_PHONEBUSSINESE_PLACEHOLDER"] = "Nhập vào số điện thoại kinh danh";
+	$GLOBALS["CENTER_INFO_EMAIL"] = "Email";
+	$GLOBALS["CENTER_INFO_EMAIL_PLACEHOLDER"] = "Nhập vào Email";
+	$GLOBALS["CENTER_INFO_EDIT_SUBMIT"] = "Chỉnh sửa";
+
 	//infomation
 	
 	//detail
@@ -665,7 +741,7 @@
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_3"] = "Họ và tên";
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_4"] = "Thời gian";
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_5"] = "Số điện thoại";
-	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_6"] = "Ghi chú";
+	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_6"] = "Nhận xét khách hàng";
 	$GLOBALS["LECTURE_CUSTOMER_NEED_SUPPORT_7"] = "Ghi chú admin";
 	
 	$GLOBALS["LECTURE_MAIN_TEACHER"] = "Giáo viên chủ nhiệm";
@@ -784,8 +860,24 @@
 		
 		IMAGE_LOADED_FAILED:"Tải ảnh thất bại",
 		
+		WRONG_ARTICLE_TITLE: "Bạn chưa nhập tiêu đề bài viết",
+		WRONG_ARTICLE_DESCRIPTION: "Bạn chưa nhập nội dung bài viết",
+		
 		//online
+		//parent comment
+		PARENT_COMMENT_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		PARENT_COMMENT_ADD_SUCCESS:"Thêm mới thành công",
+		PARENT_COMMENT_EDIT_FAILED: "Chỉnh sửa không thành công",
+		PARENT_COMMENT_ADD_FAILED:"Thêm mới không thành công",
+		
+		WRONG_PARENT_COMMENT_AVATAR: "Bạn chưa tải lên ảnh đại diện",
+		WRONG_PARENT_COMMENT_NAME: "Bạn chưa nhập tên",
+		WRONG_PARENT_COMMENT_ROLE: "Bạn chưa nhập vai trò",
+		WRONG_PARENT_COMMENT_CONTENT: "Bạn chưa nhập nội dung nhận xét",
+		
 		//confirm banking
+		CONFIRM_BANKING_COMMENT_SUCCESS:"Ghi chú đơn thành công",
+		CONFIRM_BANKING_COMMENT_FAILED:"Ghi chú đơn thành công",
 		CONFIRM_BANKING_APPROVE_SUCCESS:"Phê duyệt đơn thành công",
 		CONFIRM_BANKING_APPROVE_FAILED: "Phê duyệt đơn không thành công",
 		CONFIRM_BANKING_REJECT_SUCCESS:"Hủy bỏ đơn thành công",
@@ -844,6 +936,9 @@
 		EXHIBITION_EDIT_FAILED: "Chỉnh sửa không thành công",
 		EXHIBITION_ADD_FAILED:"Thêm mới không thành công",
 		
+		ARTICLE_EDIT_SUCCESS: "Chỉnh sửa thành công",
+		ARTICLE_EDIT_FAILED: "Chỉnh sửa không thành công",
+		
 		UPLOAD_IMAGE_SUCCESS:"Tải ảnh lên thành công",
 		UPLOAD_IMAGE_FAILED: "Tải ảnh lên không thành công",
 		
@@ -865,6 +960,9 @@
 		LECTURE_ADD_SUCCESS:"Thêm mới thành công",
 		LECTURE_EDIT_FAILED: "Chỉnh sửa không thành công",
 		LECTURE_ADD_FAILED:"Thêm mới không thành công",
+		
+		TICKET_ALL_EDIT_SUCCESS:"Chỉnh sửa thành công",
+		TICKET_ALL_EDIT_FAILED: "Chỉnh sửa không thành công",
 		
 		QUESTION_UPLOAD_QUANLITY:"Đang tải lên câu hỏi thứ",
 		
@@ -915,6 +1013,9 @@
 		STEAMQ_CLASS_DELETE_FAILED:"Xóa không thành công",
 		
 		
+		PARENT_COMMENT_DELETE_SUCCESS:"Xóa thành công",
+		PARENT_COMMENT_DELETE_FAILED:"Xóa không thành công",
+		
 		QUESTION_UPLOAD_QUESTION_FAILED: "Không tải được file lên, vui lòng thử tải lại",
 		QUESTION_DELETE_FAILED: "Xóa không thành công",
 		QUESTION_DELETE_SUCCESS:"Xóa thành công",
@@ -957,6 +1058,9 @@
 		WRONG_IMG_EVENT: "Bạn chưa tải ảnh triển lãm lên",
 		WRONG_OWNER:"Bạn chưa chọn giáo viên chủ nhiệm?",
 		
+		CENTER_INFO_EDIT_SUCCESS:"Chỉnh sửa thành công",
+		CENTER_INFO_EDIT_FAILED:"Chỉnh sửa không thành công",
+		
 		//sự kiện
 		WRONG_EVENT_TITLE:"Bạn chưa nhập tiêu đề của sự kiện",
 		WRONG_EVENT_DESCRIPTION:"Bạn chưa nhập mô tả của sự kiện",
@@ -987,6 +1091,16 @@
 		WRONG_COURSE_TYPE_LECTURE: "Bạn chưa nhập loại hình giảng dạy",
 		WRONG_AGE_MIN_LECTURE: "Bạn chưa nhập độ tuổi giới hạn",
 		WRONG_AGE_MAX_LECTURE: "Bạn chưa nhập độ tuổi giới hạn",
+		
+		WRONG_TICKET_ALL_TEXT: "Bạn chưa nhập đủ loại giá",
+		WRONG_TICKET_ALL_VALUE: "Bạn chưa nhập  đủ giá vé",
+		
+		WRONG_CENTER_INFO_OPEN_TIME: "Bạn chưa nhập giờ mở cửa",
+		WRONG_CENTER_INFO_OPEN_ADDRESS: "Bạn chưa nhập địa chỉ",
+		WRONG_CENTER_INFO_OPEN_PHONE_SERVICE: "Bạn chưa nhập số điện thoại dịch vụ",
+		WRONG_CENTER_INFO_OPEN_PHONE_BUSINESS: "Bạn chưa nhập số điện thoại kinh doanh",
+		WRONG_CENTER_INFO_OPEN_EMAIL: "Bạn chưa nhập email",
+		WRONG_CENTER_INFO_BANNER: "Bạn chưa tải lên hình ảnh khóa học",
 		
 		SESION_TIMEOUT_SERVER: "SESION_TIMEOUT_SERVER",
 		ACCESS_DENIED_SERVER_TITLE: "ACCESS_DENIED_SERVER_TITLE",
@@ -1101,7 +1215,11 @@
 	};
 	
 	var arrayHightlightTitle = [
+		//ticket
+		{key:"ticket",id:"title-manage-ticket-all"},
 		//offline
+		{key:"list-article",id:"title-manage-article"},
+		{key:"article",id:"title-manage-article"},
 		{key:"lecture",id:"title-manage-lecture"},
 		{key:"list-lecture",id:"title-manage-lecture"},
 		{key:"teacher",id:"title-manage-teacher"},
@@ -1112,6 +1230,10 @@
 		{key:"list-event",id:"title-manage-event"},
 		{key:"list-contact",id:"title-manage-contact"},
 		{key:"list-ticket",id:"title-manage-ticket"},
+		{key:"article",id:"title-manage-article"},
+		{key:"article",id:"title-manage-article"},
+		{key:"banner",id:"title-manage-banner"},
+		{key:"centerinfo",id:"title-manage-centerinfo"},
 		//online
 		//user account
 		{key:"list-confirmbanking",id:"title-manage-confirmbanking"},
@@ -1136,6 +1258,11 @@
 		
 		{key:"kit",id:"title-manage-kit"},
 		{key:"list-kit",id:"title-manage-kit"},
+		
+		//parentcommnet
+		{key:"parentcomment",id:"title-manage-parentcomment"},
+		{key:"list-parentcomment",id:"title-manage-parentcomment"},
+		
 		//steamq
 		//SPart
 // 		{key:"list-steam-science-under-one",id:"title-manage-steamq-science-under-one"},
@@ -1292,11 +1419,19 @@
 	];
 	
 	var arrayBlueBackground = [
+		
+		//ticket
+		{key:"ticket",id:"divTicketDetail",body:"homeMenuTicket"},
+		
 		//online
 		//user account
 		{key:"list-confirmbanking",id:"divShowManageAccount",body:"homeMenuManageAccount"},
 		{key:"confirmbanking",id:"divShowManageAccount",body:"homeMenuManageAccount"},
 		{key:"list-useraccount",id:"divShowManageAccount",body:"homeMenuManageAccount"},
+		
+		//parentcommnet
+		{key:"parentcomment",id:"divParentCommentDetail",body:"homeMenuParentComment"},
+		{key:"list-parentcomment",id:"divParentCommentDetail",body:"homeMenuParentComment"},
 		
 		//freeq
 		//lesson1
@@ -1458,6 +1593,12 @@
 		{key:"list-steamq-question",id:"divShowSteamQ",body:"homeMenuSteamQ"},
 		{key:"steamq-question",id:"divShowSteamQ",body:"homeMenuSteamQ"},
 		
+		{key:"list-article",id:"divShowQVisit",body:"homeMenuQVisit"},
+		{key:"article",id:"divShowQVisit",body:"homeMenuQVisit"},
+		
+		{key:"banner",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
+		{key:"centerinfo",id:"divShowQAcademy",body:"homeMenuQAcedemy"},
+		
 		//upload
 		{key:"video",id:"divShowUpload",body:"homeMenuUpload"},
 		{key:"list-video",id:"divShowUpload",body:"homeMenuUpload"},
@@ -1498,7 +1639,9 @@
 			listEvent:"list-event",
 			event:"event",
 			listExhibition:"list-exhibition",
-			exhibition:"exhibition"
+			exhibition:"exhibition",
+			article:"article",
+			listArticle:"list-article",
 		},
 		online:{
 			//useraccount
@@ -1537,6 +1680,9 @@
 			kit:"kit",
 			listQuestion:"list-steamq-question",
 			question:"steamq-question",
+			//parentcomment
+			listParentComment:"list-parentcomment",
+			parentComment:"parentcomment",
 		},account:{
 			account:"account",
 			listAccount:"list-account",
@@ -1708,6 +1854,13 @@
 	var mainURL= "http://103.15.50.6:3200/";
 	var secondURL= "http://103.15.50.6:3200/";
 	
+	//home
+	var homeUrl = "home/";
+	var homePriceUrl = "prices/";
+	var homeCenterInfoUrl = "centerInfo/";
+	var homeCenterandPriceInfoUrl = "bannerAndCenterInfo/";
+	var homeBannerUrl = "banner/";
+	
 	//account login
 	var accountPartURL = "account/";
 	var listAccountURL = "accounts/";
@@ -1735,6 +1888,7 @@
 	var orderUrl = "order";
 	var listOrderUrl = "orders";
 	var listOrderStatusUrl = "orders/status";
+	var commentOrderUrl = "order/comment";
 	var completeOrderUrl = "order/complete";
 	//verify transsaction
 	var orderVerifyOrderUrl = "transaction/verify/transferMoney";
@@ -1787,7 +1941,15 @@
 	var uploadImagePartUrl = "resource/image";	
 	var uploadImageEditorUrl = "resource/ckediter/image";	
 	
+	//comment
+	var commentUrl = "comment";
+	var listCommentUrl = "comments";
+	
 	//offline
+	//vissit
+	var qvisitUrl = "qvisit";
+	var qvisitCateUrl = "/categories";
+	
 	//teacher
 	var listTeacherUrl  = "teachers";
 	var teacherUrl  = "teacher";
@@ -1824,6 +1986,27 @@
 	
 	var systemUrl = "system";
 	
+	//home
+	function getHome(){
+		return mainURL + homeUrl;
+	}
+	
+	function putCenterInfo(){
+		return mainURL + homeUrl + homeCenterInfoUrl;
+	}
+	
+	function putPrices(){
+		return mainURL + homeUrl + homePriceUrl;
+	}
+	
+	function putBanner(){
+		return mainURL + homeUrl + homeBannerUrl;
+	}
+	
+	function putCenterInfoandBanner(){
+		return mainURL + homeUrl + homeCenterandPriceInfoUrl;
+	}
+	
 	function getAdminHomeURL(){
 		return adminURL;
 	}
@@ -1851,6 +2034,9 @@
 	}
 	function getListURLOrderStatus(status){
 		return mainURL + listOrderStatusUrl + "/" + status;
+	}
+	function getCommentURLOrder(id){
+		return mainURL + commentOrderUrl + "/" + id;
 	}
 	//user
 	function getListURLUserAccount(){
@@ -1961,6 +2147,16 @@
 	function getURLCheckToken(){
 		return mainURL+tokenCheckUrl;
 	}
+	//comment
+	
+	function getListComment(){
+		return mainURL+listCommentUrl;
+	}
+	
+	function getComment(id){
+		return mainURL+commentUrl + "/" + id;
+	}
+	
 	//list-lecture
 	function getURLAllLecture(){
 		return mainURL+listLecturerUrl;
@@ -1976,6 +2172,13 @@
 	//teacher
 	function getURLTeacher(){
 		return mainURL+teacherUrl;
+	}
+	//qvist
+	function getQvist(){
+		return mainURL + qvisitUrl + qvisitCateUrl;
+	}
+	function putQvist(id){
+		return mainURL + qvisitUrl + "/post/" + id;
 	}
 	//upload image
 	function getURLUploadImage(){

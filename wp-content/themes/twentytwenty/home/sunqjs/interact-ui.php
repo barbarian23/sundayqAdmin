@@ -591,7 +591,7 @@ function chooseSingleOwwner(){
 	
 	function setHightLightText(val){
 		arrayHightlightTitle.forEach(function(item,index) {//console.log(item["id"]);
-			if(document.getElementById(item["id"])){
+			if(document.getElementById(item["id"]) && item["id"] != "title-manage-ticket-all"){
 			document.getElementById(item["id"]).style.color = "rgba(240,245,250,.7)";
 			   document.getElementById(item["id"]).style.fontWeight = "500";
 		}

@@ -22,7 +22,22 @@
                         <span><?php echo $GLOBALS["ADMIN_TITLE"]; ?></span>
                     </div>
                 </div>
-                <!-- Học online -->
+				
+                <!-- Vé -->				
+				<div class="home-middle-left-menu" id="divTicket">
+                    <div class="home-middle-left-menu-title" id="divTicketDetail">
+						<a href="?mode=ticket&page=ticket&action=edit"><i class="fa fa-dashboard" id="dashboardIcon"></i><span id="title-manage-ticket-all" class="home-middle-left-menu-text  home-middle-left-menu-header-text-style"><?php echo $GLOBALS["TICKET_TITLE"]; ?></span></a>
+						<div class="home-middle-left-menu-tooltip">
+							<span><?php echo $GLOBALS["TICKET_TITLE"]; ?></span>
+						</div>
+                    </div>
+                    <div class="home-middle-left-menu-content" id="homeMenuTicket">
+                        
+                    </div>
+                </div>
+				
+				
+				<!-- Học online -->
                 <div class="home-middle-left-menu" id="divShowOnline">
                     <div class="home-middle-left-menu-title">
                         <i class="fa fa-mortar-board"></i><span class="home-middle-left-menu-text  home-middle-left-menu-header-text-style"><?php echo $GLOBALS["ADMIN_ONLINE"]; ?></span>
@@ -31,6 +46,19 @@
                         </div>
                     </div>
                     <div class="home-middle-left-menu-content" id="homeMenuOnline">
+						
+						<!-- parent comment -->
+						 <div class="home-middle-left-menu" id="divParentComment">
+							<div class="home-middle-left-menu-title" id="divParentCommentDetail">
+								<a href="?mode=online&page=list-parentcomment"><i class="fa fa-dashboard" id="dashboardIcon"></i><span id="title-manage-parentcomment" class="home-middle-left-menu-text "><?php echo $GLOBALS["PARENT_COMMENT"]; ?></span></a>
+								<div class="home-middle-left-menu-tooltip">
+									<span><?php echo $GLOBALS["PARENT_COMMENT"]; ?></span>
+								</div>
+							</div>
+							<div class="home-middle-left-menu-content" id="homeMenuParentComment">
+
+							</div>
+						</div>
 						
 						<!-- Quản lý account -->
                         <div class="" id="divShowManageAccount">
@@ -281,6 +309,23 @@
                             </div>
                         </div>
                         <div class="home-middle-left-menu-content" id="homeMenuQAcedemy">
+							
+							 <!-- banner -->
+<!--                             <div class="home-middle-left-menu" id="homeMenuOfflineBanner">
+                                <a href="?mode=offline&page=banner"><i class="fa fa-calendar"></i><span id="title-manage-banner" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_BANNER"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_BANNER"]; ?></span>
+                                </div>
+                            </div> -->
+							
+							 <!-- center info -->
+                            <div class="home-middle-left-menu" id="homeMenuOfflineCenterInfo">
+                                <a href="?mode=offline&page=centerinfo&action=edit"><i class="fa fa-calendar"></i><span id="title-manage-centerinfo" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CENTER_INFO"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_CENTER_INFO"]; ?></span>
+                                </div>
+                            </div>
+							
                             <!-- khóa học -->
                             <div class="home-middle-left-menu" id="homeMenuOfflineListLecture">
                                 <a href="?mode=offline&page=list-lecture"><i class="fa fa-calendar"></i><span id="title-manage-lecture" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_OFFLINE_MANAGE_LECTURE"]; ?></span></a>
@@ -305,6 +350,15 @@
                             </div>
                         </div>
                         <div class="home-middle-left-menu-content" id="homeMenuQVisit">
+							
+							<!-- bài viết -->
+                            <div class="home-middle-left-menu" id="homeMenuQVisitListArticle">
+                                <a href="?mode=offline&page=list-article"><i class="fa fa-calendar"></i><span id="title-manage-article" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_ARTICLE"]; ?></span></a>
+                                <div class="home-middle-left-menu-tooltip">
+                                    <span><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_ARTICLE"]; ?></span>
+                                </div>
+                            </div>
+							
                             <!-- triển lãm -->
                             <div class="home-middle-left-menu" id="homeMenuQVisitListExhibiton">
                                 <a href="?mode=offline&page=list-exhibition"><i class="fa fa-calendar"></i><span id="title-manage-exhibition" class="home-middle-left-menu-text"><?php echo $GLOBALS["ADMIN_Q_ACADEMY_MANAGE_EXHIBITION"]; ?></span></a>
@@ -573,6 +627,15 @@
                                 case "kit":
                                     echo "<script>setMode('freeq')</script>";
                                     include get_theme_file_path("home/online/freeq/kit/kit.php");
+                                    break;
+								//comment
+								 case "list-parentcomment":
+                                    echo "<script>setMode('online')</script>";
+                                    include get_theme_file_path("home/online/parentcomment/list-parentcomment.php");
+                                    break;
+                                case "parentcomment":
+                                    echo "<script>setMode('freeq')</script>";
+                                    include get_theme_file_path("home/online/parentcomment/parentcomment.php");
                                     break;
 								//steamq
 								/*
@@ -1406,6 +1469,14 @@
                                     echo "<script>setMode('qacademy')</script>";
                                     include get_theme_file_path("home/offline/teacher/teacher.php");
                                     break;
+								 case "banner":
+                                    echo "<script>setMode('qacademy')</script>";
+                                    include get_theme_file_path("home/offline/banner/banner.php");
+                                    break;
+								 case "centerinfo":
+                                    echo "<script>setMode('qacademy')</script>";
+                                    include get_theme_file_path("home/offline/centerInfo/centerInfo.php");
+                                    break;
                                     //QVisit
                                 case "list-contact":
                                     echo "<script>setMode('qvisit')</script>";
@@ -1431,6 +1502,14 @@
                                     echo "<script>setMode('qvisit')</script>";
                                     include get_theme_file_path("home/offline/qvisit/ticket/list-ticket.php");
                                     break;
+								 case "list-article":
+                                    echo "<script>setMode('qvisit')</script>";
+                                    include get_theme_file_path("home/offline/acaIntro/list-acaIntro.php");
+                                    break;
+								 case "article":
+                                    echo "<script>setMode('qvisit')</script>";
+                                    include get_theme_file_path("home/offline/acaIntro/acaIntro.php");
+                                    break;
                                 default:
                                     break;
                             }
@@ -1441,6 +1520,17 @@
 								 case "admin":
                                     echo "<script>setMode('chat')</script>";
                                     include get_theme_file_path("home/chat/chat.php");
+                                    break;
+                                default:
+                                    break;	
+							}
+						}
+					} else if($_GET["mode"] == "ticket"){
+						if (isset($_GET["page"])) {
+                            switch ($_GET["page"]) {
+								 case "ticket":
+                                    echo "<script>setMode('chat')</script>";
+                                    include get_theme_file_path("home/ticketAll/ticketAll.php");
                                     break;
                                 default:
                                     break;	

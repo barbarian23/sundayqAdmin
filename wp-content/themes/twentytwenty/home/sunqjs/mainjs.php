@@ -329,7 +329,7 @@
 					// If the upload is successful, resolve the upload promise with an object containing
 					// at least the "default" URL, pointing to the image on the server.
 					resolve({
-						default: "http://103.146.22.168:3000/"+urlResponce
+						default: "http://103.15.50.6:3200/"+urlResponce
 					});
 				}
                 else {
